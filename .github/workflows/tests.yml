@@ -36,4 +36,5 @@ jobs:
           done
       - name: Run QGIS integration tests
         run: |
-          docker exec qgis-test sh -c "cd /tests_directory && qgis_testrunner.sh tests.test_qgis"
+          docker exec qgis-test sh -c "Xvfb :99 -screen 0 1024x768x24 -ac >/tmp/xvfb.log 2>&1 &"
+          docker exec qgis-test sh -c "cd /tests_directory && if command -v qgis_testrunner.sh >/dev/null 2>&1; then qgis_testrunner.sh tests.test_qgis.run_all; else python3 -m unittest tests.test_qgis; fi"
