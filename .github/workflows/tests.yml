@@ -28,9 +28,10 @@ jobs:
           docker run -d --name qgis-test \
             -e DISPLAY=:99 \
             -v "${GITHUB_WORKSPACE}:/tests_directory" \
-            qgis/qgis:${{ matrix.qgis }}
+            qgis/qgis:${{ matrix.qgis }} \
+            tail -f /dev/null
           for attempt in $(seq 1 30); do
-            if docker exec qgis-test sh -c "pgrep -f Xvfb >/dev/null"; then break; fi
+            if docker inspect -f '{{.State.Running}}' qgis-test | grep -q true; then break; fi
             sleep 1
           done
       - name: Run QGIS integration tests
