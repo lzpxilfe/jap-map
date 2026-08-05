@@ -1,4 +1,4 @@
-from .coordinates import CoordinateParseError, parse_angle
+from .coordinates import CoordinateParseError, dms_to_decimal, parse_angle
 from .frame import Corner, CornerRole, FrameValidationError, SheetFrame
 
 __all__ = [
@@ -7,5 +7,6 @@ __all__ = [
     "CornerRole",
     "FrameValidationError",
     "SheetFrame",
+    "dms_to_decimal",
     "parse_angle",
 ]
