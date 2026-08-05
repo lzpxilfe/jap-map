@@ -20,11 +20,11 @@ def _normalise(text: str) -> str:
         "º": "°",
         "˚": "°",
         "′": "'",
-        "’": "'",
-        "‘": "'",
+        "\u2018": "'",
+        "\u2019": "'",
         "″": '"',
-        "“": '"',
-        "”": '"',
+        "\u201c": '"',
+        "\u201d": '"',
         "도": "°",
         "분": "'",
         "초": '"',
@@ -47,6 +47,31 @@ def _extract_cardinal(value: str, axis: str) -> tuple[str, str | None]:
     if axis == "lon" and cardinal not in {"E", "W"}:
         raise CoordinateParseError("경도에는 E 또는 W만 사용할 수 있습니다.")
     return value[: match.start()].strip(), cardinal
+
+
+def dms_to_decimal(degrees: int, minutes: int, seconds: float, hemisphere: str) -> float:
+    """도·분·초 정수 칸 값을 십진도로 변환합니다.
+
+    ``hemisphere`` 는 위도의 경우 ``"N"``/``"S"``, 경도의 경우 ``"E"``/``"W"`` 입니다.
+    분은 0–59, 초는 0–59.999 범위여야 합니다.
+
+    Raises
+    ------
+    CoordinateParseError
+        범위를 벗어나거나 반구 문자열이 올바르지 않을 때.
+    """
+    if not (0 <= minutes < 60):
+        raise CoordinateParseError("분은 0 이상 60 미만이어야 합니다.")
+    if not (0 <= seconds < 60):
+        raise CoordinateParseError("초는 0 이상 60 미만이어야 합니다.")
+    if degrees < 0:
+        raise CoordinateParseError("도 값은 0 이상이어야 합니다.")
+    hemisphere = hemisphere.upper()
+    if hemisphere not in {"N", "S", "E", "W"}:
+        raise CoordinateParseError("반구는 N, S, E, W 중 하나여야 합니다.")
+
+    magnitude = degrees + minutes / 60.0 + seconds / 3600.0
+    return -magnitude if hemisphere in {"S", "W"} else magnitude
 
 
 def parse_angle(text: str, axis: str) -> float:
