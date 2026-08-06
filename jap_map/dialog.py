@@ -156,6 +156,7 @@ class MapFrameDialog(QDialog):
         self.setWindowTitle("역사지형도 도곽 만들기")
         self.setMinimumWidth(680)
         self._dms_widgets: dict[CornerRole, tuple[_DmsWidget, _DmsWidget]] = {}
+        self._current_crs: QgsCoordinateReferenceSystem = QgsCoordinateReferenceSystem()
         self._build_ui()
         self._restore_crs()
 
@@ -198,6 +199,7 @@ class MapFrameDialog(QDialog):
         crs_layout.addWidget(help_label)
         root.addWidget(crs_box)
         self.crs_widget.crsChanged.connect(self._on_crs_changed)
+        self.crs_widget.crsChanged.connect(lambda crs: self._track_crs(crs))
 
         corners_box = QGroupBox("도곽 모서리 좌표  (도° 분′ 초″ 방위)")
         corners_layout = QGridLayout(corners_box)
@@ -254,18 +256,33 @@ class MapFrameDialog(QDialog):
         if authid:
             crs = QgsCoordinateReferenceSystem(str(authid))
             if crs.isValid():
+                self._track_crs(crs)
                 self.crs_widget.setCrs(crs)
                 return
         # Do not silently assume WGS 84 on first use: historical map sheets
         # often use a Tokyo datum, so the user must make the datum choice once.
         self.crs_widget.setCrs(QgsCoordinateReferenceSystem())
 
+    def _track_crs(self, crs: QgsCoordinateReferenceSystem):
+        """CRS 변경을 즉시 멤버 변수에 반영. 위젯 내부 상태 지연 문제를 우회합니다."""
+        self._current_crs = crs
+        # CRS 레이블 업데이트
+        if hasattr(self, '_crs_status_label'):
+            if crs.isValid():
+                self._crs_status_label.setText(f"✓ {crs.userFriendlyIdentifier()}")
+                self._crs_status_label.setStyleSheet("color: #1a7f37; font-size: 10px;")
+            else:
+                self._crs_status_label.setText("CRS가 선택되지 않았습니다")
+                self._crs_status_label.setStyleSheet("color: #b42318; font-size: 10px;")
+
     def _set_crs(self, authid):
-        self.crs_widget.setCrs(QgsCoordinateReferenceSystem(authid))
+        crs = QgsCoordinateReferenceSystem(authid)
+        self._track_crs(crs)
+        self.crs_widget.setCrs(crs)
 
     def _choose_custom_crs(self):
         dialog = QgsProjectionSelectionDialog(self)
-        current = self.crs_widget.crs()
+        current = self._current_crs
         if current.isValid():
             dialog.setCrs(current)
         exec_method = getattr(dialog, "exec", None) or dialog.exec_
@@ -273,6 +290,7 @@ class MapFrameDialog(QDialog):
         if accepted is None:
             accepted = QDialog.DialogCode.Accepted
         if exec_method() == accepted and dialog.crs().isValid():
+            self._track_crs(dialog.crs())
             self.crs_widget.setCrs(dialog.crs())
 
     def _on_crs_changed(self, crs):
@@ -282,7 +300,12 @@ class MapFrameDialog(QDialog):
             self.error_label.clear()
 
     def _create(self):
-        crs = self.crs_widget.crs()
+        # QgsProjectionSelectionWidget의 내부 상태 지연 문제를 우회하여
+        # self._current_crs (즉시 갱신되는 멤버 변수)를 우선 사용합니다.
+        crs = self._current_crs
+        # 위젯 값도 fallback으로 확인
+        if not crs.isValid():
+            crs = self.crs_widget.crs()
         if not crs.isValid():
             self.error_label.setText("입력 좌표의 CRS를 선택해 주세요.")
             return
