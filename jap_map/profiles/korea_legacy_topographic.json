@@ -1,0 +1,12 @@
+{
+  "profile_id": "korea-legacy-topographic-example",
+  "display_name": "Korean historical topographic map (example profile)",
+  "contour_rgb": [145, 95, 70],
+  "color_distance": 36.0,
+  "min_component_pixels": 12,
+  "ocr_charset": "0123456789.-",
+  "contour_rules": {
+    "note": "Tune contour_rgb and color_distance against each scan before batch processing."
+  },
+  "crs_presets": ["EPSG:5132", "EPSG:4301", "EPSG:4326"]
+}

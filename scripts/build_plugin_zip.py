@@ -6,8 +6,9 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "jap_map"
+CORE_PACKAGE = ROOT / "histcontour_core"
 DIST = ROOT / "dist"
-OUTPUT = DIST / "historical-map-tools-0.1.0.zip"
+OUTPUT = DIST / "historical-map-tools-0.2.0.zip"
 
 
 def main():
@@ -15,9 +16,10 @@ def main():
     if OUTPUT.exists():
         OUTPUT.unlink()
     with zipfile.ZipFile(OUTPUT, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for path in sorted(PACKAGE.rglob("*")):
-            if path.is_file() and "__pycache__" not in path.parts:
-                archive.write(path, Path("jap_map") / path.relative_to(PACKAGE))
+        for package, destination in ((PACKAGE, "jap_map"), (CORE_PACKAGE, "histcontour_core")):
+            for path in sorted(package.rglob("*")):
+                if path.is_file() and "__pycache__" not in path.parts:
+                    archive.write(path, Path(destination) / path.relative_to(package))
         archive.write(ROOT / "LICENSE", Path("jap_map") / "LICENSE")
     print(OUTPUT)
 

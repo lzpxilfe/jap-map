@@ -1,329 +1,117 @@
-"""Korean-first dialog for creating a four-corner map frame.
-
-좌표 입력 방식:
-  - 위도/경도 각각 도(°)·분(′)·초(″) 세 칸과 방위(N/S, E/W) 드롭다운으로 입력합니다.
-  - 입력 즉시 십진도로 변환하여 칸 아래에 표시하므로 사용자가 해석 결과를 확인할 수 있습니다.
-  - 분·초 칸은 0–59 범위를 벗어나면 즉시 오류 색상으로 알립니다.
-"""
+"""Create sheet frames in projected X/Y or geographic DMS/DD coordinates."""
 
 from __future__ import annotations
 
 from qgis.PyQt.QtCore import QSettings, Qt
-from qgis.PyQt.QtWidgets import (
-    QComboBox,
-    QDialog,
-    QGridLayout,
-    QGroupBox,
-    QHBoxLayout,
-    QLabel,
-    QLineEdit,
-    QPushButton,
-    QSpinBox,
-    QDoubleSpinBox,
-    QVBoxLayout,
-)
+from qgis.PyQt.QtWidgets import QComboBox, QDialog, QDoubleSpinBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout, QLabel, QLineEdit, QPushButton, QScrollArea, QSpinBox, QStackedWidget, QVBoxLayout, QWidget
 from qgis.core import QgsCoordinateReferenceSystem
 from qgis.gui import QgsProjectionSelectionDialog, QgsProjectionSelectionWidget
 
-from .core.coordinates import CoordinateParseError, dms_to_decimal
+from histcontour_core.models import MapSheet, MetadataError
+
+from .core.coordinates import CoordinateParseError, dms_to_decimal, parse_angle
 from .core.frame import Corner, CornerRole, FrameValidationError, SheetFrame
 from .core.layer_manager import FrameLayerManager
 
 
-PRESETS = (
-    ("Tokyo 1892 (EPSG:5132)", "EPSG:5132"),
-    ("Tokyo / Tokyo 1918 (EPSG:4301)", "EPSG:4301"),
-    ("WGS 84 (EPSG:4326)", "EPSG:4326"),
-)
+PRESETS = (("Tokyo 1892 (EPSG:5132)", "EPSG:5132"), ("Tokyo / Tokyo 1918 (EPSG:4301)", "EPSG:4301"), ("WGS 84 (EPSG:4326)", "EPSG:4326"))
 SETTINGS_KEY = "historical_map_tools/last_crs"
-
-# 오류 색상 (빨강), 정상 색상 (기본 테두리)
-_STYLE_ERROR = "border: 1.5px solid #b42318;"
-_STYLE_OK = ""
 
 
 class _DmsWidget(QGroupBox):
-    """도·분·초 + 방위 입력 위젯 (위도 또는 경도 1개).
+    """Three-cell DMS input retaining the v0.1 map-transcription workflow."""
+    def __init__(self, axis, parent=None):
+        super().__init__("Longitude" if axis == "lon" else "Latitude", parent)
+        self.axis = axis
+        layout = QHBoxLayout(self); layout.setContentsMargins(4, 8, 4, 4)
+        self.degrees = QSpinBox(); self.degrees.setRange(0, 180 if axis == "lon" else 90); self.degrees.setSuffix(" °")
+        self.minutes = QSpinBox(); self.minutes.setRange(0, 59); self.minutes.setSuffix(" ′")
+        self.seconds = QDoubleSpinBox(); self.seconds.setRange(0, 59.999); self.seconds.setDecimals(2); self.seconds.setSuffix(" ″")
+        self.hemisphere = QComboBox(); self.hemisphere.addItems(("E", "W") if axis == "lon" else ("N", "S"))
+        self.preview = QLabel(); self.preview.setMinimumWidth(94)
+        for widget in (self.degrees, self.minutes, self.seconds, self.hemisphere, self.preview): layout.addWidget(widget)
+        for signal in (self.degrees.valueChanged, self.minutes.valueChanged, self.seconds.valueChanged, self.hemisphere.currentIndexChanged): signal.connect(self._refresh)
+        self._refresh()
 
-    사용자가 지도 귀퉁이에 인쇄된 값을 칸별로 그대로 옮겨 입력합니다.
-    입력 즉시 십진도로 변환하여 아래에 미리보기로 표시합니다.
-    """
-
-    def __init__(self, label: str, axis: str, parent=None):
-        """
-        Parameters
-        ----------
-        label : str
-            그룹 박스 제목 (예: "위도", "경도")
-        axis : str
-            ``"lat"`` 또는 ``"lon"``
-        """
-        super().__init__(label, parent)
-        self._axis = axis
-        self._build()
-
-    def _build(self):
-        layout = QHBoxLayout(self)
-        layout.setContentsMargins(4, 8, 4, 4)
-        layout.setSpacing(2)
-
-        # ── 도 ─────────────────────────────────
-        self._deg = QSpinBox()
-        self._deg.setRange(0, 180 if self._axis == "lon" else 90)
-        self._deg.setSuffix(" °")
-        self._deg.setMinimumWidth(70)
-        layout.addWidget(self._deg)
-
-        # ── 분 ─────────────────────────────────
-        self._min = QSpinBox()
-        self._min.setRange(0, 59)
-        self._min.setSuffix(" ′")
-        self._min.setMinimumWidth(60)
-        layout.addWidget(self._min)
-
-        # ── 초 ─────────────────────────────────
-        self._sec = QDoubleSpinBox()
-        self._sec.setRange(0.0, 59.999)
-        self._sec.setDecimals(1)
-        self._sec.setSuffix(" ″")
-        self._sec.setMinimumWidth(72)
-        layout.addWidget(self._sec)
-
-        # ── 방위 드롭다운 ─────────────────────
-        self._hemi = QComboBox()
-        if self._axis == "lat":
-            self._hemi.addItems(["N", "S"])
-        else:
-            self._hemi.addItems(["E", "W"])
-        self._hemi.setMinimumWidth(42)
-        layout.addWidget(self._hemi)
-
-        layout.addStretch(1)
-
-        # ── 십진도 미리보기 ───────────────────
-        self._preview = QLabel("—")
-        self._preview.setAlignment(Qt.AlignmentFlag.AlignLeft | Qt.AlignmentFlag.AlignVCenter)
-        self._preview.setStyleSheet("color: #555; font-size: 10px; padding-left: 4px;")
-        layout.addWidget(self._preview)
-
-        # 변경 시 미리보기 갱신
-        self._deg.valueChanged.connect(self._update_preview)
-        self._min.valueChanged.connect(self._update_preview)
-        self._sec.valueChanged.connect(self._update_preview)
-        self._hemi.currentIndexChanged.connect(self._update_preview)
-
-        self._update_preview()
-
-    def _update_preview(self):
+    def _refresh(self):
         try:
-            val = dms_to_decimal(
-                self._deg.value(),
-                self._min.value(),
-                self._sec.value(),
-                self._hemi.currentText(),
-            )
-            axis_max = 90.0 if self._axis == "lat" else 180.0
-            if abs(val) > axis_max:
-                raise CoordinateParseError(
-                    f"{'위도' if self._axis == 'lat' else '경도'} 범위를 벗어났습니다."
-                )
-            label = "위도" if self._axis == "lat" else "경도"
-            self._preview.setText(f"→ {val:.6f}°")
-            self._preview.setStyleSheet("color: #1a7f37; font-size: 10px; padding-left: 4px;")
-        except CoordinateParseError as e:
-            self._preview.setText(f"⚠ {e}")
-            self._preview.setStyleSheet("color: #b42318; font-size: 10px; padding-left: 4px;")
+            value = self.value()
+            self.preview.setText(f"→ {value:.6f}°")
+            self.preview.setStyleSheet("color: #1a7f37; font-size: 10px;")
+        except CoordinateParseError as error:
+            self.preview.setText(f"⚠ {error}")
+            self.preview.setStyleSheet("color: #b42318; font-size: 10px;")
 
-    def decimal_value(self) -> float:
-        """현재 입력값을 십진도 float으로 반환합니다. 범위 오류 시 CoordinateParseError."""
-        val = dms_to_decimal(
-            self._deg.value(),
-            self._min.value(),
-            self._sec.value(),
-            self._hemi.currentText(),
-        )
-        axis_max = 90.0 if self._axis == "lat" else 180.0
-        if abs(val) > axis_max:
-            label = "위도" if self._axis == "lat" else "경도"
-            raise CoordinateParseError(f"{label} 범위를 벗어났습니다.")
-        return val
+    def value(self):
+        value = dms_to_decimal(self.degrees.value(), self.minutes.value(), self.seconds.value(), self.hemisphere.currentText())
+        maximum = 180 if self.axis == "lon" else 90
+        if abs(value) > maximum:
+            raise CoordinateParseError("Coordinate is outside its axis range.")
+        return value
 
 
 class MapFrameDialog(QDialog):
+    """CRS-independent frame editor; the old class name remains a public API."""
     def __init__(self, parent=None, iface=None):
-        super().__init__(parent)
-        self.iface = iface
-        self.setWindowTitle("역사지형도 도곽 만들기")
-        self.setMinimumWidth(680)
-        self._dms_widgets: dict[CornerRole, tuple[_DmsWidget, _DmsWidget]] = {}
-        self._current_crs: QgsCoordinateReferenceSystem = QgsCoordinateReferenceSystem()
-        self._build_ui()
-        self._restore_crs()
+        super().__init__(parent); self.iface = iface; self._metadata = {}; self._corners = {}
+        self.setWindowTitle("Create Sheet Frame / 도곽 만들기"); self.setMinimumWidth(760)
+        self._build_ui(); self._restore_crs()
 
     def _build_ui(self):
         root = QVBoxLayout(self)
-
-        intro = QLabel(
-            "지도 귀퉁이에 인쇄된 위도·경도를 도(°)·분(′)·초(″) 칸에 그대로 옮겨 입력하세요. "
-            "입력값이 십진도로 어떻게 해석되는지 즉시 확인할 수 있습니다."
-        )
-        intro.setWordWrap(True)
-        root.addWidget(intro)
-
-        name_row = QHBoxLayout()
-        name_row.addWidget(QLabel("도엽명"))
-        self.name_edit = QLineEdit()
-        self.name_edit.setPlaceholderText("선택 사항 — 비우면 자동으로 이름을 붙입니다")
-        name_row.addWidget(self.name_edit, 1)
-        root.addLayout(name_row)
-
-        crs_box = QGroupBox("입력 좌표의 CRS")
-        crs_layout = QVBoxLayout(crs_box)
-        self.crs_widget = QgsProjectionSelectionWidget()
-        crs_layout.addWidget(self.crs_widget)
-        preset_row = QHBoxLayout()
+        description = QLabel("Create a sheet frame in any CRS. Geographic input has DMS cells with a live decimal preview; projected input uses X/Y.")
+        description.setWordWrap(True); root.addWidget(description)
+        scroll = QScrollArea(); scroll.setWidgetResizable(True); body = QWidget(); layout = QVBoxLayout(body)
+        metadata_box = QGroupBox("Map sheet metadata / 지도 메타데이터"); form = QFormLayout(metadata_box)
+        labels = {"sheet_id":"Sheet ID *", "source_title":"Source title *", "display_title":"Display title *", "series":"Series", "edition":"Edition", "producer":"Producer *", "survey_purpose":"Survey purpose", "survey_year":"Survey year", "publication_year":"Publication year", "scale":"Scale", "contour_interval_m":"Contour interval (m)", "source_language":"Source language", "source_script":"Source script", "vertical_datum":"Vertical datum", "scan_source":"Scan source *", "rights":"Rights *", "context_note":"Historical context note"}
+        for key, label in labels.items():
+            edit = QLineEdit(); edit.setObjectName(f"sheetMetadata_{key}"); form.addRow(label, edit); self._metadata[key] = edit
+        layout.addWidget(metadata_box)
+        crs_box = QGroupBox("Coordinate reference system / 좌표계"); crs_layout = QVBoxLayout(crs_box); self.crs_widget = QgsProjectionSelectionWidget(); crs_layout.addWidget(self.crs_widget)
+        choices = QHBoxLayout()
         for label, authid in PRESETS:
-            button = QPushButton(label)
-            button.clicked.connect(lambda checked=False, value=authid: self._set_crs(value))
-            preset_row.addWidget(button)
-        custom_button = QPushButton("기타…")
-        custom_button.clicked.connect(self._choose_custom_crs)
-        preset_row.addWidget(custom_button)
-        crs_layout.addLayout(preset_row)
-        help_label = QLabel(
-            "조선 지형도는 Tokyo 1892를 먼저 시도하되, 판본에 따라 Tokyo/Tokyo 1918일 수 있습니다. "
-            "두 결과를 현재 배경지도나 도엽 정보와 비교하세요. WGS 84는 이미 변환된 좌표에 사용합니다."
-        )
-        help_label.setWordWrap(True)
-        help_label.setTextFormat(Qt.TextFormat.PlainText)
-        crs_layout.addWidget(help_label)
-        root.addWidget(crs_box)
-        self.crs_widget.crsChanged.connect(self._on_crs_changed)
-        self.crs_widget.crsChanged.connect(lambda crs: self._track_crs(crs))
+            button = QPushButton(label); button.clicked.connect(lambda checked=False, value=authid: self._set_crs(value)); choices.addWidget(button)
+        custom = QPushButton("Choose CRS… / 기타…"); custom.clicked.connect(self._choose_custom_crs); choices.addWidget(custom); crs_layout.addLayout(choices); layout.addWidget(crs_box)
+        input_row = QHBoxLayout(); input_row.addWidget(QLabel("Input mode / 입력 방식")); self.mode = QComboBox(); self.mode.addItem("Geographic DMS / DD", "geographic"); self.mode.addItem("Projected X / Y", "projected"); self.mode.currentIndexChanged.connect(self._set_mode); input_row.addWidget(self.mode, 1); layout.addLayout(input_row)
+        corner_box = QGroupBox("Frame corners / 도곽 모서리"); grid = QGridLayout(corner_box)
+        for role, row, column in ((CornerRole.NW,0,0),(CornerRole.NE,0,1),(CornerRole.SW,1,0),(CornerRole.SE,1,1)):
+            group = QGroupBox(role.value); group_layout = QVBoxLayout(group); stack = QStackedWidget()
+            dms = QWidget(); dms_layout = QVBoxLayout(dms); latitude, longitude = _DmsWidget("lat"), _DmsWidget("lon"); dms_layout.addWidget(latitude); dms_layout.addWidget(longitude)
+            projected = QWidget(); projected_form = QFormLayout(projected); x, y = QLineEdit(), QLineEdit(); projected_form.addRow("X", x); projected_form.addRow("Y", y)
+            stack.addWidget(dms); stack.addWidget(projected); group_layout.addWidget(stack); grid.addWidget(group,row,column)
+            self._corners[role] = (stack, latitude, longitude, x, y)
+        layout.addWidget(corner_box); scroll.setWidget(body); root.addWidget(scroll)
+        self.error = QLabel(); self.error.setStyleSheet("color: #b42318;"); self.error.setWordWrap(True); root.addWidget(self.error)
+        buttons = QHBoxLayout(); buttons.addStretch(1); cancel, create = QPushButton("Cancel / 취소"), QPushButton("Create Sheet Frame / 도곽 만들기"); cancel.clicked.connect(self.reject); create.clicked.connect(self._create); buttons.addWidget(cancel); buttons.addWidget(create); root.addLayout(buttons)
 
-        corners_box = QGroupBox("도곽 모서리 좌표  (도° 분′ 초″ 방위)")
-        corners_layout = QGridLayout(corners_box)
-        corners_layout.setSpacing(8)
-
-        roles = (
-            (CornerRole.NW, 0, 0),
-            (CornerRole.NE, 0, 1),
-            (CornerRole.SW, 1, 0),
-            (CornerRole.SE, 1, 1),
-        )
-        for role, row, column in roles:
-            group = QGroupBox(self._role_label(role))
-            group_layout = QVBoxLayout(group)
-            group_layout.setSpacing(4)
-
-            lat_widget = _DmsWidget("위도", "lat")
-            lon_widget = _DmsWidget("경도", "lon")
-            group_layout.addWidget(lat_widget)
-            group_layout.addWidget(lon_widget)
-
-            corners_layout.addWidget(group, row, column)
-            self._dms_widgets[role] = (lat_widget, lon_widget)
-
-        root.addWidget(corners_box)
-
-        self.error_label = QLabel()
-        self.error_label.setWordWrap(True)
-        self.error_label.setStyleSheet("color: #b42318;")
-        root.addWidget(self.error_label)
-
-        buttons = QHBoxLayout()
-        buttons.addStretch(1)
-        cancel = QPushButton("취소")
-        cancel.clicked.connect(self.reject)
-        self.create_button = QPushButton("도곽 만들기")
-        self.create_button.setDefault(True)
-        self.create_button.clicked.connect(self._create)
-        buttons.addWidget(cancel)
-        buttons.addWidget(self.create_button)
-        root.addLayout(buttons)
-
-    @staticmethod
-    def _role_label(role):
-        return {
-            CornerRole.NW: "좌상 (NW)",
-            CornerRole.NE: "우상 (NE)",
-            CornerRole.SE: "우하 (SE)",
-            CornerRole.SW: "좌하 (SW)",
-        }[role]
+    def _set_mode(self):
+        for stack, *_rest in self._corners.values(): stack.setCurrentIndex(self.mode.currentIndex())
 
     def _restore_crs(self):
         authid = QSettings().value(SETTINGS_KEY, "")
         if authid:
             crs = QgsCoordinateReferenceSystem(str(authid))
-            if crs.isValid():
-                self._track_crs(crs)
-                self.crs_widget.setCrs(crs)
-                return
-        # Do not silently assume WGS 84 on first use: historical map sheets
-        # often use a Tokyo datum, so the user must make the datum choice once.
-        self.crs_widget.setCrs(QgsCoordinateReferenceSystem())
+            if crs.isValid(): self.crs_widget.setCrs(crs)
 
-    def _track_crs(self, crs: QgsCoordinateReferenceSystem):
-        """CRS 변경을 즉시 멤버 변수에 반영. 위젯 내부 상태 지연 문제를 우회합니다."""
-        self._current_crs = crs
-        # CRS 레이블 업데이트
-        if hasattr(self, '_crs_status_label'):
-            if crs.isValid():
-                self._crs_status_label.setText(f"✓ {crs.userFriendlyIdentifier()}")
-                self._crs_status_label.setStyleSheet("color: #1a7f37; font-size: 10px;")
-            else:
-                self._crs_status_label.setText("CRS가 선택되지 않았습니다")
-                self._crs_status_label.setStyleSheet("color: #b42318; font-size: 10px;")
-
-    def _set_crs(self, authid):
-        crs = QgsCoordinateReferenceSystem(authid)
-        self._track_crs(crs)
-        self.crs_widget.setCrs(crs)
-
+    def _set_crs(self, authid): self.crs_widget.setCrs(QgsCoordinateReferenceSystem(authid))
     def _choose_custom_crs(self):
-        dialog = QgsProjectionSelectionDialog(self)
-        current = self._current_crs
-        if current.isValid():
-            dialog.setCrs(current)
-        exec_method = getattr(dialog, "exec", None) or dialog.exec_
-        accepted = getattr(QDialog, "Accepted", None)
-        if accepted is None:
-            accepted = QDialog.DialogCode.Accepted
-        if exec_method() == accepted and dialog.crs().isValid():
-            self._track_crs(dialog.crs())
-            self.crs_widget.setCrs(dialog.crs())
+        picker = QgsProjectionSelectionDialog(self); picker.setCrs(self.crs_widget.crs())
+        if picker.exec() and picker.crs().isValid(): self.crs_widget.setCrs(picker.crs())
 
-    def _on_crs_changed(self, crs):
-        if crs.isValid() and not crs.isGeographic():
-            self.error_label.setText("위도·경도 입력에는 지리좌표계(각도 단위)만 사용할 수 있습니다.")
-        elif crs.isValid():
-            self.error_label.clear()
+    def _sheet(self, crs_authid):
+        values = {key: edit.text().strip() for key, edit in self._metadata.items()}; interval = values.pop("contour_interval_m")
+        return MapSheet(**values, contour_interval_m=float(interval) if interval else None, horizontal_crs=crs_authid)
 
     def _create(self):
-        # QgsProjectionSelectionWidget의 내부 상태 지연 문제를 우회하여
-        # self._current_crs (즉시 갱신되는 멤버 변수)를 우선 사용합니다.
-        crs = self._current_crs
-        # 위젯 값도 fallback으로 확인
-        if not crs.isValid():
-            crs = self.crs_widget.crs()
-        if not crs.isValid():
-            self.error_label.setText("입력 좌표의 CRS를 선택해 주세요.")
-            return
-        if not crs.isGeographic():
-            self.error_label.setText("위도·경도 입력에는 지리좌표계(각도 단위)만 사용할 수 있습니다.")
-            return
-
-        corners = {}
+        crs = self.crs_widget.crs()
+        if not crs.isValid(): self.error.setText("Choose the coordinates' CRS / 좌표계를 선택하세요."); return
+        if self.mode.currentData() == "geographic" and not crs.isGeographic(): self.error.setText("Geographic input requires a geographic CRS / 경위도 입력에는 지리좌표계가 필요합니다."); return
         try:
-            for role, (lat_widget, lon_widget) in self._dms_widgets.items():
-                lat = lat_widget.decimal_value()
-                lon = lon_widget.decimal_value()
-                corners[role] = Corner(role, lat, lon)
-            frame = SheetFrame.create(self.name_edit.text() or "도곽", crs.authid(), corners)
-            FrameLayerManager(self.iface).add_frame(frame, crs)
-        except (CoordinateParseError, FrameValidationError, RuntimeError) as error:
-            self.error_label.setText(str(error))
-            return
-
-        QSettings().setValue(SETTINGS_KEY, crs.authid())
-        self.accept()
+            sheet, corners = self._sheet(crs.authid()), {}
+            for role, (_stack, latitude, longitude, x_edit, y_edit) in self._corners.items():
+                x, y = (longitude.value(), latitude.value()) if self.mode.currentData() == "geographic" else (float(x_edit.text()), float(y_edit.text()))
+                corners[role] = Corner(role, x, y)
+            FrameLayerManager(self.iface).add_frame(SheetFrame.create(sheet.display_title, crs.authid(), corners), crs, sheet)
+        except (ValueError, MetadataError, CoordinateParseError, FrameValidationError, RuntimeError) as error:
+            self.error.setText(str(error)); return
+        QSettings().setValue(SETTINGS_KEY, crs.authid()); self.accept()

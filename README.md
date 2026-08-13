@@ -1,5 +1,15 @@
 # Historical Map Tools — QGIS 플러그인
 
+> **v0.2 — Global core, Korean-first validation:** 한국 도엽을 첫 검증 코퍼스로 삼되, CRS·지도 시리즈 규칙·OCR 설정·출처 메타데이터를 국가에 고정하지 않는 역사 지도 복원 도구입니다. [한국어 안내](README.ko.md)
+
+## v0.2 workflow: frame → registration → contours
+
+1. **Create Sheet Frame / 도곽 만들기**: 지리 DMS/DD 또는 투영 X/Y를 사용해 도곽과 구조화된 출처 정보를 저장합니다.
+2. **Register Map / 지도 맞추기**: 원본 스캔의 4모서리·선택적 내부 GCP·프로젝티브 변환계수·RMSE를 JSON으로 보존합니다.
+3. **Extract Contours / 등고 추출하기**: 프로파일 기반 가시 등고선과 검수용 연결 후보를 출력합니다. 후보 `status`를 `approved`로 바꾼 후 **Create Approved Contour Completions**을 실행하면 승인된 보완 구간만 출력합니다.
+
+한국용 Tokyo CRS는 설정 가능한 예시 프로파일일 뿐 코드의 국가 분기가 아닙니다. 원본 고해상도 스캔·파생 산출물은 Git에서 제외하고, 모든 도엽에 제작기관·목적·시기·언어/문자·CRS/수직기준·출처·권리·역사적 맥락을 보존합니다.
+
 > **역사 지형도의 도·분·초 좌표를 그대로 입력해 도곽(外圍線) 폴리곤을 QGIS에 생성합니다.**
 
 [![버전](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/lzpxilfe/jap-map/releases)

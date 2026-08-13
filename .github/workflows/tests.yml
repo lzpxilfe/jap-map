@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m unittest tests.test_coordinates tests.test_frame
+      - run: python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core
       - run: python scripts/build_plugin_zip.py
 
   qgis:

@@ -16,6 +16,8 @@ from qgis.core import (
     QgsVectorLayer,
 )
 
+from histcontour_core.models import MapSheet
+
 from .frame import CornerRole, SheetFrame
 
 
@@ -27,14 +29,31 @@ LAYER_ROLE_VALUE = "corner_frames"
 def _field_names() -> list[tuple[str, object]]:
     fields = [
         ("frame_id", QMetaType.Type.QString),
-        ("sheet_name", QMetaType.Type.QString),
+        ("sheet_id", QMetaType.Type.QString),
+        ("display_title", QMetaType.Type.QString),
+        ("source_title", QMetaType.Type.QString),
+        ("series", QMetaType.Type.QString),
+        ("edition", QMetaType.Type.QString),
+        ("producer", QMetaType.Type.QString),
+        ("survey_purpose", QMetaType.Type.QString),
+        ("survey_year", QMetaType.Type.QString),
+        ("publication_year", QMetaType.Type.QString),
+        ("scale", QMetaType.Type.QString),
+        ("contour_interval_m", QMetaType.Type.Double),
+        ("source_language", QMetaType.Type.QString),
+        ("source_script", QMetaType.Type.QString),
         ("crs_authid", QMetaType.Type.QString),
+        ("vertical_datum", QMetaType.Type.QString),
+        ("scan_source", QMetaType.Type.QString),
+        ("rights", QMetaType.Type.QString),
+        ("context_note", QMetaType.Type.QString),
+        ("registration_rmse", QMetaType.Type.Double),
     ]
     for role in (CornerRole.NW, CornerRole.NE, CornerRole.SE, CornerRole.SW):
         fields.extend(
             (
-                (f"{role.value.lower()}_lon", QMetaType.Type.Double),
-                (f"{role.value.lower()}_lat", QMetaType.Type.Double),
+                (f"{role.value.lower()}_x", QMetaType.Type.Double),
+                (f"{role.value.lower()}_y", QMetaType.Type.Double),
             )
         )
     return fields
@@ -44,17 +63,17 @@ class FrameLayerManager:
     def __init__(self, iface):
         self.iface = iface
 
-    def add_frame(self, frame: SheetFrame, crs):
+    def add_frame(self, frame: SheetFrame, crs, sheet: MapSheet):
         layer = self._find_layer(crs)
         created = False
         if layer is None:
             layer = self._create_layer(crs)
             created = True
 
-        points = [QgsPointXY(lon, lat) for lon, lat in frame.ring_xy()]
+        points = [QgsPointXY(x, y) for x, y in frame.ring_xy()]
         feature = QgsFeature(layer.fields())
         feature.setGeometry(QgsGeometry.fromPolygonXY([points]))
-        feature.setAttributes(self._attributes(frame, crs))
+        feature.setAttributes(self._attributes(frame, crs, sheet))
         ok, added = layer.dataProvider().addFeatures([feature])
         if not ok or not added:
             if created:
@@ -68,7 +87,7 @@ class FrameLayerManager:
         layer.selectByIds([feature_id])
         self.iface.mapCanvas().zoomToSelected(layer)
         layer.removeSelection()
-        self.iface.messageBar().pushSuccess("Historical Map Tools", f"'{frame.sheet_name}' 도곽을 생성했습니다.")
+        self.iface.messageBar().pushSuccess("Historical Map Tools", f"Created sheet frame: '{frame.sheet_name}'.")
         return layer, feature_id
 
     def _find_layer(self, crs):
@@ -114,8 +133,14 @@ class FrameLayerManager:
         return f"도곽 — {label}"
 
     @staticmethod
-    def _attributes(frame, crs):
-        values = [str(uuid.uuid4()), frame.sheet_name, crs.authid()]
+    def _attributes(frame, crs, sheet):
+        values = [
+            str(uuid.uuid4()), sheet.sheet_id, sheet.display_title, sheet.source_title,
+            sheet.series, sheet.edition, sheet.producer, sheet.survey_purpose,
+            sheet.survey_year, sheet.publication_year, sheet.scale, sheet.contour_interval_m,
+            sheet.source_language, sheet.source_script, crs.authid(), sheet.vertical_datum,
+            sheet.scan_source, sheet.rights, sheet.context_note, None,
+        ]
         for corner in frame.corners:
-            values.extend((corner.lon, corner.lat))
+            values.extend((corner.x, corner.y))
         return values

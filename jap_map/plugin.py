@@ -4,40 +4,66 @@ from __future__ import annotations
 
 import os
 
-from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtGui import QAction, QIcon
 from qgis.PyQt.QtWidgets import QDialog
-from qgis.PyQt.QtGui import QAction
+from qgis.core import QgsApplication
 
 from .dialog import MapFrameDialog
+from .extract_dialog import ExtractContoursDialog
+from .processing_provider.provider import HistoricalMapToolsProvider
+from .registration_dialog import RegisterMapDialog
 
 
 class HistoricalMapTools:
     def __init__(self, iface):
         self.iface = iface
-        self.action = None
+        self.actions = []
+        self.provider = None
+
+    def initProcessing(self):
+        self.provider = HistoricalMapToolsProvider()
+        QgsApplication.processingRegistry().addProvider(self.provider)
 
     def initGui(self):
         icon_path = os.path.join(os.path.dirname(__file__), "icon.svg")
-        self.action = QAction(QIcon(icon_path), "도곽 만들기…", self.iface.mainWindow())
-        self.action.setObjectName("japMapCreateFrameAction")
-        self.action.setStatusTip("네 귀퉁이 좌표로 역사 지형도 도곽을 만듭니다.")
-        self.action.triggered.connect(self.run)
-        self.iface.addToolBarIcon(self.action)
-        self.iface.addPluginToVectorMenu("Historical Map Tools", self.action)
+        self.initProcessing()
+        for object_name, label, status, callback in (
+            ("historicalMapToolsCreateFrame", "Create Sheet Frame / 도곽 만들기…", "Create a historical map sheet frame.", self.run_create_frame),
+            ("historicalMapToolsRegisterMap", "Register Map / 지도 맞추기…", "Register an original scan to a sheet frame.", self.run_register_map),
+            ("historicalMapToolsExtractContours", "Extract Contours / 등고 추출하기…", "Extract visible contours from an original scan.", self.run_extract_contours),
+        ):
+            action = QAction(QIcon(icon_path), label, self.iface.mainWindow())
+            action.setObjectName(object_name)
+            action.setStatusTip(status)
+            action.triggered.connect(callback)
+            self.iface.addToolBarIcon(action)
+            self.iface.addPluginToVectorMenu("Historical Map Tools", action)
+            self.actions.append(action)
 
     def unload(self):
-        if self.action is None:
-            return
-        self.iface.removePluginVectorMenu("Historical Map Tools", self.action)
-        self.iface.removeToolBarIcon(self.action)
-        self.action.deleteLater()
-        self.action = None
+        for action in self.actions:
+            self.iface.removePluginVectorMenu("Historical Map Tools", action)
+            self.iface.removeToolBarIcon(action)
+            action.deleteLater()
+        self.actions = []
+        if self.provider is not None:
+            QgsApplication.processingRegistry().removeProvider(self.provider)
+            self.provider = None
 
-    def run(self):
-        dialog = MapFrameDialog(self.iface.mainWindow(), self.iface)
+    def _run_dialog(self, dialog_type):
+        dialog = dialog_type(self.iface.mainWindow(), self.iface)
         exec_method = getattr(dialog, "exec", None) or dialog.exec_
         accepted = getattr(QDialog, "Accepted", None)
         if accepted is None:
             accepted = QDialog.DialogCode.Accepted
         if exec_method() == accepted:
             return
+
+    def run_create_frame(self):
+        self._run_dialog(MapFrameDialog)
+
+    def run_register_map(self):
+        self._run_dialog(RegisterMapDialog)
+
+    def run_extract_contours(self):
+        self._run_dialog(ExtractContoursDialog)
