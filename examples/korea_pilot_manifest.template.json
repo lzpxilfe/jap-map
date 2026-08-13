@@ -1,0 +1,30 @@
+{
+  "version": "1",
+  "corpus_id": "korea-initial-pilot",
+  "sheets": [
+    {
+      "sheet_id": "replace-with-mountain-sheet-id",
+      "scenario": "mountain_clear",
+      "image_path": "data/raw/mountain_clear.tif",
+      "profile_path": "jap_map/profiles/korea_legacy_topographic.json",
+      "registration_path": "data/derived/mountain_clear.registration.json",
+      "notes": "Clear contour colour, predominantly mountainous terrain."
+    },
+    {
+      "sheet_id": "replace-with-label-dense-sheet-id",
+      "scenario": "label_dense",
+      "image_path": "data/raw/label_dense.tif",
+      "profile_path": "jap_map/profiles/korea_legacy_topographic.json",
+      "registration_path": "data/derived/label_dense.registration.json",
+      "notes": "Dense place names and contour interruptions."
+    },
+    {
+      "sheet_id": "replace-with-degraded-sheet-id",
+      "scenario": "degraded_complex",
+      "image_path": "data/raw/degraded_complex.tif",
+      "profile_path": "jap_map/profiles/korea_legacy_topographic.json",
+      "registration_path": "data/derived/degraded_complex.registration.json",
+      "notes": "Faded colours, noisy scan, or complex symbols."
+    }
+  ]
+}

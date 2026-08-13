@@ -97,7 +97,7 @@ class QgisIntegrationTest(unittest.TestCase):
         plugin = HistoricalMapTools(_Iface())
         plugin.initGui()
         self.assertEqual(len(plugin.actions), 3)
-        self.assertEqual(len(plugin.provider.algorithms()), 3)
+        self.assertEqual(len(plugin.provider.algorithms()), 4)
         plugin.unload()
         self.assertEqual(plugin.actions, [])
 

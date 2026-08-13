@@ -4,6 +4,7 @@ from pathlib import Path
 
 from histcontour_core.contours import ContourLine, extract_visible_contours, generate_link_candidates
 from histcontour_core.models import ControlPoint, MapProfile, MapSheet, MetadataError
+from histcontour_core.pilot import BaselineMetrics, PILOT_SCENARIOS, PilotManifest, PilotManifestError, PilotSheet, make_baseline_report
 from histcontour_core.registration import GroundControlPoint, RegistrationError, SheetRegistration, apply_projective, fit_projective
 
 
@@ -54,6 +55,32 @@ class ContourTest(unittest.TestCase):
         proposals = generate_link_candidates((ContourLine("a", ((0, 0), (1, 0)), 1), ContourLine("b", ((3, 0), (4, 0)), 1)), 4)
         self.assertEqual(len(proposals), 1)
         self.assertEqual(proposals[0].status, "proposed")
+
+
+class PilotTest(unittest.TestCase):
+    def setUp(self):
+        self.sheets = tuple(
+            PilotSheet(f"sheet-{index}", scenario, f"data/raw/{scenario}.tif", "profile.json", f"data/derived/{scenario}.registration.json")
+            for index, scenario in enumerate(PILOT_SCENARIOS, start=1)
+        )
+
+    def test_manifest_requires_the_three_initial_scenarios_and_round_trips(self):
+        manifest = PilotManifest("korea-initial", self.sheets)
+        with tempfile.TemporaryDirectory() as directory:
+            manifest_path = Path(directory) / "pilot.json"
+            manifest.write_json(manifest_path)
+            self.assertEqual(PilotManifest.read_json(manifest_path), manifest)
+        with self.assertRaises(PilotManifestError):
+            PilotManifest("missing-scenario", self.sheets[:2])
+
+    def test_baseline_report_is_diagnostic_not_an_accuracy_claim(self):
+        lines = (ContourLine("a", ((0, 0), (3, 4)), 1),)
+        metrics = BaselineMetrics.from_results(100, 100, lines, ())
+        report = make_baseline_report("sheet-1", "profile-1", metrics, 1.0)
+        self.assertEqual(report["sheet_id"], "sheet-1")
+        self.assertEqual(metrics.endpoint_count, 2)
+        self.assertAlmostEqual(metrics.total_visible_length_px, 5)
+        self.assertIn("not precision/recall", report["interpretation"]["limitations"])
 
 
 if __name__ == "__main__":

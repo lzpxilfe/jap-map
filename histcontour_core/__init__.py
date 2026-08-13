@@ -2,6 +2,7 @@
 
 from .contours import ContourCandidate, ContourLine, extract_visible_contours, generate_link_candidates
 from .models import ControlPoint, MapProfile, MapSheet
+from .pilot import BaselineMetrics, PilotManifest, PilotSheet, make_baseline_report
 from .registration import SheetRegistration
 
 __all__ = [
@@ -10,7 +11,11 @@ __all__ = [
     "ContourLine",
     "MapProfile",
     "MapSheet",
+    "BaselineMetrics",
+    "PilotManifest",
+    "PilotSheet",
     "SheetRegistration",
     "extract_visible_contours",
     "generate_link_candidates",
+    "make_baseline_report",
 ]

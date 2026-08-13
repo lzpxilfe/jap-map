@@ -3,6 +3,7 @@ from qgis.core import QgsProcessingProvider
 from .register_map import RegisterMapAlgorithm
 from .extract_contours import ExtractContoursAlgorithm
 from .approve_links import ApproveContourLinksAlgorithm
+from .assess_baseline import AssessContourBaselineAlgorithm
 
 
 class HistoricalMapToolsProvider(QgsProcessingProvider):
@@ -10,6 +11,7 @@ class HistoricalMapToolsProvider(QgsProcessingProvider):
         self.addAlgorithm(RegisterMapAlgorithm())
         self.addAlgorithm(ExtractContoursAlgorithm())
         self.addAlgorithm(ApproveContourLinksAlgorithm())
+        self.addAlgorithm(AssessContourBaselineAlgorithm())
 
     def id(self):
         return "historicalmaptools"
