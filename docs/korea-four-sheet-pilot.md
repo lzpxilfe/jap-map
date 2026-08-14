@@ -104,6 +104,29 @@ existing annotation GeoPackage: copy a proposal only when it is a visible
 contour, record distractors in `hard_negative`, and use `ignore_area` where
 the scan makes a decision impossible. Do not bulk-accept the cyan proposals.
 
+## Fast proposal review queue
+
+After vector proposals have been generated, rebuilding the project creates an
+editable GeoPackage layer named `Quick review queue — development only`. It
+contains only Buyeo, Cheongyang, and Nonsan proposals; Gongju remains absent
+so it continues to be a held-out evaluation sheet. The original GeoJSON and
+cyan proposal layers remain immutable provenance, while this queue stores
+human decisions in place.
+
+Select one or more queue features, then use the Historical Map Tools toolbar
+or menu shortcuts. Each action saves the selected status immediately:
+
+| Shortcut | Status | Meaning |
+|---|---|---|
+| `Ctrl+1` | `contour` | visible contour candidate |
+| `Ctrl+2` | `text` | text or map lettering |
+| `Ctrl+3` | `road_river` | road, river, or similar linework |
+| `Ctrl+0` | `unsure` | cannot classify reliably |
+
+Do not copy features to `contour_gt` during first-pass review. That layer is
+reserved for cleaned, accepted training geometry later. This queue is the
+source for review statistics and future supervised labels.
+
 Never digitize or tune parameters against the Gongju holdout layers. They may
 be opened for final evaluation only after a baseline or model is frozen.
 

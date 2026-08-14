@@ -12,11 +12,18 @@ from qgis.core import (
     QgsApplication,
     QgsCoordinateReferenceSystem,
     QgsField,
+    QgsFeature,
     QgsProject,
     QgsRasterLayer,
+    QgsCategorizedSymbolRenderer,
+    QgsLineSymbol,
+    QgsRendererCategory,
     QgsVectorFileWriter,
     QgsVectorLayer,
 )
+
+REVIEW_LAYER_NAME = "proposal_review"
+REVIEW_QUEUE_PROPERTY = "historical_map_tools/review_queue"
 
 
 def parse_args():
@@ -46,6 +53,76 @@ def write_layers(package_path: Path, layers):
             raise RuntimeError(f"Could not create {layer.name()}: {result}")
 
 
+def layer_exists(package_path: Path, layer_name: str) -> bool:
+    return QgsVectorLayer(f"{package_path}|layername={layer_name}", layer_name, "ogr").isValid()
+
+
+def review_queue_layer():
+    fields = [
+        ("proposal_uid", QMetaType.Type.QString),
+        ("tile_id", QMetaType.Type.QString),
+        ("sheet_id", QMetaType.Type.QString),
+        ("split", QMetaType.Type.QString),
+        ("proposal_kind", QMetaType.Type.QString),
+        ("backend", QMetaType.Type.QString),
+        ("pixel_length", QMetaType.Type.Double),
+        ("point_count", QMetaType.Type.Int),
+        ("confidence", QMetaType.Type.Double),
+        ("review_status", QMetaType.Type.QString),
+        ("review_note", QMetaType.Type.QString),
+        ("elevation_m", QMetaType.Type.Double),
+    ]
+    return memory_layer(REVIEW_LAYER_NAME, "LineString", fields)
+
+
+def create_review_queue(package_path: Path, candidate_vector_index: dict, repository: Path):
+    """Create once; later project rebuilds must retain human review decisions."""
+    if layer_exists(package_path, REVIEW_LAYER_NAME):
+        return
+    queue = review_queue_layer()
+    features = []
+    for candidate in candidate_vector_index["tiles"]:
+        if candidate["split"] == "holdout_test":
+            continue
+        source_path = Path(candidate["candidate_vector_path"])
+        if not source_path.is_absolute():
+            source_path = repository / source_path
+        source = QgsVectorLayer(str(source_path), source_path.stem, "ogr")
+        if not source.isValid():
+            raise RuntimeError(f"Invalid candidate vector: {source_path}")
+        for feature in source.getFeatures():
+            output = QgsFeature(queue.fields())
+            output.setGeometry(feature.geometry())
+            output.setAttributes([
+                f"{feature['tile_id']}:{feature['proposal_id']}",
+                feature["tile_id"], feature["sheet_id"], feature["split"], feature["proposal_kind"], feature["backend"],
+                feature["pixel_length"], feature["point_count"], feature["confidence"], "unreviewed", None, None,
+            ])
+            features.append(output)
+    queue.dataProvider().addFeatures(features)
+    options = QgsVectorFileWriter.SaveVectorOptions()
+    options.driverName = "GPKG"
+    options.layerName = REVIEW_LAYER_NAME
+    options.actionOnExistingFile = QgsVectorFileWriter.CreateOrOverwriteLayer
+    result = QgsVectorFileWriter.writeAsVectorFormatV3(queue, str(package_path), QgsProject.instance().transformContext(), options)
+    if result[0] != QgsVectorFileWriter.NoError:
+        raise RuntimeError(f"Could not create review queue: {result}")
+
+
+def apply_review_renderer(layer):
+    categories = []
+    for value, label, colour, width in (
+        ("unreviewed", "Unreviewed", "#64748b", "0.35"),
+        ("contour", "Contour", "#e11d48", "0.95"),
+        ("text", "Text", "#2563eb", "0.75"),
+        ("road_river", "Road or river", "#9333ea", "0.75"),
+        ("unsure", "Unsure", "#f59e0b", "0.75"),
+    ):
+        symbol = QgsLineSymbol.createSimple({"color": colour, "width": width})
+        categories.append(QgsRendererCategory(value, symbol, label))
+    layer.setRenderer(QgsCategorizedSymbolRenderer("review_status", categories))
+
+
 def main():
     args = parse_args()
     repository = Path(__file__).resolve().parents[1]
@@ -68,6 +145,8 @@ def main():
         hard_negative = memory_layer("hard_negative", "MultiLineString", [("tile_id", QMetaType.Type.QString), ("sheet_id", QMetaType.Type.QString), ("class_name", QMetaType.Type.QString), ("review_status", QMetaType.Type.QString)])
         ignore_area = memory_layer("ignore_area", "MultiPolygon", [("tile_id", QMetaType.Type.QString), ("sheet_id", QMetaType.Type.QString), ("reason", QMetaType.Type.QString)])
         write_layers(package_path, (contour, hard_negative, ignore_area))
+        if candidate_vector_index:
+            create_review_queue(package_path, candidate_vector_index, repository)
 
         root = project.layerTreeRoot()
         development_group = root.addGroup("Development tiles")
@@ -111,6 +190,14 @@ def main():
                 proposal_group.addLayer(layer)
 
         labels_group = root.insertGroup(0, "Annotation layers")
+        if candidate_vector_index:
+            queue = QgsVectorLayer(f"{package_path}|layername={REVIEW_LAYER_NAME}", "Quick review queue — development only", "ogr")
+            if not queue.isValid():
+                raise RuntimeError("Invalid proposal review queue")
+            queue.setCustomProperty(REVIEW_QUEUE_PROPERTY, True)
+            apply_review_renderer(queue)
+            project.addMapLayer(queue, False)
+            labels_group.addLayer(queue)
         for layer_name, colour in (("contour_gt", "#e11d48"), ("hard_negative", "#2563eb"), ("ignore_area", "#f59e0b")):
             layer = QgsVectorLayer(f"{package_path}|layername={layer_name}", layer_name, "ogr")
             if not layer.isValid():

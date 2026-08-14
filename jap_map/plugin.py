@@ -12,6 +12,7 @@ from .dialog import MapFrameDialog
 from .extract_dialog import ExtractContoursDialog
 from .processing_provider.provider import HistoricalMapToolsProvider
 from .registration_dialog import RegisterMapDialog
+from .review_actions import classify_selected_proposals
 
 
 class HistoricalMapTools:
@@ -36,6 +37,20 @@ class HistoricalMapTools:
             action.setObjectName(object_name)
             action.setStatusTip(status)
             action.triggered.connect(callback)
+            self.iface.addToolBarIcon(action)
+            self.iface.addPluginToVectorMenu("Historical Map Tools", action)
+            self.actions.append(action)
+        for object_name, label, shortcut, review_status in (
+            ("historicalMapToolsReviewContour", "Mark selected: Contour / 등고선", "Ctrl+1", "contour"),
+            ("historicalMapToolsReviewText", "Mark selected: Text / 글자", "Ctrl+2", "text"),
+            ("historicalMapToolsReviewRoadRiver", "Mark selected: Road or river / 도로·하천", "Ctrl+3", "road_river"),
+            ("historicalMapToolsReviewUnsure", "Mark selected: Unsure / 보류", "Ctrl+0", "unsure"),
+        ):
+            action = QAction(QIcon(icon_path), label, self.iface.mainWindow())
+            action.setObjectName(object_name)
+            action.setShortcut(shortcut)
+            action.setStatusTip("Classify selected features in the development-only review queue and save immediately.")
+            action.triggered.connect(lambda checked=False, value=review_status: classify_selected_proposals(self.iface, value))
             self.iface.addToolBarIcon(action)
             self.iface.addPluginToVectorMenu("Historical Map Tools", action)
             self.actions.append(action)

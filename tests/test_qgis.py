@@ -4,7 +4,8 @@ from qgis.testing import start_app, unittest
 
 start_app()
 
-from qgis.core import QgsCoordinateReferenceSystem, QgsProject
+from qgis.PyQt.QtCore import QMetaType
+from qgis.core import QgsCoordinateReferenceSystem, QgsFeature, QgsField, QgsGeometry, QgsPointXY, QgsProject, QgsVectorLayer
 
 from histcontour_core.models import MapSheet
 from jap_map.core.frame import Corner, CornerRole, SheetFrame
@@ -15,6 +16,9 @@ from jap_map.registration_dialog import RegisterMapDialog
 
 class _MessageBar:
     def pushSuccess(self, _title, _message):
+        return None
+
+    def pushWarning(self, _title, _message):
         return None
 
 
@@ -35,10 +39,10 @@ class _Iface:
         return self._canvas
 
     def setActiveLayer(self, _layer):
-        return None
+        self._active = _layer
 
     def activeLayer(self):
-        return None
+        return getattr(self, "_active", None)
 
     def mainWindow(self):
         return None
@@ -103,10 +107,28 @@ class QgisIntegrationTest(unittest.TestCase):
 
         plugin = HistoricalMapTools(_Iface())
         plugin.initGui()
-        self.assertEqual(len(plugin.actions), 3)
+        self.assertEqual(len(plugin.actions), 7)
         self.assertEqual(len(plugin.provider.algorithms()), 4)
         plugin.unload()
         self.assertEqual(plugin.actions, [])
+
+    def test_review_action_persists_selected_status(self):
+        from jap_map.review_actions import REVIEW_LAYER_PROPERTY, classify_selected_proposals
+
+        layer = QgsVectorLayer("LineString?crs=EPSG:5132", "Quick review queue — development only", "memory")
+        layer.dataProvider().addAttributes([QgsField("review_status", QMetaType.Type.QString)])
+        layer.updateFields()
+        feature = QgsFeature(layer.fields())
+        feature.setGeometry(QgsGeometry.fromPolylineXY([QgsPointXY(0, 0), QgsPointXY(1, 1)]))
+        feature.setAttributes(["unreviewed"])
+        layer.dataProvider().addFeature(feature)
+        layer.setCustomProperty(REVIEW_LAYER_PROPERTY, True)
+        feature_id = next(layer.getFeatures()).id()
+        layer.selectByIds([feature_id])
+        iface = _Iface()
+        iface.setActiveLayer(layer)
+        self.assertEqual(classify_selected_proposals(iface, "contour"), 1)
+        self.assertEqual(next(layer.getFeatures())["review_status"], "contour")
 
 
 def run_all():
