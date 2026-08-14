@@ -73,6 +73,20 @@ python scripts/create_annotation_qgis_project.py \
   data/derived/annotation_package/index.json
 ```
 
+Generate red review-only candidate overlays before opening or rebuilding the
+project. The project detects `candidates/candidate_index.json` automatically:
+
+```bash
+python scripts/generate_grayscale_candidates.py \
+  data/derived/annotation_package/index.json
+python scripts/create_annotation_qgis_project.py \
+  data/derived/annotation_package/index.json
+```
+
+Rebuilding the project does not overwrite an existing `contour_annotations.gpkg`.
+The red overlay includes roads, rivers, and some text; use it to trace or
+confirm visible contours, not as ground truth.
+
 Never digitize or tune parameters against the Gongju holdout layers. They may
 be opened for final evaluation only after a baseline or model is frozen.
 

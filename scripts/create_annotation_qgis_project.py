@@ -34,6 +34,8 @@ def memory_layer(name: str, geometry: str, fields: list[tuple[str, QMetaType.Typ
 
 
 def write_layers(package_path: Path, layers):
+    if package_path.exists():
+        return
     for index, layer in enumerate(layers):
         options = QgsVectorFileWriter.SaveVectorOptions()
         options.driverName = "GPKG"
@@ -49,6 +51,8 @@ def main():
     repository = Path(__file__).resolve().parents[1]
     index_path = args.index.resolve()
     index = json.loads(index_path.read_text(encoding="utf-8"))
+    candidate_index_path = index_path.parent / "candidates" / "candidate_index.json"
+    candidate_index = json.loads(candidate_index_path.read_text(encoding="utf-8")) if candidate_index_path.exists() else None
     output_project = args.project.resolve() if args.project else index_path.with_name("annotation_project.qgz")
     package_path = index_path.with_name("contour_annotations.gpkg")
 
@@ -66,6 +70,7 @@ def main():
         root = project.layerTreeRoot()
         development_group = root.addGroup("Development tiles")
         holdout_group = root.addGroup("Holdout test tiles — do not train")
+        candidate_group = root.insertGroup(1, "Automatic line candidates — review only") if candidate_index else None
         for tile in index["tiles"]:
             raster_path = Path(tile["raster_path"])
             if not raster_path.is_absolute():
@@ -75,6 +80,17 @@ def main():
                 raise RuntimeError(f"Invalid annotation raster: {raster_path}")
             project.addMapLayer(layer, False)
             (holdout_group if tile["split"] == "holdout_test" else development_group).addLayer(layer)
+
+        if candidate_index:
+            for candidate in candidate_index["tiles"]:
+                raster_path = Path(candidate["candidate_raster_path"])
+                if not raster_path.is_absolute():
+                    raster_path = repository / raster_path
+                layer = QgsRasterLayer(str(raster_path), f"candidate — {candidate['tile_id']}")
+                if not layer.isValid():
+                    raise RuntimeError(f"Invalid candidate raster: {raster_path}")
+                project.addMapLayer(layer, False)
+                candidate_group.addLayer(layer)
 
         labels_group = root.insertGroup(0, "Annotation layers")
         for layer_name, colour in (("contour_gt", "#e11d48"), ("hard_negative", "#2563eb"), ("ignore_area", "#f59e0b")):

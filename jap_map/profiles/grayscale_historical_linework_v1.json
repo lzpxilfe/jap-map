@@ -9,7 +9,7 @@
     "image_mode": "grayscale",
     "segmentation": {
       "backend": "grayscale_ridge_v1",
-      "implementation_status": "planned",
+      "implementation_status": "review_script_available",
       "tile_size_px": 1024,
       "tile_overlap_px": 64,
       "sauvola_window_px": 41,
@@ -21,7 +21,7 @@
       "maximum_link_distance_px": 32,
       "maximum_link_angle_degrees": 20
     },
-    "note": "Country-neutral profile specification. The grayscale_ridge_v1 backend must be implemented before extraction can use this profile."
+    "note": "Country-neutral review profile. The current grayscale_ridge_v1 backend produces review-only raster candidates; it does not assert contour vectors."
   },
   "crs_presets": ["EPSG:5132", "EPSG:4301", "EPSG:4326"]
 }

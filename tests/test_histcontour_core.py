@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from histcontour_core.contours import ContourLine, extract_visible_contours, generate_link_candidates
+from histcontour_core.grayscale import GrayscaleCandidateSettings, grayscale_line_candidates
 from histcontour_core.models import ControlPoint, MapProfile, MapSheet, MetadataError
 from histcontour_core.pilot import BaselineMetrics, PILOT_SCENARIOS, PilotManifest, PilotManifestError, PilotSheet, make_baseline_report
 from histcontour_core.registration import GroundControlPoint, RegistrationError, SheetRegistration, apply_projective, fit_projective
@@ -61,6 +62,29 @@ class ContourTest(unittest.TestCase):
         proposals = generate_link_candidates((ContourLine("a", ((0, 0), (1, 0)), 1), ContourLine("b", ((3, 0), (4, 0)), 1)), 4)
         self.assertEqual(len(proposals), 1)
         self.assertEqual(proposals[0].status, "proposed")
+
+
+class GrayscaleSettingsTest(unittest.TestCase):
+    def test_review_settings_validate_without_optional_image_dependencies(self):
+        self.assertEqual(GrayscaleCandidateSettings().sauvola_window_px, 41)
+        with self.assertRaises(ValueError):
+            GrayscaleCandidateSettings(sauvola_window_px=40)
+
+    def test_grayscale_candidate_mask_is_a_sparse_dark_line_proposal(self):
+        try:
+            import numpy as np
+            import skimage  # noqa: F401 - optional runtime dependency
+        except ImportError:
+            self.skipTest("optional grayscale image dependencies are not installed")
+        image = np.full((96, 96), 255, dtype=np.uint8)
+        image[48, 12:84] = 30
+        result = grayscale_line_candidates(image, GrayscaleCandidateSettings(background_sigma_px=6, sauvola_window_px=31, minimum_component_pixels=2))
+        self.assertGreater(result.ink_fraction, 0)
+        self.assertLess(result.ink_fraction, 0.1)
+        # A ridge response can select either edge of a multi-pixel dark stroke,
+        # so require a proposal somewhere across the known line rather than at
+        # one particular centre pixel.
+        self.assertTrue(result.candidate_mask[46:51, 8:88].any())
 
 
 class PilotTest(unittest.TestCase):
