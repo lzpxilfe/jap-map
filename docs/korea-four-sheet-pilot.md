@@ -51,6 +51,31 @@ tiles, local background normalization, adaptive dark-line/ridge detection, and
 topology-aware tracing. Gongju has the highest measured ink density and is held
 out from any initial parameter fitting or model training.
 
+`annotation_tiles.json` defines twelve 1024×1024 full-resolution scenes: three
+scene types from each sheet. Buyeo, Cheongyang, and Nonsan are development
+sources; all Gongju tiles are `holdout_test`. Generate ignored georeferenced
+tiles and a contact sheet with:
+
+```bash
+python scripts/create_annotation_package.py \
+  examples/korea_four_sheet_pilot/manifest.json \
+  examples/korea_four_sheet_pilot/annotation_tiles.json
+```
+
+These first twelve tiles are for baseline inspection and annotation design.
+They are not yet a sufficient training set and must not be called one.
+
+With a QGIS Python environment active, create the annotation project and its
+empty `contour_gt`, `hard_negative`, and `ignore_area` GeoPackage layers:
+
+```bash
+python scripts/create_annotation_qgis_project.py \
+  data/derived/annotation_package/index.json
+```
+
+Never digitize or tune parameters against the Gongju holdout layers. They may
+be opened for final evaluation only after a baseline or model is frozen.
+
 CRS references: [GSI origin history](https://www.gsi.go.jp/sokuchikijun/sankaku-genten.html),
 [GSI old-map FAQ](https://service.gsi.go.jp/map-photos/app/help), and
 [EPSG transformation 5133](https://epsg.io/5133).

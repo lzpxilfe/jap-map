@@ -100,6 +100,14 @@ class PilotTest(unittest.TestCase):
             registrations[pilot_sheet.sheet_id] = registration
         self.assertAlmostEqual(registrations["174-cheongyang"].gcps[2].map_y, registrations["173-buyeo"].gcps[0].map_y)
         self.assertAlmostEqual(registrations["174-cheongyang"].gcps[1].map_x, registrations["178-gongju"].gcps[0].map_x)
+        tile_spec = json.loads((repository / "examples" / "korea_four_sheet_pilot" / "annotation_tiles.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(tile_spec["tiles"]), 12)
+        for tile in tile_spec["tiles"]:
+            registration = registrations[tile["sheet_id"]]
+            x, y, width, height = tile["pixel_bounds"]
+            self.assertLessEqual(x + width, registration.image_width)
+            self.assertLessEqual(y + height, registration.image_height)
+            self.assertEqual(tile["split"] == "holdout_test", tile["sheet_id"] == "178-gongju")
 
     def test_baseline_report_is_diagnostic_not_an_accuracy_claim(self):
         lines = (ContourLine("a", ((0, 0), (3, 4)), 1),)

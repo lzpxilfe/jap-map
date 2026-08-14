@@ -1,0 +1,19 @@
+{
+  "version": "1",
+  "tile_size_px": 1024,
+  "coordinate_order": "pixel_x,pixel_y,width,height",
+  "tiles": [
+    {"tile_id": "173-buyeo-mountain", "sheet_id": "173-buyeo", "split": "development", "scene_type": "dense_mountain", "pixel_bounds": [950, 650, 1024, 1024]},
+    {"tile_id": "173-buyeo-labels", "sheet_id": "173-buyeo", "split": "development", "scene_type": "labels_and_roads", "pixel_bounds": [2600, 1300, 1024, 1024]},
+    {"tile_id": "173-buyeo-hydro", "sheet_id": "173-buyeo", "split": "development", "scene_type": "hydrography_and_plain", "pixel_bounds": [4700, 700, 1024, 1024]},
+    {"tile_id": "174-cheongyang-mountain", "sheet_id": "174-cheongyang", "split": "development", "scene_type": "dense_mountain", "pixel_bounds": [3900, 700, 1024, 1024]},
+    {"tile_id": "174-cheongyang-labels", "sheet_id": "174-cheongyang", "split": "development", "scene_type": "labels_and_roads", "pixel_bounds": [1400, 1500, 1024, 1024]},
+    {"tile_id": "174-cheongyang-hydro", "sheet_id": "174-cheongyang", "split": "development", "scene_type": "hydrography_and_plain", "pixel_bounds": [4600, 3200, 1024, 1024]},
+    {"tile_id": "177-nonsan-mountain", "sheet_id": "177-nonsan", "split": "development", "scene_type": "dense_mountain", "pixel_bounds": [4400, 650, 1024, 1024]},
+    {"tile_id": "177-nonsan-labels", "sheet_id": "177-nonsan", "split": "development", "scene_type": "labels_and_roads", "pixel_bounds": [2900, 1700, 1024, 1024]},
+    {"tile_id": "177-nonsan-hydro", "sheet_id": "177-nonsan", "split": "development", "scene_type": "hydrography_and_plain", "pixel_bounds": [900, 3000, 1024, 1024]},
+    {"tile_id": "178-gongju-mountain", "sheet_id": "178-gongju", "split": "holdout_test", "scene_type": "dense_mountain", "pixel_bounds": [4500, 2800, 1024, 1024]},
+    {"tile_id": "178-gongju-labels", "sheet_id": "178-gongju", "split": "holdout_test", "scene_type": "labels_and_roads", "pixel_bounds": [2700, 1500, 1024, 1024]},
+    {"tile_id": "178-gongju-hydro", "sheet_id": "178-gongju", "split": "holdout_test", "scene_type": "hydrography_and_plain", "pixel_bounds": [2300, 550, 1024, 1024]}
+  ]
+}
