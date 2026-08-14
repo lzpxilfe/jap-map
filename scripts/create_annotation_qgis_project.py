@@ -173,6 +173,7 @@ def main():
                     raise RuntimeError(f"Invalid candidate raster: {raster_path}")
                 project.addMapLayer(layer, False)
                 candidate_group.addLayer(layer)
+            candidate_group.setItemVisibilityChecked(False)
 
         if candidate_vector_index:
             for candidate in candidate_vector_index["tiles"]:
@@ -188,6 +189,7 @@ def main():
                 symbol.setWidth(0.55)
                 project.addMapLayer(layer, False)
                 proposal_group.addLayer(layer)
+            proposal_group.setItemVisibilityChecked(False)
 
         labels_group = root.insertGroup(0, "Annotation layers")
         if candidate_vector_index:
