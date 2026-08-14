@@ -114,32 +114,40 @@ def _neighbors(mask: list[list[bool]], point: tuple[int, int]) -> list[tuple[int
 
 
 def trace_polylines(mask: list[list[bool]]) -> list[tuple[Point, ...]]:
-    """Trace endpoint-led skeleton segments; branch nodes deliberately split lines."""
+    """Trace skeleton segments, preserving closed loops and splitting branches."""
     if not mask or not mask[0]:
         return []
     pixels = {(x, y) for y, row in enumerate(mask) for x, value in enumerate(row) if value}
+    if not pixels:
+        return []
     nodes = {point for point in pixels if len(_neighbors(mask, point)) != 2}
-    seen_edges: set[frozenset[tuple[int, int]]] = set()
+    neighbours = {point: _neighbors(mask, point) for point in pixels}
+    unseen_edges = {
+        tuple(sorted((point, neighbour)))
+        for point, adjacent in neighbours.items()
+        for neighbour in adjacent
+    }
     lines: list[tuple[Point, ...]] = []
-    for node in sorted(nodes):
-        for neighbor in _neighbors(mask, node):
-            edge = frozenset((node, neighbor))
-            if edge in seen_edges:
-                continue
-            path, previous, current = [node], node, neighbor
-            seen_edges.add(edge)
-            while True:
-                path.append(current)
-                if current in nodes:
-                    break
-                next_points = [candidate for candidate in _neighbors(mask, current) if candidate != previous]
-                if not next_points:
-                    break
-                following = next_points[0]
-                seen_edges.add(frozenset((current, following)))
-                previous, current = current, following
-            if len(path) > 1:
-                lines.append(tuple((float(x), float(y)) for x, y in path))
+    while unseen_edges:
+        edge = min(unseen_edges)
+        start = edge[0] if edge[0] in nodes else edge[1] if edge[1] in nodes else edge[0]
+        path, previous, current = [start], None, start
+        while True:
+            available = [candidate for candidate in neighbours[current] if tuple(sorted((current, candidate))) in unseen_edges]
+            if previous is not None:
+                non_previous = [candidate for candidate in available if candidate != previous]
+                if non_previous:
+                    available = non_previous
+            if not available:
+                break
+            following = min(available)
+            unseen_edges.remove(tuple(sorted((current, following))))
+            previous, current = current, following
+            path.append(current)
+            if current == start or (current in nodes and current != start):
+                break
+        if len(path) > 1:
+            lines.append(tuple((float(x), float(y)) for x, y in path))
     return lines
 
 

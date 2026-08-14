@@ -3,11 +3,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from histcontour_core.contours import ContourLine, extract_visible_contours, generate_link_candidates
+from histcontour_core.contours import ContourLine, extract_visible_contours, generate_link_candidates, trace_polylines
 from histcontour_core.grayscale import GrayscaleCandidateSettings, grayscale_line_candidates
 from histcontour_core.models import ControlPoint, MapProfile, MapSheet, MetadataError
 from histcontour_core.pilot import BaselineMetrics, PILOT_SCENARIOS, PilotManifest, PilotManifestError, PilotSheet, make_baseline_report
 from histcontour_core.registration import GroundControlPoint, RegistrationError, SheetRegistration, apply_projective, fit_projective
+from histcontour_core.vectorization import mask_to_pixel_line_proposals
 
 
 class RegistrationTest(unittest.TestCase):
@@ -63,6 +64,14 @@ class ContourTest(unittest.TestCase):
         self.assertEqual(len(proposals), 1)
         self.assertEqual(proposals[0].status, "proposed")
 
+    def test_trace_polylines_keeps_a_closed_skeleton_component(self):
+        mask = [[False] * 8 for _ in range(8)]
+        for x, y in ((2, 2), (3, 2), (4, 2), (5, 2), (5, 3), (5, 4), (5, 5), (4, 5), (3, 5), (2, 5), (2, 4), (2, 3)):
+            mask[y][x] = True
+        lines = trace_polylines(mask)
+        self.assertTrue(lines)
+        self.assertGreaterEqual(sum(len(line) - 1 for line in lines), 12)
+
 
 class GrayscaleSettingsTest(unittest.TestCase):
     def test_review_settings_validate_without_optional_image_dependencies(self):
@@ -85,6 +94,24 @@ class GrayscaleSettingsTest(unittest.TestCase):
         # so require a proposal somewhere across the known line rather than at
         # one particular centre pixel.
         self.assertTrue(result.candidate_mask[46:51, 8:88].any())
+
+
+class VectorizationTest(unittest.TestCase):
+    def test_vectorization_produces_a_simplified_line_with_likelihood(self):
+        try:
+            import numpy as np
+            import skimage  # noqa: F401 - optional runtime dependency
+        except ImportError:
+            self.skipTest("optional vectorization dependencies are not installed")
+        mask = np.zeros((64, 96), dtype=bool)
+        mask[32, 10:86] = True
+        likelihood = np.zeros((64, 96), dtype=np.uint8)
+        likelihood[mask] = 192
+        proposals = mask_to_pixel_line_proposals(mask, likelihood, minimum_length_px=20, simplify_tolerance_px=0.5)
+        self.assertEqual(len(proposals), 1)
+        self.assertGreater(proposals[0].pixel_length, 70)
+        self.assertAlmostEqual(proposals[0].confidence, 192 / 255, places=3)
+        self.assertEqual(len(proposals[0].points), 2)
 
 
 class PilotTest(unittest.TestCase):

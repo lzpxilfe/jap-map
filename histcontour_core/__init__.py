@@ -5,6 +5,7 @@ from .grayscale import GrayscaleCandidateResult, GrayscaleCandidateSettings, gra
 from .models import ControlPoint, MapProfile, MapSheet
 from .pilot import BaselineMetrics, PilotManifest, PilotSheet, make_baseline_report
 from .registration import SheetRegistration
+from .vectorization import PixelLineProposal, VectorizationBackendUnavailable, mask_to_pixel_line_proposals, simplify_polyline
 
 __all__ = [
     "ControlPoint",
@@ -14,6 +15,7 @@ __all__ = [
     "GrayscaleCandidateSettings",
     "MapProfile",
     "MapSheet",
+    "PixelLineProposal",
     "BaselineMetrics",
     "PilotManifest",
     "PilotSheet",
@@ -22,4 +24,6 @@ __all__ = [
     "generate_link_candidates",
     "grayscale_line_candidates",
     "make_baseline_report",
+    "mask_to_pixel_line_proposals",
+    "simplify_polyline",
 ]

@@ -87,6 +87,23 @@ Rebuilding the project does not overwrite an existing `contour_annotations.gpkg`
 The red overlay includes roads, rivers, and some text; use it to trace or
 confirm visible contours, not as ground truth.
 
+Generate conservative cyan vector proposals after the raster overlays.  Each
+per-tile GeoJSON feature carries its source tile, pixel length, ridge-derived
+confidence, backend version, and `unreviewed` status.  They are visible
+linework proposals, not asserted contours or elevation data:
+
+```bash
+python scripts/generate_grayscale_vector_candidates.py \
+  data/derived/annotation_package/candidates/candidate_index.json
+python scripts/create_annotation_qgis_project.py \
+  data/derived/annotation_package/index.json
+```
+
+The rebuilt project adds `Automatic vector proposals — review only`. Keep the
+existing annotation GeoPackage: copy a proposal only when it is a visible
+contour, record distractors in `hard_negative`, and use `ignore_area` where
+the scan makes a decision impossible. Do not bulk-accept the cyan proposals.
+
 Never digitize or tune parameters against the Gongju holdout layers. They may
 be opened for final evaluation only after a baseline or model is frozen.
 
