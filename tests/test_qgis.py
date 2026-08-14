@@ -10,6 +10,7 @@ from histcontour_core.models import MapSheet
 from jap_map.core.frame import Corner, CornerRole, SheetFrame
 from jap_map.core.layer_manager import FrameLayerManager, GROUP_NAME, LAYER_ROLE, LAYER_ROLE_VALUE
 from jap_map.dialog import MapFrameDialog
+from jap_map.registration_dialog import RegisterMapDialog
 
 
 class _MessageBar:
@@ -89,6 +90,12 @@ class QgisIntegrationTest(unittest.TestCase):
         self.assertTrue(dialog.windowTitle())
         dialog._set_crs("EPSG:5132")
         self.assertEqual(dialog.crs_widget.crs().authid(), "EPSG:5132")
+        dialog.close()
+
+    def test_registration_dialog_accepts_printed_map_pixel_corners(self):
+        dialog = RegisterMapDialog(None, _Iface())
+        dialog.pixel_corners.setText("10,20;110,21;109,220;11,219")
+        self.assertEqual(dialog._parse_pixel_corners(), ((10.0, 20.0), (110.0, 21.0), (109.0, 220.0), (11.0, 219.0)))
         dialog.close()
 
     def test_plugin_action_lifecycle(self):

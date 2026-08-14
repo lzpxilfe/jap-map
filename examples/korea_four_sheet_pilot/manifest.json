@@ -1,0 +1,42 @@
+{
+  "version": "1",
+  "corpus_id": "korea-connected-four-sheet-pilot",
+  "sheets": [
+    {
+      "sheet_id": "173-buyeo",
+      "scenario": "degraded_complex",
+      "image_path": "data/raw/173 부여.jpg",
+      "profile_path": "jap_map/profiles/grayscale_historical_linework_v1.json",
+      "registration_path": "examples/korea_four_sheet_pilot/registrations/173-buyeo.registration.json",
+      "metadata_path": "examples/korea_four_sheet_pilot/sheets/173-buyeo.json",
+      "notes": "Southwest sheet; complex hydrography and mixed plain/mountain linework."
+    },
+    {
+      "sheet_id": "174-cheongyang",
+      "scenario": "mountain_clear",
+      "image_path": "data/raw/174 청양.jpg",
+      "profile_path": "jap_map/profiles/grayscale_historical_linework_v1.json",
+      "registration_path": "examples/korea_four_sheet_pilot/registrations/174-cheongyang.registration.json",
+      "metadata_path": "examples/korea_four_sheet_pilot/sheets/174-cheongyang.json",
+      "notes": "Northwest sheet; dense mountainous contours."
+    },
+    {
+      "sheet_id": "177-nonsan",
+      "scenario": "label_dense",
+      "image_path": "data/raw/177 논산.jpg",
+      "profile_path": "jap_map/profiles/grayscale_historical_linework_v1.json",
+      "registration_path": "examples/korea_four_sheet_pilot/registrations/177-nonsan.registration.json",
+      "metadata_path": "examples/korea_four_sheet_pilot/sheets/177-nonsan.json",
+      "notes": "Southeast sheet; dense labels, settlements, roads, plains, and mountain linework."
+    },
+    {
+      "sheet_id": "178-gongju",
+      "scenario": "mountain_clear",
+      "image_path": "data/raw/178 공주.jpg",
+      "profile_path": "jap_map/profiles/grayscale_historical_linework_v1.json",
+      "registration_path": "examples/korea_four_sheet_pilot/registrations/178-gongju.registration.json",
+      "metadata_path": "examples/korea_four_sheet_pilot/sheets/178-gongju.json",
+      "notes": "Northeast sheet and high-ink-density holdout for later extraction evaluation."
+    }
+  ]
+}

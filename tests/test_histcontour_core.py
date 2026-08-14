@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -40,7 +41,12 @@ class MetadataTest(unittest.TestCase):
         profile = MapProfile("series-a", "Series A", (100, 120, 140), crs_presets=("EPSG:4326",))
         self.assertEqual(MapProfile.from_dict(profile.to_dict()), profile)
         values = dict(sheet_id="a-1", source_title="原題", display_title="Display", series="A", edition="1", producer="Survey", survey_purpose="Topographic", survey_year="1930", publication_year="1932", scale="1:50000", contour_interval_m=20, source_language="ja", source_script="Jpan", horizontal_crs="EPSG:4301", vertical_datum="Unknown", scan_source="Archive", rights="Public domain")
-        self.assertEqual(MapSheet(**values).sheet_id, "a-1")
+        sheet = MapSheet(**values)
+        self.assertEqual(sheet.sheet_id, "a-1")
+        with tempfile.TemporaryDirectory() as directory:
+            metadata_path = Path(directory) / "sheet.json"
+            sheet.write_json(metadata_path)
+            self.assertEqual(MapSheet.read_json(metadata_path), sheet)
         values["producer"] = ""
         with self.assertRaises(MetadataError): MapSheet(**values)
 
@@ -72,6 +78,28 @@ class PilotTest(unittest.TestCase):
             self.assertEqual(PilotManifest.read_json(manifest_path), manifest)
         with self.assertRaises(PilotManifestError):
             PilotManifest("missing-scenario", self.sheets[:2])
+
+    def test_manifest_can_include_an_extra_connected_sheet(self):
+        extra = PilotSheet("sheet-4", "mountain_clear", "data/raw/extra.tif", "profile.json", "extra.registration.json")
+        self.assertEqual(len(PilotManifest("four-sheet-block", (*self.sheets, extra)).sheets), 4)
+
+    def test_source_controlled_four_sheet_pilot_is_complete(self):
+        repository = Path(__file__).resolve().parents[1]
+        manifest = PilotManifest.read_json(repository / "examples" / "korea_four_sheet_pilot" / "manifest.json")
+        self.assertEqual(len(manifest.sheets), 4)
+        profile = MapProfile.from_dict(json.loads((repository / manifest.sheets[0].profile_path).read_text(encoding="utf-8")))
+        self.assertIsNone(profile.contour_rgb)
+        self.assertEqual(profile.contour_rules["segmentation"]["backend"], "grayscale_ridge_v1")
+        registrations = {}
+        for pilot_sheet in manifest.sheets:
+            metadata = MapSheet.read_json(repository / pilot_sheet.metadata_path)
+            registration = SheetRegistration.read_json(repository / pilot_sheet.registration_path)
+            self.assertEqual(metadata.sheet_id, pilot_sheet.sheet_id)
+            self.assertEqual(registration.sheet_id, pilot_sheet.sheet_id)
+            self.assertEqual(registration.crs_authid, "EPSG:5132")
+            registrations[pilot_sheet.sheet_id] = registration
+        self.assertAlmostEqual(registrations["174-cheongyang"].gcps[2].map_y, registrations["173-buyeo"].gcps[0].map_y)
+        self.assertAlmostEqual(registrations["174-cheongyang"].gcps[1].map_x, registrations["178-gongju"].gcps[0].map_x)
 
     def test_baseline_report_is_diagnostic_not_an_accuracy_claim(self):
         lines = (ContourLine("a", ((0, 0), (3, 4)), 1),)

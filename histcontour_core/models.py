@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, field
+import json
+from pathlib import Path
 from typing import Any
 
 
@@ -59,6 +61,13 @@ class MapSheet:
     @classmethod
     def from_dict(cls, value: dict[str, Any]) -> "MapSheet":
         return cls(**value)
+
+    def write_json(self, path: str | Path) -> None:
+        Path(path).write_text(json.dumps(self.to_dict(), ensure_ascii=False, indent=2), encoding="utf-8")
+
+    @classmethod
+    def read_json(cls, path: str | Path) -> "MapSheet":
+        return cls.from_dict(json.loads(Path(path).read_text(encoding="utf-8")))
 
 
 @dataclass(frozen=True)

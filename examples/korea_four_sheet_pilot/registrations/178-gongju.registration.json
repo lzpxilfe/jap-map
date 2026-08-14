@@ -1,0 +1,16 @@
+{
+  "sheet_id": "178-gongju",
+  "image_path": "data/raw/178 공주.jpg",
+  "image_width": 6309,
+  "image_height": 5208,
+  "crs_authid": "EPSG:5132",
+  "method": "projective",
+  "gcps": [
+    {"pixel_x": 728, "pixel_y": 457, "map_x": 127.0, "map_y": 36.5, "label": "NW; printed +10.4 arc-second correction note preserved in metadata"},
+    {"pixel_x": 6033, "pixel_y": 459, "map_x": 127.25, "map_y": 36.5, "label": "NE"},
+    {"pixel_x": 6048, "pixel_y": 4792, "map_x": 127.25, "map_y": 36.3333333333333, "label": "SE"},
+    {"pixel_x": 732, "pixel_y": 4798, "map_x": 127.0, "map_y": 36.3333333333333, "label": "SW"}
+  ],
+  "coefficients": [2.965852673122222e-06, 6.081065848680942e-05, 126.965776816917, -1.2651634534668608e-05, -2.0982604698753195e-05, 36.51757120913573, -3.470174969958832e-07, 4.791653593921326e-07],
+  "rmse": 2.3832327871173822e-14
+}

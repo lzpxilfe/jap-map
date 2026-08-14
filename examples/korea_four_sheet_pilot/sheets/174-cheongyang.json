@@ -1,0 +1,20 @@
+{
+  "sheet_id": "174-cheongyang",
+  "source_title": "青陽",
+  "display_title": "청양 / Cheongyang",
+  "series": "朝鮮五万分一地形図 / 1:50,000 topographic map of Korea",
+  "edition": "Marginal edition and revision text pending transcription",
+  "producer": "陸地測量部 / Imperial Japanese Land Survey Department",
+  "survey_purpose": "Topographic survey and colonial administrative/military mapping",
+  "survey_year": "Unknown; marginal text pending transcription",
+  "publication_year": "Unknown; marginal text pending transcription",
+  "scale": "1:50000",
+  "contour_interval_m": 20.0,
+  "source_language": "ja",
+  "source_script": "Jpan",
+  "horizontal_crs": "EPSG:5132",
+  "vertical_datum": "Unknown",
+  "scan_source": "User-provided local scan: 174 청양.jpg; archival source not yet documented",
+  "rights": "User granted unrestricted project use on 2026-08-14; underlying archival rights not independently verified",
+  "context_note": "Produced during Japanese colonial rule over Korea. Original title and producer are retained; modern display title is separate. Contour interval 20 m and EPSG:5132 are provisional. The printed +10.4 arc-second longitude note records the 1918 origin correction and is not added to EPSG:5132 GCP coordinates."
+}

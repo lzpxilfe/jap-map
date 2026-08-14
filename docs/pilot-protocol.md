@@ -5,12 +5,15 @@ claim that every historical map type is supported.
 
 ## Corpus
 
-Use exactly three legally accessible scans, one for each scenario in
+Use at least three legally accessible scans, including one for each scenario in
 `examples/korea_pilot_manifest.template.json`:
 
 1. `mountain_clear`: clear contour ink and predominantly mountainous terrain.
 2. `label_dense`: dense place names that interrupt contours.
-3. `degraded_complex`: faded ink, scan noise, or dense symbols.
+3. `degraded_complex`: faded ink, scan noise, dense symbols, or complex hydrography.
+
+Additional connected sheets are encouraged because shared neatlines expose
+registration errors that a single sheet cannot reveal.
 
 Keep full scans in `data/raw/` outside Git.  Copy the template manifest to a
 local, ignored path, replace its sheet IDs and paths, then create one

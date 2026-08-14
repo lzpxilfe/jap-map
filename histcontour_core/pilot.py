@@ -27,6 +27,7 @@ class PilotSheet:
     image_path: str
     profile_path: str
     registration_path: str
+    metadata_path: str = ""
     notes: str = ""
 
     def __post_init__(self) -> None:
@@ -45,10 +46,10 @@ class PilotManifest:
     def __post_init__(self) -> None:
         if not self.corpus_id:
             raise PilotManifestError("corpus_id is required")
-        if len(self.sheets) != 3:
-            raise PilotManifestError("The first pilot corpus must contain exactly three sheets")
-        if {sheet.scenario for sheet in self.sheets} != set(PILOT_SCENARIOS):
-            raise PilotManifestError("Pilot corpus must contain one sheet for every target scenario")
+        if len(self.sheets) < 3:
+            raise PilotManifestError("A pilot corpus must contain at least three sheets")
+        if not set(PILOT_SCENARIOS).issubset({sheet.scenario for sheet in self.sheets}):
+            raise PilotManifestError("Pilot corpus must contain at least one sheet for every target scenario")
         if len({sheet.sheet_id for sheet in self.sheets}) != len(self.sheets):
             raise PilotManifestError("Pilot sheet IDs must be unique")
 

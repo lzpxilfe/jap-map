@@ -13,6 +13,10 @@
 
 첫 검증을 위한 세 도엽 구성, 반복 실행 절차, ML 도입 기준은 [Initial Pilot Protocol](docs/pilot-protocol.md)에 정리했습니다.
 
+실제 스캔에 여백·범례·외곽 프레임이 있는 경우 **Register Map**에서 이미지 모서리가 아니라 인쇄된 지도 내부 도곽의 `NW → NE → SE → SW`를 클릭합니다. Processing의 `PIXEL_CORNERS`에도 같은 순서의 픽셀 좌표를 입력할 수 있습니다.
+
+현재 로컬 파일럿은 청양–공주 / 부여–논산의 인접 흑백 도엽 4장입니다. 좌표 범위, `+10.4″` 보정 표기의 해석, 내부 도곽 픽셀 GCP와 검증 방법은 [Korea Connected Four-Sheet Pilot](docs/korea-four-sheet-pilot.md)에 기록했습니다. 원본은 Git에 포함되지 않습니다.
+
 > **역사 지형도의 도·분·초 좌표를 그대로 입력해 도곽(外圍線) 폴리곤을 QGIS에 생성합니다.**
 
 [![버전](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/lzpxilfe/jap-map/releases)

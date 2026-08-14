@@ -1,0 +1,16 @@
+{
+  "sheet_id": "174-cheongyang",
+  "image_path": "data/raw/174 청양.jpg",
+  "image_width": 6309,
+  "image_height": 5218,
+  "crs_authid": "EPSG:5132",
+  "method": "projective",
+  "gcps": [
+    {"pixel_x": 711, "pixel_y": 455, "map_x": 126.75, "map_y": 36.5, "label": "NW; printed +10.4 arc-second correction note preserved in metadata"},
+    {"pixel_x": 6035, "pixel_y": 435, "map_x": 127.0, "map_y": 36.5, "label": "NE"},
+    {"pixel_x": 6040, "pixel_y": 4792, "map_x": 127.0, "map_y": 36.3333333333333, "label": "SE"},
+    {"pixel_x": 732, "pixel_y": 4800, "map_x": 126.75, "map_y": 36.3333333333333, "label": "SW"}
+  ],
+  "coefficients": [0.00011237882418126398, -8.829041973324689e-05, 126.7166239079701, 1.8657999883417468e-05, -6.360343118597367e-05, 36.51750321874335, 5.151141568717161e-07, -6.947758284640345e-07],
+  "rmse": 2.0097183471152322e-14
+}

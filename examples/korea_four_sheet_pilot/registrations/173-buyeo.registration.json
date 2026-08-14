@@ -1,0 +1,16 @@
+{
+  "sheet_id": "173-buyeo",
+  "image_path": "data/raw/173 부여.jpg",
+  "image_width": 6355,
+  "image_height": 5201,
+  "crs_authid": "EPSG:5132",
+  "method": "projective",
+  "gcps": [
+    {"pixel_x": 785, "pixel_y": 430, "map_x": 126.75, "map_y": 36.3333333333333, "label": "NW; printed +10.4 arc-second correction note preserved in metadata"},
+    {"pixel_x": 6086, "pixel_y": 423, "map_x": 127.0, "map_y": 36.3333333333333, "label": "NE"},
+    {"pixel_x": 6116, "pixel_y": 4762, "map_x": 127.0, "map_y": 36.1666666666667, "label": "SE"},
+    {"pixel_x": 796, "pixel_y": 4764, "map_x": 126.75, "map_y": 36.1666666666667, "label": "SW"}
+  ],
+  "coefficients": [7.501709276742364e-05, 0.00010449564039721961, 126.71296806218426, 7.911377689673393e-06, -8.624998534729735e-06, 36.34997712652558, 2.1914771321673934e-07, 8.253691453983584e-07],
+  "rmse": 1.8115356374411762e-14
+}

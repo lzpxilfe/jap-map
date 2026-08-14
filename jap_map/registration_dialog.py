@@ -7,6 +7,7 @@ from qgis.PyQt.QtWidgets import QDialog, QFileDialog, QFormLayout, QHBoxLayout, 
 
 from histcontour_core.registration import GroundControlPoint, RegistrationError, SheetRegistration
 
+from .corner_picker import ImageCornerPickerDialog
 from .core.frame import CornerRole
 
 
@@ -21,7 +22,8 @@ class RegisterMapDialog(QDialog):
         root = QVBoxLayout(self)
         root.addWidget(QLabel("Select one sheet-frame feature, then select its original scan. The scan remains unwarped; this command writes a reusable registration JSON."))
         form = QFormLayout()
-        self.image_path, self.output_path = QLineEdit(), QLineEdit()
+        self.image_path, self.output_path, self.pixel_corners = QLineEdit(), QLineEdit(), QLineEdit()
+        self.pixel_corners.setPlaceholderText("NW_x,NW_y;NE_x,NE_y;SE_x,SE_y;SW_x,SW_y")
         image_button, output_button = QPushButton("Browse…"), QPushButton("Save as…")
         image_button.clicked.connect(self._choose_image)
         output_button.clicked.connect(self._choose_output)
@@ -29,6 +31,12 @@ class RegisterMapDialog(QDialog):
         image_row.addWidget(self.image_path); image_row.addWidget(image_button)
         output_row.addWidget(self.output_path); output_row.addWidget(output_button)
         form.addRow("Original scan", image_row)
+        corner_row = QHBoxLayout()
+        pick_corners, image_edges = QPushButton("Pick…"), QPushButton("Use image edges")
+        pick_corners.clicked.connect(self._pick_corners)
+        image_edges.clicked.connect(self._use_image_edges)
+        corner_row.addWidget(self.pixel_corners); corner_row.addWidget(pick_corners); corner_row.addWidget(image_edges)
+        form.addRow("Printed-map pixel corners", corner_row)
         form.addRow("Registration JSON", output_row)
         root.addLayout(form)
         root.addWidget(QLabel("Optional additional GCPs, one per line: pixel_x,pixel_y,map_x,map_y,label"))
@@ -43,7 +51,27 @@ class RegisterMapDialog(QDialog):
 
     def _choose_image(self):
         path, _ = QFileDialog.getOpenFileName(self, "Original map scan", "", "Images (*.tif *.tiff *.png *.jpg *.jpeg *.jp2);;All files (*)")
-        if path: self.image_path.setText(path)
+        if path:
+            self.image_path.setText(path)
+            self.pixel_corners.clear()
+
+    @staticmethod
+    def _format_corners(corners):
+        return ";".join(f"{x:.3f},{y:.3f}" for x, y in corners)
+
+    def _pick_corners(self):
+        try:
+            picker = ImageCornerPickerDialog(self.image_path.text(), self)
+        except ValueError as error:
+            self.error.setText(str(error)); return
+        if picker.exec():
+            self.pixel_corners.setText(self._format_corners(picker.selected_corners()))
+
+    def _use_image_edges(self):
+        image = QImage(self.image_path.text())
+        if image.isNull():
+            self.error.setText("Choose a readable original scan first."); return
+        self.pixel_corners.setText(self._format_corners(((0, 0), (image.width() - 1, 0), (image.width() - 1, image.height() - 1), (0, image.height() - 1))))
 
     def _choose_output(self):
         path, _ = QFileDialog.getSaveFileName(self, "Registration file", "", "JSON files (*.json)")
@@ -72,6 +100,15 @@ class RegisterMapDialog(QDialog):
             values.append(GroundControlPoint(float(parts[0]), float(parts[1]), float(parts[2]), float(parts[3]), parts[4] if len(parts) == 5 else ""))
         return values
 
+    def _parse_pixel_corners(self):
+        try:
+            points = tuple(tuple(float(value.strip()) for value in point.split(",")) for point in self.pixel_corners.text().split(";"))
+        except ValueError as error:
+            raise RegistrationError("Printed-map pixel corners must be numeric x,y pairs.") from error
+        if len(points) != 4 or any(len(point) != 2 for point in points):
+            raise RegistrationError("Pick four printed-map pixel corners in NW;NE;SE;SW order.")
+        return points
+
     def _register(self):
         try:
             feature, layer = self._frame_feature()
@@ -79,8 +116,9 @@ class RegisterMapDialog(QDialog):
             if image.isNull(): raise RegistrationError("Choose a readable original scan.")
             if not self.output_path.text(): raise RegistrationError("Choose where to save the registration JSON.")
             width, height = image.width(), image.height()
+            pixel_corners = self._parse_pixel_corners()
             gcps = []
-            for role, pixel in ((CornerRole.NW, (0, 0)), (CornerRole.NE, (width - 1, 0)), (CornerRole.SE, (width - 1, height - 1)), (CornerRole.SW, (0, height - 1))):
+            for role, pixel in zip((CornerRole.NW, CornerRole.NE, CornerRole.SE, CornerRole.SW), pixel_corners):
                 gcps.append(GroundControlPoint(pixel[0], pixel[1], float(feature[f"{role.value.lower()}_x"]), float(feature[f"{role.value.lower()}_y"]), role.value))
             gcps.extend(self._parse_extra_gcps())
             registration = SheetRegistration.create(str(feature["sheet_id"]), self.image_path.text(), width, height, layer.crs().authid(), gcps)

@@ -1,0 +1,16 @@
+{
+  "sheet_id": "177-nonsan",
+  "image_path": "data/raw/177 논산.jpg",
+  "image_width": 6365,
+  "image_height": 5214,
+  "crs_authid": "EPSG:5132",
+  "method": "projective",
+  "gcps": [
+    {"pixel_x": 770, "pixel_y": 443, "map_x": 127.0, "map_y": 36.3333333333333, "label": "NW; printed +10.4 arc-second correction note preserved in metadata"},
+    {"pixel_x": 6072, "pixel_y": 442, "map_x": 127.25, "map_y": 36.3333333333333, "label": "NE"},
+    {"pixel_x": 6087, "pixel_y": 4792, "map_x": 127.25, "map_y": 36.1666666666667, "label": "SE"},
+    {"pixel_x": 765, "pixel_y": 4791, "map_x": 127.0, "map_y": 36.1666666666667, "label": "SW"}
+  ],
+  "coefficients": [5.821804935906908e-05, 0.00011025901339217981, 126.96363583546898, 3.1463259719623736e-06, -6.965323990703513e-06, 36.350391639257765, 8.679595038350041e-08, 8.677538689358536e-07],
+  "rmse": 1.3759600911837627e-14
+}

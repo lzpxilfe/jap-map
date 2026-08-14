@@ -1,0 +1,27 @@
+{
+  "profile_id": "grayscale-historical-linework-v1",
+  "display_name": "Grayscale historical topographic linework (experimental)",
+  "contour_rgb": null,
+  "color_distance": 0.0,
+  "min_component_pixels": 24,
+  "ocr_charset": "0123456789.-",
+  "contour_rules": {
+    "image_mode": "grayscale",
+    "segmentation": {
+      "backend": "grayscale_ridge_v1",
+      "implementation_status": "planned",
+      "tile_size_px": 1024,
+      "tile_overlap_px": 64,
+      "sauvola_window_px": 41,
+      "sauvola_k": 0.2,
+      "ridge_scales_px": [0.7, 1.0, 1.4]
+    },
+    "line_filter": {
+      "expected_width_px": [1.0, 2.0],
+      "maximum_link_distance_px": 32,
+      "maximum_link_angle_degrees": 20
+    },
+    "note": "Country-neutral profile specification. The grayscale_ridge_v1 backend must be implemented before extraction can use this profile."
+  },
+  "crs_presets": ["EPSG:5132", "EPSG:4301", "EPSG:4326"]
+}

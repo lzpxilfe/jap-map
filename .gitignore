@@ -6,3 +6,4 @@ dist/
 data/raw/
 data/derived/
 *.registration.json
+!examples/**/*.registration.json
