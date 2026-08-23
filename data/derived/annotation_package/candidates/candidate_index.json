@@ -1,0 +1,126 @@
+{
+  "version": "1",
+  "backend": "grayscale_ridge_v1",
+  "settings": {
+    "background_sigma_px": 18.0,
+    "sauvola_window_px": 41,
+    "sauvola_k": 0.2,
+    "ridge_scales_px": [
+      0.7,
+      1.0,
+      1.4
+    ],
+    "ridge_quantile": 0.55,
+    "minimum_component_pixels": 24
+  },
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/173-buyeo-mountain-candidates.tif",
+      "ink_fraction": 0.18001651763916016,
+      "candidate_fraction": 0.03122711181640625,
+      "ridge_threshold": 0.22969037294387817
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/173-buyeo-labels-candidates.tif",
+      "ink_fraction": 0.15264511108398438,
+      "candidate_fraction": 0.023781776428222656,
+      "ridge_threshold": 0.23675473034381866
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/173-buyeo-hydro-candidates.tif",
+      "ink_fraction": 0.17403030395507812,
+      "candidate_fraction": 0.024938583374023438,
+      "ridge_threshold": 0.23642763495445251
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/174-cheongyang-mountain-candidates.tif",
+      "ink_fraction": 0.21067237854003906,
+      "candidate_fraction": 0.032143592834472656,
+      "ridge_threshold": 0.2654033601284027
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/174-cheongyang-labels-candidates.tif",
+      "ink_fraction": 0.2037029266357422,
+      "candidate_fraction": 0.04351329803466797,
+      "ridge_threshold": 0.2814265489578247
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/174-cheongyang-hydro-candidates.tif",
+      "ink_fraction": 0.211212158203125,
+      "candidate_fraction": 0.03481864929199219,
+      "ridge_threshold": 0.25577884912490845
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/177-nonsan-mountain-candidates.tif",
+      "ink_fraction": 0.22859954833984375,
+      "candidate_fraction": 0.03883075714111328,
+      "ridge_threshold": 0.23374499380588531
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/177-nonsan-labels-candidates.tif",
+      "ink_fraction": 0.1802520751953125,
+      "candidate_fraction": 0.02922534942626953,
+      "ridge_threshold": 0.2281661033630371
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/177-nonsan-hydro-candidates.tif",
+      "ink_fraction": 0.19039440155029297,
+      "candidate_fraction": 0.02589702606201172,
+      "ridge_threshold": 0.21468554437160492
+    },
+    {
+      "tile_id": "178-gongju-mountain",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/178-gongju-mountain-candidates.tif",
+      "ink_fraction": 0.25510311126708984,
+      "candidate_fraction": 0.05214500427246094,
+      "ridge_threshold": 0.24981509149074554
+    },
+    {
+      "tile_id": "178-gongju-labels",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/178-gongju-labels-candidates.tif",
+      "ink_fraction": 0.21926593780517578,
+      "candidate_fraction": 0.038598060607910156,
+      "ridge_threshold": 0.24005453288555145
+    },
+    {
+      "tile_id": "178-gongju-hydro",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_raster_path": "data/derived/annotation_package/candidates/178-gongju-hydro-candidates.tif",
+      "ink_fraction": 0.17751216888427734,
+      "candidate_fraction": 0.02599620819091797,
+      "ridge_threshold": 0.23833414912223816
+    }
+  ]
+}

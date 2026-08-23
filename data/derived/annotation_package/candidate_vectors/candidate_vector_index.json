@@ -1,0 +1,92 @@
+{
+  "version": "1",
+  "backend": "grayscale_ridge_v1_skeleton_v1",
+  "minimum_length_px": 18.0,
+  "simplify_tolerance_px": 0.75,
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/173-buyeo-mountain-proposals.geojson",
+      "proposal_count": 356
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/173-buyeo-labels-proposals.geojson",
+      "proposal_count": 223
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/173-buyeo-hydro-proposals.geojson",
+      "proposal_count": 280
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/174-cheongyang-mountain-proposals.geojson",
+      "proposal_count": 413
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/174-cheongyang-labels-proposals.geojson",
+      "proposal_count": 547
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/174-cheongyang-hydro-proposals.geojson",
+      "proposal_count": 389
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/177-nonsan-mountain-proposals.geojson",
+      "proposal_count": 526
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/177-nonsan-labels-proposals.geojson",
+      "proposal_count": 261
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/177-nonsan-hydro-proposals.geojson",
+      "proposal_count": 309
+    },
+    {
+      "tile_id": "178-gongju-mountain",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/178-gongju-mountain-proposals.geojson",
+      "proposal_count": 496
+    },
+    {
+      "tile_id": "178-gongju-labels",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/178-gongju-labels-proposals.geojson",
+      "proposal_count": 366
+    },
+    {
+      "tile_id": "178-gongju-hydro",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "candidate_vector_path": "data/derived/annotation_package/candidate_vectors/178-gongju-hydro-proposals.geojson",
+      "proposal_count": 267
+    }
+  ]
+}

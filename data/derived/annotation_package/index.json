@@ -1,0 +1,246 @@
+{
+  "version": "1",
+  "source_tile_spec": "examples\\korea_four_sheet_pilot\\annotation_tiles.json",
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "pixel_bounds": [
+        950,
+        650,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/173-buyeo-mountain.tif",
+      "bounds": [
+        126.75763345582078,
+        36.28536326881838,
+        126.80604058901234,
+        36.32483629730661
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "pixel_bounds": [
+        2600,
+        1300,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/173-buyeo-labels.tif",
+      "bounds": [
+        126.83530169436008,
+        36.26029147796338,
+        126.88371351223594,
+        36.2997023682176
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "pixel_bounds": [
+        4700,
+        700,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/173-buyeo-hydro.tif",
+      "bounds": [
+        126.93433802488778,
+        36.28328834343494,
+        126.98281284113342,
+        36.32272514494416
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "pixel_bounds": [
+        3900,
+        700,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/174-cheongyang-mountain.tif",
+      "bounds": [
+        126.8997538132502,
+        36.45096698521329,
+        126.94787378448845,
+        36.49018697997028
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "pixel_bounds": [
+        1400,
+        1500,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/174-cheongyang-labels.tif",
+      "bounds": [
+        126.78200608416292,
+        36.42062514750539,
+        126.8303604598137,
+        36.4599230501353
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "pixel_bounds": [
+        4600,
+        3200,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/174-cheongyang-hydro.tif",
+      "bounds": [
+        126.93237105589182,
+        36.3551850509948,
+        126.9805168691899,
+        36.39447662023755
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "pixel_bounds": [
+        4400,
+        650,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/177-nonsan-mountain.tif",
+      "bounds": [
+        127.17107078798917,
+        36.28604319536152,
+        127.21938239769796,
+        36.32534633503981
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "pixel_bounds": [
+        2900,
+        1700,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/177-nonsan-labels.tif",
+      "bounds": [
+        127.10038654198408,
+        36.24578111406316,
+        127.14860412252818,
+        36.285014710786946
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "pixel_bounds": [
+        900,
+        3000,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/177-nonsan-hydro.tif",
+      "bounds": [
+        127.00625734058016,
+        36.196014992910875,
+        127.05441105774206,
+        36.23516846754618
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "178-gongju-mountain",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "scene_type": "dense_mountain",
+      "pixel_bounds": [
+        4500,
+        2800,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/178-gongju-mountain.tif",
+      "bounds": [
+        127.17723005637285,
+        36.370561355743284,
+        127.22557090696866,
+        36.40989466914529
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "178-gongju-labels",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "scene_type": "labels_and_roads",
+      "pixel_bounds": [
+        2700,
+        1500,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/178-gongju-labels.tif",
+      "bounds": [
+        127.09264236907842,
+        36.42055340288636,
+        127.14091160339578,
+        36.45989400876827
+      ],
+      "crs_authid": "EPSG:5132"
+    },
+    {
+      "tile_id": "178-gongju-hydro",
+      "sheet_id": "178-gongju",
+      "split": "holdout_test",
+      "scene_type": "hydrography_and_plain",
+      "pixel_bounds": [
+        2300,
+        550,
+        1024,
+        1024
+      ],
+      "raster_path": "data/derived/annotation_package/178-gongju-hydro.tif",
+      "bounds": [
+        127.07389719373218,
+        36.45708558902886,
+        127.12216585678937,
+        36.49645657688199
+      ],
+      "crs_authid": "EPSG:5132"
+    }
+  ]
+}

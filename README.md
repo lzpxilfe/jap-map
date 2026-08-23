@@ -9,13 +9,15 @@
 3. **Extract Contours / 등고 추출하기**: 프로파일 기반 가시 등고선과 검수용 연결 후보를 출력합니다. 후보 `status`를 `approved`로 바꾼 후 **Create Approved Contour Completions**을 실행하면 승인된 보완 구간만 출력합니다.
 4. **Assess Contour Baseline / 등고선 기준선 측정**: 원본 스캔과 `MapProfile`을 입력하면, 학습 없이 색상·형태학 처리 기반으로 가시선 수·길이·끝점·검수 후보 수를 JSON으로 기록합니다. 기본 분석 크기는 긴 변 2,048 px이며, 이 보고서는 정확도 주장이 아니라 프로파일 조정과 수동 정답선 준비를 위한 진단입니다.
 
-한국용 Tokyo CRS는 설정 가능한 예시 프로파일일 뿐 코드의 국가 분기가 아닙니다. 원본 고해상도 스캔·파생 산출물은 Git에서 제외하고, 모든 도엽에 제작기관·목적·시기·언어/문자·CRS/수직기준·출처·권리·역사적 맥락을 보존합니다.
+한국용 Tokyo CRS는 설정 가능한 예시 프로파일일 뿐 코드의 국가 분기가 아닙니다. 원본 고해상도 스캔은 Git에서 제외하고, 검수에 필요한 작은 타일·후보·GeoPackage만 휴대 가능한 묶음으로 관리합니다. 모든 도엽에는 제작기관·목적·시기·언어/문자·CRS/수직기준·출처·권리·역사적 맥락을 보존합니다.
 
 첫 검증을 위한 세 도엽 구성, 반복 실행 절차, ML 도입 기준은 [Initial Pilot Protocol](docs/pilot-protocol.md)에 정리했습니다.
 
 실제 스캔에 여백·범례·외곽 프레임이 있는 경우 **Register Map**에서 이미지 모서리가 아니라 인쇄된 지도 내부 도곽의 `NW → NE → SE → SW`를 클릭합니다. Processing의 `PIXEL_CORNERS`에도 같은 순서의 픽셀 좌표를 입력할 수 있습니다.
 
 현재 로컬 파일럿은 청양–공주 / 부여–논산의 인접 흑백 도엽 4장입니다. 좌표 범위, `+10.4″` 보정 표기의 해석, 내부 도곽 픽셀 GCP와 검증 방법은 [Korea Connected Four-Sheet Pilot](docs/korea-four-sheet-pilot.md)에 기록했습니다. 원본은 Git에 포함되지 않습니다.
+
+다른 컴퓨터에서 같은 QGIS 검수 작업을 이어가는 방법은 [Portable QGIS Review Workflow](docs/portable-review-workflow.md)를 따르세요. 저장소의 `Open Review Project.cmd`로 프로젝트를 열고, 작업 전 `Update Review Workspace.cmd`, QGIS 종료 후 `Save Review Work.cmd`를 사용합니다.
 
 > **역사 지형도의 도·분·초 좌표를 그대로 입력해 도곽(外圍線) 폴리곤을 QGIS에 생성합니다.**
 
