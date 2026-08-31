@@ -20,6 +20,7 @@ development only**. Select one or more proposals and classify them with:
 - `Ctrl+1`: contour
 - `Ctrl+2`: text
 - `Ctrl+3`: road or river
+- `Ctrl+4`: map symbol
 - `Ctrl+0`: unsure
 
 The shortcut saves each classification directly to
@@ -33,6 +34,11 @@ not enter or modify the active classification queue.
 The **Contour completion proposals — research only** group contains short
 green Ink-supported bridges and orange/purple geometric interpolations. It is
 also hidden by default and must not be treated as accepted contour geometry.
+
+For the new Ink-first learning path, use **Annotation layers → Ink segment
+learning queue — label this**. It contains 360 diverse Ink segments and uses
+the same shortcuts. Its labels are stored in the `ink_segment_review` layer of
+the same GeoPackage. See [Ink segment learning workflow](ink-segment-learning-workflow.md).
 
 ## Moving between computers safely
 

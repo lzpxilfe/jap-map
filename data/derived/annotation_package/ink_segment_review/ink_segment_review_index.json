@@ -1,0 +1,107 @@
+{
+  "version": "1",
+  "purpose": "human labels for context-aware Ink segment classification",
+  "automatic_contour_labels": false,
+  "holdout_included": false,
+  "cross_validation_group": "sheet_id",
+  "review_statuses": [
+    "unreviewed",
+    "contour",
+    "text",
+    "road_river",
+    "symbol",
+    "unsure"
+  ],
+  "feature_names": [
+    "log_length",
+    "straightness",
+    "mean_turn",
+    "max_turn",
+    "bbox_fill",
+    "bbox_aspect_log",
+    "line_darkness",
+    "dark_fraction_near",
+    "dark_fraction_context",
+    "mid_fraction_context",
+    "context_std"
+  ],
+  "per_tile": 40,
+  "patch_size": 96,
+  "selected_count": 360,
+  "source_ink_index": "data/derived/annotation_package/ink_candidate_vectors/ink_candidate_vector_index.json",
+  "review_candidates_path": "data/derived/annotation_package/ink_segment_review/ink_segment_review_candidates.geojson",
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "scene_type": "dense_mountain",
+      "available_count": 454,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/173-buyeo-mountain-ink-review-contact.png"
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "scene_type": "labels_and_roads",
+      "available_count": 191,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/173-buyeo-labels-ink-review-contact.png"
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "scene_type": "hydrography_and_plain",
+      "available_count": 185,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/173-buyeo-hydro-ink-review-contact.png"
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "dense_mountain",
+      "available_count": 408,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/174-cheongyang-mountain-ink-review-contact.png"
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "labels_and_roads",
+      "available_count": 459,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/174-cheongyang-labels-ink-review-contact.png"
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "hydrography_and_plain",
+      "available_count": 532,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/174-cheongyang-hydro-ink-review-contact.png"
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "scene_type": "dense_mountain",
+      "available_count": 573,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/177-nonsan-mountain-ink-review-contact.png"
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "scene_type": "labels_and_roads",
+      "available_count": 199,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/177-nonsan-labels-ink-review-contact.png"
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "scene_type": "hydrography_and_plain",
+      "available_count": 270,
+      "selected_count": 40,
+      "contact_sheet_path": "data/derived/annotation_package/ink_segment_review/177-nonsan-hydro-ink-review-contact.png"
+    }
+  ]
+}

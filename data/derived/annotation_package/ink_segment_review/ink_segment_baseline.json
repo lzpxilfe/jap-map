@@ -1,0 +1,19 @@
+{
+  "status": "waiting_for_labels",
+  "total_queue": 360,
+  "label_counts": {
+    "unreviewed": 360,
+    "contour": 0,
+    "text": 0,
+    "road_river": 0,
+    "symbol": 0,
+    "unsure": 0
+  },
+  "binary_training_count": 0,
+  "contour_count": 0,
+  "non_contour_count": 0,
+  "sheet_groups": [],
+  "minimum_per_class": 20,
+  "requirements": "at least the minimum in both classes across all three development sheets",
+  "holdout_policy": "Gongju is absent; final holdout scoring is a separate explicit step"
+}

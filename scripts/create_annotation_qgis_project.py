@@ -23,6 +23,7 @@ from qgis.core import (
 )
 
 REVIEW_LAYER_NAME = "proposal_review"
+INK_REVIEW_LAYER_NAME = "ink_segment_review"
 REVIEW_QUEUE_PROPERTY = "historical_map_tools/review_queue"
 
 
@@ -109,6 +110,33 @@ def create_review_queue(package_path: Path, candidate_vector_index: dict, reposi
         raise RuntimeError(f"Could not create review queue: {result}")
 
 
+def create_ink_review_queue(package_path: Path, review_index: dict, repository: Path):
+    """Import the sampled Ink queue once, preserving later human labels."""
+    if layer_exists(package_path, INK_REVIEW_LAYER_NAME):
+        return
+    source_path = Path(review_index["review_candidates_path"])
+    if not source_path.is_absolute():
+        source_path = repository / source_path
+    source = QgsVectorLayer(str(source_path), INK_REVIEW_LAYER_NAME, "ogr")
+    if not source.isValid():
+        raise RuntimeError(f"Invalid Ink review candidates: {source_path}")
+    # GeoJSON readers default to EPSG:4326 even though this portable bundle's
+    # coordinates follow the pilot project's declared CRS.
+    source.setCrs(QgsCoordinateReferenceSystem("EPSG:5132"))
+    options = QgsVectorFileWriter.SaveVectorOptions()
+    options.driverName = "GPKG"
+    options.layerName = INK_REVIEW_LAYER_NAME
+    options.actionOnExistingFile = QgsVectorFileWriter.CreateOrOverwriteLayer
+    result = QgsVectorFileWriter.writeAsVectorFormatV3(
+        source,
+        str(package_path),
+        QgsProject.instance().transformContext(),
+        options,
+    )
+    if result[0] != QgsVectorFileWriter.NoError:
+        raise RuntimeError(f"Could not create Ink review queue: {result}")
+
+
 def apply_review_renderer(layer):
     categories = []
     for value, label, colour, width in (
@@ -116,6 +144,7 @@ def apply_review_renderer(layer):
         ("contour", "Contour", "#e11d48", "0.95"),
         ("text", "Text", "#2563eb", "0.75"),
         ("road_river", "Road or river", "#9333ea", "0.75"),
+        ("symbol", "Map symbol", "#0891b2", "0.75"),
         ("unsure", "Unsure", "#f59e0b", "0.75"),
     ):
         symbol = QgsLineSymbol.createSimple({"color": colour, "width": width})
@@ -148,6 +177,8 @@ def main():
     ink_vector_index = json.loads(ink_vector_index_path.read_text(encoding="utf-8")) if ink_vector_index_path.exists() else None
     completion_index_path = index_path.parent / "contour_completion_candidates" / "completion_candidate_index.json"
     completion_index = json.loads(completion_index_path.read_text(encoding="utf-8")) if completion_index_path.exists() else None
+    ink_review_index_path = index_path.parent / "ink_segment_review" / "ink_segment_review_index.json"
+    ink_review_index = json.loads(ink_review_index_path.read_text(encoding="utf-8")) if ink_review_index_path.exists() else None
     output_project = args.project.resolve() if args.project else index_path.with_name("annotation_project.qgz")
     package_path = index_path.with_name("contour_annotations.gpkg")
 
@@ -163,6 +194,8 @@ def main():
         write_layers(package_path, (contour, hard_negative, ignore_area))
         if candidate_vector_index:
             create_review_queue(package_path, candidate_vector_index, repository)
+        if ink_review_index:
+            create_ink_review_queue(package_path, ink_review_index, repository)
 
         root = project.layerTreeRoot()
         development_group = root.addGroup("Development tiles")
@@ -249,6 +282,14 @@ def main():
             completion_group.setItemVisibilityChecked(False)
 
         labels_group = root.insertGroup(0, "Annotation layers")
+        if ink_review_index:
+            ink_queue = QgsVectorLayer(f"{package_path}|layername={INK_REVIEW_LAYER_NAME}", "Ink segment learning queue — label this", "ogr")
+            if not ink_queue.isValid():
+                raise RuntimeError("Invalid Ink segment review queue")
+            ink_queue.setCustomProperty(REVIEW_QUEUE_PROPERTY, True)
+            apply_review_renderer(ink_queue)
+            project.addMapLayer(ink_queue, False)
+            labels_group.addLayer(ink_queue)
         if candidate_vector_index:
             queue = QgsVectorLayer(f"{package_path}|layername={REVIEW_LAYER_NAME}", "Quick review queue — development only", "ogr")
             if not queue.isValid():

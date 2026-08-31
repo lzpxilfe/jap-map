@@ -44,6 +44,7 @@ class HistoricalMapTools:
             ("historicalMapToolsReviewContour", "Mark selected: Contour / 등고선", "Ctrl+1", "contour"),
             ("historicalMapToolsReviewText", "Mark selected: Text / 글자", "Ctrl+2", "text"),
             ("historicalMapToolsReviewRoadRiver", "Mark selected: Road or river / 도로·하천", "Ctrl+3", "road_river"),
+            ("historicalMapToolsReviewSymbol", "Mark selected: Map symbol / 지도 기호", "Ctrl+4", "symbol"),
             ("historicalMapToolsReviewUnsure", "Mark selected: Unsure / 보류", "Ctrl+0", "unsure"),
         ):
             action = QAction(QIcon(icon_path), label, self.iface.mainWindow())

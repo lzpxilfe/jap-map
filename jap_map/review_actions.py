@@ -10,6 +10,7 @@ REVIEW_STATUSES = {
     "contour": "contour",
     "text": "text",
     "road_river": "road_river",
+    "symbol": "symbol",
     "unsure": "unsure",
 }
 
@@ -27,7 +28,7 @@ def classify_selected_proposals(iface, status: str) -> int:
         raise ValueError(f"Unknown review status: {status}")
     layer = iface.activeLayer()
     if not isinstance(layer, QgsVectorLayer) or not layer.customProperty(REVIEW_LAYER_PROPERTY, False):
-        _message(iface, "Warning", "Select features in 'Quick review queue — development only' first.")
+        _message(iface, "Warning", "Select features in a Historical Map Tools review queue first.")
         return 0
     feature_ids = layer.selectedFeatureIds()
     if not feature_ids:

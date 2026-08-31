@@ -138,13 +138,19 @@ git clone https://github.com/lzpxilfe/jap-map.git
 cd jap-map
 
 # 단위 테스트 실행 (QGIS 없이 실행 가능)
-python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core tests.test_ink tests.test_ink_candidate_script tests.test_contour_completion tests.test_contour_completion_script
+python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core tests.test_ink tests.test_ink_candidate_script tests.test_contour_completion tests.test_contour_completion_script tests.test_segment_review tests.test_ink_segment_review_script
 
 # Ink v2 개발 타일 A/B 후보 생성 (NumPy와 Pillow 필요)
 python scripts/generate_ink_centerline_candidates.py data/derived/annotation_package/index.json
 
 # 사람이 contour로 판정한 선 사이의 끊김 후보 생성
 python scripts/generate_contour_completion_candidates.py data/derived/annotation_package/index.json
+
+# Ink 선분 학습용 360개 다양성 검토 큐 생성 (공주 홀드아웃 제외)
+python scripts/prepare_ink_segment_review.py data/derived/annotation_package/index.json
+
+# 라벨 수 확인 및 준비되면 도엽 단위 교차검증 기준 모델 학습
+python scripts/train_ink_segment_classifier.py data/derived/annotation_package/contour_annotations.gpkg
 
 # QGIS 통합 테스트
 # QGIS Python Console에서:
