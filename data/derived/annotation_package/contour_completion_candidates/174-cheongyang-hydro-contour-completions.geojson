@@ -1,0 +1,163 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_174-cheongyang-hydro",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "174-cheongyang-hydro",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-202",
+        "second_proposal_id": "visible-line-213",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 4.243,
+        "path_length_px": 4.243,
+        "tangent_error_deg": 8.616,
+        "missing_fraction": 0.4286,
+        "maximum_missing_run_px": 3,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.9203,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95773694092533,
+            36.382332302205
+          ],
+          [
+            126.95787799311273,
+            36.382447414224266
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "174-cheongyang-hydro",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-271",
+        "second_proposal_id": "visible-line-277",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 17.0,
+        "path_length_px": 20.314,
+        "tangent_error_deg": 33.552,
+        "missing_fraction": 0.7727,
+        "maximum_missing_run_px": 17,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8045,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96478955029517,
+            36.36721425700808
+          ],
+          [
+            126.96478955029517,
+            36.36717588633499
+          ],
+          [
+            126.96483656769097,
+            36.36721425700808
+          ],
+          [
+            126.96483656769097,
+            36.367329369027345
+          ],
+          [
+            126.96493060248257,
+            36.36740611037352
+          ],
+          [
+            126.96497761987835,
+            36.36755959306588
+          ],
+          [
+            126.96507165466996,
+            36.367636334412055
+          ],
+          [
+            126.96516568946156,
+            36.36778981710441
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-3",
+        "tile_id": "174-cheongyang-hydro",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-267",
+        "second_proposal_id": "visible-line-268",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 15.297,
+        "path_length_px": 15.504,
+        "tangent_error_deg": 16.504,
+        "missing_fraction": 0.7778,
+        "maximum_missing_run_px": 14,
+        "ink_support_fraction": 0.6111,
+        "junction_pixels": 0,
+        "score": 0.6438,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96441341112877,
+            36.36057613056375
+          ],
+          [
+            126.96428842711802,
+            36.36028253689926
+          ],
+          [
+            126.96427235894137,
+            36.36000057046742
+          ]
+        ]
+      }
+    }
+  ]
+}

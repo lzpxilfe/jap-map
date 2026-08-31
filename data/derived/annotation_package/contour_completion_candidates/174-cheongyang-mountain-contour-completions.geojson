@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_174-cheongyang-mountain",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": []
+}

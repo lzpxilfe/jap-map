@@ -123,6 +123,18 @@ def apply_review_renderer(layer):
     layer.setRenderer(QgsCategorizedSymbolRenderer("review_status", categories))
 
 
+def apply_completion_renderer(layer):
+    categories = []
+    for value, label, colour, width in (
+        ("ink_path", "Ink-supported short path", "#16a34a", "0.95"),
+        ("hermite_occlusion", "Text/symbol occlusion interpolation", "#f97316", "1.05"),
+        ("hermite_gap", "Blank/long gap interpolation", "#9333ea", "1.05"),
+    ):
+        symbol = QgsLineSymbol.createSimple({"color": colour, "width": width})
+        categories.append(QgsRendererCategory(value, symbol, label))
+    layer.setRenderer(QgsCategorizedSymbolRenderer("mode", categories))
+
+
 def main():
     args = parse_args()
     repository = Path(__file__).resolve().parents[1]
@@ -134,6 +146,8 @@ def main():
     candidate_vector_index = json.loads(candidate_vector_index_path.read_text(encoding="utf-8")) if candidate_vector_index_path.exists() else None
     ink_vector_index_path = index_path.parent / "ink_candidate_vectors" / "ink_candidate_vector_index.json"
     ink_vector_index = json.loads(ink_vector_index_path.read_text(encoding="utf-8")) if ink_vector_index_path.exists() else None
+    completion_index_path = index_path.parent / "contour_completion_candidates" / "completion_candidate_index.json"
+    completion_index = json.loads(completion_index_path.read_text(encoding="utf-8")) if completion_index_path.exists() else None
     output_project = args.project.resolve() if args.project else index_path.with_name("annotation_project.qgz")
     package_path = index_path.with_name("contour_annotations.gpkg")
 
@@ -156,6 +170,14 @@ def main():
         candidate_group = root.insertGroup(1, "Automatic line candidates — review only") if candidate_index else None
         proposal_group = root.insertGroup(1, "Automatic vector proposals — review only") if candidate_vector_index else None
         ink_proposal_group = root.insertGroup(1, "Ink v2 vector proposals — A/B review only") if ink_vector_index else None
+        completion_group = None
+        if completion_index:
+            completion_group_name = (
+                "Contour completion proposals — reviewed anchors"
+                if completion_index.get("anchor_status") == "contour"
+                else "Contour completion proposals — research only"
+            )
+            completion_group = root.insertGroup(1, completion_group_name)
         for tile in index["tiles"]:
             raster_path = Path(tile["raster_path"])
             if not raster_path.is_absolute():
@@ -209,6 +231,22 @@ def main():
                 project.addMapLayer(layer, False)
                 ink_proposal_group.addLayer(layer)
             ink_proposal_group.setItemVisibilityChecked(False)
+
+        if completion_index:
+            for candidate in completion_index["tiles"]:
+                if not candidate.get("completion_count"):
+                    continue
+                vector_path = Path(candidate["completion_vector_path"])
+                if not vector_path.is_absolute():
+                    vector_path = repository / vector_path
+                layer = QgsVectorLayer(str(vector_path), f"completion — {candidate['tile_id']}", "ogr")
+                if not layer.isValid():
+                    raise RuntimeError(f"Invalid contour completion vector: {vector_path}")
+                layer.setCrs(QgsCoordinateReferenceSystem("EPSG:5132"))
+                apply_completion_renderer(layer)
+                project.addMapLayer(layer, False)
+                completion_group.addLayer(layer)
+            completion_group.setItemVisibilityChecked(False)
 
         labels_group = root.insertGroup(0, "Annotation layers")
         if candidate_vector_index:

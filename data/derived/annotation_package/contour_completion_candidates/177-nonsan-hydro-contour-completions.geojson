@@ -1,0 +1,94 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_177-nonsan-hydro",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "177-nonsan-hydro",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-102",
+        "second_proposal_id": "visible-line-138",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 8.944,
+        "path_length_px": 9.657,
+        "tangent_error_deg": 13.254,
+        "missing_fraction": 0.8,
+        "maximum_missing_run_px": 8,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8842,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.02861778248493,
+            36.23350520959048
+          ],
+          [
+            127.02899398340026,
+            36.233352266330186
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "177-nonsan-hydro",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-248",
+        "second_proposal_id": "visible-line-256",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 6.403,
+        "path_length_px": 6.657,
+        "tangent_error_deg": 17.103,
+        "missing_fraction": 0.5714,
+        "maximum_missing_run_px": 4,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8769,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.04427714558543,
+            36.22673747032246
+          ],
+          [
+            127.04451227115752,
+            36.22658452706217
+          ]
+        ]
+      }
+    }
+  ]
+}

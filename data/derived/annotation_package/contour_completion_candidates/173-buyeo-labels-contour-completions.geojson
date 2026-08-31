@@ -1,0 +1,404 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_173-buyeo-labels",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-23",
+        "second_proposal_id": "visible-line-47",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 4.472,
+        "path_length_px": 4.828,
+        "tangent_error_deg": 3.539,
+        "missing_fraction": 0.4286,
+        "maximum_missing_run_px": 3,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.9346,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.84350428264275,
+            36.294525840151984
+          ],
+          [
+            126.84359883697455,
+            36.29467978894204
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-147",
+        "second_proposal_id": "visible-line-169",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 13.601,
+        "path_length_px": 14.657,
+        "tangent_error_deg": 5.243,
+        "missing_fraction": 0.7857,
+        "maximum_missing_run_px": 11,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.9065,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.87130325618867,
+            36.27062529049586
+          ],
+          [
+            126.87135053335456,
+            36.27066377769337
+          ],
+          [
+            126.87144508768635,
+            36.27066377769337
+          ],
+          [
+            126.87163419634993,
+            36.2707407520884
+          ],
+          [
+            126.8718233050135,
+            36.2707407520884
+          ],
+          [
+            126.87191785934529,
+            36.270779239285915
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-3",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-151",
+        "second_proposal_id": "visible-line-163",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 5.0,
+        "path_length_px": 5.828,
+        "tangent_error_deg": 11.986,
+        "missing_fraction": 0.5,
+        "maximum_missing_run_px": 4,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.9001,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.87078320736383,
+            36.2956804560774
+          ],
+          [
+            126.87083048452972,
+            36.29560348168237
+          ],
+          [
+            126.87092503886151,
+            36.29560348168237
+          ],
+          [
+            126.8709723160274,
+            36.295564994484856
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-4",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-168",
+        "second_proposal_id": "visible-line-189",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 32.249,
+        "path_length_px": 33.657,
+        "tangent_error_deg": 11.004,
+        "missing_fraction": 0.8857,
+        "maximum_missing_run_px": 31,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8466,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.87461265780126,
+            36.27116411126105
+          ],
+          [
+            126.87480176646486,
+            36.27116411126105
+          ],
+          [
+            126.87484904363075,
+            36.271202598458565
+          ],
+          [
+            126.87499087512843,
+            36.271202598458565
+          ],
+          [
+            126.87503815229432,
+            36.27124108565608
+          ],
+          [
+            126.8753218152897,
+            36.27124108565608
+          ],
+          [
+            126.87536909245559,
+            36.271279572853594
+          ],
+          [
+            126.87551092395327,
+            36.271279572853594
+          ],
+          [
+            126.87555820111916,
+            36.27131806005111
+          ],
+          [
+            126.87612552710989,
+            36.27131806005111
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-5",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-41",
+        "second_proposal_id": "visible-line-68",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 12.083,
+        "path_length_px": 12.086,
+        "tangent_error_deg": 2.705,
+        "missing_fraction": 0.75,
+        "maximum_missing_run_px": 12,
+        "ink_support_fraction": 0.5625,
+        "junction_pixels": 0,
+        "score": 0.7404,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.84780650473915,
+            36.29310181384397
+          ],
+          [
+            126.848326553564,
+            36.29329424983154
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-6",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-117",
+        "second_proposal_id": "visible-line-94",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 34.015,
+        "path_length_px": 34.107,
+        "tangent_error_deg": 8.913,
+        "missing_fraction": 0.7907,
+        "maximum_missing_run_px": 31,
+        "ink_support_fraction": 0.5116,
+        "junction_pixels": 0,
+        "score": 0.6703,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.85957851904685,
+            36.26662262195441
+          ],
+          [
+            126.85894915393845,
+            36.26680775632011
+          ],
+          [
+            126.85811292690413,
+            36.267161442719605
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-7",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-103",
+        "second_proposal_id": "visible-line-79",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 42.638,
+        "path_length_px": 42.719,
+        "tangent_error_deg": 9.372,
+        "missing_fraction": 0.9615,
+        "maximum_missing_run_px": 50,
+        "ink_support_fraction": 0.4808,
+        "junction_pixels": 6,
+        "score": 0.6557,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.85593817727299,
+            36.28559681032876
+          ],
+          [
+            126.85508394501234,
+            36.28650578199999
+          ],
+          [
+            126.85466169379384,
+            36.28686688784672
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-8",
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-42",
+        "second_proposal_id": "visible-line-62",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 13.153,
+        "path_length_px": 13.222,
+        "tangent_error_deg": 15.364,
+        "missing_fraction": 0.7333,
+        "maximum_missing_run_px": 11,
+        "ink_support_fraction": 0.5333,
+        "junction_pixels": 0,
+        "score": 0.6526,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.8464827440941,
+            36.270702264890886
+          ],
+          [
+            126.84709734725074,
+            36.27062529049586
+          ]
+        ]
+      }
+    }
+  ]
+}

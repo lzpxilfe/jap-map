@@ -30,6 +30,10 @@ review only** group and alternate it with the cyan **Automatic vector
 proposals — review only** group. Ink proposals are tracked separately and do
 not enter or modify the active classification queue.
 
+The **Contour completion proposals — research only** group contains short
+green Ink-supported bridges and orange/purple geometric interpolations. It is
+also hidden by default and must not be treated as accepted contour geometry.
+
 ## Moving between computers safely
 
 The GeoPackage is a binary database and Git cannot merge two edited copies.

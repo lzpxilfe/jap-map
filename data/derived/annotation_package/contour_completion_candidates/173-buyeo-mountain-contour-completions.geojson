@@ -1,0 +1,106 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_173-buyeo-mountain",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "173-buyeo-mountain",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-138",
+        "second_proposal_id": "visible-line-155",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 9.434,
+        "path_length_px": 10.071,
+        "tangent_error_deg": 23.875,
+        "missing_fraction": 0.6923,
+        "maximum_missing_run_px": 9,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.851,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.77510067819802,
+            36.31783985719859
+          ],
+          [
+            126.77533704115305,
+            36.31776276143982
+          ],
+          [
+            126.77547885892606,
+            36.31764711780168
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "173-buyeo-mountain",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-120",
+        "second_proposal_id": "visible-line-170",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 62.968,
+        "path_length_px": 63.357,
+        "tangent_error_deg": 16.492,
+        "missing_fraction": 0.8462,
+        "maximum_missing_run_px": 66,
+        "ink_support_fraction": 0.2949,
+        "junction_pixels": 0,
+        "score": 0.5713,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.77420249896886,
+            36.296946906572984
+          ],
+          [
+            126.7760163259928,
+            36.29761647278812
+          ],
+          [
+            126.77651818978673,
+            36.297738941187525
+          ],
+          [
+            126.7769915818383,
+            36.29779495991941
+          ]
+        ]
+      }
+    }
+  ]
+}

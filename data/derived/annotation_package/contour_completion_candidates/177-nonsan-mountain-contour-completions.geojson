@@ -1,0 +1,139 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_177-nonsan-mountain",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "177-nonsan-mountain",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-457",
+        "second_proposal_id": "visible-line-480",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 5.0,
+        "path_length_px": 5.243,
+        "tangent_error_deg": 13.609,
+        "missing_fraction": 0.5714,
+        "maximum_missing_run_px": 4,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8975,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.2138388292011,
+            36.29750021410563
+          ],
+          [
+            127.21398036712017,
+            36.297346686216265
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "177-nonsan-mountain",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-440",
+        "second_proposal_id": "visible-line-446",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 6.083,
+        "path_length_px": 7.0,
+        "tangent_error_deg": 26.103,
+        "missing_fraction": 0.5,
+        "maximum_missing_run_px": 4,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 0,
+        "score": 0.8538,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.211574222496,
+            36.32390701107698
+          ],
+          [
+            127.21152704318965,
+            36.32390701107698
+          ],
+          [
+            127.21152704318965,
+            36.32413730291103
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-3",
+        "tile_id": "177-nonsan-mountain",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-424",
+        "second_proposal_id": "visible-line-510",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 13.416,
+        "path_length_px": 13.45,
+        "tangent_error_deg": 9.462,
+        "missing_fraction": 0.7647,
+        "maximum_missing_run_px": 13,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 2,
+        "score": 0.7174,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.2164336910507,
+            36.29323981517566
+          ],
+          [
+            127.21671676688882,
+            36.29277923150756
+          ]
+        ]
+      }
+    }
+  ]
+}

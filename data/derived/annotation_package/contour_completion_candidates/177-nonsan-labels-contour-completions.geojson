@@ -1,0 +1,200 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_177-nonsan-labels",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "177-nonsan-labels",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "ink_path",
+        "first_proposal_id": "visible-line-121",
+        "second_proposal_id": "visible-line-126",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 5.0,
+        "path_length_px": 8.479,
+        "tangent_error_deg": 32.334,
+        "missing_fraction": 0.5,
+        "maximum_missing_run_px": 4,
+        "ink_support_fraction": 1.0,
+        "junction_pixels": 1,
+        "score": 0.827,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.12611985035063,
+            36.266758061530226
+          ],
+          [
+            127.12621402531263,
+            36.266758061530226
+          ],
+          [
+            127.12635528775563,
+            36.266643119352324
+          ],
+          [
+            127.12626111279364,
+            36.26660480529302
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "177-nonsan-labels",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-80",
+        "second_proposal_id": "visible-line-95",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 9.849,
+        "path_length_px": 9.85,
+        "tangent_error_deg": 2.526,
+        "missing_fraction": 0.6667,
+        "maximum_missing_run_px": 8,
+        "ink_support_fraction": 0.5833,
+        "junction_pixels": 0,
+        "score": 0.7405,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.12065770255462,
+            36.27323313755202
+          ],
+          [
+            127.12108148988362,
+            36.27307988131482
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-3",
+        "tile_id": "177-nonsan-labels",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-134",
+        "second_proposal_id": "visible-line-95",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 63.246,
+        "path_length_px": 63.315,
+        "tangent_error_deg": 7.125,
+        "missing_fraction": 0.9054,
+        "maximum_missing_run_px": 61,
+        "ink_support_fraction": 0.3784,
+        "junction_pixels": 0,
+        "score": 0.6394,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.12663781264163,
+            36.2717388892393
+          ],
+          [
+            127.12577452710312,
+            36.27192868708461
+          ],
+          [
+            127.12381256378163,
+            36.27250517042531
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-4",
+        "tile_id": "177-nonsan-labels",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-157",
+        "second_proposal_id": "visible-line-195",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 65.069,
+        "path_length_px": 65.467,
+        "tangent_error_deg": 16.968,
+        "missing_fraction": 0.8889,
+        "maximum_missing_run_px": 60,
+        "ink_support_fraction": 0.3472,
+        "junction_pixels": 0,
+        "score": 0.5726,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            127.13360675982965,
+            36.27648983259257
+          ],
+          [
+            127.1340309405123,
+            36.276583739187224
+          ],
+          [
+            127.13451535331544,
+            36.276629383834745
+          ],
+          [
+            127.13607798159134,
+            36.276584519972104
+          ],
+          [
+            127.13666744609466,
+            36.27660477477047
+          ]
+        ]
+      }
+    }
+  ]
+}

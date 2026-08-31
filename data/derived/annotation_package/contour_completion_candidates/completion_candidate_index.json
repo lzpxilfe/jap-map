@@ -1,0 +1,253 @@
+{
+  "version": "1",
+  "backend": "ridge_endpoints_ink_completion_v1",
+  "source_ridge_backend": "grayscale_ridge_v1_skeleton_v1",
+  "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+  "review_only": true,
+  "auto_apply": false,
+  "anchor_status": "all",
+  "holdout_included": false,
+  "settings": {
+    "minimum_anchor_length_px": 40.0,
+    "minimum_interpolation_anchor_length_px": 60.0,
+    "tangent_lookback_px": 10.0,
+    "minimum_gap_px": 4.0,
+    "maximum_ink_gap_px": 40.0,
+    "maximum_interpolation_gap_px": 72.0,
+    "maximum_ink_tangent_error_degrees": 35.0,
+    "maximum_interpolation_tangent_error_degrees": 18.0,
+    "endpoint_snap_radius_px": 4,
+    "ink_corridor_radius_px": 9,
+    "maximum_ink_path_stretch": 1.65,
+    "maximum_internal_junction_pixels": 0,
+    "existing_linework_buffer_px": 1,
+    "minimum_missing_run_px": 3,
+    "minimum_missing_fraction": 0.2,
+    "border_margin_px": 12.0,
+    "hermite_control_fraction": 0.36,
+    "hermite_sample_spacing_px": 0.75,
+    "ambiguity_score_margin": 0.06,
+    "simplify_tolerance_px": 0.5
+  },
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-mountain-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-mountain-contour-completions.png",
+      "completion_count": 2,
+      "mode_counts": {
+        "hermite_occlusion": 1,
+        "ink_path": 1
+      },
+      "anchor_count": 688,
+      "eligible_anchor_count": 200,
+      "evaluated_pair_count": 324,
+      "rejection_counts": {
+        "already_covered": 1,
+        "border_anchor": 20,
+        "gap_too_short": 13,
+        "interpolation_anchor_too_short": 10,
+        "interpolation_tangent_mismatch": 3,
+        "short_anchor": 468,
+        "tangent_mismatch": 295
+      }
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-labels-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-labels-contour-completions.png",
+      "completion_count": 8,
+      "mode_counts": {
+        "hermite_occlusion": 4,
+        "ink_path": 4
+      },
+      "anchor_count": 440,
+      "eligible_anchor_count": 119,
+      "evaluated_pair_count": 243,
+      "rejection_counts": {
+        "already_covered": 1,
+        "ambiguous_endpoint": 4,
+        "border_anchor": 11,
+        "endpoint_reused": 1,
+        "gap_too_short": 8,
+        "interpolation_anchor_too_short": 25,
+        "interpolation_tangent_mismatch": 4,
+        "short_anchor": 310,
+        "tangent_mismatch": 192
+      }
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-hydro-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/173-buyeo-hydro-contour-completions.png",
+      "completion_count": 2,
+      "mode_counts": {
+        "hermite_occlusion": 2
+      },
+      "anchor_count": 558,
+      "eligible_anchor_count": 117,
+      "evaluated_pair_count": 128,
+      "rejection_counts": {
+        "already_covered": 2,
+        "border_anchor": 7,
+        "gap_too_short": 6,
+        "interpolation_anchor_too_short": 17,
+        "short_anchor": 434,
+        "tangent_mismatch": 101
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-mountain-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-mountain-contour-completions.png",
+      "completion_count": 0,
+      "mode_counts": {},
+      "anchor_count": 824,
+      "eligible_anchor_count": 142,
+      "evaluated_pair_count": 179,
+      "rejection_counts": {
+        "already_covered": 4,
+        "border_anchor": 12,
+        "gap_too_short": 4,
+        "interpolation_anchor_too_short": 6,
+        "short_anchor": 670,
+        "tangent_mismatch": 165
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-labels-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-labels-contour-completions.png",
+      "completion_count": 17,
+      "mode_counts": {
+        "hermite_occlusion": 8,
+        "ink_path": 9
+      },
+      "anchor_count": 1080,
+      "eligible_anchor_count": 287,
+      "evaluated_pair_count": 766,
+      "rejection_counts": {
+        "already_covered": 2,
+        "border_anchor": 13,
+        "endpoint_reused": 4,
+        "gap_too_short": 19,
+        "interpolation_anchor_too_short": 50,
+        "interpolation_tangent_mismatch": 14,
+        "short_anchor": 780,
+        "tangent_mismatch": 660
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-hydro-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/174-cheongyang-hydro-contour-completions.png",
+      "completion_count": 3,
+      "mode_counts": {
+        "hermite_occlusion": 1,
+        "ink_path": 2
+      },
+      "anchor_count": 772,
+      "eligible_anchor_count": 166,
+      "evaluated_pair_count": 228,
+      "rejection_counts": {
+        "already_covered": 3,
+        "border_anchor": 8,
+        "gap_too_short": 7,
+        "interpolation_anchor_too_short": 14,
+        "interpolation_tangent_mismatch": 3,
+        "short_anchor": 598,
+        "tangent_mismatch": 198
+      }
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-mountain-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-mountain-contour-completions.png",
+      "completion_count": 3,
+      "mode_counts": {
+        "hermite_occlusion": 1,
+        "ink_path": 2
+      },
+      "anchor_count": 1042,
+      "eligible_anchor_count": 170,
+      "evaluated_pair_count": 226,
+      "rejection_counts": {
+        "already_covered": 2,
+        "border_anchor": 10,
+        "gap_too_short": 4,
+        "interpolation_anchor_too_short": 19,
+        "interpolation_tangent_mismatch": 2,
+        "short_anchor": 862,
+        "tangent_mismatch": 196
+      }
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-labels-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-labels-contour-completions.png",
+      "completion_count": 4,
+      "mode_counts": {
+        "hermite_occlusion": 3,
+        "ink_path": 1
+      },
+      "anchor_count": 508,
+      "eligible_anchor_count": 86,
+      "evaluated_pair_count": 140,
+      "rejection_counts": {
+        "already_covered": 1,
+        "border_anchor": 2,
+        "gap_too_short": 4,
+        "interpolation_anchor_too_short": 14,
+        "short_anchor": 420,
+        "tangent_mismatch": 117
+      }
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "completion_vector_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-hydro-contour-completions.geojson",
+      "completion_preview_path": "data/derived/annotation_package/contour_completion_candidates/177-nonsan-hydro-contour-completions.png",
+      "completion_count": 2,
+      "mode_counts": {
+        "ink_path": 2
+      },
+      "anchor_count": 614,
+      "eligible_anchor_count": 90,
+      "evaluated_pair_count": 110,
+      "rejection_counts": {
+        "already_covered": 2,
+        "border_anchor": 14,
+        "gap_too_short": 3,
+        "interpolation_anchor_too_short": 13,
+        "short_anchor": 510,
+        "tangent_mismatch": 90
+      }
+    }
+  ]
+}

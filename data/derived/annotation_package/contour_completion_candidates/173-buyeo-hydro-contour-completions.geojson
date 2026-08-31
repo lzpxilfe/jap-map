@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "name": "contour_completion_candidates_173-buyeo-hydro",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-1",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-29",
+        "second_proposal_id": "visible-line-55",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 23.601,
+        "path_length_px": 23.668,
+        "tangent_error_deg": 10.206,
+        "missing_fraction": 0.6333,
+        "maximum_missing_run_px": 19,
+        "ink_support_fraction": 0.9,
+        "junction_pixels": 5,
+        "score": 0.6943,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94056306232558,
+            36.31477231338981
+          ],
+          [
+            126.94122580395393,
+            36.31550405091781
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "completion_id": "contour-link-2",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "contour_completion_review_only",
+        "backend": "ridge_endpoints_ink_completion_v1",
+        "ink_upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "mode": "hermite_occlusion",
+        "first_proposal_id": "visible-line-132",
+        "second_proposal_id": "visible-line-157",
+        "first_review_status": "unreviewed",
+        "second_review_status": "unreviewed",
+        "anchor_scope": "all",
+        "direct_gap_px": 37.108,
+        "path_length_px": 37.172,
+        "tangent_error_deg": 7.765,
+        "missing_fraction": 0.8222,
+        "maximum_missing_run_px": 37,
+        "ink_support_fraction": 0.1778,
+        "junction_pixels": 0,
+        "score": 0.6518,
+        "review_status": "unreviewed",
+        "auto_apply": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95845708629125,
+            36.3136169383456
+          ],
+          [
+            126.95951910941709,
+            36.31343832214788
+          ],
+          [
+            126.96016127904988,
+            36.31327032583233
+          ]
+        ]
+      }
+    }
+  ]
+}
