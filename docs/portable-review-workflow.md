@@ -25,6 +25,11 @@ development only**. Select one or more proposals and classify them with:
 The shortcut saves each classification directly to
 `data/derived/annotation_package/contour_annotations.gpkg`.
 
+For visual A/B comparison, enable the green **Ink v2 vector proposals — A/B
+review only** group and alternate it with the cyan **Automatic vector
+proposals — review only** group. Ink proposals are tracked separately and do
+not enter or modify the active classification queue.
+
 ## Moving between computers safely
 
 The GeoPackage is a binary database and Git cannot merge two edited copies.

@@ -20,5 +20,11 @@ data/derived/annotation_package/candidates/*
 data/derived/annotation_package/candidate_vectors/*
 !data/derived/annotation_package/candidate_vectors/candidate_vector_index.json
 !data/derived/annotation_package/candidate_vectors/*-proposals.geojson
+!data/derived/annotation_package/ink_candidate_vectors/
+data/derived/annotation_package/ink_candidate_vectors/*
+!data/derived/annotation_package/ink_candidate_vectors/ink_candidate_vector_index.json
+!data/derived/annotation_package/ink_candidate_vectors/ink_candidate_contact_sheet.png
+!data/derived/annotation_package/ink_candidate_vectors/*-ink-proposals.geojson
+!data/derived/annotation_package/ink_candidate_vectors/*-ink-preview.png
 *.registration.json
 !examples/**/*.registration.json

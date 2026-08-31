@@ -1,0 +1,7341 @@
+{
+  "type": "FeatureCollection",
+  "name": "ink_candidate_proposals_173-buyeo-hydro",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:EPSG::5132"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-1",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93445637160713,
+            36.2941681251013
+          ],
+          [
+            126.93440903291939,
+            36.294245150104246
+          ],
+          [
+            126.93450371029486,
+            36.2943221751072
+          ],
+          [
+            126.93511911323549,
+            36.29439920011014
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-2",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.556,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93469306504583,
+            36.318045876015084
+          ],
+          [
+            126.93488241979679,
+            36.31839248852835
+          ],
+          [
+            126.93521379061097,
+            36.318739101041615
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-3",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93559250011289,
+            36.29235803753203
+          ],
+          [
+            126.93573451617611,
+            36.29193440001582
+          ],
+          [
+            126.93573451617611,
+            36.29154927500108
+          ],
+          [
+            126.93582919355158,
+            36.291395224995185
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-4",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.485,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93573451617611,
+            36.2965173876912
+          ],
+          [
+            126.93582919355158,
+            36.29701805021037
+          ],
+          [
+            126.93592387092707,
+            36.29724912521921
+          ],
+          [
+            126.93601854830254,
+            36.297326150222155
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-5",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.899,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93587653223932,
+            36.29243506253498
+          ],
+          [
+            126.93587653223932,
+            36.29228101252908
+          ],
+          [
+            126.9359712096148,
+            36.29204993752024
+          ],
+          [
+            126.9359712096148,
+            36.2916648125055
+          ],
+          [
+            126.9362079030535,
+            36.29135671249371
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-6",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 33.243,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93611322567803,
+            36.31384801335444
+          ],
+          [
+            126.93682330599412,
+            36.31384801335444
+          ],
+          [
+            126.93687064468186,
+            36.313886525855914
+          ],
+          [
+            126.937391370247,
+            36.313886525855914
+          ],
+          [
+            126.93743870893474,
+            36.31392503835738
+          ],
+          [
+            126.93762806368571,
+            36.313886525855914
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-7",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.243,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93625524174125,
+            36.289277037414124
+          ],
+          [
+            126.93625524174125,
+            36.28873786239349
+          ],
+          [
+            126.93630258042899,
+            36.28869934989201
+          ],
+          [
+            126.93634991911672,
+            36.288198687372855
+          ],
+          [
+            126.93639725780446,
+            36.28816017487138
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-8",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 32.485,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93630258042899,
+            36.28943108742002
+          ],
+          [
+            126.93658661255543,
+            36.29016282494802
+          ],
+          [
+            126.93658661255543,
+            36.29058646246423
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-9",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93658661255543,
+            36.29463027511899
+          ],
+          [
+            126.93677596730639,
+            36.294707300121935
+          ],
+          [
+            126.93701266074508,
+            36.294707300121935
+          ],
+          [
+            126.93705999943282,
+            36.29474581262341
+          ],
+          [
+            126.93748604762249,
+            36.294707300121935
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-10",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93677596730639,
+            36.2898932374377
+          ],
+          [
+            126.93677596730639,
+            36.29012431244655
+          ],
+          [
+            126.9369179833696,
+            36.29035538745539
+          ],
+          [
+            126.93696532205735,
+            36.29054794996276
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-11",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 34.142,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93701266074508,
+            36.32093431362562
+          ],
+          [
+            126.93729669287153,
+            36.3208187761212
+          ],
+          [
+            126.93767540237344,
+            36.3208187761212
+          ],
+          [
+            126.93843282137728,
+            36.32108836363152
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-12",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 34.142,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93743870893474,
+            36.295284987644045
+          ],
+          [
+            126.93710733812057,
+            36.29513093763815
+          ],
+          [
+            126.93705999943282,
+            36.2950539126352
+          ],
+          [
+            126.9371546768083,
+            36.29497688763225
+          ],
+          [
+            126.93772274106118,
+            36.294938375130776
+          ],
+          [
+            126.93805411187536,
+            36.29486135012783
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-13",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93762806368571,
+            36.30868733815694
+          ],
+          [
+            126.93838548268954,
+            36.30864882565547
+          ],
+          [
+            126.93866951481598,
+            36.30849477564957
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-14",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 51.971,
+        "point_count": 8,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93777007974892,
+            36.31392503835738
+          ],
+          [
+            126.9378647571244,
+            36.31396355085886
+          ],
+          [
+            126.93819612793858,
+            36.31396355085886
+          ],
+          [
+            126.93862217612823,
+            36.31407908836328
+          ],
+          [
+            126.93885886956694,
+            36.31407908836328
+          ],
+          [
+            126.93937959513208,
+            36.314233138369175
+          ],
+          [
+            126.93971096594626,
+            36.314233138369175
+          ],
+          [
+            126.93999499807269,
+            36.31438718837507
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-15",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 49.728,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93777007974892,
+            36.304643525502186
+          ],
+          [
+            126.93800677318762,
+            36.304643525502186
+          ],
+          [
+            126.93895354694241,
+            36.30487460051103
+          ],
+          [
+            126.93937959513208,
+            36.30487460051103
+          ],
+          [
+            126.93956894988304,
+            36.30479757550808
+          ],
+          [
+            126.93994765938496,
+            36.30475906300661
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-16",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 40.142,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93777007974892,
+            36.2875439748478
+          ],
+          [
+            126.93800677318762,
+            36.287505462346324
+          ],
+          [
+            126.9381014505631,
+            36.28735141234043
+          ],
+          [
+            126.9383381440018,
+            36.28719736233454
+          ],
+          [
+            126.93909556300564,
+            36.28723587483601
+          ],
+          [
+            126.93914290169337,
+            36.28727438733748
+          ],
+          [
+            126.93937959513208,
+            36.28723587483601
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-17",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93795943449987,
+            36.315773638428126
+          ],
+          [
+            126.93838548268954,
+            36.3158121509296
+          ],
+          [
+            126.93881153087919,
+            36.3159662009355
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-18",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 44.971,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93795943449987,
+            36.295439037649935
+          ],
+          [
+            126.93866951481598,
+            36.29567011265878
+          ],
+          [
+            126.93947427250755,
+            36.295785650163204
+          ],
+          [
+            126.93985298200947,
+            36.295901187667624
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-19",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 37.243,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93814878925085,
+            36.294822837626356
+          ],
+          [
+            126.9395216111953,
+            36.29486135012783
+          ],
+          [
+            126.93985298200947,
+            36.29478432512488
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-20",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.828,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93819612793858,
+            36.294591762617515
+          ],
+          [
+            126.93829080531405,
+            36.29463027511899
+          ],
+          [
+            126.93947427250755,
+            36.29466878762046
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-21",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93862217612823,
+            36.28981621243476
+          ],
+          [
+            126.93876419219146,
+            36.28981621243476
+          ],
+          [
+            126.93895354694241,
+            36.289739187431806
+          ],
+          [
+            126.93923757906886,
+            36.289739187431806
+          ],
+          [
+            126.93947427250755,
+            36.28981621243476
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-22",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93900088563016,
+            36.287620999850745
+          ],
+          [
+            126.93933225644433,
+            36.2875439748478
+          ],
+          [
+            126.93942693381982,
+            36.2876980248537
+          ],
+          [
+            126.93942693381982,
+            36.28785207485959
+          ],
+          [
+            126.93937959513208,
+            36.28789058736106
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-23",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.414,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9390482243179,
+            36.29285870005119
+          ],
+          [
+            126.93909556300564,
+            36.29297423755561
+          ],
+          [
+            126.93909556300564,
+            36.29359043757919
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-24",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.899,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.93994765938496,
+            36.28584942478295
+          ],
+          [
+            126.93994765938496,
+            36.28573388727853
+          ],
+          [
+            126.9402316915114,
+            36.285502812269684
+          ],
+          [
+            126.94051572363783,
+            36.285502812269684
+          ],
+          [
+            126.94061040101332,
+            36.285579837272635
+          ],
+          [
+            126.94061040101332,
+            36.28565686227558
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-25",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94004233676044,
+            36.28920001241117
+          ],
+          [
+            126.94037370757461,
+            36.2891614999097
+          ],
+          [
+            126.94051572363783,
+            36.28908447490675
+          ],
+          [
+            126.94084709445201,
+            36.28908447490675
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-26",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94061040101332,
+            36.28457851223431
+          ],
+          [
+            126.94113112657845,
+            36.28450148723137
+          ],
+          [
+            126.94127314264168,
+            36.284424462228415
+          ],
+          [
+            126.94150983608037,
+            36.284385949726946
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-27",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94103644920297,
+            36.28712033733159
+          ],
+          [
+            126.94127314264168,
+            36.28712033733159
+          ],
+          [
+            126.94132048132941,
+            36.28708182483011
+          ],
+          [
+            126.94188854558229,
+            36.28719736233454
+          ],
+          [
+            126.94198322295777,
+            36.28727438733748
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-28",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94113112657845,
+            36.288314224877276
+          ],
+          [
+            126.94108378789072,
+            36.2882757123758
+          ],
+          [
+            126.94108378789072,
+            36.28789058736106
+          ],
+          [
+            126.94103644920297,
+            36.28785207485959
+          ],
+          [
+            126.94103644920297,
+            36.28773653735517
+          ],
+          [
+            126.94113112657845,
+            36.28765951235222
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-29",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.899,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94117846526619,
+            36.29617077517794
+          ],
+          [
+            126.9409417718275,
+            36.29632482518384
+          ],
+          [
+            126.9409417718275,
+            36.296478875189734
+          ],
+          [
+            126.94108378789072,
+            36.296594412694155
+          ],
+          [
+            126.94127314264168,
+            36.296594412694155
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-30",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 32.485,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9414151587049,
+            36.30495162551398
+          ],
+          [
+            126.94217257770873,
+            36.305105675519876
+          ],
+          [
+            126.94283531933709,
+            36.305028650516924
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-31",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94169919083133,
+            36.3032955879506
+          ],
+          [
+            126.94198322295777,
+            36.303218562947656
+          ],
+          [
+            126.94217257770873,
+            36.303218562947656
+          ],
+          [
+            126.94221991639647,
+            36.30325707544913
+          ],
+          [
+            126.94283531933709,
+            36.303218562947656
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-32",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.971,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94174652951907,
+            36.29986797531943
+          ],
+          [
+            126.94203056164551,
+            36.299790950316485
+          ],
+          [
+            126.94221991639647,
+            36.29986797531943
+          ],
+          [
+            126.94259862589838,
+            36.3002145878327
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-33",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.657,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94184120689455,
+            36.28388528720779
+          ],
+          [
+            126.94207790033325,
+            36.28376974970336
+          ],
+          [
+            126.94283531933709,
+            36.28373123720189
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-34",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.243,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94207790033325,
+            36.295785650163204
+          ],
+          [
+            126.94259862589838,
+            36.29582416266468
+          ],
+          [
+            126.94264596458613,
+            36.29586267516615
+          ],
+          [
+            126.94326136752674,
+            36.29586267516615
+          ],
+          [
+            126.9433087062145,
+            36.29582416266468
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-35",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.243,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94221991639647,
+            36.29285870005119
+          ],
+          [
+            126.94245660983518,
+            36.29285870005119
+          ],
+          [
+            126.94264596458613,
+            36.292935725054136
+          ],
+          [
+            126.94340338358997,
+            36.292935725054136
+          ],
+          [
+            126.94359273834093,
+            36.29289721255267
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-36",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94250394852291,
+            36.292704650045295
+          ],
+          [
+            126.94264596458613,
+            36.29274316254677
+          ],
+          [
+            126.94340338358997,
+            36.29274316254677
+          ],
+          [
+            126.94359273834093,
+            36.29266613754382
+          ],
+          [
+            126.94373475440415,
+            36.29266613754382
+          ],
+          [
+            126.94382943177963,
+            36.292589112540874
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-37",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.828,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94302467408805,
+            36.28361569969747
+          ],
+          [
+            126.94307201277579,
+            36.283577187195995
+          ],
+          [
+            126.9439241091551,
+            36.283577187195995
+          ],
+          [
+            126.94397144784284,
+            36.28353867469452
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-38",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.828,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9433087062145,
+            36.286196037296214
+          ],
+          [
+            126.94349806096545,
+            36.286273062299166
+          ],
+          [
+            126.9441608025938,
+            36.286273062299166
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-39",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94359273834093,
+            36.29170332500698
+          ],
+          [
+            126.94368741571641,
+            36.29154927500108
+          ],
+          [
+            126.94368741571641,
+            36.29131819999224
+          ],
+          [
+            126.94373475440415,
+            36.291279687490764
+          ],
+          [
+            126.94368741571641,
+            36.290817537473075
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-40",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 26.485,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94359273834093,
+            36.28584942478295
+          ],
+          [
+            126.94364007702866,
+            36.28588793728442
+          ],
+          [
+            126.94425547996929,
+            36.28584942478295
+          ],
+          [
+            126.94430281865702,
+            36.28588793728442
+          ],
+          [
+            126.94449217340798,
+            36.28588793728442
+          ],
+          [
+            126.94472886684669,
+            36.28600347478885
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-41",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 28.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94364007702866,
+            36.29289721255267
+          ],
+          [
+            126.94420814128155,
+            36.29274316254677
+          ],
+          [
+            126.9446341894712,
+            36.292781675048246
+          ],
+          [
+            126.94487088290991,
+            36.29285870005119
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-42",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94387677046737,
+            36.30591443805083
+          ],
+          [
+            126.94420814128155,
+            36.30587592554935
+          ],
+          [
+            126.94439749603251,
+            36.30599146305377
+          ],
+          [
+            126.94468152815894,
+            36.30599146305377
+          ],
+          [
+            126.94487088290991,
+            36.30591443805083
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-43",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94387677046737,
+            36.292589112540874
+          ],
+          [
+            126.94458685078347,
+            36.292589112540874
+          ],
+          [
+            126.94472886684669,
+            36.29266613754382
+          ],
+          [
+            126.94491822159765,
+            36.29266613754382
+          ],
+          [
+            126.94501289897312,
+            36.29274316254677
+          ],
+          [
+            126.9451075763486,
+            36.29274316254677
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-44",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94435015734477,
+            36.295439037649935
+          ],
+          [
+            126.94449217340798,
+            36.29536201264699
+          ],
+          [
+            126.94453951209573,
+            36.29524647514257
+          ],
+          [
+            126.94453951209573,
+            36.294707300121935
+          ],
+          [
+            126.94449217340798,
+            36.29466878762046
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-45",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94453951209573,
+            36.28896893740233
+          ],
+          [
+            126.94496556028538,
+            36.28885339989791
+          ],
+          [
+            126.9453442697873,
+            36.28893042490086
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-46",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.485,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94543894716278,
+            36.29763425023395
+          ],
+          [
+            126.94548628585052,
+            36.29759573773247
+          ],
+          [
+            126.94600701141566,
+            36.29759573773247
+          ],
+          [
+            126.9462910435421,
+            36.297788300239844
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-47",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 45.899,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94562830191374,
+            36.30425840048745
+          ],
+          [
+            126.94638572091758,
+            36.30425840048745
+          ],
+          [
+            126.94766386548656,
+            36.30398881297713
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-48",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94648039829306,
+            36.29832747526048
+          ],
+          [
+            126.9465277369808,
+            36.29836598776195
+          ],
+          [
+            126.94657507566853,
+            36.29875111277669
+          ],
+          [
+            126.94671709173176,
+            36.29882813777964
+          ],
+          [
+            126.94690644648271,
+            36.29882813777964
+          ],
+          [
+            126.94695378517046,
+            36.29886665028111
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-49",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.071,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94666975304402,
+            36.29963690031059
+          ],
+          [
+            126.94666975304402,
+            36.299790950316485
+          ],
+          [
+            126.94671709173176,
+            36.299829462817954
+          ],
+          [
+            126.94690644648271,
+            36.299829462817954
+          ],
+          [
+            126.9470011238582,
+            36.29971392531353
+          ],
+          [
+            126.9470011238582,
+            36.29948285030469
+          ],
+          [
+            126.94709580123367,
+            36.29929028779732
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-50",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.142,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94690644648271,
+            36.320741751118256
+          ],
+          [
+            126.9477112041743,
+            36.32112687613299
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-51",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94714313992142,
+            36.298597062770796
+          ],
+          [
+            126.94728515598464,
+            36.298597062770796
+          ],
+          [
+            126.94737983336012,
+            36.298712600275216
+          ],
+          [
+            126.94733249467238,
+            36.29902070028701
+          ],
+          [
+            126.9472378172969,
+            36.299213262794375
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-52",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 28.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94752184942334,
+            36.30941907568494
+          ],
+          [
+            126.9477112041743,
+            36.309496100687895
+          ],
+          [
+            126.9484212844904,
+            36.30945758818642
+          ],
+          [
+            126.94875265530457,
+            36.30953461318936
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-53",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.899,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94837394580266,
+            36.29740317522511
+          ],
+          [
+            126.94851596186588,
+            36.29736466272363
+          ],
+          [
+            126.94861063924135,
+            36.29724912521921
+          ],
+          [
+            126.94856330055362,
+            36.29697953770889
+          ],
+          [
+            126.9484212844904,
+            36.29678697520152
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-54",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.828,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94884733268006,
+            36.30421988798597
+          ],
+          [
+            126.94894201005553,
+            36.30495162551398
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-55",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 35.828,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94894201005553,
+            36.306338075567034
+          ],
+          [
+            126.94894201005553,
+            36.30599146305377
+          ],
+          [
+            126.9488946713678,
+            36.305952950552296
+          ],
+          [
+            126.9488946713678,
+            36.305028650516924
+          ],
+          [
+            126.94894201005553,
+            36.304990138015455
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-56",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.142,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94927338086971,
+            36.293898537590984
+          ],
+          [
+            126.94917870349424,
+            36.29382151258804
+          ],
+          [
+            126.94927338086971,
+            36.29374448758509
+          ],
+          [
+            126.9493680582452,
+            36.29374448758509
+          ],
+          [
+            126.94955741299616,
+            36.29359043757919
+          ],
+          [
+            126.94979410643485,
+            36.293513412576246
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-57",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.899,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.94965209037163,
+            36.29023984995097
+          ],
+          [
+            126.94965209037163,
+            36.29016282494802
+          ],
+          [
+            126.94984144512259,
+            36.28993174993918
+          ],
+          [
+            126.94988878381034,
+            36.28970067493034
+          ],
+          [
+            126.94998346118581,
+            36.28958513742592
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-58",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 29.728,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9500781385613,
+            36.31488785089423
+          ],
+          [
+            126.95022015462452,
+            36.31504190090013
+          ],
+          [
+            126.95026749331225,
+            36.31519595090602
+          ],
+          [
+            126.95022015462452,
+            36.315658100923706
+          ],
+          [
+            126.95036217068773,
+            36.315773638428126
+          ],
+          [
+            126.95050418675095,
+            36.3158121509296
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-59",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95088289625286,
+            36.3049131130125
+          ],
+          [
+            126.95083555756513,
+            36.30448947549629
+          ],
+          [
+            126.95102491231609,
+            36.30421988798597
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-60",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.385,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95102491231609,
+            36.29678697520152
+          ],
+          [
+            126.95135628313027,
+            36.29705656271184
+          ],
+          [
+            126.95154563788122,
+            36.297287637720686
+          ],
+          [
+            126.95164031525671,
+            36.29751871272953
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-61",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95107225100384,
+            36.30044566284154
+          ],
+          [
+            126.951403621818,
+            36.300407150340064
+          ],
+          [
+            126.95164031525671,
+            36.30029161283564
+          ],
+          [
+            126.95197168607089,
+            36.30033012533712
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-62",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 39.556,
+        "point_count": 9,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95130894444253,
+            36.288891912399386
+          ],
+          [
+            126.95121426706704,
+            36.288814887396434
+          ],
+          [
+            126.95121426706704,
+            36.28854529988612
+          ],
+          [
+            126.9512616057548,
+            36.28839124988023
+          ],
+          [
+            126.951403621818,
+            36.28823719987433
+          ],
+          [
+            126.95168765394445,
+            36.288198687372855
+          ],
+          [
+            126.9518770086954,
+            36.2882757123758
+          ],
+          [
+            126.95216104082185,
+            36.2882757123758
+          ],
+          [
+            126.95225571819732,
+            36.288198687372855
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-63",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.414,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95173499263218,
+            36.298288962759
+          ],
+          [
+            126.95178233131993,
+            36.299213262794375
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-64",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.414,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95192434738314,
+            36.298019375248685
+          ],
+          [
+            126.95197168607089,
+            36.29882813777964
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-65",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.828,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95211370213411,
+            36.29894367528406
+          ],
+          [
+            126.95253975032377,
+            36.29894367528406
+          ],
+          [
+            126.9525870890115,
+            36.29890516278258
+          ],
+          [
+            126.95315515326439,
+            36.29886665028111
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-66",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 34.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95239773426054,
+            36.31450272587949
+          ],
+          [
+            126.95282378245021,
+            36.31450272587949
+          ],
+          [
+            126.95310781457664,
+            36.31457975088244
+          ],
+          [
+            126.95334450801535,
+            36.31457975088244
+          ],
+          [
+            126.95358120145404,
+            36.31450272587949
+          ],
+          [
+            126.95395991095596,
+            36.31450272587949
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-67",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9525870890115,
+            36.30999676320705
+          ],
+          [
+            126.95310781457664,
+            36.30995825070558
+          ],
+          [
+            126.95315515326439,
+            36.3099197382041
+          ],
+          [
+            126.95381789489274,
+            36.30999676320705
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-68",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9530604758889,
+            36.28469404973873
+          ],
+          [
+            126.95320249195213,
+            36.28496363724905
+          ],
+          [
+            126.95320249195213,
+            36.2851947122579
+          ],
+          [
+            126.95310781457664,
+            36.28534876226379
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-69",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95324983063986,
+            36.29882813777964
+          ],
+          [
+            126.95372321751726,
+            36.29878962527816
+          ],
+          [
+            126.95443329783336,
+            36.298635575272264
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-70",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.899,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95429128177014,
+            36.30861031315399
+          ],
+          [
+            126.95400724964371,
+            36.30861031315399
+          ],
+          [
+            126.95391257226822,
+            36.308802875661364
+          ],
+          [
+            126.95405458833145,
+            36.308918413165785
+          ],
+          [
+            126.9542439430824,
+            36.308918413165785
+          ],
+          [
+            126.95433862045788,
+            36.308802875661364
+          ],
+          [
+            126.95433862045788,
+            36.30864882565547
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-71",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 54.142,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95443329783336,
+            36.30968866319526
+          ],
+          [
+            126.95452797520885,
+            36.309611638192315
+          ],
+          [
+            126.9547173299598,
+            36.309265025679046
+          ],
+          [
+            126.95481200733528,
+            36.30857180065252
+          ],
+          [
+            126.95485934602301,
+            36.30853328815105
+          ],
+          [
+            126.95485934602301,
+            36.30780155062304
+          ],
+          [
+            126.95490668471076,
+            36.30776303812157
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-72",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 37.728,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9544806365211,
+            36.29994500032238
+          ],
+          [
+            126.95523805552494,
+            36.29998351282385
+          ],
+          [
+            126.95538007158815,
+            36.29986797531943
+          ],
+          [
+            126.95556942633912,
+            36.299829462817954
+          ],
+          [
+            126.9556641037146,
+            36.29971392531353
+          ],
+          [
+            126.95604281321651,
+            36.29963690031059
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-73",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 54.485,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95457531389658,
+            36.30853328815105
+          ],
+          [
+            126.95462265258432,
+            36.30814816313631
+          ],
+          [
+            126.95466999127206,
+            36.30810965063483
+          ],
+          [
+            126.95462265258432,
+            36.307840063124516
+          ],
+          [
+            126.9547173299598,
+            36.30753196311272
+          ],
+          [
+            126.95476466864754,
+            36.306530638074406
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-74",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.799,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95462265258432,
+            36.30187062539607
+          ],
+          [
+            126.95509603946172,
+            36.30210170040491
+          ],
+          [
+            126.95547474896364,
+            36.30244831291818
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-75",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.799,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95481200733528,
+            36.31469528838686
+          ],
+          [
+            126.95500136208624,
+            36.314348675873596
+          ],
+          [
+            126.95523805552494,
+            36.31415611336623
+          ],
+          [
+            126.95575878109008,
+            36.31396355085886
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-76",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9549540233985,
+            36.307031300593565
+          ],
+          [
+            126.9549540233985,
+            36.30676171308325
+          ],
+          [
+            126.95500136208624,
+            36.30672320058178
+          ],
+          [
+            126.95504870077399,
+            36.306299563065565
+          ],
+          [
+            126.95514337814946,
+            36.30610700055819
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-77",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.485,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95538007158815,
+            36.288198687372855
+          ],
+          [
+            126.95594813584104,
+            36.28812166236991
+          ],
+          [
+            126.95618482927974,
+            36.2882757123758
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-78",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.485,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95609015190426,
+            36.30472055050514
+          ],
+          [
+            126.9563741840307,
+            36.304296912988924
+          ],
+          [
+            126.9563741840307,
+            36.30391178797419
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-79",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 32.142,
+        "point_count": 8,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95632684534296,
+            36.309496100687895
+          ],
+          [
+            126.95609015190426,
+            36.309496100687895
+          ],
+          [
+            126.95594813584104,
+            36.30957312569084
+          ],
+          [
+            126.95594813584104,
+            36.309650150693784
+          ],
+          [
+            126.95627950665522,
+            36.30984271320116
+          ],
+          [
+            126.95646886140618,
+            36.30984271320116
+          ],
+          [
+            126.95651620009392,
+            36.309727175696736
+          ],
+          [
+            126.95642152271844,
+            36.30957312569084
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-80",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 28.314,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9563741840307,
+            36.31465677588539
+          ],
+          [
+            126.95646886140618,
+            36.314849338392754
+          ],
+          [
+            126.95646886140618,
+            36.31500338839865
+          ],
+          [
+            126.95656353878165,
+            36.31511892590307
+          ],
+          [
+            126.9566108774694,
+            36.31538851341339
+          ],
+          [
+            126.95675289353261,
+            36.31561958842224
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-81",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.899,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95646886140618,
+            36.32104985113005
+          ],
+          [
+            126.95680023222036,
+            36.32020257609762
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-82",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 43.314,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95651620009392,
+            36.313886525855914
+          ],
+          [
+            126.95680023222036,
+            36.31380950085296
+          ],
+          [
+            126.9573209577855,
+            36.31380950085296
+          ],
+          [
+            126.95760498991193,
+            36.31369396334854
+          ],
+          [
+            126.95831507022802,
+            36.313655450847065
+          ],
+          [
+            126.95840974760351,
+            36.31357842584412
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-83",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95656353878165,
+            36.321473488646255
+          ],
+          [
+            126.95670555484487,
+            36.32120390113594
+          ],
+          [
+            126.95680023222036,
+            36.320857288622676
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-84",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.414,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95689490959583,
+            36.32239778868163
+          ],
+          [
+            126.95774700597515,
+            36.32235927618016
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-85",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95713160303454,
+            36.3200870385932
+          ],
+          [
+            126.95736829647323,
+            36.319432326068146
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-86",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 31.728,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95727361909775,
+            36.29748020022805
+          ],
+          [
+            126.95859910235447,
+            36.29713358771479
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-87",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.485,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95755765122419,
+            36.28473256224021
+          ],
+          [
+            126.95765232859968,
+            36.28484809974463
+          ],
+          [
+            126.95774700597515,
+            36.28542578726674
+          ],
+          [
+            126.95784168335064,
+            36.28554132477116
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-88",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.799,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95769966728741,
+            36.30483608800956
+          ],
+          [
+            126.95798369941386,
+            36.304990138015455
+          ],
+          [
+            126.95845708629125,
+            36.30541377553166
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-89",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95793636072611,
+            36.30356517546092
+          ],
+          [
+            126.95798369941386,
+            36.30337261295355
+          ],
+          [
+            126.95807837678933,
+            36.30325707544913
+          ],
+          [
+            126.95807837678933,
+            36.30291046293586
+          ],
+          [
+            126.9580310381016,
+            36.302871950434394
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-90",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95798369941386,
+            36.285117687254946
+          ],
+          [
+            126.95798369941386,
+            36.2851947122579
+          ],
+          [
+            126.95812571547707,
+            36.28534876226379
+          ],
+          [
+            126.95836240891578,
+            36.28534876226379
+          ],
+          [
+            126.95840974760351,
+            36.28531024976232
+          ],
+          [
+            126.95859910235447,
+            36.28534876226379
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-91",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.828,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95836240891578,
+            36.310805525738004
+          ],
+          [
+            126.95836240891578,
+            36.31134470075864
+          ],
+          [
+            126.95855176366673,
+            36.31142172576158
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-92",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 26.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95840974760351,
+            36.307108325596516
+          ],
+          [
+            126.95845708629125,
+            36.30695427559062
+          ],
+          [
+            126.95840974760351,
+            36.30687725058767
+          ],
+          [
+            126.95845708629125,
+            36.30614551305967
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-93",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95911982791961,
+            36.31338586333675
+          ],
+          [
+            126.95926184398283,
+            36.31338586333675
+          ],
+          [
+            126.95959321479701,
+            36.31327032583233
+          ],
+          [
+            126.96016127904988,
+            36.31327032583233
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-94",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 29.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.95973523086023,
+            36.300638225348905
+          ],
+          [
+            126.95978256954797,
+            36.30090781285922
+          ],
+          [
+            126.9598299082357,
+            36.3009463253607
+          ],
+          [
+            126.96006660167441,
+            36.3009463253607
+          ],
+          [
+            126.96016127904988,
+            36.3007922753548
+          ],
+          [
+            126.96011394036215,
+            36.300407150340064
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-95",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.485,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96072934330276,
+            36.29940582530175
+          ],
+          [
+            126.96096603674147,
+            36.299328800298795
+          ],
+          [
+            126.96106071411694,
+            36.29940582530175
+          ],
+          [
+            126.96110805280469,
+            36.29955987530764
+          ],
+          [
+            126.96106071411694,
+            36.29959838780911
+          ],
+          [
+            126.96087135936598,
+            36.29959838780911
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-96",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.314,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96110805280469,
+            36.2900472874436
+          ],
+          [
+            126.96143942361887,
+            36.28977769993328
+          ],
+          [
+            126.96153410099434,
+            36.289508112422965
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-97",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 37.485,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96214950393497,
+            36.31384801335444
+          ],
+          [
+            126.96276490687558,
+            36.31373247585002
+          ],
+          [
+            126.96319095506524,
+            36.31373247585002
+          ],
+          [
+            126.96323829375298,
+            36.31369396334854
+          ],
+          [
+            126.96356966456716,
+            36.31369396334854
+          ],
+          [
+            126.9636170032549,
+            36.313655450847065
+          ],
+          [
+            126.96380635800585,
+            36.31369396334854
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-98",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96233885868592,
+            36.31723711348413
+          ],
+          [
+            126.96233885868592,
+            36.317545213495926
+          ],
+          [
+            126.9624335360614,
+            36.31762223849887
+          ],
+          [
+            126.9626702295001,
+            36.317545213495926
+          ],
+          [
+            126.9626702295001,
+            36.31727562598561
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-99",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96262289081236,
+            36.28581091228148
+          ],
+          [
+            126.96276490687558,
+            36.28573388727853
+          ],
+          [
+            126.96304893900202,
+            36.28573388727853
+          ],
+          [
+            126.96309627768976,
+            36.28577239978
+          ],
+          [
+            126.96342764850394,
+            36.28577239978
+          ],
+          [
+            126.96347498719167,
+            36.28573388727853
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-100",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96271756818784,
+            36.28920001241117
+          ],
+          [
+            126.96300160031429,
+            36.2891614999097
+          ],
+          [
+            126.96309627768976,
+            36.289007449903806
+          ],
+          [
+            126.96342764850394,
+            36.28893042490086
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-101",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9631436163775,
+            36.283461649691574
+          ],
+          [
+            126.9633803098162,
+            36.283346112187154
+          ],
+          [
+            126.96352232587942,
+            36.28338462468862
+          ],
+          [
+            126.96399571275681,
+            36.28338462468862
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-102",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96390103538134,
+            36.312808175814645
+          ],
+          [
+            126.9640903901323,
+            36.312923713319066
+          ],
+          [
+            126.96442176094648,
+            36.312923713319066
+          ],
+          [
+            126.96461111569744,
+            36.312846688316114
+          ],
+          [
+            126.96489514782388,
+            36.312808175814645
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-103",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96432708357099,
+            36.31084403823947
+          ],
+          [
+            126.96437442225874,
+            36.31088255074095
+          ],
+          [
+            126.96461111569744,
+            36.31088255074095
+          ],
+          [
+            126.96465845438517,
+            36.31084403823947
+          ],
+          [
+            126.96461111569744,
+            36.31038188822179
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-104",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96437442225874,
+            36.30483608800956
+          ],
+          [
+            126.96489514782388,
+            36.304990138015455
+          ],
+          [
+            126.96503716388709,
+            36.305105675519876
+          ],
+          [
+            126.96503716388709,
+            36.30518270052282
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-105",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96475313176066,
+            36.314849338392754
+          ],
+          [
+            126.96470579307292,
+            36.31454123838097
+          ],
+          [
+            126.96475313176066,
+            36.31450272587949
+          ],
+          [
+            126.9648004704484,
+            36.31415611336623
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-106",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96541587338902,
+            36.316043225938444
+          ],
+          [
+            126.96588926026641,
+            36.3159662009355
+          ],
+          [
+            126.96617329239285,
+            36.31585066343108
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-107",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96546321207676,
+            36.30899543816873
+          ],
+          [
+            126.96560522813998,
+            36.30907246317168
+          ],
+          [
+            126.96584192157867,
+            36.30907246317168
+          ],
+          [
+            126.96588926026641,
+            36.30911097567316
+          ],
+          [
+            126.96622063108059,
+            36.30911097567316
+          ],
+          [
+            126.96636264714381,
+            36.309033950670205
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-108",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96569990551545,
+            36.2918188625114
+          ],
+          [
+            126.96588926026641,
+            36.29189588751434
+          ],
+          [
+            126.96617329239285,
+            36.29185737501287
+          ],
+          [
+            126.96631530845607,
+            36.29170332500698
+          ],
+          [
+            126.96631530845607,
+            36.29158778750255
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-109",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96579458289094,
+            36.285579837272635
+          ],
+          [
+            126.96593659895416,
+            36.28554132477116
+          ],
+          [
+            126.96650466320703,
+            36.28554132477116
+          ],
+          [
+            126.96669401795799,
+            36.285464299768215
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-110",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.485,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96584192157867,
+            36.28993174993918
+          ],
+          [
+            126.96588926026641,
+            36.29023984995097
+          ],
+          [
+            126.96593659895416,
+            36.29027836245244
+          ],
+          [
+            126.96588926026641,
+            36.29039389995686
+          ],
+          [
+            126.96593659895416,
+            36.29066348746718
+          ],
+          [
+            126.96603127632963,
+            36.290817537473075
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-111",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9659839376419,
+            36.28635008730211
+          ],
+          [
+            126.96607861501737,
+            36.286273062299166
+          ],
+          [
+            126.96626796976834,
+            36.28623454979769
+          ],
+          [
+            126.96693071139669,
+            36.286273062299166
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-112",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.828,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96640998583155,
+            36.29374448758509
+          ],
+          [
+            126.96707272745991,
+            36.29374448758509
+          ],
+          [
+            126.96730942089862,
+            36.29366746258214
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-113",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 45.728,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9664573245193,
+            36.31273115081169
+          ],
+          [
+            126.96674135664573,
+            36.31265412580875
+          ],
+          [
+            126.96697805008444,
+            36.31265412580875
+          ],
+          [
+            126.96726208221087,
+            36.31273115081169
+          ],
+          [
+            126.96745143696182,
+            36.31311627582643
+          ],
+          [
+            126.96740409827409,
+            36.31315478832791
+          ],
+          [
+            126.96740409827409,
+            36.31369396334854
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-114",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.314,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96674135664573,
+            36.31762223849887
+          ],
+          [
+            126.96688337270895,
+            36.31750670099445
+          ],
+          [
+            126.96688337270895,
+            36.31735265098855
+          ],
+          [
+            126.96693071139669,
+            36.317314138487085
+          ],
+          [
+            126.96688337270895,
+            36.31700603847529
+          ],
+          [
+            126.96674135664573,
+            36.31677496346645
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-115",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 39.142,
+        "point_count": 8,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96688337270895,
+            36.28977769993328
+          ],
+          [
+            126.96712006614766,
+            36.28970067493034
+          ],
+          [
+            126.96735675958635,
+            36.28970067493034
+          ],
+          [
+            126.9676407917128,
+            36.28977769993328
+          ],
+          [
+            126.96792482383923,
+            36.289739187431806
+          ],
+          [
+            126.96806683990245,
+            36.289508112422965
+          ],
+          [
+            126.96806683990245,
+            36.289392574918544
+          ],
+          [
+            126.96797216252696,
+            36.28923852491265
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-116",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.657,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96707272745991,
+            36.28781356235812
+          ],
+          [
+            126.96721474352313,
+            36.28773653735517
+          ],
+          [
+            126.96740409827409,
+            36.28773653735517
+          ],
+          [
+            126.96754611433731,
+            36.28781356235812
+          ],
+          [
+            126.96787748515149,
+            36.28781356235812
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-117",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9671674048354,
+            36.29000877494212
+          ],
+          [
+            126.9682561946534,
+            36.2900472874436
+          ],
+          [
+            126.96830353334114,
+            36.28993174993918
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-118",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 49.728,
+        "point_count": 10,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96735675958635,
+            36.31454123838097
+          ],
+          [
+            126.96754611433731,
+            36.31450272587949
+          ],
+          [
+            126.96754611433731,
+            36.31427165087065
+          ],
+          [
+            126.96768813040053,
+            36.31415611336623
+          ],
+          [
+            126.96787748515149,
+            36.3141946258677
+          ],
+          [
+            126.96792482383923,
+            36.31488785089423
+          ],
+          [
+            126.96783014646375,
+            36.314964875897175
+          ],
+          [
+            126.9676407917128,
+            36.314964875897175
+          ],
+          [
+            126.96759345302505,
+            36.314926363395706
+          ],
+          [
+            126.96759345302505,
+            36.31477231338981
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-119",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96740409827409,
+            36.319432326068146
+          ],
+          [
+            126.96754611433731,
+            36.31981745108288
+          ],
+          [
+            126.96754611433731,
+            36.3200870385932
+          ],
+          [
+            126.9676407917128,
+            36.3202410885991
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-120",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96754611433731,
+            36.28588793728442
+          ],
+          [
+            126.96773546908827,
+            36.28581091228148
+          ],
+          [
+            126.96811417859018,
+            36.28588793728442
+          ],
+          [
+            126.96844554940436,
+            36.28588793728442
+          ],
+          [
+            126.9684928880921,
+            36.28584942478295
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-121",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.899,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.967782807776,
+            36.30475906300661
+          ],
+          [
+            126.967782807776,
+            36.30495162551398
+          ],
+          [
+            126.96792482383923,
+            36.3050671630184
+          ],
+          [
+            126.96801950121471,
+            36.305105675519876
+          ],
+          [
+            126.96839821071663,
+            36.3050671630184
+          ],
+          [
+            126.96858756546759,
+            36.305144188021345
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-122",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96811417859018,
+            36.318739101041615
+          ],
+          [
+            126.96863490415532,
+            36.31877761354309
+          ],
+          [
+            126.96906095234499,
+            36.31893166354899
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-123",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9682561946534,
+            36.287620999850745
+          ],
+          [
+            126.96854022677985,
+            36.287582487349276
+          ],
+          [
+            126.96872958153081,
+            36.28765951235222
+          ],
+          [
+            126.96906095234499,
+            36.28765951235222
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-124",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 32.556,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96854022677985,
+            36.29085604997455
+          ],
+          [
+            126.96906095234499,
+            36.29104861248192
+          ],
+          [
+            126.96962901659786,
+            36.290933074977495
+          ],
+          [
+            126.96977103266109,
+            36.29074051247013
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-125",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.728,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96858756546759,
+            36.30868733815694
+          ],
+          [
+            126.96887159759403,
+            36.308417750646626
+          ],
+          [
+            126.96901361365725,
+            36.30807113813336
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-126",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96901361365725,
+            36.28600347478885
+          ],
+          [
+            126.96906095234499,
+            36.28596496228737
+          ],
+          [
+            126.9694396618469,
+            36.28596496228737
+          ],
+          [
+            126.96986571003656,
+            36.28581091228148
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-127",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.243,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96939232315917,
+            36.29759573773247
+          ],
+          [
+            126.96996038741204,
+            36.29763425023395
+          ],
+          [
+            126.97000772609978,
+            36.297672762735424
+          ],
+          [
+            126.97019708085074,
+            36.297672762735424
+          ],
+          [
+            126.97024441953849,
+            36.29763425023395
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-128",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 26.485,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96972369397335,
+            36.2943221751072
+          ],
+          [
+            126.97005506478753,
+            36.29436068760867
+          ],
+          [
+            126.97019708085074,
+            36.294476225113094
+          ],
+          [
+            126.970149742163,
+            36.294822837626356
+          ],
+          [
+            126.97010240347527,
+            36.29486135012783
+          ],
+          [
+            126.96991304872431,
+            36.29486135012783
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-129",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.96996038741204,
+            36.28577239978
+          ],
+          [
+            126.97029175822622,
+            36.28577239978
+          ],
+          [
+            126.97048111297718,
+            36.28584942478295
+          ],
+          [
+            126.9706231290404,
+            36.28584942478295
+          ],
+          [
+            126.97081248379136,
+            36.28581091228148
+          ],
+          [
+            126.97090716116683,
+            36.28573388727853
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-130",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 43.314,
+        "point_count": 9,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97048111297718,
+            36.322590351189
+          ],
+          [
+            126.97071780641588,
+            36.322590351189
+          ],
+          [
+            126.97090716116683,
+            36.322513326186055
+          ],
+          [
+            126.97123853198102,
+            36.322513326186055
+          ],
+          [
+            126.97128587066877,
+            36.32247481368458
+          ],
+          [
+            126.97166458017068,
+            36.32247481368458
+          ],
+          [
+            126.97171191885842,
+            36.3224363011831
+          ],
+          [
+            126.97213796704808,
+            36.32239778868163
+          ],
+          [
+            126.97237466048678,
+            36.32228225117721
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-131",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.414,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97081248379136,
+            36.32089580112415
+          ],
+          [
+            126.9708598224791,
+            36.32020257609762
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-132",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.071,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97095449985459,
+            36.2965173876912
+          ],
+          [
+            126.97104917723006,
+            36.29655590019268
+          ],
+          [
+            126.97104917723006,
+            36.29701805021037
+          ],
+          [
+            126.97119119329328,
+            36.29713358771479
+          ],
+          [
+            126.97119119329328,
+            36.297287637720686
+          ],
+          [
+            126.97123853198102,
+            36.297326150222155
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-133",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.142,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97100183854232,
+            36.298635575272264
+          ],
+          [
+            126.97076514510363,
+            36.298481525266375
+          ],
+          [
+            126.97076514510363,
+            36.29840450026342
+          ],
+          [
+            126.97081248379136,
+            36.298288962759
+          ],
+          [
+            126.97109651591781,
+            36.29809640025163
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-134",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97100183854232,
+            36.288429762381696
+          ],
+          [
+            126.97095449985459,
+            36.288314224877276
+          ],
+          [
+            126.97095449985459,
+            36.28816017487138
+          ],
+          [
+            126.97100183854232,
+            36.28812166236991
+          ],
+          [
+            126.97095449985459,
+            36.28804463736696
+          ],
+          [
+            126.97100183854232,
+            36.28742843734338
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-135",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97128587066877,
+            36.29366746258214
+          ],
+          [
+            126.97161724148295,
+            36.29366746258214
+          ],
+          [
+            126.97171191885842,
+            36.29359043757919
+          ],
+          [
+            126.97171191885842,
+            36.293397875071825
+          ],
+          [
+            126.97166458017068,
+            36.29335936257035
+          ],
+          [
+            126.97128587066877,
+            36.293397875071825
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-136",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97166458017068,
+            36.31716008848119
+          ],
+          [
+            126.97147522541972,
+            36.317198600982664
+          ],
+          [
+            126.97142788673199,
+            36.31716008848119
+          ],
+          [
+            126.97142788673199,
+            36.31700603847529
+          ],
+          [
+            126.97147522541972,
+            36.316967525973816
+          ],
+          [
+            126.97190127360938,
+            36.31692901347235
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-137",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.657,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97199595098486,
+            36.29120266248781
+          ],
+          [
+            126.9720432896726,
+            36.29116414998634
+          ],
+          [
+            126.9720432896726,
+            36.29085604997455
+          ],
+          [
+            126.97209062836033,
+            36.290817537473075
+          ],
+          [
+            126.9720432896726,
+            36.29074051247013
+          ],
+          [
+            126.9720432896726,
+            36.29047092495981
+          ],
+          [
+            126.97199595098486,
+            36.29043241245834
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-138",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97199595098486,
+            36.29016282494802
+          ],
+          [
+            126.97209062836033,
+            36.290085799945075
+          ],
+          [
+            126.97218530573582,
+            36.289739187431806
+          ],
+          [
+            126.97232732179904,
+            36.289508112422965
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-139",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97227998311129,
+            36.317429675991505
+          ],
+          [
+            126.97213796704808,
+            36.31735265098855
+          ],
+          [
+            126.97213796704808,
+            36.317083063478236
+          ],
+          [
+            126.97227998311129,
+            36.316813475967926
+          ],
+          [
+            126.97227998311129,
+            36.3166979384635
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-140",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97242199917451,
+            36.322513326186055
+          ],
+          [
+            126.97246933786226,
+            36.322628863690475
+          ],
+          [
+            126.97270603130096,
+            36.322628863690475
+          ],
+          [
+            126.97341611161706,
+            36.32247481368458
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-141",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 46.142,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97256401523774,
+            36.28534876226379
+          ],
+          [
+            126.97284804736418,
+            36.28581091228148
+          ],
+          [
+            126.97284804736418,
+            36.28596496228737
+          ],
+          [
+            126.97289538605192,
+            36.28600347478885
+          ],
+          [
+            126.97294272473965,
+            36.28658116231095
+          ],
+          [
+            126.97289538605192,
+            36.28661967481243
+          ],
+          [
+            126.97284804736418,
+            36.28696628732569
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-142",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97261135392547,
+            36.2882757123758
+          ],
+          [
+            126.97289538605192,
+            36.28816017487138
+          ],
+          [
+            126.97308474080288,
+            36.28816017487138
+          ],
+          [
+            126.97341611161706,
+            36.28800612486548
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-143",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 33.556,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9727533699887,
+            36.31912422605635
+          ],
+          [
+            126.97308474080288,
+            36.31893166354899
+          ],
+          [
+            126.97332143424157,
+            36.318854638546036
+          ],
+          [
+            126.97384215980671,
+            36.31889315104751
+          ],
+          [
+            126.97403151455768,
+            36.318854638546036
+          ],
+          [
+            126.97412619193315,
+            36.31877761354309
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-144",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.243,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97284804736418,
+            36.290316874953916
+          ],
+          [
+            126.9729900634274,
+            36.289970262440654
+          ],
+          [
+            126.9729900634274,
+            36.28966216242886
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-145",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97294272473965,
+            36.31307776332496
+          ],
+          [
+            126.97303740211514,
+            36.313039250823486
+          ],
+          [
+            126.97327409555383,
+            36.31315478832791
+          ],
+          [
+            126.97341611161706,
+            36.3136169383456
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-146",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97303740211514,
+            36.310343375720315
+          ],
+          [
+            126.9729900634274,
+            36.310458913224736
+          ],
+          [
+            126.9729900634274,
+            36.310921063242425
+          ],
+          [
+            126.97308474080288,
+            36.31107511324832
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-147",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.243,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97379482111897,
+            36.31065147573211
+          ],
+          [
+            126.97374748243124,
+            36.310689988233584
+          ],
+          [
+            126.97374748243124,
+            36.311036600746846
+          ],
+          [
+            126.97379482111897,
+            36.31107511324832
+          ],
+          [
+            126.97426820799637,
+            36.31107511324832
+          ],
+          [
+            126.97431554668411,
+            36.311036600746846
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-148",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97388949849446,
+            36.322667376191944
+          ],
+          [
+            126.97412619193315,
+            36.322551838687524
+          ],
+          [
+            126.97459957881055,
+            36.32247481368458
+          ],
+          [
+            126.97469425618603,
+            36.32239778868163
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-149",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 37.485,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97417353062089,
+            36.284193387219574
+          ],
+          [
+            126.97422086930864,
+            36.28423189972105
+          ],
+          [
+            126.97422086930864,
+            36.28480958724316
+          ],
+          [
+            126.97436288537186,
+            36.28507917475348
+          ],
+          [
+            126.97436288537186,
+            36.28531024976232
+          ],
+          [
+            126.9744102240596,
+            36.28534876226379
+          ],
+          [
+            126.97436288537186,
+            36.28554132477116
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-150",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.414,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97431554668411,
+            36.31026635071737
+          ],
+          [
+            126.97436288537186,
+            36.310304863218846
+          ],
+          [
+            126.97436288537186,
+            36.31099808824537
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-151",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 29.314,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9750256270002,
+            36.29097158747897
+          ],
+          [
+            126.97545167518987,
+            36.29112563748487
+          ],
+          [
+            126.9757357073163,
+            36.29112563748487
+          ],
+          [
+            126.97606707813048,
+            36.29120266248781
+          ],
+          [
+            126.9762090941937,
+            36.29131819999224
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-152",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.899,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97535699781439,
+            36.32224373867574
+          ],
+          [
+            126.97554635256535,
+            36.322166713672786
+          ],
+          [
+            126.97564102994083,
+            36.32220522617426
+          ],
+          [
+            126.97583038469179,
+            36.322166713672786
+          ],
+          [
+            126.97625643288144,
+            36.32228225117721
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-153",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97540433650214,
+            36.305606338039034
+          ],
+          [
+            126.97568836862857,
+            36.305606338039034
+          ],
+          [
+            126.97611441681823,
+            36.305721875543455
+          ],
+          [
+            126.97630377156919,
+            36.305721875543455
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-154",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 22.899,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97549901387761,
+            36.300753762853326
+          ],
+          [
+            126.97554635256535,
+            36.30067673785038
+          ],
+          [
+            126.97592506206728,
+            36.300522687844484
+          ],
+          [
+            126.97611441681823,
+            36.30056120034596
+          ],
+          [
+            126.97616175550597,
+            36.300522687844484
+          ],
+          [
+            126.97639844894466,
+            36.300522687844484
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-155",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 28.728,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97554635256535,
+            36.317429675991505
+          ],
+          [
+            126.97568836862857,
+            36.31750670099445
+          ],
+          [
+            126.97587772337953,
+            36.31746818849298
+          ],
+          [
+            126.97597240075501,
+            36.31739116349003
+          ],
+          [
+            126.97587772337953,
+            36.31689050097087
+          ],
+          [
+            126.9757357073163,
+            36.316813475967926
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-156",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.243,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97616175550597,
+            36.28531024976232
+          ],
+          [
+            126.97625643288144,
+            36.28507917475348
+          ],
+          [
+            126.97630377156919,
+            36.28461702473579
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-157",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.828,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97710852926076,
+            36.299675412812064
+          ],
+          [
+            126.9773925613872,
+            36.299675412812064
+          ],
+          [
+            126.97743990007494,
+            36.29971392531353
+          ],
+          [
+            126.97796062564008,
+            36.299675412812064
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-158",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.728,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97725054532398,
+            36.28492512474758
+          ],
+          [
+            126.9776292548259,
+            36.285002149750525
+          ],
+          [
+            126.97786594826461,
+            36.28484809974463
+          ],
+          [
+            126.97800796432783,
+            36.28465553723726
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-159",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.314,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9776292548259,
+            36.30649212557293
+          ],
+          [
+            126.97814998039104,
+            36.30622253806261
+          ],
+          [
+            126.97848135120522,
+            36.306184025561144
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-160",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97767659351365,
+            36.30787857562599
+          ],
+          [
+            126.97767659351365,
+            36.30799411313041
+          ],
+          [
+            126.97791328695234,
+            36.30814816313631
+          ],
+          [
+            126.9781026417033,
+            36.30814816313631
+          ],
+          [
+            126.97833933514201,
+            36.30807113813336
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-161",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.485,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97772393220139,
+            36.30214021290639
+          ],
+          [
+            126.97767659351365,
+            36.30244831291818
+          ],
+          [
+            126.97772393220139,
+            36.30260236292408
+          ],
+          [
+            126.97786594826461,
+            36.3027179004285
+          ],
+          [
+            126.97791328695234,
+            36.30283343793292
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-162",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 24.314,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97791328695234,
+            36.28858381238759
+          ],
+          [
+            126.97814998039104,
+            36.28869934989201
+          ],
+          [
+            126.97829199645426,
+            36.28869934989201
+          ],
+          [
+            126.97838667382975,
+            36.28862232488907
+          ],
+          [
+            126.97838667382975,
+            36.288429762381696
+          ],
+          [
+            126.97824465776652,
+            36.288198687372855
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-163",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97796062564008,
+            36.29740317522511
+          ],
+          [
+            126.97819731907879,
+            36.29740317522511
+          ],
+          [
+            126.97824465776652,
+            36.297441687726575
+          ],
+          [
+            126.97852868989297,
+            36.297441687726575
+          ],
+          [
+            126.9788127220194,
+            36.29736466272363
+          ],
+          [
+            126.97919143152133,
+            36.29740317522511
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-164",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.314,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97867070595618,
+            36.30187062539607
+          ],
+          [
+            126.97886006070715,
+            36.301793600393125
+          ],
+          [
+            126.9790494154581,
+            36.30163955038723
+          ],
+          [
+            126.97923877020907,
+            36.301678062888705
+          ],
+          [
+            126.97957014102325,
+            36.301678062888705
+          ],
+          [
+            126.97961747971098,
+            36.30163955038723
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-165",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.314,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97871804464393,
+            36.32174307615657
+          ],
+          [
+            126.97876538333166,
+            36.32155051364921
+          ],
+          [
+            126.97886006070715,
+            36.321434976144786
+          ],
+          [
+            126.97919143152133,
+            36.321242413637414
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-166",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 25.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97871804464393,
+            36.316851988469395
+          ],
+          [
+            126.97895473808262,
+            36.316736450964974
+          ],
+          [
+            126.9795228023355,
+            36.3166979384635
+          ],
+          [
+            126.97980683446194,
+            36.31658240095908
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-167",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 37.971,
+        "point_count": 7,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9788127220194,
+            36.28954662492444
+          ],
+          [
+            126.97895473808262,
+            36.28943108742002
+          ],
+          [
+            126.9792861088968,
+            36.28935406241707
+          ],
+          [
+            126.97938078627229,
+            36.28923852491265
+          ],
+          [
+            126.97923877020907,
+            36.28885339989791
+          ],
+          [
+            126.97914409283358,
+            36.28873786239349
+          ],
+          [
+            126.97914409283358,
+            36.28846827488317
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-168",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.243,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97914409283358,
+            36.29324382506593
+          ],
+          [
+            126.9799961892129,
+            36.29312828756151
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-169",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9792861088968,
+            36.31084403823947
+          ],
+          [
+            126.97942812496002,
+            36.310805525738004
+          ],
+          [
+            126.97985417314968,
+            36.310921063242425
+          ],
+          [
+            126.98009086658838,
+            36.310921063242425
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-170",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 21.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.97994885052516,
+            36.31870058854014
+          ],
+          [
+            126.98004352790063,
+            36.31854653853424
+          ],
+          [
+            126.98004352790063,
+            36.318161413519505
+          ],
+          [
+            126.97994885052516,
+            36.31793033851066
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-171",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 32.142,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98009086658838,
+            36.30953461318936
+          ],
+          [
+            126.97985417314968,
+            36.30922651317758
+          ],
+          [
+            126.97985417314968,
+            36.30911097567316
+          ],
+          [
+            126.97994885052516,
+            36.309033950670205
+          ],
+          [
+            126.98028022133934,
+            36.30895692566726
+          ],
+          [
+            126.98065893084126,
+            36.30899543816873
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-172",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 23.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98009086658838,
+            36.2925506000394
+          ],
+          [
+            126.98013820527612,
+            36.29251208753793
+          ],
+          [
+            126.9804695760903,
+            36.29251208753793
+          ],
+          [
+            126.98051691477804,
+            36.29247357503645
+          ],
+          [
+            126.98108497903091,
+            36.292589112540874
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-173",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.899,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.9802328826516,
+            36.28804463736696
+          ],
+          [
+            126.98051691477804,
+            36.28785207485959
+          ],
+          [
+            126.98084828559222,
+            36.28785207485959
+          ],
+          [
+            126.98108497903091,
+            36.28792909986254
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-174",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98037489871481,
+            36.28943108742002
+          ],
+          [
+            126.98075360821674,
+            36.28943108742002
+          ],
+          [
+            126.98089562427995,
+            36.28935406241707
+          ],
+          [
+            126.98127433378188,
+            36.289392574918544
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-175",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.657,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98042223740256,
+            36.29308977506003
+          ],
+          [
+            126.98075360821674,
+            36.293166800062984
+          ],
+          [
+            126.9811796564064,
+            36.293166800062984
+          ],
+          [
+            126.98127433378188,
+            36.29308977506003
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-176",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 30.243,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98042223740256,
+            36.28446297472989
+          ],
+          [
+            126.98080094690448,
+            36.28453999973284
+          ],
+          [
+            126.98170038197154,
+            36.28453999973284
+          ],
+          [
+            126.98179505934702,
+            36.28457851223431
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-177",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.071,
+        "point_count": 5,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98056425346577,
+            36.28396231221073
+          ],
+          [
+            126.98065893084126,
+            36.28384677470631
+          ],
+          [
+            126.98089562427995,
+            36.28384677470631
+          ],
+          [
+            126.9809429629677,
+            36.283808262204836
+          ],
+          [
+            126.98127433378188,
+            36.28388528720779
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-178",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.243,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98089562427995,
+            36.30036863783859
+          ],
+          [
+            126.98127433378188,
+            36.30048417534301
+          ],
+          [
+            126.98179505934702,
+            36.30048417534301
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-179",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98089562427995,
+            36.298635575272264
+          ],
+          [
+            126.98113231771866,
+            36.29855855026932
+          ],
+          [
+            126.98132167246962,
+            36.29855855026932
+          ],
+          [
+            126.98136901115735,
+            36.298597062770796
+          ],
+          [
+            126.98170038197154,
+            36.298597062770796
+          ],
+          [
+            126.98179505934702,
+            36.29855855026932
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-180",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 27.657,
+        "point_count": 6,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98103764034317,
+            36.32089580112415
+          ],
+          [
+            126.9811796564064,
+            36.3208187761212
+          ],
+          [
+            126.98146368853284,
+            36.3208187761212
+          ],
+          [
+            126.98151102722058,
+            36.32078026361973
+          ],
+          [
+            126.9821264301612,
+            36.32078026361973
+          ],
+          [
+            126.98226844622441,
+            36.3208187761212
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-181",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 38.728,
+        "point_count": 8,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98108497903091,
+            36.287505462346324
+          ],
+          [
+            126.9811796564064,
+            36.28731289983896
+          ],
+          [
+            126.9811796564064,
+            36.287004799827166
+          ],
+          [
+            126.98136901115735,
+            36.28673521231685
+          ],
+          [
+            126.98155836590831,
+            36.28673521231685
+          ],
+          [
+            126.98179505934702,
+            36.28681223731979
+          ],
+          [
+            126.98203175278572,
+            36.28681223731979
+          ],
+          [
+            126.98207909147345,
+            36.286773724818325
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-182",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 18.828,
+        "point_count": 2,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98122699509413,
+            36.293898537590984
+          ],
+          [
+            126.98207909147345,
+            36.29382151258804
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-183",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 20.071,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98141634984509,
+            36.307108325596516
+          ],
+          [
+            126.98193707541023,
+            36.30695427559062
+          ],
+          [
+            126.98226844622441,
+            36.30699278809209
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-184",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.414,
+        "point_count": 3,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98179505934702,
+            36.322628863690475
+          ],
+          [
+            126.98179505934702,
+            36.32197415116542
+          ],
+          [
+            126.98184239803476,
+            36.32189712616247
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "proposal_id": "ink-line-185",
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "proposal_kind": "visible_linework_review_only",
+        "backend": "archaeotrace_ink_v2_centerline",
+        "upstream_commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+        "pixel_length": 19.071,
+        "point_count": 4,
+        "confidence": 1.0,
+        "review_status": "unreviewed"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            126.98184239803476,
+            36.31126767575569
+          ],
+          [
+            126.98217376884894,
+            36.311152138251266
+          ],
+          [
+            126.98241046228763,
+            36.311152138251266
+          ],
+          [
+            126.98264715572634,
+            36.31122916325422
+          ]
+        ]
+      }
+    }
+  ]
+}

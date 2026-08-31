@@ -1,0 +1,130 @@
+{
+  "version": "1",
+  "backend": "archaeotrace_ink_v2_centerline",
+  "upstream": {
+    "repository": "https://github.com/lzpxilfe/AI-Vectorizer-for-Archaeology",
+    "commit": "7960acddb4e82855e2088fdfdd2244799b63775c",
+    "algorithm": "Ink v2 centerline without interactive Live-Wire"
+  },
+  "review_only": true,
+  "holdout_included": false,
+  "settings": {
+    "scales_px": [
+      9,
+      15,
+      31
+    ],
+    "tile_size_px": 128,
+    "tile_halo_px": 16,
+    "response_percentile": 99.0,
+    "minimum_normalized_response": 0.04,
+    "minimum_component_pixels": 5,
+    "maximum_spur_length_px": 2.0,
+    "centerline_score": 1.0,
+    "foreground_weight": 0.75,
+    "fallback_foreground_percentile": 10.0
+  },
+  "minimum_length_px": 18.0,
+  "simplify_tolerance_px": 0.75,
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-mountain-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-mountain-ink-preview.png",
+      "centerline_fraction": 0.0676584243774414,
+      "centerline_pixels": 70945,
+      "proposal_count": 454
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-labels-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-labels-ink-preview.png",
+      "centerline_fraction": 0.04856109619140625,
+      "centerline_pixels": 50920,
+      "proposal_count": 191
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-hydro-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/173-buyeo-hydro-ink-preview.png",
+      "centerline_fraction": 0.05768585205078125,
+      "centerline_pixels": 60488,
+      "proposal_count": 185
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-mountain-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-mountain-ink-preview.png",
+      "centerline_fraction": 0.07427692413330078,
+      "centerline_pixels": 77885,
+      "proposal_count": 408
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-labels-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-labels-ink-preview.png",
+      "centerline_fraction": 0.0683736801147461,
+      "centerline_pixels": 71695,
+      "proposal_count": 459
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-hydro-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/174-cheongyang-hydro-ink-preview.png",
+      "centerline_fraction": 0.07754039764404297,
+      "centerline_pixels": 81307,
+      "proposal_count": 532
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "dense_mountain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-mountain-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-mountain-ink-preview.png",
+      "centerline_fraction": 0.08301258087158203,
+      "centerline_pixels": 87045,
+      "proposal_count": 573
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "labels_and_roads",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-labels-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-labels-ink-preview.png",
+      "centerline_fraction": 0.05510234832763672,
+      "centerline_pixels": 57779,
+      "proposal_count": 199
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "split": "development",
+      "scene_type": "hydrography_and_plain",
+      "ink_vector_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-hydro-ink-proposals.geojson",
+      "ink_preview_path": "data/derived/annotation_package/ink_candidate_vectors/177-nonsan-hydro-ink-preview.png",
+      "centerline_fraction": 0.06270217895507812,
+      "centerline_pixels": 65748,
+      "proposal_count": 270
+    }
+  ]
+}

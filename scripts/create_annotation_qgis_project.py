@@ -132,6 +132,8 @@ def main():
     candidate_index = json.loads(candidate_index_path.read_text(encoding="utf-8")) if candidate_index_path.exists() else None
     candidate_vector_index_path = index_path.parent / "candidate_vectors" / "candidate_vector_index.json"
     candidate_vector_index = json.loads(candidate_vector_index_path.read_text(encoding="utf-8")) if candidate_vector_index_path.exists() else None
+    ink_vector_index_path = index_path.parent / "ink_candidate_vectors" / "ink_candidate_vector_index.json"
+    ink_vector_index = json.loads(ink_vector_index_path.read_text(encoding="utf-8")) if ink_vector_index_path.exists() else None
     output_project = args.project.resolve() if args.project else index_path.with_name("annotation_project.qgz")
     package_path = index_path.with_name("contour_annotations.gpkg")
 
@@ -153,6 +155,7 @@ def main():
         holdout_group = root.addGroup("Holdout test tiles — do not train")
         candidate_group = root.insertGroup(1, "Automatic line candidates — review only") if candidate_index else None
         proposal_group = root.insertGroup(1, "Automatic vector proposals — review only") if candidate_vector_index else None
+        ink_proposal_group = root.insertGroup(1, "Ink v2 vector proposals — A/B review only") if ink_vector_index else None
         for tile in index["tiles"]:
             raster_path = Path(tile["raster_path"])
             if not raster_path.is_absolute():
@@ -190,6 +193,22 @@ def main():
                 project.addMapLayer(layer, False)
                 proposal_group.addLayer(layer)
             proposal_group.setItemVisibilityChecked(False)
+
+        if ink_vector_index:
+            for candidate in ink_vector_index["tiles"]:
+                vector_path = Path(candidate["ink_vector_path"])
+                if not vector_path.is_absolute():
+                    vector_path = repository / vector_path
+                layer = QgsVectorLayer(str(vector_path), f"ink A/B — {candidate['tile_id']}", "ogr")
+                if not layer.isValid():
+                    raise RuntimeError(f"Invalid Ink candidate vector: {vector_path}")
+                layer.setCrs(QgsCoordinateReferenceSystem("EPSG:5132"))
+                symbol = layer.renderer().symbol()
+                symbol.setColor(QColor("#16a34a"))
+                symbol.setWidth(0.65)
+                project.addMapLayer(layer, False)
+                ink_proposal_group.addLayer(layer)
+            ink_proposal_group.setItemVisibilityChecked(False)
 
         labels_group = root.insertGroup(0, "Annotation layers")
         if candidate_vector_index:

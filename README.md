@@ -19,6 +19,8 @@
 
 다른 컴퓨터에서 같은 QGIS 검수 작업을 이어가는 방법은 [Portable QGIS Review Workflow](docs/portable-review-workflow.md)를 따르세요. 저장소의 `Open Review Project.cmd`로 프로젝트를 열고, 작업 전 `Update Review Workspace.cmd`, QGIS 종료 후 `Save Review Work.cmd`를 사용합니다.
 
+흑백 선화 후보를 비교할 때는 [Ink v2 Centerline A/B Workflow](docs/ink-centerline-ab-workflow.md)를 사용합니다. 이 백엔드는 ArchaeoTrace Ink v2를 고정 커밋에서 이식한 **검수 전용 선화 중심선**이며, 기존 등고 후보나 `proposal_review` 큐를 덮어쓰지 않습니다. 공주 홀드아웃 타일은 기본 실행에서 제외됩니다.
+
 > **역사 지형도의 도·분·초 좌표를 그대로 입력해 도곽(外圍線) 폴리곤을 QGIS에 생성합니다.**
 
 [![버전](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/lzpxilfe/jap-map/releases)
@@ -134,7 +136,10 @@ git clone https://github.com/lzpxilfe/jap-map.git
 cd jap-map
 
 # 단위 테스트 실행 (QGIS 없이 실행 가능)
-python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core
+python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core tests.test_ink tests.test_ink_candidate_script
+
+# Ink v2 개발 타일 A/B 후보 생성 (NumPy와 Pillow 필요)
+python scripts/generate_ink_centerline_candidates.py data/derived/annotation_package/index.json
 
 # QGIS 통합 테스트
 # QGIS Python Console에서:
