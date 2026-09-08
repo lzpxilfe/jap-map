@@ -107,8 +107,8 @@ class QgisIntegrationTest(unittest.TestCase):
 
         plugin = HistoricalMapTools(_Iface())
         plugin.initGui()
-        self.assertEqual(len(plugin.actions), 8)
-        self.assertEqual(len(plugin.provider.algorithms()), 4)
+        self.assertEqual(len(plugin.actions), 9)
+        self.assertEqual(len(plugin.provider.algorithms()), 5)
         plugin.unload()
         self.assertEqual(plugin.actions, [])
 
@@ -131,6 +131,9 @@ class QgisIntegrationTest(unittest.TestCase):
         self.assertEqual(next(layer.getFeatures())["review_status"], "contour")
         self.assertEqual(classify_selected_proposals(iface, "symbol"), 1)
         self.assertEqual(next(layer.getFeatures())["review_status"], "symbol")
+
+
+
 
 
 def run_all():

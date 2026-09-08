@@ -14,8 +14,8 @@ class InkSettingsTest(unittest.TestCase):
         settings = InkCenterlineSettings()
         self.assertEqual(settings.scales_px, (9, 15, 31))
         self.assertEqual(settings.tile_size_px, 128)
-        self.assertEqual(INK_BACKEND_ID, "archaeotrace_ink_v2_centerline")
-        self.assertEqual(ARCHAEOTRACE_UPSTREAM_COMMIT, "7960acddb4e82855e2088fdfdd2244799b63775c")
+        self.assertEqual(INK_BACKEND_ID, "archaeotrace_ink_v2_evidence")
+        self.assertEqual(ARCHAEOTRACE_UPSTREAM_COMMIT, "f55d45da6228bd0c60e02618a2bb5031a55c54b4")
 
     def test_invalid_scale_and_halo_are_rejected_without_numpy(self):
         with self.assertRaises(ValueError):
@@ -42,9 +42,14 @@ class InkCenterlineTest(unittest.TestCase):
         self.assertTrue(result.centerline[16:80, 45:50].any())
         self.assertEqual(result.centerline.shape, image.shape)
         self.assertEqual(result.center_score.shape, image.shape)
+        self.assertEqual(result.support_score.shape, image.shape)
         self.assertEqual(result.scale_px.shape, image.shape)
+        self.assertEqual(result.tangent_x.shape, image.shape)
+        self.assertEqual(result.tangent_y.shape, image.shape)
+        self.assertEqual(result.coherence.shape, image.shape)
         self.assertFalse(result.centerline.flags.writeable)
         self.assertFalse(result.center_score.flags.writeable)
+        self.assertFalse(result.support_score.flags.writeable)
         self.assertAlmostEqual(result.centerline_fraction, float(result.centerline.mean()))
 
     def test_rgb_channels_preserve_coloured_ink(self):
@@ -79,6 +84,16 @@ class InkCenterlineTest(unittest.TestCase):
         self.assertGreater(proposals[0].pixel_length, 70)
         self.assertAlmostEqual(proposals[0].confidence, 0.8, places=5)
         self.assertEqual(len(proposals[0].points), 2)
+
+    def test_numpy_direction_fallback_produces_finite_axial_field(self):
+        from histcontour_core.ink import _ink_evidence_direction
+        np = self.np
+        score = np.zeros((24, 48), dtype=np.float32)
+        score[10:14, 5:43] = 0.8
+        tangent_x, tangent_y, coherence = _ink_evidence_direction(np, None, score)
+        self.assertTrue(np.isfinite(tangent_x).all())
+        self.assertTrue(np.isfinite(tangent_y).all())
+        self.assertGreater(float(coherence.max()), 0.1)
 
     def test_junctions_are_split_instead_of_guessed_through(self):
         np = self.np

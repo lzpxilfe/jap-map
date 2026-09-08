@@ -152,6 +152,9 @@ python scripts/prepare_ink_segment_review.py data/derived/annotation_package/ind
 # 라벨 수 확인 및 준비되면 도엽 단위 교차검증 기준 모델 학습
 python scripts/train_ink_segment_classifier.py data/derived/annotation_package/contour_annotations.gpkg
 
+# 합성 지도 120개 × 8개 변형에서 Ink 등고선 점수 기준선 측정
+python scripts/run_synthetic_ink_experiment.py --write-cases
+
 # QGIS 통합 테스트
 # QGIS Python Console에서:
 #   import unittest

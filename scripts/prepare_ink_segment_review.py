@@ -25,7 +25,7 @@ def parse_args():
     parser.add_argument(
         "--ink-index",
         type=Path,
-        default=Path("data/derived/annotation_package/ink_candidate_vectors/ink_candidate_vector_index.json"),
+        default=Path("data/derived/annotation_package/ink_candidate_vectors_evidence_v2/ink_candidate_vector_index.json"),
     )
     parser.add_argument(
         "--output-dir",
@@ -116,8 +116,14 @@ def load_records(tile: dict, vector_path: Path) -> tuple[list[dict], object]:
         properties = feature["properties"]
         points = map_to_pixel(tile, feature["geometry"]["coordinates"])
         descriptor = {
-            "segment_uid": f"{tile['tile_id']}:{properties['proposal_id']}",
+            "segment_uid": properties.get("segment_uid", f"{tile['tile_id']}:{properties['proposal_id']}"),
             "proposal_id": properties["proposal_id"],
+            "segment_geometry_id": properties.get("segment_geometry_id"),
+            "ink_run_id": properties.get("ink_run_id"),
+            "source_raster_sha256": properties.get("source_raster_sha256"),
+            "backend": properties.get("backend"),
+            "upstream_commit": properties.get("upstream_commit"),
+            "adapter_version": properties.get("adapter_version"),
             "tile_id": tile["tile_id"],
             "sheet_id": tile["sheet_id"],
             "split": tile["split"],
@@ -135,6 +141,12 @@ def _review_feature(record: dict, sample_rank: int) -> dict:
     properties = {
         "segment_uid": record["segment_uid"],
         "proposal_id": record["proposal_id"],
+        "segment_geometry_id": record["segment_geometry_id"],
+        "ink_run_id": record["ink_run_id"],
+        "source_raster_sha256": record["source_raster_sha256"],
+        "backend": record["backend"],
+        "upstream_commit": record["upstream_commit"],
+        "adapter_version": record["adapter_version"],
         "tile_id": record["tile_id"],
         "sheet_id": record["sheet_id"],
         "split": record["split"],
@@ -182,7 +194,7 @@ def _contact_sheet(tile_id: str, selected: list[dict], grayscale, output_path: P
     contact.save(output_path)
 
 
-def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch_size: int) -> dict:
+def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch_size: int, *, source_ink_index: Path | None = None) -> dict:
     if per_tile < 1 or patch_size < 32:
         raise ValueError("per_tile must be positive and patch_size must be at least 32")
     if ink_index.get("holdout_included"):
@@ -222,7 +234,7 @@ def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch
     }
     _atomic_json(queue_path, collection)
     result = {
-        "version": "1",
+        "version": "2",
         "purpose": "human labels for context-aware Ink segment classification",
         "automatic_contour_labels": False,
         "holdout_included": False,
@@ -232,7 +244,7 @@ def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch
         "per_tile": per_tile,
         "patch_size": patch_size,
         "selected_count": len(selected_features),
-        "source_ink_index": _portable(_resolve(Path("data/derived/annotation_package/ink_candidate_vectors/ink_candidate_vector_index.json"))),
+        "source_ink_index": _portable(source_ink_index) if source_ink_index else None,
         "review_candidates_path": _portable(queue_path),
         "tiles": tile_results,
     }
@@ -244,7 +256,7 @@ def main():
     args = parse_args()
     index = json.loads(_resolve(args.index).read_text(encoding="utf-8"))
     ink_index = json.loads(_resolve(args.ink_index).read_text(encoding="utf-8"))
-    result = prepare(index, ink_index, _resolve(args.output_dir), args.per_tile, args.patch_size)
+    result = prepare(index, ink_index, _resolve(args.output_dir), args.per_tile, args.patch_size, source_ink_index=_resolve(args.ink_index))
     print(result["review_candidates_path"])
     print(f"{result['selected_count']} unlabeled Ink segments; holdout excluded")
 

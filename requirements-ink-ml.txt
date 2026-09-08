@@ -1,0 +1,4 @@
+# Optional synthetic patch-model training and QGIS ONNX CPU scoring.
+torch>=2.4
+onnx>=1.16
+onnxruntime>=1.17,<2

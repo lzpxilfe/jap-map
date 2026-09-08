@@ -12,7 +12,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core
+      - run: python -m pip install numpy Pillow scipy scikit-image
+      - run: >-
+          python -m unittest -v
+          tests.test_coordinates tests.test_frame tests.test_histcontour_core
+          tests.test_ink tests.test_ink_candidate_script tests.test_contour_completion
+          tests.test_contour_completion_script tests.test_segment_review
+          tests.test_ink_segment_review_script tests.test_ink_guidance
+          tests.test_synthetic_ink tests.test_score_ink_segments
       - run: python scripts/build_plugin_zip.py
 
   qgis:

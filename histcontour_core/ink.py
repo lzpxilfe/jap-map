@@ -2,7 +2,7 @@
 
 This module adapts the QGIS-independent Ink v2 detector from ArchaeoTrace
 (``AI-Vectorizer-for-Archaeology``) at commit
-``7960acddb4e82855e2088fdfdd2244799b63775c``.  The upstream project and this
+``f55d45da6228bd0c60e02618a2bb5031a55c54b4``.  The upstream project and this
 repository are both GPL-2.0 licensed.  Adapted for jap-map on 2026-08-31.
 Only the multi-scale ink evidence and binary centreline path are carried here;
 interactive Live-Wire remains an explicit later integration rather than being
@@ -18,8 +18,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 
-ARCHAEOTRACE_UPSTREAM_COMMIT = "7960acddb4e82855e2088fdfdd2244799b63775c"
-INK_BACKEND_ID = "archaeotrace_ink_v2_centerline"
+ARCHAEOTRACE_UPSTREAM_COMMIT = "f55d45da6228bd0c60e02618a2bb5031a55c54b4"
+INK_BACKEND_ID = "archaeotrace_ink_v2_evidence"
+INK_EVIDENCE_SCHEMA = "jap-map-ink-evidence/2"
 
 
 class InkBackendUnavailable(RuntimeError):
@@ -64,7 +65,11 @@ class InkCenterlineResult:
 
     centerline: object
     center_score: object
+    support_score: object
     scale_px: object
+    tangent_x: object
+    tangent_y: object
+    coherence: object
     centerline_fraction: float
     backend: str = INK_BACKEND_ID
     upstream_commit: str = ARCHAEOTRACE_UPSTREAM_COMMIT
@@ -73,21 +78,43 @@ class InkCenterlineResult:
         np, _ndimage, _threshold_otsu, _skeletonize = _dependencies()
         centerline = np.array(self.centerline, dtype=bool, order="C", copy=True)
         center_score = np.array(self.center_score, dtype=np.float32, order="C", copy=True)
+        support_score = np.array(self.support_score, dtype=np.float32, order="C", copy=True)
         scale_px = np.array(self.scale_px, dtype=np.float32, order="C", copy=True)
-        if centerline.ndim != 2 or center_score.shape != centerline.shape or scale_px.shape != centerline.shape:
+        tangent_x = np.array(self.tangent_x, dtype=np.float32, order="C", copy=True)
+        tangent_y = np.array(self.tangent_y, dtype=np.float32, order="C", copy=True)
+        coherence = np.array(self.coherence, dtype=np.float32, order="C", copy=True)
+        if (
+            centerline.ndim != 2
+            or center_score.shape != centerline.shape
+            or support_score.shape != centerline.shape
+            or scale_px.shape != centerline.shape
+            or tangent_x.shape != centerline.shape
+            or tangent_y.shape != centerline.shape
+            or coherence.shape != centerline.shape
+        ):
             raise ValueError("Ink result arrays must share one non-empty 2D shape")
         if not np.isfinite(center_score).all() or np.any((center_score < 0.0) | (center_score > 1.0)):
             raise ValueError("center_score must contain finite values in [0, 1]")
+        if not np.isfinite(support_score).all() or np.any((support_score < 0.0) | (support_score > 1.0)):
+            raise ValueError("support_score must contain finite values in [0, 1]")
         if not np.isfinite(scale_px).all() or np.any(scale_px < 0.0):
             raise ValueError("scale_px must contain finite non-negative values")
+        if not np.isfinite(tangent_x).all() or not np.isfinite(tangent_y).all():
+            raise ValueError("Ink tangents must be finite")
+        if not np.isfinite(coherence).all() or np.any((coherence < 0.0) | (coherence > 1.0)):
+            raise ValueError("Ink coherence must contain finite values in [0, 1]")
         expected_fraction = float(centerline.mean())
         if abs(float(self.centerline_fraction) - expected_fraction) > 1e-12:
             raise ValueError("centerline_fraction does not match centerline")
-        for array in (centerline, center_score, scale_px):
+        for array in (centerline, center_score, support_score, scale_px, tangent_x, tangent_y, coherence):
             array.setflags(write=False)
         object.__setattr__(self, "centerline", centerline)
         object.__setattr__(self, "center_score", center_score)
+        object.__setattr__(self, "support_score", support_score)
         object.__setattr__(self, "scale_px", scale_px)
+        object.__setattr__(self, "tangent_x", tangent_x)
+        object.__setattr__(self, "tangent_y", tangent_y)
+        object.__setattr__(self, "coherence", coherence)
 
 
 def _dependencies():
@@ -401,6 +428,89 @@ def _tiled_centerline(np, ndimage, threshold_otsu, skeletonize, response, tile_o
     return centerline
 
 
+def _ink_evidence_direction(np, ndimage, center_score):
+    """Return the source-grid axial direction field used by Ink v2.
+
+    This is adapted from ArchaeoTrace's ``EdgeDetector`` at the pinned
+    upstream revision.  It deliberately reads the continuous, locally
+    normalized response before the binary centreline is pruned: deriving a
+    direction from a skeleton loses the tangent where labels and gaps make
+    manual bridging most useful.
+    """
+
+    score = np.asarray(center_score, dtype=np.float32)
+    zeros = np.zeros(score.shape, dtype=np.float32)
+    if min(score.shape, default=0) < 2 or not np.any(score > 0.0):
+        return zeros, zeros.copy(), zeros.copy()
+    if ndimage is not None:
+        smooth = ndimage.gaussian_filter(score, sigma=0.8, mode="nearest")
+    else:
+        smooth = _mean_filter(np, score, 3)
+    gradient_y, gradient_x = np.gradient(smooth)
+    tensor_xx = gradient_x * gradient_x
+    tensor_yy = gradient_y * gradient_y
+    tensor_xy = gradient_x * gradient_y
+    if ndimage is not None:
+        tensor_xx = ndimage.gaussian_filter(tensor_xx, sigma=1.4, mode="nearest")
+        tensor_yy = ndimage.gaussian_filter(tensor_yy, sigma=1.4, mode="nearest")
+        tensor_xy = ndimage.gaussian_filter(tensor_xy, sigma=1.4, mode="nearest")
+    else:
+        tensor_xx = _mean_filter(np, tensor_xx, 3)
+        tensor_yy = _mean_filter(np, tensor_yy, 3)
+        tensor_xy = _mean_filter(np, tensor_xy, 3)
+    discriminant = np.sqrt(np.maximum((tensor_xx - tensor_yy) ** 2 + 4.0 * tensor_xy ** 2, 0.0))
+    coherence = np.clip(discriminant / (tensor_xx + tensor_yy + 1e-6) * score, 0.0, 1.0).astype(np.float32)
+    gradient_angle = 0.5 * np.arctan2(2.0 * tensor_xy, tensor_xx - tensor_yy)
+    tangent_angle = gradient_angle + np.float32(np.pi / 2.0)
+    tangent_x = np.cos(tangent_angle).astype(np.float32)
+    tangent_y = np.sin(tangent_angle).astype(np.float32)
+    unoriented = coherence <= np.float32(1e-6)
+    tangent_x[unoriented] = 0.0
+    tangent_y[unoriented] = 0.0
+    return tangent_x, tangent_y, coherence
+
+
+def _tiled_ink_evidence_direction(np, ndimage, response, tile_origin, settings):
+    """Derive directions from the same anchored response halos as Ink v2."""
+
+    values = np.asarray(response, dtype=np.float32)
+    height, width = values.shape
+    origin_x, origin_y = tile_origin
+    tangent_x = np.zeros(values.shape, dtype=np.float32)
+    tangent_y = np.zeros(values.shape, dtype=np.float32)
+    coherence = np.zeros(values.shape, dtype=np.float32)
+    for global_y in _tile_ranges(origin_y, height, settings.tile_size_px):
+        local_y0 = max(0, global_y - origin_y)
+        local_y1 = min(height, global_y + settings.tile_size_px - origin_y)
+        if local_y0 >= local_y1:
+            continue
+        halo_y0 = max(0, local_y0 - settings.tile_halo_px)
+        halo_y1 = min(height, local_y1 + settings.tile_halo_px)
+        for global_x in _tile_ranges(origin_x, width, settings.tile_size_px):
+            local_x0 = max(0, global_x - origin_x)
+            local_x1 = min(width, global_x + settings.tile_size_px - origin_x)
+            if local_x0 >= local_x1:
+                continue
+            halo_x0 = max(0, local_x0 - settings.tile_halo_px)
+            halo_x1 = min(width, local_x1 + settings.tile_halo_px)
+            neighborhood = values[halo_y0:halo_y1, halo_x0:halo_x1]
+            positive = neighborhood[neighborhood > 0.0]
+            if positive.size == 0:
+                continue
+            scale = max(float(np.percentile(positive, settings.response_percentile)), np.finfo(np.float32).eps)
+            local_score = (np.clip(neighborhood / scale, 0.0, 1.0) * np.float32(settings.foreground_weight)).astype(np.float32)
+            local_x_field, local_y_field, local_coherence = _ink_evidence_direction(np, ndimage, local_score)
+            core_y0 = local_y0 - halo_y0
+            core_y1 = core_y0 + (local_y1 - local_y0)
+            core_x0 = local_x0 - halo_x0
+            core_x1 = core_x0 + (local_x1 - local_x0)
+            target, core = np.s_[local_y0:local_y1, local_x0:local_x1], np.s_[core_y0:core_y1, core_x0:core_x1]
+            tangent_x[target] = local_x_field[core]
+            tangent_y[target] = local_y_field[core]
+            coherence[target] = local_coherence[core]
+    return tangent_x, tangent_y, coherence
+
+
 def _crossing_number(np, centerline):
     active = np.asarray(centerline, dtype=bool)
     padded = np.pad(active, 1, mode="constant", constant_values=False)
@@ -511,7 +621,7 @@ def ink_centerline_candidates(
         raise ValueError("Ink evidence input must have non-empty dimensions")
     if min(shape) < 2 or not sources:
         zeros = np.zeros(shape, dtype=np.float32)
-        return InkCenterlineResult(np.zeros(shape, dtype=bool), zeros, zeros.copy(), 0.0)
+        return InkCenterlineResult(np.zeros(shape, dtype=bool), zeros, zeros.copy(), zeros.copy(), zeros.copy(), zeros.copy(), zeros.copy(), 0.0)
 
     dark_supports = []
     dark_context = max(settings.scales_px)
@@ -541,7 +651,7 @@ def ink_centerline_candidates(
 
     if not np.any(fused_response > 0.0):
         zeros = np.zeros(shape, dtype=np.float32)
-        return InkCenterlineResult(np.zeros(shape, dtype=bool), zeros, zeros.copy(), 0.0)
+        return InkCenterlineResult(np.zeros(shape, dtype=bool), zeros, zeros.copy(), zeros.copy(), zeros.copy(), zeros.copy(), zeros.copy(), 0.0)
 
     normalized = _normalize_tiled_response(np, fused_response, origin, settings)
     centerline = (
@@ -550,13 +660,19 @@ def ink_centerline_candidates(
         else np.zeros(shape, dtype=bool)
     )
     centerline = _prune_short_spurs(np, centerline, origin, settings)
-    center_score = (normalized * np.float32(settings.foreground_weight)).astype(np.float32)
+    support_score = (normalized * np.float32(settings.foreground_weight)).astype(np.float32)
+    center_score = support_score.copy()
     center_score[centerline] = np.float32(settings.centerline_score)
     winning_scale = np.where(normalized > 0.0, winning_scale, 0.0).astype(np.float32)
+    tangent_x, tangent_y, coherence = _tiled_ink_evidence_direction(np, ndimage, fused_response, origin, settings)
     return InkCenterlineResult(
         centerline=centerline,
         center_score=center_score,
+        support_score=support_score,
         scale_px=winning_scale,
+        tangent_x=tangent_x,
+        tangent_y=tangent_y,
+        coherence=coherence,
         centerline_fraction=float(centerline.mean()),
     )
 
@@ -564,6 +680,7 @@ def ink_centerline_candidates(
 __all__ = [
     "ARCHAEOTRACE_UPSTREAM_COMMIT",
     "INK_BACKEND_ID",
+    "INK_EVIDENCE_SCHEMA",
     "InkBackendUnavailable",
     "InkCenterlineResult",
     "InkCenterlineSettings",

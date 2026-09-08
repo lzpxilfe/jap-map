@@ -24,6 +24,7 @@ from histcontour_core.ink import (
     InkCenterlineSettings,
     ink_centerline_candidates,
 )
+from histcontour_core.provenance import INK_ADAPTER_VERSION, execution_id, polyline_geometry_id, sha256_file
 from histcontour_core.vectorization import skeleton_to_pixel_line_proposals
 
 
@@ -33,7 +34,7 @@ def parse_args():
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("data/derived/annotation_package/ink_candidate_vectors"),
+        default=Path("data/derived/annotation_package/ink_candidate_vectors_evidence_v2"),
     )
     parser.add_argument("--minimum-length-px", type=float, default=18.0)
     parser.add_argument("--simplify-tolerance-px", type=float, default=0.75)
@@ -88,19 +89,28 @@ def _map_coordinates(tile: dict, width: int, height: int, points) -> list[list[f
     ]
 
 
-def _feature(tile: dict, proposal, width: int, height: int) -> dict:
+def _feature(tile: dict, proposal, width: int, height: int, *, run_id: str, raster_digest: str, ink_support: float, direction_coherence: float) -> dict:
     return {
         "type": "Feature",
         "properties": {
             "proposal_id": proposal.proposal_id,
+            "segment_geometry_id": polyline_geometry_id(proposal.points),
+            "segment_uid": f"{run_id}:{polyline_geometry_id(proposal.points)}",
+            "ink_run_id": run_id,
+            "source_raster_sha256": raster_digest,
             "tile_id": tile["tile_id"],
             "sheet_id": tile["sheet_id"],
             "split": tile["split"],
             "proposal_kind": "visible_linework_review_only",
             "backend": INK_BACKEND_ID,
             "upstream_commit": ARCHAEOTRACE_UPSTREAM_COMMIT,
+            "adapter_version": INK_ADAPTER_VERSION,
             "pixel_length": round(proposal.pixel_length, 3),
             "point_count": len(proposal.points),
+            "ink_support": round(ink_support, 4),
+            "direction_coherence": round(direction_coherence, 4),
+            # Compatibility only. This describes retained Ink membership, not
+            # a contour probability; consumers should use ink_support.
             "confidence": round(proposal.confidence, 4),
             "review_status": "unreviewed",
         },
@@ -135,6 +145,7 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         raise RuntimeError(f"Missing Ink candidate dependency: {error.name}") from error
 
     raster_path = _resolve(tile["raster_path"])
+    raster_digest = sha256_file(raster_path)
     with Image.open(raster_path) as image:
         source = np.asarray(image).copy()
     if source.ndim not in (2, 3):
@@ -156,13 +167,38 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         proposal_prefix="ink-line",
     )
     output_dir = Path(output_directory)
+    run_id = execution_id(
+        raster_sha256=raster_digest,
+        backend=INK_BACKEND_ID,
+        upstream_commit=ARCHAEOTRACE_UPSTREAM_COMMIT,
+        settings=asdict(InkCenterlineSettings()),
+        vectorization={"minimum_length_px": minimum_length_px, "simplify_tolerance_px": simplify_tolerance_px},
+    )
     vector_path = output_dir / f"{tile['tile_id']}-ink-proposals.geojson"
     preview_path = output_dir / f"{tile['tile_id']}-ink-preview.png"
     collection = {
         "type": "FeatureCollection",
         "name": f"ink_candidate_proposals_{tile['tile_id']}",
         "crs": {"type": "name", "properties": {"name": f"urn:ogc:def:crs:{tile['crs_authid'].replace(':', '::')}"}},
-        "features": [_feature(tile, proposal, width, height) for proposal in proposals],
+        "features": [
+            _feature(
+                tile,
+                proposal,
+                width,
+                height,
+                run_id=run_id,
+                raster_digest=raster_digest,
+                ink_support=float(sum(
+                    evidence.support_score[int(round(y)), int(round(x))]
+                    for x, y in proposal.points
+                ) / len(proposal.points)),
+                direction_coherence=float(sum(
+                    evidence.coherence[int(round(y)), int(round(x))]
+                    for x, y in proposal.points
+                ) / len(proposal.points)),
+            )
+            for proposal in proposals
+        ],
     }
     _atomic_json(vector_path, collection)
     _preview(source, evidence.centerline, preview_path)
@@ -175,6 +211,8 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         "ink_preview_path": _portable_path(preview_path),
         "centerline_fraction": evidence.centerline_fraction,
         "centerline_pixels": int(evidence.centerline.sum()),
+        "ink_run_id": run_id,
+        "source_raster_sha256": raster_digest,
         "proposal_count": len(proposals),
     }
 
@@ -221,12 +259,13 @@ def main():
         results = list(executor.map(process_tile, tasks))
 
     result_index = {
-        "version": "1",
+        "version": "2",
         "backend": INK_BACKEND_ID,
+        "adapter_version": INK_ADAPTER_VERSION,
         "upstream": {
             "repository": "https://github.com/lzpxilfe/AI-Vectorizer-for-Archaeology",
             "commit": ARCHAEOTRACE_UPSTREAM_COMMIT,
-            "algorithm": "Ink v2 centerline without interactive Live-Wire",
+            "algorithm": "Ink v2 source-grid evidence with direction fields; batch vectors remain review-only",
         },
         "review_only": True,
         "holdout_included": bool(args.include_holdout),

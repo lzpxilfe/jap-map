@@ -8,7 +8,6 @@ pretending to have measured model quality.
 from __future__ import annotations
 
 import argparse
-from dataclasses import asdict
 import json
 from pathlib import Path
 import sqlite3
@@ -19,6 +18,7 @@ sys.path.insert(0, str(REPOSITORY))
 
 from histcontour_core.segment_review import (
     FEATURE_NAMES,
+    FEATURE_SCHEMA_VERSION,
     binary_metrics,
     labelled_training_records,
     train_logistic_baseline,
@@ -137,7 +137,8 @@ def train_report(records: list[dict], minimum_per_class: int = 20) -> dict:
             "evaluation": "leave-one-sheet-out cross-validation",
             "folds": folds,
             "aggregate_metrics": binary_metrics(all_labels, all_probabilities),
-            "model": asdict(final_model),
+            "model": final_model.to_dict(),
+            "feature_schema": FEATURE_SCHEMA_VERSION,
             "promotion_policy": "review predictions manually; do not replace Ink geometry or auto-create contour_gt",
         }
     )

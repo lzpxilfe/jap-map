@@ -25,6 +25,7 @@ FEATURE_NAMES = (
     "mid_fraction_context",
     "context_std",
 )
+FEATURE_SCHEMA_VERSION = "ink-segment-context/1"
 
 NEGATIVE_REVIEW_STATUSES = frozenset(("text", "road_river", "symbol"))
 
@@ -126,6 +127,41 @@ class LogisticModel:
     coefficients: tuple[float, ...]
     intercept: float
 
+    def to_dict(self) -> dict:
+        return {
+            "feature_schema": FEATURE_SCHEMA_VERSION,
+            "feature_names": list(self.feature_names),
+            "means": list(self.means),
+            "scales": list(self.scales),
+            "coefficients": list(self.coefficients),
+            "intercept": self.intercept,
+        }
+
+    @classmethod
+    def from_dict(cls, value: Mapping[str, object]) -> "LogisticModel":
+        if value.get("feature_schema") != FEATURE_SCHEMA_VERSION:
+            raise ValueError("model feature schema does not match this Ink scorer")
+        names = tuple(value.get("feature_names", ()))
+        if names != FEATURE_NAMES:
+            raise ValueError("model features do not match this Ink scorer")
+        try:
+            model = cls(
+                names,
+                tuple(float(item) for item in value["means"]),
+                tuple(float(item) for item in value["scales"]),
+                tuple(float(item) for item in value["coefficients"]),
+                float(value["intercept"]),
+            )
+        except (KeyError, TypeError, ValueError) as error:
+            raise ValueError("model is incomplete or malformed") from error
+        if not len(model.means) == len(model.scales) == len(model.coefficients) == len(FEATURE_NAMES):
+            raise ValueError("model parameter counts do not match Ink features")
+        if any(not math.isfinite(item) or item <= 0 for item in model.scales):
+            raise ValueError("model scales must be finite positive values")
+        if not all(math.isfinite(item) for item in (*model.means, *model.coefficients, model.intercept)):
+            raise ValueError("model parameters must be finite")
+        return model
+
     def probability(self, record: Mapping[str, object]) -> float:
         score = self.intercept
         for name, mean, scale, coefficient in zip(self.feature_names, self.means, self.scales, self.coefficients):
@@ -201,6 +237,7 @@ def binary_metrics(labels: Iterable[int], probabilities: Iterable[float], thresh
         "false_negative": false_negative,
         "precision": precision,
         "recall": recall,
+        "specificity": specificity,
         "f1": 2.0 * precision * recall / max(1e-12, precision + recall),
         "balanced_accuracy": (recall + specificity) / 2.0,
     }
