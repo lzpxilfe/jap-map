@@ -95,6 +95,11 @@ Ink 코어를 사용한다. 출력 `contour_score`는 선택한 JSON 기준 모�
 ONNX patch 모델이 있을 때에만 생성되며, 점수 레이어를 검토한 뒤에만
 분류한다.
 
+현재 검토 프로젝트에는 **Ink evidence v2 learning queue — synthetic scores**
+레이어가 포함되어 있다. 360개 개발 선분만 들어 있으며, `contour_score`는
+정렬·필터용 참고값이다. `Ctrl+1`–`Ctrl+4`와 `Ctrl+0`으로 붙인 사람 라벨만
+실제 지도 학습에 사용한다.
+
 ## 수동 Ink 추적
 
 플러그인 메뉴에서 **Ink Trace / Ink 추적·라벨 공백 연결…**을 고른 뒤,

@@ -40,6 +40,13 @@ learning queue — label this**. It contains 360 diverse Ink segments and uses
 the same shortcuts. Its labels are stored in the `ink_segment_review` layer of
 the same GeoPackage. See [Ink segment learning workflow](ink-segment-learning-workflow.md).
 
+The current independent-evidence round is **Annotation layers → Ink evidence
+v2 learning queue — synthetic scores**. It is a separate 360-segment queue in
+`ink_segment_review_v2`, so it does not alter the earlier queue. Attribute
+`ink_support` means local Ink evidence; `contour_score` comes from synthetic
+training and is only a sorting aid until historical-map labels exist. It uses
+the same review shortcuts. See [Ink evolution workflow](ink-evolution-workflow.md).
+
 ## Moving between computers safely
 
 The GeoPackage is a binary database and Git cannot merge two edited copies.

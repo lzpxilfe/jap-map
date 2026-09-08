@@ -64,6 +64,15 @@ class InkSegmentReviewScriptTest(unittest.TestCase):
         self.assertEqual(report["status"], "trained")
         self.assertEqual({fold["held_out_sheet"] for fold in report["folds"]}, {"sheet-a", "sheet-b", "sheet-c"})
 
+    def test_synthetic_scores_join_only_matching_segment_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "scores.geojson"
+            path.write_text(json.dumps({"type": "FeatureCollection", "features": [
+                {"type": "Feature", "properties": {"segment_uid": "run:segment", "ink_support": 0.42, "contour_score": 0.81}, "geometry": None}
+            ]}), encoding="utf-8")
+            lookup = PREPARE._score_lookup({"tiles": [{"path": str(path)}]})
+        self.assertEqual(lookup["run:segment"]["contour_score"], 0.81)
+
 
 if __name__ == "__main__":
     unittest.main()

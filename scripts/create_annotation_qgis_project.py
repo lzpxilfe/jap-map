@@ -16,14 +16,17 @@ from qgis.core import (
     QgsProject,
     QgsRasterLayer,
     QgsCategorizedSymbolRenderer,
+    QgsGraduatedSymbolRenderer,
     QgsLineSymbol,
     QgsRendererCategory,
+    QgsRendererRange,
     QgsVectorFileWriter,
     QgsVectorLayer,
 )
 
 REVIEW_LAYER_NAME = "proposal_review"
 INK_REVIEW_LAYER_NAME = "ink_segment_review"
+INK_REVIEW_V2_LAYER_NAME = "ink_segment_review_v2"
 REVIEW_QUEUE_PROPERTY = "historical_map_tools/review_queue"
 
 
@@ -110,14 +113,14 @@ def create_review_queue(package_path: Path, candidate_vector_index: dict, reposi
         raise RuntimeError(f"Could not create review queue: {result}")
 
 
-def create_ink_review_queue(package_path: Path, review_index: dict, repository: Path):
+def create_ink_review_queue(package_path: Path, review_index: dict, repository: Path, *, layer_name: str = INK_REVIEW_LAYER_NAME):
     """Import the sampled Ink queue once, preserving later human labels."""
-    if layer_exists(package_path, INK_REVIEW_LAYER_NAME):
+    if layer_exists(package_path, layer_name):
         return
     source_path = Path(review_index["review_candidates_path"])
     if not source_path.is_absolute():
         source_path = repository / source_path
-    source = QgsVectorLayer(str(source_path), INK_REVIEW_LAYER_NAME, "ogr")
+    source = QgsVectorLayer(str(source_path), layer_name, "ogr")
     if not source.isValid():
         raise RuntimeError(f"Invalid Ink review candidates: {source_path}")
     # GeoJSON readers default to EPSG:4326 even though this portable bundle's
@@ -125,7 +128,7 @@ def create_ink_review_queue(package_path: Path, review_index: dict, repository: 
     source.setCrs(QgsCoordinateReferenceSystem("EPSG:5132"))
     options = QgsVectorFileWriter.SaveVectorOptions()
     options.driverName = "GPKG"
-    options.layerName = INK_REVIEW_LAYER_NAME
+    options.layerName = layer_name
     options.actionOnExistingFile = QgsVectorFileWriter.CreateOrOverwriteLayer
     result = QgsVectorFileWriter.writeAsVectorFormatV3(
         source,
@@ -150,6 +153,19 @@ def apply_review_renderer(layer):
         symbol = QgsLineSymbol.createSimple({"color": colour, "width": width})
         categories.append(QgsRendererCategory(value, symbol, label))
     layer.setRenderer(QgsCategorizedSymbolRenderer("review_status", categories))
+
+
+def apply_contour_score_renderer(layer):
+    ranges = []
+    for lower, upper, label, colour in (
+        (0.0, 0.10, "0.00–0.10", "#64748b"),
+        (0.10, 0.50, "0.10–0.50", "#f59e0b"),
+        (0.50, 0.80, "0.50–0.80", "#e11d48"),
+        (0.80, 1.00, "0.80–1.00", "#16a34a"),
+    ):
+        symbol = QgsLineSymbol.createSimple({"color": colour, "width": "0.85"})
+        ranges.append(QgsRendererRange(lower, upper, symbol, label))
+    layer.setRenderer(QgsGraduatedSymbolRenderer("contour_score", ranges))
 
 
 def apply_completion_renderer(layer):
@@ -179,6 +195,8 @@ def main():
     completion_index = json.loads(completion_index_path.read_text(encoding="utf-8")) if completion_index_path.exists() else None
     ink_review_index_path = index_path.parent / "ink_segment_review" / "ink_segment_review_index.json"
     ink_review_index = json.loads(ink_review_index_path.read_text(encoding="utf-8")) if ink_review_index_path.exists() else None
+    ink_review_v2_index_path = index_path.parent / "ink_segment_review_evidence_v2" / "ink_segment_review_index.json"
+    ink_review_v2_index = json.loads(ink_review_v2_index_path.read_text(encoding="utf-8")) if ink_review_v2_index_path.exists() else None
     output_project = args.project.resolve() if args.project else index_path.with_name("annotation_project.qgz")
     package_path = index_path.with_name("contour_annotations.gpkg")
 
@@ -196,6 +214,8 @@ def main():
             create_review_queue(package_path, candidate_vector_index, repository)
         if ink_review_index:
             create_ink_review_queue(package_path, ink_review_index, repository)
+        if ink_review_v2_index:
+            create_ink_review_queue(package_path, ink_review_v2_index, repository, layer_name=INK_REVIEW_V2_LAYER_NAME)
 
         root = project.layerTreeRoot()
         development_group = root.addGroup("Development tiles")
@@ -282,6 +302,22 @@ def main():
             completion_group.setItemVisibilityChecked(False)
 
         labels_group = root.insertGroup(0, "Annotation layers")
+        score_preview_group = root.insertGroup(1, "Synthetic contour-score preview — review only") if ink_review_v2_index else None
+        if ink_review_v2_index:
+            score_preview = QgsVectorLayer(f"{package_path}|layername={INK_REVIEW_V2_LAYER_NAME}", "synthetic contour score — v2 review sample", "ogr")
+            if not score_preview.isValid():
+                raise RuntimeError("Invalid Ink evidence v2 score preview")
+            apply_contour_score_renderer(score_preview)
+            project.addMapLayer(score_preview, False)
+            score_preview_group.addLayer(score_preview)
+            score_preview_group.setItemVisibilityChecked(False)
+            ink_queue_v2 = QgsVectorLayer(f"{package_path}|layername={INK_REVIEW_V2_LAYER_NAME}", "Ink evidence v2 learning queue — synthetic scores", "ogr")
+            if not ink_queue_v2.isValid():
+                raise RuntimeError("Invalid Ink evidence v2 review queue")
+            ink_queue_v2.setCustomProperty(REVIEW_QUEUE_PROPERTY, True)
+            apply_review_renderer(ink_queue_v2)
+            project.addMapLayer(ink_queue_v2, False)
+            labels_group.addLayer(ink_queue_v2)
         if ink_review_index:
             ink_queue = QgsVectorLayer(f"{package_path}|layername={INK_REVIEW_LAYER_NAME}", "Ink segment learning queue — label this", "ogr")
             if not ink_queue.isValid():

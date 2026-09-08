@@ -32,6 +32,11 @@ def parse_args():
         type=Path,
         default=Path("data/derived/annotation_package/ink_segment_review"),
     )
+    parser.add_argument(
+        "--score-index",
+        type=Path,
+        help="Optional ink_contour_score_index.json; scores stay review-only",
+    )
     parser.add_argument("--per-tile", type=int, default=40)
     parser.add_argument("--patch-size", type=int, default=96)
     return parser.parse_args()
@@ -104,7 +109,7 @@ def context_features(grayscale, points) -> dict[str, float]:
     }
 
 
-def load_records(tile: dict, vector_path: Path) -> tuple[list[dict], object]:
+def load_records(tile: dict, vector_path: Path, score_by_segment_uid: dict[str, dict] | None = None) -> tuple[list[dict], object]:
     import numpy as np
     from PIL import Image
 
@@ -114,9 +119,11 @@ def load_records(tile: dict, vector_path: Path) -> tuple[list[dict], object]:
     records = []
     for feature in collection["features"]:
         properties = feature["properties"]
+        segment_uid = properties.get("segment_uid", f"{tile['tile_id']}:{properties['proposal_id']}")
+        score_properties = (score_by_segment_uid or {}).get(segment_uid, {})
         points = map_to_pixel(tile, feature["geometry"]["coordinates"])
         descriptor = {
-            "segment_uid": properties.get("segment_uid", f"{tile['tile_id']}:{properties['proposal_id']}"),
+            "segment_uid": segment_uid,
             "proposal_id": properties["proposal_id"],
             "segment_geometry_id": properties.get("segment_geometry_id"),
             "ink_run_id": properties.get("ink_run_id"),
@@ -124,6 +131,8 @@ def load_records(tile: dict, vector_path: Path) -> tuple[list[dict], object]:
             "backend": properties.get("backend"),
             "upstream_commit": properties.get("upstream_commit"),
             "adapter_version": properties.get("adapter_version"),
+            "ink_support": score_properties.get("ink_support", properties.get("ink_support")),
+            "contour_score": score_properties.get("contour_score"),
             "tile_id": tile["tile_id"],
             "sheet_id": tile["sheet_id"],
             "split": tile["split"],
@@ -147,6 +156,8 @@ def _review_feature(record: dict, sample_rank: int) -> dict:
         "backend": record["backend"],
         "upstream_commit": record["upstream_commit"],
         "adapter_version": record["adapter_version"],
+        "ink_support": record["ink_support"],
+        "contour_score": record["contour_score"],
         "tile_id": record["tile_id"],
         "sheet_id": record["sheet_id"],
         "split": record["split"],
@@ -194,12 +205,26 @@ def _contact_sheet(tile_id: str, selected: list[dict], grayscale, output_path: P
     contact.save(output_path)
 
 
-def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch_size: int, *, source_ink_index: Path | None = None) -> dict:
+def _score_lookup(score_index: dict | None) -> dict[str, dict]:
+    if not score_index:
+        return {}
+    records = {}
+    for tile in score_index.get("tiles", []):
+        collection = json.loads(_resolve(tile["path"]).read_text(encoding="utf-8"))
+        for feature in collection["features"]:
+            properties = feature["properties"]
+            if properties.get("segment_uid"):
+                records[properties["segment_uid"]] = properties
+    return records
+
+
+def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch_size: int, *, source_ink_index: Path | None = None, score_index: dict | None = None, source_score_index: Path | None = None) -> dict:
     if per_tile < 1 or patch_size < 32:
         raise ValueError("per_tile must be positive and patch_size must be at least 32")
     if ink_index.get("holdout_included"):
         raise ValueError("refusing an Ink index that includes holdout tiles")
     tiles = {tile["tile_id"]: tile for tile in index["tiles"]}
+    score_by_segment_uid = _score_lookup(score_index)
     output_dir.mkdir(parents=True, exist_ok=True)
     selected_features = []
     tile_results = []
@@ -208,7 +233,7 @@ def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch
         if tile["split"] == "holdout_test":
             raise ValueError(f"holdout tile reached review preparation: {tile['tile_id']}")
         vector_path = _resolve(ink_tile["ink_vector_path"])
-        records, grayscale = load_records(tile, vector_path)
+        records, grayscale = load_records(tile, vector_path, score_by_segment_uid)
         selected = diverse_sample(records, min(per_tile, len(records)))
         selected = sorted(selected, key=lambda record: record["segment_uid"])
         contact_path = output_dir / f"{tile['tile_id']}-ink-review-contact.png"
@@ -245,6 +270,8 @@ def prepare(index: dict, ink_index: dict, output_dir: Path, per_tile: int, patch
         "patch_size": patch_size,
         "selected_count": len(selected_features),
         "source_ink_index": _portable(source_ink_index) if source_ink_index else None,
+        "source_score_index": _portable(source_score_index) if source_score_index else None,
+        "scored_segments_available": len(score_by_segment_uid),
         "review_candidates_path": _portable(queue_path),
         "tiles": tile_results,
     }
@@ -256,7 +283,9 @@ def main():
     args = parse_args()
     index = json.loads(_resolve(args.index).read_text(encoding="utf-8"))
     ink_index = json.loads(_resolve(args.ink_index).read_text(encoding="utf-8"))
-    result = prepare(index, ink_index, _resolve(args.output_dir), args.per_tile, args.patch_size, source_ink_index=_resolve(args.ink_index))
+    score_path = _resolve(args.score_index) if args.score_index else None
+    score_index = json.loads(score_path.read_text(encoding="utf-8")) if score_path else None
+    result = prepare(index, ink_index, _resolve(args.output_dir), args.per_tile, args.patch_size, source_ink_index=_resolve(args.ink_index), score_index=score_index, source_score_index=score_path)
     print(result["review_candidates_path"])
     print(f"{result['selected_count']} unlabeled Ink segments; holdout excluded")
 
