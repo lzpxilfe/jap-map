@@ -1,0 +1,824 @@
+{
+  "schema": "jap-map-contour-semantic-labels/1",
+  "sample_manifest_sha256": "d99e89abbd50012d91e35704d4008cd0bd7258aecd1914201f7a063701988df7",
+  "reference_origin": "ai_visual_provisional",
+  "human_approved": false,
+  "status": "frozen_before_context_model_predictions",
+  "excluded_classes": [
+    "mixed",
+    "unsure"
+  ],
+  "limitations": "AI visual interpretations of source and target line only, not expert ground truth. Ambiguous ownership is excluded; three development sheets only. Prior baseline experiments were known, so this is not a human-blinded accuracy study.",
+  "items": [
+    {
+      "sample_id": "S001",
+      "class": "text",
+      "note": "Horizontal character stroke of 里."
+    },
+    {
+      "sample_id": "S002",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S003",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S004",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S005",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S006",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S007",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S008",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S009",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S010",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S011",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S012",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S013",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S014",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S015",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S016",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S017",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S018",
+      "class": "contour",
+      "note": "Follows the surrounding contour family in the source image."
+    },
+    {
+      "sample_id": "S019",
+      "class": "mixed",
+      "note": "Short angular fragment joins a building-like outline and adjacent line."
+    },
+    {
+      "sample_id": "S020",
+      "class": "text",
+      "note": "Parenthesis beside the place-name characters."
+    },
+    {
+      "sample_id": "S021",
+      "class": "text",
+      "note": "Stroke of a place-name character."
+    },
+    {
+      "sample_id": "S022",
+      "class": "contour",
+      "note": "Small arc follows adjacent elevation curves."
+    },
+    {
+      "sample_id": "S023",
+      "class": "text",
+      "note": "Right-hand stroke of 山."
+    },
+    {
+      "sample_id": "S024",
+      "class": "text",
+      "note": "Short character stroke above 里."
+    },
+    {
+      "sample_id": "S025",
+      "class": "text",
+      "note": "Stroke of 九 in the place name."
+    },
+    {
+      "sample_id": "S026",
+      "class": "unsure",
+      "note": "Arc touches a building; contour versus boundary is unclear."
+    },
+    {
+      "sample_id": "S027",
+      "class": "symbol",
+      "note": "Closed angular building footprint."
+    },
+    {
+      "sample_id": "S028",
+      "class": "contour",
+      "note": "Thin arc alongside nearby contour strokes below the label."
+    },
+    {
+      "sample_id": "S029",
+      "class": "contour",
+      "note": "Faint parallel contour arc."
+    },
+    {
+      "sample_id": "S030",
+      "class": "mixed",
+      "note": "Irregular arc with attached symbol/building-like turns."
+    },
+    {
+      "sample_id": "S031",
+      "class": "road_river",
+      "note": "One side of a double-line road."
+    },
+    {
+      "sample_id": "S032",
+      "class": "road_river",
+      "note": "Bank/linear boundary alongside the road in a flat field area."
+    },
+    {
+      "sample_id": "S033",
+      "class": "contour",
+      "note": "Long U-shaped elevation curve around a hill."
+    },
+    {
+      "sample_id": "S034",
+      "class": "road_river",
+      "note": "One side of a double-line road."
+    },
+    {
+      "sample_id": "S035",
+      "class": "road_river",
+      "note": "Curved side of a double-line road."
+    },
+    {
+      "sample_id": "S036",
+      "class": "symbol",
+      "note": "Closed angular building footprint."
+    },
+    {
+      "sample_id": "S037",
+      "class": "contour",
+      "note": "Faint arc among surrounding contour strokes."
+    },
+    {
+      "sample_id": "S038",
+      "class": "contour",
+      "note": "Thin curved contour below the road, with adjacent contour-like arcs."
+    },
+    {
+      "sample_id": "S039",
+      "class": "contour",
+      "note": "Chevron-shaped contour in a nested family."
+    },
+    {
+      "sample_id": "S040",
+      "class": "contour",
+      "note": "Small bend in the adjacent contour family."
+    },
+    {
+      "sample_id": "S041",
+      "class": "road_river",
+      "note": "Short road crossing/bridge-side edge."
+    },
+    {
+      "sample_id": "S042",
+      "class": "contour",
+      "note": "Faint contour segment alongside parallel curves."
+    },
+    {
+      "sample_id": "S043",
+      "class": "road_river",
+      "note": "Curved edge at a double-line road junction."
+    },
+    {
+      "sample_id": "S044",
+      "class": "road_river",
+      "note": "Bank/embankment edge in a flat field, not a contour family."
+    },
+    {
+      "sample_id": "S045",
+      "class": "text",
+      "note": "Stroke of 間 in the place name."
+    },
+    {
+      "sample_id": "S046",
+      "class": "road_river",
+      "note": "Edge of the crossing path/road."
+    },
+    {
+      "sample_id": "S047",
+      "class": "symbol",
+      "note": "Spot-height circle around a centre dot."
+    },
+    {
+      "sample_id": "S048",
+      "class": "symbol",
+      "note": "Angular building outline below a place-name character."
+    },
+    {
+      "sample_id": "S049",
+      "class": "road_river",
+      "note": "Side of a double-line road."
+    },
+    {
+      "sample_id": "S050",
+      "class": "road_river",
+      "note": "Side of a double-line road."
+    },
+    {
+      "sample_id": "S051",
+      "class": "contour",
+      "note": "U-shaped contour among nested hill curves."
+    },
+    {
+      "sample_id": "S052",
+      "class": "contour",
+      "note": "Long wavy elevation curve alongside surrounding contours."
+    },
+    {
+      "sample_id": "S053",
+      "class": "road_river",
+      "note": "Side of a double-line road."
+    },
+    {
+      "sample_id": "S054",
+      "class": "contour",
+      "note": "Contour bend near the 100 elevation annotation."
+    },
+    {
+      "sample_id": "S055",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S056",
+      "class": "unsure",
+      "note": "Curve beside a vertical label; text versus contour uncertain."
+    },
+    {
+      "sample_id": "S057",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S058",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S059",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S060",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S061",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S062",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S063",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S064",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S065",
+      "class": "unsure",
+      "note": "Isolated curve beside a valley road; bank versus contour uncertain."
+    },
+    {
+      "sample_id": "S066",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S067",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S068",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S069",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S070",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S071",
+      "class": "road_river",
+      "note": "Side of a double-line valley road."
+    },
+    {
+      "sample_id": "S072",
+      "class": "contour",
+      "note": "Follows a surrounding elevation-curve family."
+    },
+    {
+      "sample_id": "S073",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S074",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S075",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S076",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S077",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S078",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S079",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S080",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S081",
+      "class": "contour",
+      "note": "Follows the surrounding elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S082",
+      "class": "symbol",
+      "note": "Small closed oval above a stem, isolated among settlement/vegetation symbols, not a contour family."
+    },
+    {
+      "sample_id": "S083",
+      "class": "contour",
+      "note": "Bending line follows the parallel elevation curves beside the settlement."
+    },
+    {
+      "sample_id": "S084",
+      "class": "road_river",
+      "note": "Straight member of the paired road lines through the labels."
+    },
+    {
+      "sample_id": "S085",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S086",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S087",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S088",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S089",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S090",
+      "class": "contour",
+      "note": "Extended curve follows the local elevation-curve family."
+    },
+    {
+      "sample_id": "S091",
+      "class": "contour",
+      "note": "Short arc follows the nested elevation curves around the spot height."
+    },
+    {
+      "sample_id": "S092",
+      "class": "unsure",
+      "note": "Small curved stroke immediately under 田 could be label-adjacent contour or text; insufficient separation."
+    },
+    {
+      "sample_id": "S093",
+      "class": "unsure",
+      "note": "Tiny closed oval around a dark center may be a small contour or a point symbol."
+    },
+    {
+      "sample_id": "S094",
+      "class": "contour",
+      "note": "Faint segment aligned with nested slope contours."
+    },
+    {
+      "sample_id": "S095",
+      "class": "road_river",
+      "note": "Broad dashed member follows the paired route through the valley."
+    },
+    {
+      "sample_id": "S096",
+      "class": "contour",
+      "note": "Part of a nested closed hill contour, inside the road crossing."
+    },
+    {
+      "sample_id": "S097",
+      "class": "contour",
+      "note": "Continuous slope curve follows neighboring contours."
+    },
+    {
+      "sample_id": "S098",
+      "class": "contour",
+      "note": "Small curved contour fragment aligned with the neighboring elevation lines."
+    },
+    {
+      "sample_id": "S099",
+      "class": "unsure",
+      "note": "Small loop immediately over 五 is ambiguous between contour and label-associated stroke."
+    },
+    {
+      "sample_id": "S100",
+      "class": "symbol",
+      "note": "Angular boundary of a clustered building/settlement symbol."
+    },
+    {
+      "sample_id": "S101",
+      "class": "contour",
+      "note": "Arc follows the surrounding slope contour family."
+    },
+    {
+      "sample_id": "S102",
+      "class": "contour",
+      "note": "Faint bent line belongs to the nested contour set beside the label."
+    },
+    {
+      "sample_id": "S103",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S104",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S105",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S106",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S107",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S108",
+      "class": "contour",
+      "note": "Long curve follows the nested elevation-curve family in the source."
+    },
+    {
+      "sample_id": "S109",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S110",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S111",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S112",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S113",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S114",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S115",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S116",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S117",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S118",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S119",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S120",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S121",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S122",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S123",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S124",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S125",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S126",
+      "class": "contour",
+      "note": "Follows the surrounding nested and parallel elevation curves."
+    },
+    {
+      "sample_id": "S127",
+      "class": "unsure",
+      "note": "Horizontal stroke overlaps the place-name/furigana neighborhood and a faint contour; ambiguous ownership."
+    },
+    {
+      "sample_id": "S128",
+      "class": "symbol",
+      "note": "Tiny angular isolated symbol among sparse field/vegetation marks, not part of a continuous elevation family."
+    },
+    {
+      "sample_id": "S129",
+      "class": "road_river",
+      "note": "One strong member of the narrow paired road/river corridor."
+    },
+    {
+      "sample_id": "S130",
+      "class": "unsure",
+      "note": "Small vertical mark immediately beside 丙 may be phonetic text or a broken contour."
+    },
+    {
+      "sample_id": "S131",
+      "class": "contour",
+      "note": "Faint curved contour wraps around the place name and aligns with its neighboring line."
+    },
+    {
+      "sample_id": "S132",
+      "class": "unsure",
+      "note": "Thin oblique line below buildings could be a boundary or low contour."
+    },
+    {
+      "sample_id": "S133",
+      "class": "symbol",
+      "note": "Small closed angular building/settlement outline."
+    },
+    {
+      "sample_id": "S134",
+      "class": "unsure",
+      "note": "Curved boundary inside a rectangular field-like patch; insufficient elevation context."
+    },
+    {
+      "sample_id": "S135",
+      "class": "unsure",
+      "note": "Curve meets a branching line in open fields; contour versus field boundary uncertain."
+    },
+    {
+      "sample_id": "S136",
+      "class": "contour",
+      "note": "Faint curve follows the neighboring low relief contour family around the label."
+    },
+    {
+      "sample_id": "S137",
+      "class": "contour",
+      "note": "Short curve belongs to the contour set around the marked spot height."
+    },
+    {
+      "sample_id": "S138",
+      "class": "symbol",
+      "note": "Three sides of a small angular building attached to a settlement cluster."
+    },
+    {
+      "sample_id": "S139",
+      "class": "contour",
+      "note": "Extended winding curve in a family of slope contours."
+    },
+    {
+      "sample_id": "S140",
+      "class": "contour",
+      "note": "Nested curve around the small closed hill contour."
+    },
+    {
+      "sample_id": "S141",
+      "class": "unsure",
+      "note": "Long thin line crosses an open field and joins a branch; contour versus field boundary uncertain."
+    },
+    {
+      "sample_id": "S142",
+      "class": "road_river",
+      "note": "Long side of the narrow paired road/river corridor."
+    },
+    {
+      "sample_id": "S143",
+      "class": "road_river",
+      "note": "Long smooth bank/road edge paired with another close parallel line through settlements."
+    },
+    {
+      "sample_id": "S144",
+      "class": "contour",
+      "note": "Winding faint elevation curve beside a building and parallel contours."
+    },
+    {
+      "sample_id": "S145",
+      "class": "text",
+      "note": "Central vertical stroke of 山 in the place name."
+    },
+    {
+      "sample_id": "S146",
+      "class": "symbol",
+      "note": "Angular corner of a small building/settlement outline."
+    },
+    {
+      "sample_id": "S147",
+      "class": "contour",
+      "note": "Faint arc wraps the low hill below a building and follows an adjacent contour."
+    },
+    {
+      "sample_id": "S148",
+      "class": "contour",
+      "note": "Rounded low contour beside 花, following the nearby nested arc."
+    },
+    {
+      "sample_id": "S149",
+      "class": "symbol",
+      "note": "Small two-stem vegetation/field symbol in open space."
+    },
+    {
+      "sample_id": "S150",
+      "class": "text",
+      "note": "Top and right stroke of 里."
+    },
+    {
+      "sample_id": "S151",
+      "class": "road_river",
+      "note": "Paired meandering watercourse/embankment edge in a flat field."
+    },
+    {
+      "sample_id": "S152",
+      "class": "contour",
+      "note": "Short arc belongs to the local nested low-relief contour set."
+    },
+    {
+      "sample_id": "S153",
+      "class": "contour",
+      "note": "Upper arc of the contour family around the spot-height hill."
+    },
+    {
+      "sample_id": "S154",
+      "class": "contour",
+      "note": "Faint winding contour beside the houses, parallel to a neighboring contour."
+    },
+    {
+      "sample_id": "S155",
+      "class": "contour",
+      "note": "Faint side of a narrow hill contour cut by the road."
+    },
+    {
+      "sample_id": "S156",
+      "class": "contour",
+      "note": "Bent contour fragment follows the local low-relief curve family."
+    },
+    {
+      "sample_id": "S157",
+      "class": "road_river",
+      "note": "Long straight edge of the diagonal road corridor."
+    },
+    {
+      "sample_id": "S158",
+      "class": "road_river",
+      "note": "Long bank-like line bounds a broad flat channel/field together with the upper companion line."
+    },
+    {
+      "sample_id": "S159",
+      "class": "contour",
+      "note": "Nested winding hill contour distinct from the nearby paired watercourse."
+    },
+    {
+      "sample_id": "S160",
+      "class": "road_river",
+      "note": "Long smooth edge of the broad channel/field, paired with the lower bank line."
+    },
+    {
+      "sample_id": "S161",
+      "class": "road_river",
+      "note": "Broad smooth bank edge alongside the road through flat fields."
+    },
+    {
+      "sample_id": "S162",
+      "class": "contour",
+      "note": "Winding elevation curve joins the neighboring contour family."
+    }
+  ]
+}

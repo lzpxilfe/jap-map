@@ -1,0 +1,25 @@
+{
+  "schema": "jap-map-contour-region-probes/1",
+  "reference_origin": "ai_visual_region_selection",
+  "human_approved": false,
+  "purpose": "Small source-image spot checks, selected before viewing corner-safe extraction. Pixels <=176 inside each visually homogeneous region are visible-ink probes, not complete contour ground truth. No geometry or human labels are written to the annotation GeoPackage.",
+  "source_sha256": {
+    "173-buyeo-mountain": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+    "174-cheongyang-labels": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+    "177-nonsan-hydro": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a"
+  },
+  "regions": [
+    {"id": "buyeo-contour-west", "tile_id": "173-buyeo-mountain", "kind": "contour", "pixel_box": [20, 292, 95, 329]},
+    {"id": "buyeo-contour-centre", "tile_id": "173-buyeo-mountain", "kind": "contour", "pixel_box": [352, 556, 381, 598]},
+    {"id": "buyeo-letter", "tile_id": "173-buyeo-mountain", "kind": "text", "pixel_box": [507, 427, 542, 454]},
+    {"id": "buyeo-road", "tile_id": "173-buyeo-mountain", "kind": "road_river", "pixel_box": [96, 579, 130, 610]},
+    {"id": "cheongyang-contour-east", "tile_id": "174-cheongyang-labels", "kind": "contour", "pixel_box": [735, 737, 800, 788]},
+    {"id": "cheongyang-contour-centre", "tile_id": "174-cheongyang-labels", "kind": "contour", "pixel_box": [542, 734, 590, 794]},
+    {"id": "cheongyang-letter", "tile_id": "174-cheongyang-labels", "kind": "text", "pixel_box": [243, 386, 277, 421]},
+    {"id": "cheongyang-road", "tile_id": "174-cheongyang-labels", "kind": "road_river", "pixel_box": [260, 566, 279, 620]},
+    {"id": "nonsan-contour-west", "tile_id": "177-nonsan-hydro", "kind": "contour", "pixel_box": [17, 589, 33, 613]},
+    {"id": "nonsan-contour-south", "tile_id": "177-nonsan-hydro", "kind": "contour", "pixel_box": [26, 896, 57, 910]},
+    {"id": "nonsan-letter", "tile_id": "177-nonsan-hydro", "kind": "text", "pixel_box": [225, 98, 245, 123]},
+    {"id": "nonsan-river", "tile_id": "177-nonsan-hydro", "kind": "road_river", "pixel_box": [458, 144, 484, 183]}
+  ]
+}

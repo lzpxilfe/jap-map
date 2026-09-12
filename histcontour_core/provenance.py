@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Iterable, Mapping, Sequence
 
 
-INK_ADAPTER_VERSION = "jap-map-ink-adapter/2"
+INK_ADAPTER_VERSION = "jap-map-ink-adapter/3"
 
 
 def canonical_json(value: Mapping | Sequence | str | int | float | bool | None) -> str:

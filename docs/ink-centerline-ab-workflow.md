@@ -1,5 +1,11 @@
 # Ink v2 중심선 A/B 워크플로
 
+2026-09-12 갱신: 아래 v2 산출물은 과거 비교 자료로 보존합니다. 새 기본 벡터
+그래프는 모서리의 가짜 분기를 없앤 adapter v3이며, 기본 출력 위치는
+`ink_candidate_vectors_corner_safe_v3`입니다. 이전 미리보기는 필터 전 중심선
+전체를 그렸지만 새 미리보기는 실제 내보낸 벡터만 그립니다.
+[실제 도엽의 새 비교와 한계](contour-extraction-progress.md)를 먼저 확인하세요.
+
 ## 적용 범위
 
 이 저장소는 [AI Vectorizer for Archaeology](https://github.com/lzpxilfe/AI-Vectorizer-for-Archaeology)의 Ink v2 중심선 검출을 별도 A/B 백엔드로 사용합니다. 현재 기준 구현은 커밋 [`f55d45da6228bd0c60e02618a2bb5031a55c54b4`](https://github.com/lzpxilfe/AI-Vectorizer-for-Archaeology/tree/f55d45da6228bd0c60e02618a2bb5031a55c54b4)에 고정되어 있으며, 중심선 외에 source-grid 방향·coherence evidence도 기록합니다.

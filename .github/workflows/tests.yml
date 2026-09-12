@@ -20,6 +20,9 @@ jobs:
           tests.test_contour_completion_script tests.test_segment_review
           tests.test_ink_segment_review_script tests.test_ink_guidance
           tests.test_synthetic_ink tests.test_score_ink_segments
+          tests.test_margin_ocr tests.test_margin_ocr_sources
+          tests.test_skeleton_graph tests.test_contour_vector_comparison
+          tests.test_contour_context
       - run: python scripts/build_plugin_zip.py
 
   qgis:

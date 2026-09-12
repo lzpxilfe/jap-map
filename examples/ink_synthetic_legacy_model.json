@@ -1,0 +1,34 @@
+{
+  "status": "trained",
+  "provenance_note": "Frozen coefficients from the earlier jap-map synthetic experiment (source report SHA256 b10a5d0c1f21a8f3ddee9ec08c9d9f9c04ae06f29aebea6e75dc4ba1c7ac63a3). Its promotion flag refers ONLY to synthetic evaluation, never historical-map accuracy or human approval.",
+  "dataset_version": "synthetic-ink-terrain/1",
+  "terrain_count": 120,
+  "variants_per_terrain": 8,
+  "case_counts": {"train": 640, "validation": 160, "test": 160},
+  "segment_counts": {"all": 16256, "eligible": 15599, "train": 10354, "validation": 2553, "test": 2692},
+  "ignored_mixed_segments": 657,
+  "threshold": 0.1,
+  "validation_metrics": {
+    "count": 2553, "true_positive": 2059, "false_positive": 339, "true_negative": 137, "false_negative": 18,
+    "precision": 0.8586321934945789, "recall": 0.9913336543090997, "specificity": 0.28781512605042014,
+    "f1": 0.920223463687151, "balanced_accuracy": 0.6395743901797599
+  },
+  "test_metrics": {
+    "count": 2692, "true_positive": 2186, "false_positive": 346, "true_negative": 137, "false_negative": 23,
+    "precision": 0.863349131121643, "recall": 0.9895880488909009, "specificity": 0.2836438923395445,
+    "f1": 0.9221683189200592, "balanced_accuracy": 0.6366159706152227
+  },
+  "promotion_criteria": {"minimum_contour_recall": 0.95, "minimum_non_contour_reduction": 0.2},
+  "promotion_passed": true,
+  "historical_map_promotion_passed": false,
+  "model": {
+    "feature_schema": "ink-segment-context/1",
+    "feature_names": ["log_length", "straightness", "mean_turn", "max_turn", "bbox_fill", "bbox_aspect_log", "line_darkness", "dark_fraction_near", "dark_fraction_context", "mid_fraction_context", "context_std"],
+    "means": [3.4996031517383392, 0.922481121484702, 0.19740227387843573, 0.24123137228586686, 0.9784622168071917, 1.7579966460172334, 0.6530324848020125, 0.0859792535376859, 0.0698652667181294, 0.1187701309712383, 0.17195670306322794],
+    "scales": [0.5879127840241275, 0.1248767261912633, 0.059485458160063676, 0.07958902620341264, 0.09844776057125419, 0.6903232878109066, 0.1564590368433013, 0.07174076712087386, 0.0538873883565671, 0.0730787511247533, 0.04990048999968597],
+    "coefficients": [1.0635614561134727, 1.0638439065816776, 0.06028603563789966, 0.25674738102050154, 0.24131051504857262, -0.8542151422170475, -1.058944815635019, -0.18516909252762373, 0.6506780564948769, -0.6124991781613098, 0.40394710738486767],
+    "intercept": 0.9863814582641696
+  },
+  "feature_schema": "ink-segment-context/1",
+  "scope": "synthetic evidence only; this does not claim historical-map accuracy"
+}

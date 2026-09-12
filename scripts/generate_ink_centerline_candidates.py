@@ -25,7 +25,7 @@ from histcontour_core.ink import (
     ink_centerline_candidates,
 )
 from histcontour_core.provenance import INK_ADAPTER_VERSION, execution_id, polyline_geometry_id, sha256_file
-from histcontour_core.vectorization import skeleton_to_pixel_line_proposals
+from histcontour_core.vectorization import DEFAULT_DIAGONAL_POLICY, SKELETON_GRAPH_VERSION, skeleton_to_pixel_line_proposals
 
 
 def parse_args():
@@ -34,10 +34,14 @@ def parse_args():
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=Path("data/derived/annotation_package/ink_candidate_vectors_evidence_v2"),
+        default=Path("data/derived/annotation_package/ink_candidate_vectors_corner_safe_v3"),
     )
     parser.add_argument("--minimum-length-px", type=float, default=18.0)
     parser.add_argument("--simplify-tolerance-px", type=float, default=0.75)
+    parser.add_argument("--diagonal-policy", choices=("corner_safe", "full8"), default=DEFAULT_DIAGONAL_POLICY,
+                        help="corner_safe removes redundant diagonal shortcuts; full8 reproduces the earlier vector graph")
+    parser.add_argument("--junction-policy", choices=("split", "tangent_pairs"), default="split",
+                        help="optional research grouping at unambiguous existing three-way junctions; no gap filling")
     parser.add_argument("--workers", type=int, default=min(4, os.cpu_count() or 1))
     parser.add_argument(
         "--include-holdout",
@@ -121,7 +125,20 @@ def _feature(tile: dict, proposal, width: int, height: int, *, run_id: str, rast
     }
 
 
-def _preview(source, centerline, output_path: Path) -> None:
+def proposal_mask(proposals, shape):
+    """Rasterize the EXPORTED geometry, not the unfiltered Ink skeleton."""
+    import numpy as np
+    from PIL import Image, ImageDraw
+
+    height, width = shape
+    mask = Image.new("L", (width, height), 0)
+    draw = ImageDraw.Draw(mask)
+    for proposal in proposals:
+        draw.line([(round(x), round(y)) for x, y in proposal.points], fill=255, width=1)
+    return np.asarray(mask) > 0
+
+
+def _preview(source, proposals, output_path: Path) -> None:
     import numpy as np
     from PIL import Image
 
@@ -131,13 +148,16 @@ def _preview(source, centerline, output_path: Path) -> None:
     else:
         rgb = np.asarray(values[..., :3])
     rgb = np.clip(rgb, 0, 255).astype(np.uint8, copy=True)
+    centerline = proposal_mask(proposals, rgb.shape[:2])
     colour = np.array((6, 182, 212), dtype=np.float32)
     rgb[centerline] = (rgb[centerline].astype(np.float32) * 0.25 + colour * 0.75).astype(np.uint8)
     Image.fromarray(rgb).resize((384, 384)).save(output_path)
 
 
-def process_tile(task: tuple[dict, str, float, float]) -> dict:
-    tile, output_directory, minimum_length_px, simplify_tolerance_px = task
+def process_tile(task: tuple) -> dict:
+    tile, output_directory, minimum_length_px, simplify_tolerance_px, *extra = task
+    diagonal_policy = extra[0] if extra else DEFAULT_DIAGONAL_POLICY
+    junction_policy = extra[1] if len(extra) > 1 else "split"
     try:
         import numpy as np
         from PIL import Image
@@ -165,6 +185,8 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         simplify_tolerance_px=simplify_tolerance_px,
         likelihood_scale=1.0,
         proposal_prefix="ink-line",
+        diagonal_policy=diagonal_policy,
+        junction_policy=junction_policy,
     )
     output_dir = Path(output_directory)
     run_id = execution_id(
@@ -172,7 +194,8 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         backend=INK_BACKEND_ID,
         upstream_commit=ARCHAEOTRACE_UPSTREAM_COMMIT,
         settings=asdict(InkCenterlineSettings()),
-        vectorization={"minimum_length_px": minimum_length_px, "simplify_tolerance_px": simplify_tolerance_px},
+        vectorization={"minimum_length_px": minimum_length_px, "simplify_tolerance_px": simplify_tolerance_px,
+                       "graph_version": SKELETON_GRAPH_VERSION, "diagonal_policy": diagonal_policy, "junction_policy": junction_policy},
     )
     vector_path = output_dir / f"{tile['tile_id']}-ink-proposals.geojson"
     preview_path = output_dir / f"{tile['tile_id']}-ink-preview.png"
@@ -201,7 +224,7 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         ],
     }
     _atomic_json(vector_path, collection)
-    _preview(source, evidence.centerline, preview_path)
+    _preview(source, proposals, preview_path)
     return {
         "tile_id": tile["tile_id"],
         "sheet_id": tile["sheet_id"],
@@ -214,6 +237,8 @@ def process_tile(task: tuple[dict, str, float, float]) -> dict:
         "ink_run_id": run_id,
         "source_raster_sha256": raster_digest,
         "proposal_count": len(proposals),
+        "exported_vector_pixels": int(proposal_mask(proposals, (height, width)).sum()),
+        "preview_geometry": "exported_polylines",
     }
 
 
@@ -252,14 +277,17 @@ def main():
     output_dir = _resolve(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     tasks = [
-        (tile, str(output_dir), args.minimum_length_px, args.simplify_tolerance_px)
+        (tile, str(output_dir), args.minimum_length_px, args.simplify_tolerance_px, args.diagonal_policy, args.junction_policy)
         for tile in selected
     ]
     with ProcessPoolExecutor(max_workers=args.workers) as executor:
         results = list(executor.map(process_tile, tasks))
 
     result_index = {
-        "version": "2",
+        "version": "3",
+        "graph_version": SKELETON_GRAPH_VERSION,
+        "diagonal_policy": args.diagonal_policy,
+        "junction_policy": args.junction_policy,
         "backend": INK_BACKEND_ID,
         "adapter_version": INK_ADAPTER_VERSION,
         "upstream": {

@@ -1,0 +1,6427 @@
+{
+  "schema": "jap-map-contour-neighborhood-evidence/1",
+  "date": "2026-09-12",
+  "status": "completed_exploratory_research_only",
+  "human_approved": false,
+  "formal_human_accuracy": null,
+  "holdout_used": false,
+  "automatic_promotion": false,
+  "original_annotation_geopackage_modified": false,
+  "input_sha256": {
+    "source_index_sha256": "6d2870ef7d1692407334df72ce3db8b729cca4684f09b7c7a56f5b696162dfa5",
+    "sample_manifest_sha256": "d99e89abbd50012d91e35704d4008cd0bd7258aecd1914201f7a063701988df7",
+    "labels_sha256": "683e909fd2f2e7bcb48ded3c7495aad22e79122519f9668ecb06be03f8f0fcdc",
+    "legacy_model_sha256": "59921362fbda3641456c740edeca8adfde5c192ce24a7aa58d83e580edc11e33"
+  },
+  "source_vector_index_sha256": "60530fb3ba4bd88d691cad141d30331182539bc2f95fb33955037b1bee375748",
+  "probe_sha256": "081710e7155d47a9af910344ced0843e950143861901a94a3bea78ed1604a5e7",
+  "code_sha256": {
+    "histcontour_core/contour_context.py": "599b901760673ccbc82d7c81e5526c8bb71953999db9ab9578348969824dd39f",
+    "scripts/prepare_contour_semantic_samples.py": "4a4fabb294b1bd3bd90550c8eacdc7cc30e3164852bcbc48ab84017c24e47691",
+    "scripts/run_contour_context_experiment.py": "fc9766ed54933a71feb63e90bfe9f91cd9dbe1d46c13ece471344c81f971997d",
+    "scripts/score_contour_context_candidates.py": "df8f7623faaea48aa37c6a1d82c40108f7d17e9a546b8e1245fe717402041687",
+    "scripts/build_contour_comparison_project.py": "8d647bba0eabcde9a08e6768796ffda02defe53386a92f7c2a3d5a4c3b9c2fb3",
+    "tests/test_contour_context.py": "f7265d56f2834a21c1d2d375d6da0d02560efca579774657ec8bfb45ac225eac",
+    "tests/test_qgis.py": "bbc7dd99b651093496e6057d5b3d4601dc2c21113517a01b9a3d250864a2d23b"
+  },
+  "sampling": {
+    "seed": 20260912,
+    "rule": "SHA256(seed:segment_uid), six per [18,28), [28,60), [60,infinity) native-pixel-length bin per development tile; no model scores used",
+    "samples": 162,
+    "class_counts": {
+      "text": 9,
+      "contour": 106,
+      "mixed": 2,
+      "unsure": 12,
+      "symbol": 11,
+      "road_river": 22
+    },
+    "usable_samples": 148,
+    "manifest_reproduced_identically": true,
+    "reference_origin": "ai_visual_provisional",
+    "label_freeze_status": "frozen_before_context_model_predictions"
+  },
+  "protocol": {
+    "outer": "leave one of three development sheets out",
+    "thresholds": "inner two-sheet validation only; 0.95 first policy, 1.0 conservative policy added after inspecting the first results",
+    "regularization_l2": 0.1,
+    "feature_names": [
+      "log_length",
+      "straightness",
+      "mean_turn",
+      "max_turn",
+      "bbox_fill",
+      "bbox_aspect_log",
+      "line_darkness",
+      "dark_fraction_near",
+      "dark_fraction_context",
+      "mid_fraction_context",
+      "context_std",
+      "coherence_r12",
+      "normal_alignment_r12",
+      "alignment_spread_r12",
+      "ink_fraction_r12",
+      "coherence_r36",
+      "normal_alignment_r36",
+      "alignment_spread_r36",
+      "ink_fraction_r36",
+      "coherence_r84",
+      "normal_alignment_r84",
+      "alignment_spread_r84",
+      "ink_fraction_r84",
+      "profile_peaks",
+      "profile_peaks_spread",
+      "profile_near_peaks",
+      "profile_far_peaks",
+      "profile_bilateral",
+      "profile_peak_spacing_cv",
+      "profile_central_width",
+      "profile_contrast",
+      "profile_valid_fraction",
+      "smooth_turn_mean",
+      "smooth_turn_max"
+    ],
+    "final_all_data_model_used_for_candidate_comparison": false,
+    "posthoc_intersection_diagnostic": {
+      "contours_retained": 103,
+      "noncontours_rejected": 20,
+      "adopted": false
+    }
+  },
+  "metrics": {
+    "legacy_fixed_010": {
+      "contours_retained": 104,
+      "contours_rejected": 2,
+      "noncontours_retained": 29,
+      "noncontours_rejected": 13,
+      "provisional_contour_retention": 0.9811320754716981,
+      "provisional_noncontour_rejection": 0.30952380952380953,
+      "provisional_selected_precision": 0.7819548872180451,
+      "by_class": {
+        "contour": {
+          "total": 106,
+          "retained": 104
+        },
+        "text": {
+          "total": 9,
+          "retained": 6
+        },
+        "road_river": {
+          "total": 22,
+          "retained": 22
+        },
+        "symbol": {
+          "total": 11,
+          "retained": 1
+        }
+      }
+    },
+    "neighborhood_balanced": {
+      "contours_retained": 101,
+      "contours_rejected": 5,
+      "noncontours_retained": 17,
+      "noncontours_rejected": 25,
+      "provisional_contour_retention": 0.9528301886792453,
+      "provisional_noncontour_rejection": 0.5952380952380952,
+      "provisional_selected_precision": 0.8559322033898306,
+      "by_class": {
+        "contour": {
+          "total": 106,
+          "retained": 101
+        },
+        "text": {
+          "total": 9,
+          "retained": 4
+        },
+        "road_river": {
+          "total": 22,
+          "retained": 10
+        },
+        "symbol": {
+          "total": 11,
+          "retained": 3
+        }
+      }
+    },
+    "neighborhood_conservative": {
+      "contours_retained": 104,
+      "contours_rejected": 2,
+      "noncontours_retained": 28,
+      "noncontours_rejected": 14,
+      "provisional_contour_retention": 0.9811320754716981,
+      "provisional_noncontour_rejection": 0.3333333333333333,
+      "provisional_selected_precision": 0.7878787878787878,
+      "by_class": {
+        "contour": {
+          "total": 106,
+          "retained": 104
+        },
+        "text": {
+          "total": 9,
+          "retained": 7
+        },
+        "road_river": {
+          "total": 22,
+          "retained": 15
+        },
+        "symbol": {
+          "total": 11,
+          "retained": 6
+        }
+      }
+    },
+    "base11_balanced": {
+      "contours_retained": 92,
+      "contours_rejected": 14,
+      "noncontours_retained": 27,
+      "noncontours_rejected": 15,
+      "provisional_contour_retention": 0.8679245283018868,
+      "provisional_noncontour_rejection": 0.35714285714285715,
+      "provisional_selected_precision": 0.773109243697479,
+      "by_class": {
+        "contour": {
+          "total": 106,
+          "retained": 92
+        },
+        "text": {
+          "total": 9,
+          "retained": 7
+        },
+        "road_river": {
+          "total": 22,
+          "retained": 14
+        },
+        "symbol": {
+          "total": 11,
+          "retained": 6
+        }
+      }
+    },
+    "base11_conservative": {
+      "contours_retained": 106,
+      "contours_rejected": 0,
+      "noncontours_retained": 37,
+      "noncontours_rejected": 5,
+      "provisional_contour_retention": 1,
+      "provisional_noncontour_rejection": 0.11904761904761904,
+      "provisional_selected_precision": 0.7412587412587412,
+      "by_class": {
+        "contour": {
+          "total": 106,
+          "retained": 106
+        },
+        "text": {
+          "total": 9,
+          "retained": 9
+        },
+        "road_river": {
+          "total": 22,
+          "retained": 21
+        },
+        "symbol": {
+          "total": 11,
+          "retained": 7
+        }
+      }
+    }
+  },
+  "folds": [
+    {
+      "test_sheet": "173-buyeo",
+      "training_sample_ids": [
+        "S055",
+        "S057",
+        "S058",
+        "S059",
+        "S060",
+        "S061",
+        "S062",
+        "S063",
+        "S064",
+        "S066",
+        "S067",
+        "S068",
+        "S069",
+        "S070",
+        "S071",
+        "S072",
+        "S073",
+        "S074",
+        "S075",
+        "S076",
+        "S077",
+        "S078",
+        "S079",
+        "S080",
+        "S081",
+        "S082",
+        "S083",
+        "S084",
+        "S085",
+        "S086",
+        "S087",
+        "S088",
+        "S089",
+        "S090",
+        "S091",
+        "S094",
+        "S095",
+        "S096",
+        "S097",
+        "S098",
+        "S100",
+        "S101",
+        "S102",
+        "S103",
+        "S104",
+        "S105",
+        "S106",
+        "S107",
+        "S108",
+        "S109",
+        "S110",
+        "S111",
+        "S112",
+        "S113",
+        "S114",
+        "S115",
+        "S116",
+        "S117",
+        "S118",
+        "S119",
+        "S120",
+        "S121",
+        "S122",
+        "S123",
+        "S124",
+        "S125",
+        "S126",
+        "S128",
+        "S129",
+        "S131",
+        "S133",
+        "S136",
+        "S137",
+        "S138",
+        "S139",
+        "S140",
+        "S142",
+        "S143",
+        "S144",
+        "S145",
+        "S146",
+        "S147",
+        "S148",
+        "S149",
+        "S150",
+        "S151",
+        "S152",
+        "S153",
+        "S154",
+        "S155",
+        "S156",
+        "S157",
+        "S158",
+        "S159",
+        "S160",
+        "S161",
+        "S162"
+      ],
+      "test_sample_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010",
+        "S011",
+        "S012",
+        "S013",
+        "S014",
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S020",
+        "S021",
+        "S022",
+        "S023",
+        "S024",
+        "S025",
+        "S027",
+        "S028",
+        "S029",
+        "S031",
+        "S032",
+        "S033",
+        "S034",
+        "S035",
+        "S036",
+        "S037",
+        "S038",
+        "S039",
+        "S040",
+        "S041",
+        "S042",
+        "S043",
+        "S044",
+        "S045",
+        "S046",
+        "S047",
+        "S048",
+        "S049",
+        "S050",
+        "S051",
+        "S052",
+        "S053",
+        "S054"
+      ],
+      "inner_folds": [
+        {
+          "training_sample_ids": [
+            "S109",
+            "S110",
+            "S111",
+            "S112",
+            "S113",
+            "S114",
+            "S115",
+            "S116",
+            "S117",
+            "S118",
+            "S119",
+            "S120",
+            "S121",
+            "S122",
+            "S123",
+            "S124",
+            "S125",
+            "S126",
+            "S128",
+            "S129",
+            "S131",
+            "S133",
+            "S136",
+            "S137",
+            "S138",
+            "S139",
+            "S140",
+            "S142",
+            "S143",
+            "S144",
+            "S145",
+            "S146",
+            "S147",
+            "S148",
+            "S149",
+            "S150",
+            "S151",
+            "S152",
+            "S153",
+            "S154",
+            "S155",
+            "S156",
+            "S157",
+            "S158",
+            "S159",
+            "S160",
+            "S161",
+            "S162"
+          ],
+          "validation_sample_ids": [
+            "S055",
+            "S057",
+            "S058",
+            "S059",
+            "S060",
+            "S061",
+            "S062",
+            "S063",
+            "S064",
+            "S066",
+            "S067",
+            "S068",
+            "S069",
+            "S070",
+            "S071",
+            "S072",
+            "S073",
+            "S074",
+            "S075",
+            "S076",
+            "S077",
+            "S078",
+            "S079",
+            "S080",
+            "S081",
+            "S082",
+            "S083",
+            "S084",
+            "S085",
+            "S086",
+            "S087",
+            "S088",
+            "S089",
+            "S090",
+            "S091",
+            "S094",
+            "S095",
+            "S096",
+            "S097",
+            "S098",
+            "S100",
+            "S101",
+            "S102",
+            "S103",
+            "S104",
+            "S105",
+            "S106",
+            "S107",
+            "S108"
+          ]
+        },
+        {
+          "training_sample_ids": [
+            "S055",
+            "S057",
+            "S058",
+            "S059",
+            "S060",
+            "S061",
+            "S062",
+            "S063",
+            "S064",
+            "S066",
+            "S067",
+            "S068",
+            "S069",
+            "S070",
+            "S071",
+            "S072",
+            "S073",
+            "S074",
+            "S075",
+            "S076",
+            "S077",
+            "S078",
+            "S079",
+            "S080",
+            "S081",
+            "S082",
+            "S083",
+            "S084",
+            "S085",
+            "S086",
+            "S087",
+            "S088",
+            "S089",
+            "S090",
+            "S091",
+            "S094",
+            "S095",
+            "S096",
+            "S097",
+            "S098",
+            "S100",
+            "S101",
+            "S102",
+            "S103",
+            "S104",
+            "S105",
+            "S106",
+            "S107",
+            "S108"
+          ],
+          "validation_sample_ids": [
+            "S109",
+            "S110",
+            "S111",
+            "S112",
+            "S113",
+            "S114",
+            "S115",
+            "S116",
+            "S117",
+            "S118",
+            "S119",
+            "S120",
+            "S121",
+            "S122",
+            "S123",
+            "S124",
+            "S125",
+            "S126",
+            "S128",
+            "S129",
+            "S131",
+            "S133",
+            "S136",
+            "S137",
+            "S138",
+            "S139",
+            "S140",
+            "S142",
+            "S143",
+            "S144",
+            "S145",
+            "S146",
+            "S147",
+            "S148",
+            "S149",
+            "S150",
+            "S151",
+            "S152",
+            "S153",
+            "S154",
+            "S155",
+            "S156",
+            "S157",
+            "S158",
+            "S159",
+            "S160",
+            "S161",
+            "S162"
+          ]
+        }
+      ],
+      "inner_predictions": [
+        {
+          "sample_id": "S055",
+          "class": "contour",
+          "score": 0.47771271429538537
+        },
+        {
+          "sample_id": "S057",
+          "class": "contour",
+          "score": 0.9659581591943882
+        },
+        {
+          "sample_id": "S058",
+          "class": "contour",
+          "score": 0.3804290452349569
+        },
+        {
+          "sample_id": "S059",
+          "class": "contour",
+          "score": 0.9468898336445518
+        },
+        {
+          "sample_id": "S060",
+          "class": "contour",
+          "score": 0.8635510900783805
+        },
+        {
+          "sample_id": "S061",
+          "class": "contour",
+          "score": 0.7895121322918411
+        },
+        {
+          "sample_id": "S062",
+          "class": "contour",
+          "score": 0.7566428504739768
+        },
+        {
+          "sample_id": "S063",
+          "class": "contour",
+          "score": 0.8990851664928706
+        },
+        {
+          "sample_id": "S064",
+          "class": "contour",
+          "score": 0.7999122210967241
+        },
+        {
+          "sample_id": "S066",
+          "class": "contour",
+          "score": 0.786429607719353
+        },
+        {
+          "sample_id": "S067",
+          "class": "contour",
+          "score": 0.683956979891461
+        },
+        {
+          "sample_id": "S068",
+          "class": "contour",
+          "score": 0.7648527563140697
+        },
+        {
+          "sample_id": "S069",
+          "class": "contour",
+          "score": 0.6921225930888604
+        },
+        {
+          "sample_id": "S070",
+          "class": "contour",
+          "score": 0.5994723939748612
+        },
+        {
+          "sample_id": "S071",
+          "class": "road_river",
+          "score": 0.4572770809382451
+        },
+        {
+          "sample_id": "S072",
+          "class": "contour",
+          "score": 0.9061379051072747
+        },
+        {
+          "sample_id": "S073",
+          "class": "contour",
+          "score": 0.7571251908585683
+        },
+        {
+          "sample_id": "S074",
+          "class": "contour",
+          "score": 0.9711091408623095
+        },
+        {
+          "sample_id": "S075",
+          "class": "contour",
+          "score": 0.8043602680382501
+        },
+        {
+          "sample_id": "S076",
+          "class": "contour",
+          "score": 0.7498503496512353
+        },
+        {
+          "sample_id": "S077",
+          "class": "contour",
+          "score": 0.3093736027887687
+        },
+        {
+          "sample_id": "S078",
+          "class": "contour",
+          "score": 0.7299075343280281
+        },
+        {
+          "sample_id": "S079",
+          "class": "contour",
+          "score": 0.8918649804046104
+        },
+        {
+          "sample_id": "S080",
+          "class": "contour",
+          "score": 0.6430969808443778
+        },
+        {
+          "sample_id": "S081",
+          "class": "contour",
+          "score": 0.3670434555242678
+        },
+        {
+          "sample_id": "S082",
+          "class": "symbol",
+          "score": 0.04766237882596619
+        },
+        {
+          "sample_id": "S083",
+          "class": "contour",
+          "score": 0.7804733442442878
+        },
+        {
+          "sample_id": "S084",
+          "class": "road_river",
+          "score": 0.1388608750272634
+        },
+        {
+          "sample_id": "S085",
+          "class": "contour",
+          "score": 0.4530572603999126
+        },
+        {
+          "sample_id": "S086",
+          "class": "contour",
+          "score": 0.3571217457987424
+        },
+        {
+          "sample_id": "S087",
+          "class": "contour",
+          "score": 0.49558642105120737
+        },
+        {
+          "sample_id": "S088",
+          "class": "contour",
+          "score": 0.9076832702145188
+        },
+        {
+          "sample_id": "S089",
+          "class": "contour",
+          "score": 0.5133144178440089
+        },
+        {
+          "sample_id": "S090",
+          "class": "contour",
+          "score": 0.1330038113394654
+        },
+        {
+          "sample_id": "S091",
+          "class": "contour",
+          "score": 0.9198886307071306
+        },
+        {
+          "sample_id": "S094",
+          "class": "contour",
+          "score": 0.8721535557308822
+        },
+        {
+          "sample_id": "S095",
+          "class": "road_river",
+          "score": 0.10917493728401924
+        },
+        {
+          "sample_id": "S096",
+          "class": "contour",
+          "score": 0.7565902139024951
+        },
+        {
+          "sample_id": "S097",
+          "class": "contour",
+          "score": 0.9395833217807694
+        },
+        {
+          "sample_id": "S098",
+          "class": "contour",
+          "score": 0.7192551284631166
+        },
+        {
+          "sample_id": "S100",
+          "class": "symbol",
+          "score": 0.2023451137681771
+        },
+        {
+          "sample_id": "S101",
+          "class": "contour",
+          "score": 0.810412608483712
+        },
+        {
+          "sample_id": "S102",
+          "class": "contour",
+          "score": 0.4846263317619824
+        },
+        {
+          "sample_id": "S103",
+          "class": "contour",
+          "score": 0.9540869907438395
+        },
+        {
+          "sample_id": "S104",
+          "class": "contour",
+          "score": 0.8398723123339898
+        },
+        {
+          "sample_id": "S105",
+          "class": "contour",
+          "score": 0.5954155382731092
+        },
+        {
+          "sample_id": "S106",
+          "class": "contour",
+          "score": 0.8406353063682201
+        },
+        {
+          "sample_id": "S107",
+          "class": "contour",
+          "score": 0.5637400776432462
+        },
+        {
+          "sample_id": "S108",
+          "class": "contour",
+          "score": 0.9624159885086382
+        },
+        {
+          "sample_id": "S109",
+          "class": "contour",
+          "score": 0.9940636966667402
+        },
+        {
+          "sample_id": "S110",
+          "class": "contour",
+          "score": 0.9839069935369447
+        },
+        {
+          "sample_id": "S111",
+          "class": "contour",
+          "score": 0.8658975153372522
+        },
+        {
+          "sample_id": "S112",
+          "class": "contour",
+          "score": 0.8752463082328632
+        },
+        {
+          "sample_id": "S113",
+          "class": "contour",
+          "score": 0.7621461018704723
+        },
+        {
+          "sample_id": "S114",
+          "class": "contour",
+          "score": 0.737904320429692
+        },
+        {
+          "sample_id": "S115",
+          "class": "contour",
+          "score": 0.9310449187842363
+        },
+        {
+          "sample_id": "S116",
+          "class": "contour",
+          "score": 0.9225429084263426
+        },
+        {
+          "sample_id": "S117",
+          "class": "contour",
+          "score": 0.946361492010229
+        },
+        {
+          "sample_id": "S118",
+          "class": "contour",
+          "score": 0.9685146951207915
+        },
+        {
+          "sample_id": "S119",
+          "class": "contour",
+          "score": 0.9594234437102518
+        },
+        {
+          "sample_id": "S120",
+          "class": "contour",
+          "score": 0.21692117152541338
+        },
+        {
+          "sample_id": "S121",
+          "class": "contour",
+          "score": 0.9556821547077576
+        },
+        {
+          "sample_id": "S122",
+          "class": "contour",
+          "score": 0.9570573598181408
+        },
+        {
+          "sample_id": "S123",
+          "class": "contour",
+          "score": 0.9531410932888906
+        },
+        {
+          "sample_id": "S124",
+          "class": "contour",
+          "score": 0.9828900359488658
+        },
+        {
+          "sample_id": "S125",
+          "class": "contour",
+          "score": 0.9989733786434186
+        },
+        {
+          "sample_id": "S126",
+          "class": "contour",
+          "score": 0.9877385446714629
+        },
+        {
+          "sample_id": "S128",
+          "class": "symbol",
+          "score": 0.9985373458793458
+        },
+        {
+          "sample_id": "S129",
+          "class": "road_river",
+          "score": 0.04972676909441038
+        },
+        {
+          "sample_id": "S131",
+          "class": "contour",
+          "score": 0.9172279221750651
+        },
+        {
+          "sample_id": "S133",
+          "class": "symbol",
+          "score": 0.00833900281710981
+        },
+        {
+          "sample_id": "S136",
+          "class": "contour",
+          "score": 0.7978617466499175
+        },
+        {
+          "sample_id": "S137",
+          "class": "contour",
+          "score": 0.9793865300211817
+        },
+        {
+          "sample_id": "S138",
+          "class": "symbol",
+          "score": 0.18284452511130883
+        },
+        {
+          "sample_id": "S139",
+          "class": "contour",
+          "score": 0.9801897149728419
+        },
+        {
+          "sample_id": "S140",
+          "class": "contour",
+          "score": 0.9671166503839701
+        },
+        {
+          "sample_id": "S142",
+          "class": "road_river",
+          "score": 0.07705136919575407
+        },
+        {
+          "sample_id": "S143",
+          "class": "road_river",
+          "score": 0.4160101829213395
+        },
+        {
+          "sample_id": "S144",
+          "class": "contour",
+          "score": 0.9349333466536357
+        },
+        {
+          "sample_id": "S145",
+          "class": "text",
+          "score": 0.8870075890355649
+        },
+        {
+          "sample_id": "S146",
+          "class": "symbol",
+          "score": 0.17169031374209845
+        },
+        {
+          "sample_id": "S147",
+          "class": "contour",
+          "score": 0.9573469032495453
+        },
+        {
+          "sample_id": "S148",
+          "class": "contour",
+          "score": 0.9693408477493816
+        },
+        {
+          "sample_id": "S149",
+          "class": "symbol",
+          "score": 0.4809938244075371
+        },
+        {
+          "sample_id": "S150",
+          "class": "text",
+          "score": 0.6656170678016005
+        },
+        {
+          "sample_id": "S151",
+          "class": "road_river",
+          "score": 0.5826585922120902
+        },
+        {
+          "sample_id": "S152",
+          "class": "contour",
+          "score": 0.9918616552103535
+        },
+        {
+          "sample_id": "S153",
+          "class": "contour",
+          "score": 0.47962944405945884
+        },
+        {
+          "sample_id": "S154",
+          "class": "contour",
+          "score": 0.7179275825935781
+        },
+        {
+          "sample_id": "S155",
+          "class": "contour",
+          "score": 0.9735966432933002
+        },
+        {
+          "sample_id": "S156",
+          "class": "contour",
+          "score": 0.9968666376690947
+        },
+        {
+          "sample_id": "S157",
+          "class": "road_river",
+          "score": 0.2783630999902295
+        },
+        {
+          "sample_id": "S158",
+          "class": "road_river",
+          "score": 0.9839817544964784
+        },
+        {
+          "sample_id": "S159",
+          "class": "contour",
+          "score": 0.9860708251385925
+        },
+        {
+          "sample_id": "S160",
+          "class": "road_river",
+          "score": 0.9153866784972101
+        },
+        {
+          "sample_id": "S161",
+          "class": "road_river",
+          "score": 0.8023093320952688
+        },
+        {
+          "sample_id": "S162",
+          "class": "contour",
+          "score": 0.9788682339855341
+        }
+      ],
+      "model": {
+        "feature_schema": "ink-contour-neighborhood/1",
+        "feature_names": [
+          "log_length",
+          "straightness",
+          "mean_turn",
+          "max_turn",
+          "bbox_fill",
+          "bbox_aspect_log",
+          "line_darkness",
+          "dark_fraction_near",
+          "dark_fraction_context",
+          "mid_fraction_context",
+          "context_std",
+          "coherence_r12",
+          "normal_alignment_r12",
+          "alignment_spread_r12",
+          "ink_fraction_r12",
+          "coherence_r36",
+          "normal_alignment_r36",
+          "alignment_spread_r36",
+          "ink_fraction_r36",
+          "coherence_r84",
+          "normal_alignment_r84",
+          "alignment_spread_r84",
+          "ink_fraction_r84",
+          "profile_peaks",
+          "profile_peaks_spread",
+          "profile_near_peaks",
+          "profile_far_peaks",
+          "profile_bilateral",
+          "profile_peak_spacing_cv",
+          "profile_central_width",
+          "profile_contrast",
+          "profile_valid_fraction",
+          "smooth_turn_mean",
+          "smooth_turn_max"
+        ],
+        "means": [
+          3.809608169676567,
+          0.7645115436601716,
+          0.1818925139798382,
+          0.28600600650519964,
+          0.8878951172205921,
+          1.1364141978092988,
+          0.7442994784448564,
+          0.13166298168638577,
+          0.12083143666308317,
+          0.22437620158931423,
+          0.28351450242947057,
+          0.4999189130270604,
+          0.4240492352228187,
+          0.14980936047035764,
+          0.1484494337562433,
+          0.2711531352059743,
+          0.16838155178163774,
+          0.09077111633935005,
+          0.13607647423584437,
+          0.17337062326980004,
+          0.08153514083499541,
+          0.05935637531580034,
+          0.13165466149443203,
+          7.393814432989692,
+          1.2412249615786672,
+          2.3257731958762893,
+          5.068041237113402,
+          0.9628865979381441,
+          0.40708614320484615,
+          3.550515463917527,
+          0.641881675204051,
+          0.9658242108619409,
+          0.15010134446603354,
+          0.2800353815591303
+        ],
+        "scales": [
+          0.6890839545763633,
+          0.25330960385986756,
+          0.061693144672892476,
+          0.1065971418011673,
+          0.22230785854908633,
+          0.40990269466827717,
+          0.13483595910852367,
+          0.05930039292426967,
+          0.03465465022661626,
+          0.04976249230708694,
+          0.03178943482202465,
+          0.17591384205172894,
+          0.2214696479066622,
+          0.0951516545820252,
+          0.04792067428872782,
+          0.1496744494778162,
+          0.1716881261776515,
+          0.06486280396111155,
+          0.029997204595385442,
+          0.08993894191942596,
+          0.1127240696653434,
+          0.04550006530035413,
+          0.021452679808172406,
+          1.7049240048964358,
+          0.5721903807889791,
+          0.691223083108301,
+          1.2759105413937555,
+          0.1294871626235677,
+          0.09161074512535959,
+          2.435143202094965,
+          0.12697171134604535,
+          0.09217651517097081,
+          0.11333385763825496,
+          0.16853260249371974
+        ],
+        "coefficients": [
+          0.0054546786952349045,
+          0.06474393289636603,
+          0.13953474903971924,
+          0.06670147813555534,
+          0.27021479974409307,
+          -0.0046218383884316,
+          -0.09952912541412028,
+          -0.4236536545821943,
+          0.07532047987166647,
+          0.17107397575963562,
+          0.13617825467580938,
+          -0.06509525181476533,
+          -0.06896216094366879,
+          0.0028497627388831257,
+          -0.5869361793389993,
+          0.03372790464438703,
+          -0.22296239536640072,
+          0.2719349485099303,
+          -0.07112211154942638,
+          0.02604148069571562,
+          -0.2313782176229372,
+          0.29318300291477695,
+          0.46906232694115224,
+          0.1116525840354032,
+          -0.13883128843167744,
+          0.044202454720896234,
+          0.12524813340203073,
+          0.23124255342111213,
+          -0.17268570570559738,
+          -0.40173225984778566,
+          -0.3883488459243902,
+          -0.05244820401396509,
+          -0.2878375394686872,
+          -0.15583797438303224
+        ],
+        "intercept": 1.0894512706647732,
+        "l2": 0.1,
+        "training_count": 97,
+        "training_contours": 77,
+        "review_only": true
+      },
+      "thresholds": {
+        "balanced": 0.3571217457987424,
+        "conservative": 0.1330038113394654
+      }
+    },
+    {
+      "test_sheet": "174-cheongyang",
+      "training_sample_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010",
+        "S011",
+        "S012",
+        "S013",
+        "S014",
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S020",
+        "S021",
+        "S022",
+        "S023",
+        "S024",
+        "S025",
+        "S027",
+        "S028",
+        "S029",
+        "S031",
+        "S032",
+        "S033",
+        "S034",
+        "S035",
+        "S036",
+        "S037",
+        "S038",
+        "S039",
+        "S040",
+        "S041",
+        "S042",
+        "S043",
+        "S044",
+        "S045",
+        "S046",
+        "S047",
+        "S048",
+        "S049",
+        "S050",
+        "S051",
+        "S052",
+        "S053",
+        "S054",
+        "S109",
+        "S110",
+        "S111",
+        "S112",
+        "S113",
+        "S114",
+        "S115",
+        "S116",
+        "S117",
+        "S118",
+        "S119",
+        "S120",
+        "S121",
+        "S122",
+        "S123",
+        "S124",
+        "S125",
+        "S126",
+        "S128",
+        "S129",
+        "S131",
+        "S133",
+        "S136",
+        "S137",
+        "S138",
+        "S139",
+        "S140",
+        "S142",
+        "S143",
+        "S144",
+        "S145",
+        "S146",
+        "S147",
+        "S148",
+        "S149",
+        "S150",
+        "S151",
+        "S152",
+        "S153",
+        "S154",
+        "S155",
+        "S156",
+        "S157",
+        "S158",
+        "S159",
+        "S160",
+        "S161",
+        "S162"
+      ],
+      "test_sample_ids": [
+        "S055",
+        "S057",
+        "S058",
+        "S059",
+        "S060",
+        "S061",
+        "S062",
+        "S063",
+        "S064",
+        "S066",
+        "S067",
+        "S068",
+        "S069",
+        "S070",
+        "S071",
+        "S072",
+        "S073",
+        "S074",
+        "S075",
+        "S076",
+        "S077",
+        "S078",
+        "S079",
+        "S080",
+        "S081",
+        "S082",
+        "S083",
+        "S084",
+        "S085",
+        "S086",
+        "S087",
+        "S088",
+        "S089",
+        "S090",
+        "S091",
+        "S094",
+        "S095",
+        "S096",
+        "S097",
+        "S098",
+        "S100",
+        "S101",
+        "S102",
+        "S103",
+        "S104",
+        "S105",
+        "S106",
+        "S107",
+        "S108"
+      ],
+      "inner_folds": [
+        {
+          "training_sample_ids": [
+            "S109",
+            "S110",
+            "S111",
+            "S112",
+            "S113",
+            "S114",
+            "S115",
+            "S116",
+            "S117",
+            "S118",
+            "S119",
+            "S120",
+            "S121",
+            "S122",
+            "S123",
+            "S124",
+            "S125",
+            "S126",
+            "S128",
+            "S129",
+            "S131",
+            "S133",
+            "S136",
+            "S137",
+            "S138",
+            "S139",
+            "S140",
+            "S142",
+            "S143",
+            "S144",
+            "S145",
+            "S146",
+            "S147",
+            "S148",
+            "S149",
+            "S150",
+            "S151",
+            "S152",
+            "S153",
+            "S154",
+            "S155",
+            "S156",
+            "S157",
+            "S158",
+            "S159",
+            "S160",
+            "S161",
+            "S162"
+          ],
+          "validation_sample_ids": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025",
+            "S027",
+            "S028",
+            "S029",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046",
+            "S047",
+            "S048",
+            "S049",
+            "S050",
+            "S051",
+            "S052",
+            "S053",
+            "S054"
+          ]
+        },
+        {
+          "training_sample_ids": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025",
+            "S027",
+            "S028",
+            "S029",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046",
+            "S047",
+            "S048",
+            "S049",
+            "S050",
+            "S051",
+            "S052",
+            "S053",
+            "S054"
+          ],
+          "validation_sample_ids": [
+            "S109",
+            "S110",
+            "S111",
+            "S112",
+            "S113",
+            "S114",
+            "S115",
+            "S116",
+            "S117",
+            "S118",
+            "S119",
+            "S120",
+            "S121",
+            "S122",
+            "S123",
+            "S124",
+            "S125",
+            "S126",
+            "S128",
+            "S129",
+            "S131",
+            "S133",
+            "S136",
+            "S137",
+            "S138",
+            "S139",
+            "S140",
+            "S142",
+            "S143",
+            "S144",
+            "S145",
+            "S146",
+            "S147",
+            "S148",
+            "S149",
+            "S150",
+            "S151",
+            "S152",
+            "S153",
+            "S154",
+            "S155",
+            "S156",
+            "S157",
+            "S158",
+            "S159",
+            "S160",
+            "S161",
+            "S162"
+          ]
+        }
+      ],
+      "inner_predictions": [
+        {
+          "sample_id": "S001",
+          "class": "text",
+          "score": 0.5813403738382917
+        },
+        {
+          "sample_id": "S002",
+          "class": "contour",
+          "score": 0.5962920048610033
+        },
+        {
+          "sample_id": "S003",
+          "class": "contour",
+          "score": 0.7467608238861095
+        },
+        {
+          "sample_id": "S004",
+          "class": "contour",
+          "score": 0.9871968385678453
+        },
+        {
+          "sample_id": "S005",
+          "class": "contour",
+          "score": 0.9175733336157095
+        },
+        {
+          "sample_id": "S006",
+          "class": "contour",
+          "score": 0.5042412681436578
+        },
+        {
+          "sample_id": "S007",
+          "class": "contour",
+          "score": 0.903024373754435
+        },
+        {
+          "sample_id": "S008",
+          "class": "contour",
+          "score": 0.8322554282434682
+        },
+        {
+          "sample_id": "S009",
+          "class": "contour",
+          "score": 0.9789288402307347
+        },
+        {
+          "sample_id": "S010",
+          "class": "contour",
+          "score": 0.7706889275585821
+        },
+        {
+          "sample_id": "S011",
+          "class": "contour",
+          "score": 0.43001102530329505
+        },
+        {
+          "sample_id": "S012",
+          "class": "contour",
+          "score": 0.6589664598526545
+        },
+        {
+          "sample_id": "S013",
+          "class": "contour",
+          "score": 0.661144259663354
+        },
+        {
+          "sample_id": "S014",
+          "class": "contour",
+          "score": 0.26818584275713225
+        },
+        {
+          "sample_id": "S015",
+          "class": "contour",
+          "score": 0.5062426155549258
+        },
+        {
+          "sample_id": "S016",
+          "class": "contour",
+          "score": 0.9013369449108636
+        },
+        {
+          "sample_id": "S017",
+          "class": "contour",
+          "score": 0.7789556802261639
+        },
+        {
+          "sample_id": "S018",
+          "class": "contour",
+          "score": 0.8380771748617714
+        },
+        {
+          "sample_id": "S020",
+          "class": "text",
+          "score": 0.21833656795216563
+        },
+        {
+          "sample_id": "S021",
+          "class": "text",
+          "score": 0.1107143757299075
+        },
+        {
+          "sample_id": "S022",
+          "class": "contour",
+          "score": 0.8946855496109277
+        },
+        {
+          "sample_id": "S023",
+          "class": "text",
+          "score": 0.45997409904341585
+        },
+        {
+          "sample_id": "S024",
+          "class": "text",
+          "score": 0.950565846789825
+        },
+        {
+          "sample_id": "S025",
+          "class": "text",
+          "score": 0.24393965131152204
+        },
+        {
+          "sample_id": "S027",
+          "class": "symbol",
+          "score": 0.043382484701436456
+        },
+        {
+          "sample_id": "S028",
+          "class": "contour",
+          "score": 0.8713903886788773
+        },
+        {
+          "sample_id": "S029",
+          "class": "contour",
+          "score": 0.9277545267707177
+        },
+        {
+          "sample_id": "S031",
+          "class": "road_river",
+          "score": 0.017110900180256784
+        },
+        {
+          "sample_id": "S032",
+          "class": "road_river",
+          "score": 0.006224104263868878
+        },
+        {
+          "sample_id": "S033",
+          "class": "contour",
+          "score": 0.7972182061792727
+        },
+        {
+          "sample_id": "S034",
+          "class": "road_river",
+          "score": 0.019307328396663815
+        },
+        {
+          "sample_id": "S035",
+          "class": "road_river",
+          "score": 0.1261938171077398
+        },
+        {
+          "sample_id": "S036",
+          "class": "symbol",
+          "score": 0.05403950722859714
+        },
+        {
+          "sample_id": "S037",
+          "class": "contour",
+          "score": 0.8858915097200376
+        },
+        {
+          "sample_id": "S038",
+          "class": "contour",
+          "score": 0.7220474569070635
+        },
+        {
+          "sample_id": "S039",
+          "class": "contour",
+          "score": 0.9539121167243894
+        },
+        {
+          "sample_id": "S040",
+          "class": "contour",
+          "score": 0.567312376717946
+        },
+        {
+          "sample_id": "S041",
+          "class": "road_river",
+          "score": 0.017621480410417553
+        },
+        {
+          "sample_id": "S042",
+          "class": "contour",
+          "score": 0.8589872342422674
+        },
+        {
+          "sample_id": "S043",
+          "class": "road_river",
+          "score": 0.354828474706802
+        },
+        {
+          "sample_id": "S044",
+          "class": "road_river",
+          "score": 0.022776581414917507
+        },
+        {
+          "sample_id": "S045",
+          "class": "text",
+          "score": 0.17011116059474704
+        },
+        {
+          "sample_id": "S046",
+          "class": "road_river",
+          "score": 0.4326818129176473
+        },
+        {
+          "sample_id": "S047",
+          "class": "symbol",
+          "score": 0.04973793081828051
+        },
+        {
+          "sample_id": "S048",
+          "class": "symbol",
+          "score": 0.5728286900729256
+        },
+        {
+          "sample_id": "S049",
+          "class": "road_river",
+          "score": 0.647116376602113
+        },
+        {
+          "sample_id": "S050",
+          "class": "road_river",
+          "score": 0.5445219953187909
+        },
+        {
+          "sample_id": "S051",
+          "class": "contour",
+          "score": 0.8489099946688975
+        },
+        {
+          "sample_id": "S052",
+          "class": "contour",
+          "score": 0.4281358586838619
+        },
+        {
+          "sample_id": "S053",
+          "class": "road_river",
+          "score": 0.287732951014679
+        },
+        {
+          "sample_id": "S054",
+          "class": "contour",
+          "score": 0.7944358480626519
+        },
+        {
+          "sample_id": "S109",
+          "class": "contour",
+          "score": 0.9579891015840971
+        },
+        {
+          "sample_id": "S110",
+          "class": "contour",
+          "score": 0.8742683245128458
+        },
+        {
+          "sample_id": "S111",
+          "class": "contour",
+          "score": 0.835382755198507
+        },
+        {
+          "sample_id": "S112",
+          "class": "contour",
+          "score": 0.9066179662591519
+        },
+        {
+          "sample_id": "S113",
+          "class": "contour",
+          "score": 0.8017047180677263
+        },
+        {
+          "sample_id": "S114",
+          "class": "contour",
+          "score": 0.8908375845042504
+        },
+        {
+          "sample_id": "S115",
+          "class": "contour",
+          "score": 0.8806522183913531
+        },
+        {
+          "sample_id": "S116",
+          "class": "contour",
+          "score": 0.6859882978409584
+        },
+        {
+          "sample_id": "S117",
+          "class": "contour",
+          "score": 0.6717515190673063
+        },
+        {
+          "sample_id": "S118",
+          "class": "contour",
+          "score": 0.988093464198556
+        },
+        {
+          "sample_id": "S119",
+          "class": "contour",
+          "score": 0.9567729003166584
+        },
+        {
+          "sample_id": "S120",
+          "class": "contour",
+          "score": 0.8169876721547583
+        },
+        {
+          "sample_id": "S121",
+          "class": "contour",
+          "score": 0.9772739400233708
+        },
+        {
+          "sample_id": "S122",
+          "class": "contour",
+          "score": 0.9550859828320863
+        },
+        {
+          "sample_id": "S123",
+          "class": "contour",
+          "score": 0.9292914774214646
+        },
+        {
+          "sample_id": "S124",
+          "class": "contour",
+          "score": 0.9441886167359796
+        },
+        {
+          "sample_id": "S125",
+          "class": "contour",
+          "score": 0.8487961837077945
+        },
+        {
+          "sample_id": "S126",
+          "class": "contour",
+          "score": 0.783596770015731
+        },
+        {
+          "sample_id": "S128",
+          "class": "symbol",
+          "score": 0.9491674403050114
+        },
+        {
+          "sample_id": "S129",
+          "class": "road_river",
+          "score": 0.028950843163948258
+        },
+        {
+          "sample_id": "S131",
+          "class": "contour",
+          "score": 0.6971895967691089
+        },
+        {
+          "sample_id": "S133",
+          "class": "symbol",
+          "score": 0.023173171843767347
+        },
+        {
+          "sample_id": "S136",
+          "class": "contour",
+          "score": 0.40342791442174714
+        },
+        {
+          "sample_id": "S137",
+          "class": "contour",
+          "score": 0.7495880415200544
+        },
+        {
+          "sample_id": "S138",
+          "class": "symbol",
+          "score": 0.031977722057233496
+        },
+        {
+          "sample_id": "S139",
+          "class": "contour",
+          "score": 0.43886902014975854
+        },
+        {
+          "sample_id": "S140",
+          "class": "contour",
+          "score": 0.6498762703632752
+        },
+        {
+          "sample_id": "S142",
+          "class": "road_river",
+          "score": 0.016317490006361658
+        },
+        {
+          "sample_id": "S143",
+          "class": "road_river",
+          "score": 0.15247944926769644
+        },
+        {
+          "sample_id": "S144",
+          "class": "contour",
+          "score": 0.6721756350780278
+        },
+        {
+          "sample_id": "S145",
+          "class": "text",
+          "score": 0.011877814101309857
+        },
+        {
+          "sample_id": "S146",
+          "class": "symbol",
+          "score": 0.11539350158977757
+        },
+        {
+          "sample_id": "S147",
+          "class": "contour",
+          "score": 0.3321272655299793
+        },
+        {
+          "sample_id": "S148",
+          "class": "contour",
+          "score": 0.8750799801254429
+        },
+        {
+          "sample_id": "S149",
+          "class": "symbol",
+          "score": 0.057209424196222505
+        },
+        {
+          "sample_id": "S150",
+          "class": "text",
+          "score": 0.09021127435451361
+        },
+        {
+          "sample_id": "S151",
+          "class": "road_river",
+          "score": 0.08949866005613163
+        },
+        {
+          "sample_id": "S152",
+          "class": "contour",
+          "score": 0.6969681961001946
+        },
+        {
+          "sample_id": "S153",
+          "class": "contour",
+          "score": 0.5601853275729138
+        },
+        {
+          "sample_id": "S154",
+          "class": "contour",
+          "score": 0.413933606156136
+        },
+        {
+          "sample_id": "S155",
+          "class": "contour",
+          "score": 0.9329111656416775
+        },
+        {
+          "sample_id": "S156",
+          "class": "contour",
+          "score": 0.7431687474155143
+        },
+        {
+          "sample_id": "S157",
+          "class": "road_river",
+          "score": 0.3155550077079189
+        },
+        {
+          "sample_id": "S158",
+          "class": "road_river",
+          "score": 0.4525595960599972
+        },
+        {
+          "sample_id": "S159",
+          "class": "contour",
+          "score": 0.7468984771566624
+        },
+        {
+          "sample_id": "S160",
+          "class": "road_river",
+          "score": 0.40699612741927677
+        },
+        {
+          "sample_id": "S161",
+          "class": "road_river",
+          "score": 0.5199498515733473
+        },
+        {
+          "sample_id": "S162",
+          "class": "contour",
+          "score": 0.8630202057427242
+        }
+      ],
+      "model": {
+        "feature_schema": "ink-contour-neighborhood/1",
+        "feature_names": [
+          "log_length",
+          "straightness",
+          "mean_turn",
+          "max_turn",
+          "bbox_fill",
+          "bbox_aspect_log",
+          "line_darkness",
+          "dark_fraction_near",
+          "dark_fraction_context",
+          "mid_fraction_context",
+          "context_std",
+          "coherence_r12",
+          "normal_alignment_r12",
+          "alignment_spread_r12",
+          "ink_fraction_r12",
+          "coherence_r36",
+          "normal_alignment_r36",
+          "alignment_spread_r36",
+          "ink_fraction_r36",
+          "coherence_r84",
+          "normal_alignment_r84",
+          "alignment_spread_r84",
+          "ink_fraction_r84",
+          "profile_peaks",
+          "profile_peaks_spread",
+          "profile_near_peaks",
+          "profile_far_peaks",
+          "profile_bilateral",
+          "profile_peak_spacing_cv",
+          "profile_central_width",
+          "profile_contrast",
+          "profile_valid_fraction",
+          "smooth_turn_mean",
+          "smooth_turn_max"
+        ],
+        "means": [
+          3.784556180228635,
+          0.7578234847203441,
+          0.18294202193491893,
+          0.28864560282305823,
+          0.8788538540807952,
+          1.1586103040679296,
+          0.7144699409754589,
+          0.11598949326009546,
+          0.10083775535339115,
+          0.20084728010399727,
+          0.26354738287251406,
+          0.47473384022261156,
+          0.3916996326060196,
+          0.14634890089633026,
+          0.1431523383867861,
+          0.2685897545983093,
+          0.14756660611260863,
+          0.09578563365496984,
+          0.1215772604701495,
+          0.1697538969191638,
+          0.0715221793881768,
+          0.0625045355541868,
+          0.11478302876154582,
+          6.703030303030304,
+          1.3004450326063477,
+          2.1434343434343437,
+          4.559595959595961,
+          0.9252525252525252,
+          0.42207879324001485,
+          3.923232323232324,
+          0.6158878597045185,
+          0.9711215245235866,
+          0.15797419709144322,
+          0.2826004083578091
+        ],
+        "scales": [
+          0.7264381066646103,
+          0.2651077270422871,
+          0.05533785625512711,
+          0.10210463722544903,
+          0.24562058177801951,
+          0.43546214147458023,
+          0.14183314820025872,
+          0.05415988074265685,
+          0.03354449841834207,
+          0.05662762131508858,
+          0.030021724669529834,
+          0.1881037813913359,
+          0.2372556244767624,
+          0.09259875258051013,
+          0.045815532142274594,
+          0.14820150212034883,
+          0.18098081193156412,
+          0.06726972562277692,
+          0.02945865744939835,
+          0.09657573364763684,
+          0.11099138143947151,
+          0.04801982862228628,
+          0.023552679223014197,
+          1.863929516238736,
+          0.6038214081390704,
+          0.7163546348429198,
+          1.4093425067732177,
+          0.183315940962031,
+          0.10255757381041272,
+          2.7258147992413737,
+          0.12525544460734875,
+          0.08409496652450049,
+          0.11681398748841011,
+          0.1693172206441399
+        ],
+        "coefficients": [
+          0.14341052060842055,
+          0.03802925532312453,
+          -0.02003340926572466,
+          -0.1438212042185167,
+          0.2727500692271012,
+          -0.18690374945374236,
+          -0.30206540243461955,
+          -0.2510236801248728,
+          0.030207731565150744,
+          0.3136920353285668,
+          -0.11364763843674325,
+          -0.08786492418657907,
+          -0.043504128738356455,
+          -0.052965312288831286,
+          -0.43905259480539577,
+          -0.032209323155778395,
+          -0.029766903096926648,
+          0.24509122065668626,
+          -0.01791211012205183,
+          0.07121599523070223,
+          0.010194519554242082,
+          0.28888294217599664,
+          0.3934213110183043,
+          0.17011778701050237,
+          0.021294415933418184,
+          0.02180238940952366,
+          0.21390777635179778,
+          0.3460259114878009,
+          -0.33650702451450853,
+          -0.24677723814908317,
+          -0.4959845156191176,
+          -0.13065830285989316,
+          -0.1494749906638193,
+          -0.0010598874474098009
+        ],
+        "intercept": 0.3514577205243998,
+        "l2": 0.1,
+        "training_count": 99,
+        "training_contours": 62,
+        "review_only": true
+      },
+      "thresholds": {
+        "balanced": 0.413933606156136,
+        "conservative": 0.26818584275713225
+      }
+    },
+    {
+      "test_sheet": "177-nonsan",
+      "training_sample_ids": [
+        "S001",
+        "S002",
+        "S003",
+        "S004",
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010",
+        "S011",
+        "S012",
+        "S013",
+        "S014",
+        "S015",
+        "S016",
+        "S017",
+        "S018",
+        "S020",
+        "S021",
+        "S022",
+        "S023",
+        "S024",
+        "S025",
+        "S027",
+        "S028",
+        "S029",
+        "S031",
+        "S032",
+        "S033",
+        "S034",
+        "S035",
+        "S036",
+        "S037",
+        "S038",
+        "S039",
+        "S040",
+        "S041",
+        "S042",
+        "S043",
+        "S044",
+        "S045",
+        "S046",
+        "S047",
+        "S048",
+        "S049",
+        "S050",
+        "S051",
+        "S052",
+        "S053",
+        "S054",
+        "S055",
+        "S057",
+        "S058",
+        "S059",
+        "S060",
+        "S061",
+        "S062",
+        "S063",
+        "S064",
+        "S066",
+        "S067",
+        "S068",
+        "S069",
+        "S070",
+        "S071",
+        "S072",
+        "S073",
+        "S074",
+        "S075",
+        "S076",
+        "S077",
+        "S078",
+        "S079",
+        "S080",
+        "S081",
+        "S082",
+        "S083",
+        "S084",
+        "S085",
+        "S086",
+        "S087",
+        "S088",
+        "S089",
+        "S090",
+        "S091",
+        "S094",
+        "S095",
+        "S096",
+        "S097",
+        "S098",
+        "S100",
+        "S101",
+        "S102",
+        "S103",
+        "S104",
+        "S105",
+        "S106",
+        "S107",
+        "S108"
+      ],
+      "test_sample_ids": [
+        "S109",
+        "S110",
+        "S111",
+        "S112",
+        "S113",
+        "S114",
+        "S115",
+        "S116",
+        "S117",
+        "S118",
+        "S119",
+        "S120",
+        "S121",
+        "S122",
+        "S123",
+        "S124",
+        "S125",
+        "S126",
+        "S128",
+        "S129",
+        "S131",
+        "S133",
+        "S136",
+        "S137",
+        "S138",
+        "S139",
+        "S140",
+        "S142",
+        "S143",
+        "S144",
+        "S145",
+        "S146",
+        "S147",
+        "S148",
+        "S149",
+        "S150",
+        "S151",
+        "S152",
+        "S153",
+        "S154",
+        "S155",
+        "S156",
+        "S157",
+        "S158",
+        "S159",
+        "S160",
+        "S161",
+        "S162"
+      ],
+      "inner_folds": [
+        {
+          "training_sample_ids": [
+            "S055",
+            "S057",
+            "S058",
+            "S059",
+            "S060",
+            "S061",
+            "S062",
+            "S063",
+            "S064",
+            "S066",
+            "S067",
+            "S068",
+            "S069",
+            "S070",
+            "S071",
+            "S072",
+            "S073",
+            "S074",
+            "S075",
+            "S076",
+            "S077",
+            "S078",
+            "S079",
+            "S080",
+            "S081",
+            "S082",
+            "S083",
+            "S084",
+            "S085",
+            "S086",
+            "S087",
+            "S088",
+            "S089",
+            "S090",
+            "S091",
+            "S094",
+            "S095",
+            "S096",
+            "S097",
+            "S098",
+            "S100",
+            "S101",
+            "S102",
+            "S103",
+            "S104",
+            "S105",
+            "S106",
+            "S107",
+            "S108"
+          ],
+          "validation_sample_ids": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025",
+            "S027",
+            "S028",
+            "S029",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046",
+            "S047",
+            "S048",
+            "S049",
+            "S050",
+            "S051",
+            "S052",
+            "S053",
+            "S054"
+          ]
+        },
+        {
+          "training_sample_ids": [
+            "S001",
+            "S002",
+            "S003",
+            "S004",
+            "S005",
+            "S006",
+            "S007",
+            "S008",
+            "S009",
+            "S010",
+            "S011",
+            "S012",
+            "S013",
+            "S014",
+            "S015",
+            "S016",
+            "S017",
+            "S018",
+            "S020",
+            "S021",
+            "S022",
+            "S023",
+            "S024",
+            "S025",
+            "S027",
+            "S028",
+            "S029",
+            "S031",
+            "S032",
+            "S033",
+            "S034",
+            "S035",
+            "S036",
+            "S037",
+            "S038",
+            "S039",
+            "S040",
+            "S041",
+            "S042",
+            "S043",
+            "S044",
+            "S045",
+            "S046",
+            "S047",
+            "S048",
+            "S049",
+            "S050",
+            "S051",
+            "S052",
+            "S053",
+            "S054"
+          ],
+          "validation_sample_ids": [
+            "S055",
+            "S057",
+            "S058",
+            "S059",
+            "S060",
+            "S061",
+            "S062",
+            "S063",
+            "S064",
+            "S066",
+            "S067",
+            "S068",
+            "S069",
+            "S070",
+            "S071",
+            "S072",
+            "S073",
+            "S074",
+            "S075",
+            "S076",
+            "S077",
+            "S078",
+            "S079",
+            "S080",
+            "S081",
+            "S082",
+            "S083",
+            "S084",
+            "S085",
+            "S086",
+            "S087",
+            "S088",
+            "S089",
+            "S090",
+            "S091",
+            "S094",
+            "S095",
+            "S096",
+            "S097",
+            "S098",
+            "S100",
+            "S101",
+            "S102",
+            "S103",
+            "S104",
+            "S105",
+            "S106",
+            "S107",
+            "S108"
+          ]
+        }
+      ],
+      "inner_predictions": [
+        {
+          "sample_id": "S001",
+          "class": "text",
+          "score": 0.7128630054552179
+        },
+        {
+          "sample_id": "S002",
+          "class": "contour",
+          "score": 0.8262045074239319
+        },
+        {
+          "sample_id": "S003",
+          "class": "contour",
+          "score": 0.9789531965409012
+        },
+        {
+          "sample_id": "S004",
+          "class": "contour",
+          "score": 0.9970462687667302
+        },
+        {
+          "sample_id": "S005",
+          "class": "contour",
+          "score": 0.9780561412805202
+        },
+        {
+          "sample_id": "S006",
+          "class": "contour",
+          "score": 0.9512373109993558
+        },
+        {
+          "sample_id": "S007",
+          "class": "contour",
+          "score": 0.9854897055904683
+        },
+        {
+          "sample_id": "S008",
+          "class": "contour",
+          "score": 0.9834399532224748
+        },
+        {
+          "sample_id": "S009",
+          "class": "contour",
+          "score": 0.9994871068319036
+        },
+        {
+          "sample_id": "S010",
+          "class": "contour",
+          "score": 0.9924057913447741
+        },
+        {
+          "sample_id": "S011",
+          "class": "contour",
+          "score": 0.9875502033063653
+        },
+        {
+          "sample_id": "S012",
+          "class": "contour",
+          "score": 0.9969945401084909
+        },
+        {
+          "sample_id": "S013",
+          "class": "contour",
+          "score": 0.9870592461756156
+        },
+        {
+          "sample_id": "S014",
+          "class": "contour",
+          "score": 0.9157183421074447
+        },
+        {
+          "sample_id": "S015",
+          "class": "contour",
+          "score": 0.9824028014443622
+        },
+        {
+          "sample_id": "S016",
+          "class": "contour",
+          "score": 0.9976889316007911
+        },
+        {
+          "sample_id": "S017",
+          "class": "contour",
+          "score": 0.9966080742578357
+        },
+        {
+          "sample_id": "S018",
+          "class": "contour",
+          "score": 0.9910330244289013
+        },
+        {
+          "sample_id": "S020",
+          "class": "text",
+          "score": 0.9412450907879293
+        },
+        {
+          "sample_id": "S021",
+          "class": "text",
+          "score": 0.711330392431998
+        },
+        {
+          "sample_id": "S022",
+          "class": "contour",
+          "score": 0.9724581348349935
+        },
+        {
+          "sample_id": "S023",
+          "class": "text",
+          "score": 0.9908195633888356
+        },
+        {
+          "sample_id": "S024",
+          "class": "text",
+          "score": 0.996521494055598
+        },
+        {
+          "sample_id": "S025",
+          "class": "text",
+          "score": 0.9533323930172618
+        },
+        {
+          "sample_id": "S027",
+          "class": "symbol",
+          "score": 0.3170718080450724
+        },
+        {
+          "sample_id": "S028",
+          "class": "contour",
+          "score": 0.9945168631918431
+        },
+        {
+          "sample_id": "S029",
+          "class": "contour",
+          "score": 0.9979235535452482
+        },
+        {
+          "sample_id": "S031",
+          "class": "road_river",
+          "score": 0.4829169163777284
+        },
+        {
+          "sample_id": "S032",
+          "class": "road_river",
+          "score": 0.4003532587499184
+        },
+        {
+          "sample_id": "S033",
+          "class": "contour",
+          "score": 0.9892871197439806
+        },
+        {
+          "sample_id": "S034",
+          "class": "road_river",
+          "score": 0.8857614734294545
+        },
+        {
+          "sample_id": "S035",
+          "class": "road_river",
+          "score": 0.6396186792079741
+        },
+        {
+          "sample_id": "S036",
+          "class": "symbol",
+          "score": 0.5068385385374166
+        },
+        {
+          "sample_id": "S037",
+          "class": "contour",
+          "score": 0.9979204290511413
+        },
+        {
+          "sample_id": "S038",
+          "class": "contour",
+          "score": 0.9828512886809142
+        },
+        {
+          "sample_id": "S039",
+          "class": "contour",
+          "score": 0.9921765572352159
+        },
+        {
+          "sample_id": "S040",
+          "class": "contour",
+          "score": 0.968403488158337
+        },
+        {
+          "sample_id": "S041",
+          "class": "road_river",
+          "score": 0.3059951444797611
+        },
+        {
+          "sample_id": "S042",
+          "class": "contour",
+          "score": 0.9417656498001812
+        },
+        {
+          "sample_id": "S043",
+          "class": "road_river",
+          "score": 0.869910327722947
+        },
+        {
+          "sample_id": "S044",
+          "class": "road_river",
+          "score": 0.14647680145581982
+        },
+        {
+          "sample_id": "S045",
+          "class": "text",
+          "score": 0.7860544342164179
+        },
+        {
+          "sample_id": "S046",
+          "class": "road_river",
+          "score": 0.8468724505605216
+        },
+        {
+          "sample_id": "S047",
+          "class": "symbol",
+          "score": 0.3405998459095912
+        },
+        {
+          "sample_id": "S048",
+          "class": "symbol",
+          "score": 0.9829903954990495
+        },
+        {
+          "sample_id": "S049",
+          "class": "road_river",
+          "score": 0.9421339707668849
+        },
+        {
+          "sample_id": "S050",
+          "class": "road_river",
+          "score": 0.9230305021851725
+        },
+        {
+          "sample_id": "S051",
+          "class": "contour",
+          "score": 0.9617012789235382
+        },
+        {
+          "sample_id": "S052",
+          "class": "contour",
+          "score": 0.9857476917748104
+        },
+        {
+          "sample_id": "S053",
+          "class": "road_river",
+          "score": 0.8892726787743319
+        },
+        {
+          "sample_id": "S054",
+          "class": "contour",
+          "score": 0.9944979924166255
+        },
+        {
+          "sample_id": "S055",
+          "class": "contour",
+          "score": 0.30400654053132636
+        },
+        {
+          "sample_id": "S057",
+          "class": "contour",
+          "score": 0.9349413712193696
+        },
+        {
+          "sample_id": "S058",
+          "class": "contour",
+          "score": 0.126738389413736
+        },
+        {
+          "sample_id": "S059",
+          "class": "contour",
+          "score": 0.8676312728985114
+        },
+        {
+          "sample_id": "S060",
+          "class": "contour",
+          "score": 0.7502672895722652
+        },
+        {
+          "sample_id": "S061",
+          "class": "contour",
+          "score": 0.8098096656936502
+        },
+        {
+          "sample_id": "S062",
+          "class": "contour",
+          "score": 0.859611641216628
+        },
+        {
+          "sample_id": "S063",
+          "class": "contour",
+          "score": 0.9269942952603561
+        },
+        {
+          "sample_id": "S064",
+          "class": "contour",
+          "score": 0.9092396017165083
+        },
+        {
+          "sample_id": "S066",
+          "class": "contour",
+          "score": 0.6021153923289991
+        },
+        {
+          "sample_id": "S067",
+          "class": "contour",
+          "score": 0.4354537675258195
+        },
+        {
+          "sample_id": "S068",
+          "class": "contour",
+          "score": 0.7956856645226331
+        },
+        {
+          "sample_id": "S069",
+          "class": "contour",
+          "score": 0.5856903949235582
+        },
+        {
+          "sample_id": "S070",
+          "class": "contour",
+          "score": 0.6647891520279735
+        },
+        {
+          "sample_id": "S071",
+          "class": "road_river",
+          "score": 0.289501481543787
+        },
+        {
+          "sample_id": "S072",
+          "class": "contour",
+          "score": 0.8397532510820755
+        },
+        {
+          "sample_id": "S073",
+          "class": "contour",
+          "score": 0.4396840564535836
+        },
+        {
+          "sample_id": "S074",
+          "class": "contour",
+          "score": 0.823098870847036
+        },
+        {
+          "sample_id": "S075",
+          "class": "contour",
+          "score": 0.9528496514012399
+        },
+        {
+          "sample_id": "S076",
+          "class": "contour",
+          "score": 0.572110818226046
+        },
+        {
+          "sample_id": "S077",
+          "class": "contour",
+          "score": 0.20443023410448077
+        },
+        {
+          "sample_id": "S078",
+          "class": "contour",
+          "score": 0.960875637421109
+        },
+        {
+          "sample_id": "S079",
+          "class": "contour",
+          "score": 0.8343460091232999
+        },
+        {
+          "sample_id": "S080",
+          "class": "contour",
+          "score": 0.8429403393691273
+        },
+        {
+          "sample_id": "S081",
+          "class": "contour",
+          "score": 0.4486472378885741
+        },
+        {
+          "sample_id": "S082",
+          "class": "symbol",
+          "score": 0.029600208553486062
+        },
+        {
+          "sample_id": "S083",
+          "class": "contour",
+          "score": 0.3825958975906286
+        },
+        {
+          "sample_id": "S084",
+          "class": "road_river",
+          "score": 0.006137801722235664
+        },
+        {
+          "sample_id": "S085",
+          "class": "contour",
+          "score": 0.8786625084675578
+        },
+        {
+          "sample_id": "S086",
+          "class": "contour",
+          "score": 0.3224390582807568
+        },
+        {
+          "sample_id": "S087",
+          "class": "contour",
+          "score": 0.7301375550637376
+        },
+        {
+          "sample_id": "S088",
+          "class": "contour",
+          "score": 0.9086113493325481
+        },
+        {
+          "sample_id": "S089",
+          "class": "contour",
+          "score": 0.7709570630470146
+        },
+        {
+          "sample_id": "S090",
+          "class": "contour",
+          "score": 0.05349593185878066
+        },
+        {
+          "sample_id": "S091",
+          "class": "contour",
+          "score": 0.181737294091499
+        },
+        {
+          "sample_id": "S094",
+          "class": "contour",
+          "score": 0.9514809254166012
+        },
+        {
+          "sample_id": "S095",
+          "class": "road_river",
+          "score": 0.3073779029376666
+        },
+        {
+          "sample_id": "S096",
+          "class": "contour",
+          "score": 0.8619210926220444
+        },
+        {
+          "sample_id": "S097",
+          "class": "contour",
+          "score": 0.9491488220157013
+        },
+        {
+          "sample_id": "S098",
+          "class": "contour",
+          "score": 0.7942568686893233
+        },
+        {
+          "sample_id": "S100",
+          "class": "symbol",
+          "score": 0.04333667520840372
+        },
+        {
+          "sample_id": "S101",
+          "class": "contour",
+          "score": 0.7444463759775789
+        },
+        {
+          "sample_id": "S102",
+          "class": "contour",
+          "score": 0.43731830081925405
+        },
+        {
+          "sample_id": "S103",
+          "class": "contour",
+          "score": 0.9952162309010074
+        },
+        {
+          "sample_id": "S104",
+          "class": "contour",
+          "score": 0.7506367907434518
+        },
+        {
+          "sample_id": "S105",
+          "class": "contour",
+          "score": 0.5427313826206499
+        },
+        {
+          "sample_id": "S106",
+          "class": "contour",
+          "score": 0.41936294181704087
+        },
+        {
+          "sample_id": "S107",
+          "class": "contour",
+          "score": 0.6514492026563036
+        },
+        {
+          "sample_id": "S108",
+          "class": "contour",
+          "score": 0.9526788685891954
+        }
+      ],
+      "model": {
+        "feature_schema": "ink-contour-neighborhood/1",
+        "feature_names": [
+          "log_length",
+          "straightness",
+          "mean_turn",
+          "max_turn",
+          "bbox_fill",
+          "bbox_aspect_log",
+          "line_darkness",
+          "dark_fraction_near",
+          "dark_fraction_context",
+          "mid_fraction_context",
+          "context_std",
+          "coherence_r12",
+          "normal_alignment_r12",
+          "alignment_spread_r12",
+          "ink_fraction_r12",
+          "coherence_r36",
+          "normal_alignment_r36",
+          "alignment_spread_r36",
+          "ink_fraction_r36",
+          "coherence_r84",
+          "normal_alignment_r84",
+          "alignment_spread_r84",
+          "ink_fraction_r84",
+          "profile_peaks",
+          "profile_peaks_spread",
+          "profile_near_peaks",
+          "profile_far_peaks",
+          "profile_bilateral",
+          "profile_peak_spacing_cv",
+          "profile_central_width",
+          "profile_contrast",
+          "profile_valid_fraction",
+          "smooth_turn_mean",
+          "smooth_turn_max"
+        ],
+        "means": [
+          3.79233175634134,
+          0.7664099521575648,
+          0.19086820332606727,
+          0.28493464310055466,
+          0.8913516028629729,
+          1.130109141232366,
+          0.745086677968502,
+          0.11371744607822026,
+          0.10227553119765313,
+          0.18859257816264713,
+          0.27029291838407515,
+          0.48528018515557053,
+          0.41743043898440063,
+          0.14340731942103083,
+          0.13823527462780474,
+          0.26563222754746674,
+          0.14948220715425609,
+          0.09381962453276341,
+          0.12086502529680729,
+          0.16628499979153274,
+          0.0615255101558827,
+          0.06399251405150347,
+          0.1176785258948803,
+          6.996000000000004,
+          1.2740093216997588,
+          2.13,
+          4.8660000000000005,
+          0.946,
+          0.42221783529967083,
+          3.3719999999999994,
+          0.6361858259141444,
+          0.9729154639175257,
+          0.1444293184871279,
+          0.27881734414581755
+        ],
+        "scales": [
+          0.7042691018711037,
+          0.2398440829088192,
+          0.061840299623174236,
+          0.10003659204831562,
+          0.20903849606886551,
+          0.35786695212687064,
+          0.14629214915132643,
+          0.0553767955496469,
+          0.03400007937457121,
+          0.042518754522545665,
+          0.03412951770786525,
+          0.185902017956596,
+          0.22605231181634836,
+          0.08553278304682736,
+          0.04702400520229917,
+          0.14613811363681248,
+          0.17228902902276771,
+          0.06915779637642812,
+          0.02959874781113519,
+          0.08496083209752964,
+          0.09966209143390756,
+          0.049484804465992085,
+          0.02283871577781527,
+          1.6424323425943612,
+          0.5170108782435048,
+          0.6593178292750771,
+          1.3047773756468952,
+          0.15193419628246943,
+          0.09990229261608502,
+          2.0855733024758436,
+          0.1293235072924674,
+          0.08511805469581844,
+          0.08432194998007575,
+          0.155557683548516
+        ],
+        "coefficients": [
+          0.05348154380176065,
+          -0.0228509515057157,
+          -0.005539706495622775,
+          -0.11271294903465112,
+          0.17888768438233452,
+          -0.13845928510864483,
+          -0.30052294681917047,
+          -0.28303671964073396,
+          0.0641573154888603,
+          0.13865061742584922,
+          0.006583168986727258,
+          0.07396946770496904,
+          0.13302344452794218,
+          0.05393094731583704,
+          -0.6028140818134125,
+          0.06862885535591237,
+          0.04389019244097131,
+          0.1529507838663394,
+          -0.030370930106293485,
+          0.01574959615203992,
+          0.0657728721385912,
+          0.26448418306046234,
+          0.5097684791367232,
+          0.18768664423128054,
+          0.03354867135090683,
+          -0.1193232631731941,
+          0.2965521757487458,
+          0.300088664531263,
+          -0.36377635940577674,
+          -0.2507443462338727,
+          -0.3026135232882374,
+          -0.11684593245111034,
+          0.09880259491037656,
+          0.20175095029124662
+        ],
+        "intercept": 0.6814761137120473,
+        "l2": 0.1,
+        "training_count": 100,
+        "training_contours": 73,
+        "review_only": true
+      },
+      "thresholds": {
+        "balanced": 0.20443023410448077,
+        "conservative": 0.05349593185878066
+      }
+    }
+  ],
+  "per_sample": [
+    {
+      "sample_id": "S001",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-1b8b3a0c3479e49bd46a",
+      "length_bin": "short",
+      "pixel_length": 23.071,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.4514294700255302,
+      "legacy_score": 0.37812227724867997,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S002",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-02d04c7e545b9f9b5230",
+      "length_bin": "short",
+      "pixel_length": 19.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6861203076973488,
+      "legacy_score": 0.7643733159142708,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S003",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-51b1a97ccb11465685f3",
+      "length_bin": "short",
+      "pixel_length": 23.485,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8516767531221934,
+      "legacy_score": 0.6502303698233892,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S004",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-1610ba6a47d8747875d7",
+      "length_bin": "short",
+      "pixel_length": 19.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9876729695863203,
+      "legacy_score": 0.8225575370480697,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S005",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-6d50599ad3d96f7b5c83",
+      "length_bin": "short",
+      "pixel_length": 21.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9119398631618387,
+      "legacy_score": 0.9387192311737523,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S006",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-c7376a8de2059c976146",
+      "length_bin": "short",
+      "pixel_length": 21.485,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.570393301675017,
+      "legacy_score": 0.7966240167062865,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S007",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-81c484f5eda6170b0d07",
+      "length_bin": "medium",
+      "pixel_length": 30.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.900224818764977,
+      "legacy_score": 0.47073845018464905,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S008",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-f23302f5b71cd82edf04",
+      "length_bin": "medium",
+      "pixel_length": 38.456,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.910049473266102,
+      "legacy_score": 0.8239712520778444,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S009",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-5bbefbc090ab19f2c4b1",
+      "length_bin": "medium",
+      "pixel_length": 38.627,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9873257810710194,
+      "legacy_score": 0.886374154379609,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S010",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-8e6922ad0851b9408812",
+      "length_bin": "medium",
+      "pixel_length": 50.113,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8602472957113403,
+      "legacy_score": 0.8554822971849816,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S011",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-dcb0edf070334e4edd8d",
+      "length_bin": "medium",
+      "pixel_length": 37.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6853727417326725,
+      "legacy_score": 0.8530410052783874,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S012",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-d38f6d139d916f1d8263",
+      "length_bin": "medium",
+      "pixel_length": 37.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8147266075728717,
+      "legacy_score": 0.9330968454749271,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S013",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-2be5548495b09bdf7dcc",
+      "length_bin": "long",
+      "pixel_length": 70.87,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6578991081182449,
+      "legacy_score": 0.9445567039052774,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S014",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-d953774cca8ffb667783",
+      "length_bin": "long",
+      "pixel_length": 66.941,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.3983276939811474,
+      "legacy_score": 0.20708677149998572,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S015",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-7c1c084f76eac5284fd1",
+      "length_bin": "long",
+      "pixel_length": 558.872,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6681060044406302,
+      "legacy_score": 0.9272450401166414,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S016",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-91720e2acb8cf2402452",
+      "length_bin": "long",
+      "pixel_length": 100.255,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9447979280044966,
+      "legacy_score": 0.9717678503580824,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S017",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-f8eacb4062d771fd6b53",
+      "length_bin": "long",
+      "pixel_length": 91.669,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8543306301078095,
+      "legacy_score": 0.9928310340103729,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S018",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-mountain",
+      "segment_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-f1a86087f1ea4e6332b0",
+      "length_bin": "long",
+      "pixel_length": 110.497,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9125498267438854,
+      "legacy_score": 0.9003634740796046,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S019",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-c46bae867f2d5f107c93",
+      "length_bin": "short",
+      "pixel_length": 22.243,
+      "ai_class": "mixed",
+      "reference_eligible": false,
+      "context_score": 0.37280237010229494,
+      "legacy_score": 0.16859374898852797,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S020",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-d4c607d6a60a73411404",
+      "length_bin": "short",
+      "pixel_length": 24.071,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.3965327813366975,
+      "legacy_score": 0.3700679976489242,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S021",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-e84179928f0ba7b063e1",
+      "length_bin": "short",
+      "pixel_length": 18.485,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.0684122179304397,
+      "legacy_score": 0.06345062210212414,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S022",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-9ddb801aa7f28bc0fad4",
+      "length_bin": "short",
+      "pixel_length": 21.071,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9034680522937203,
+      "legacy_score": 0.3915293200851024,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S023",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-d42d491fef3c40fff12e",
+      "length_bin": "short",
+      "pixel_length": 20.071,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.6768287324895207,
+      "legacy_score": 0.21879025264424565,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S024",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-b30c0dc23a5d976d320f",
+      "length_bin": "short",
+      "pixel_length": 19.071,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.9664658065583016,
+      "legacy_score": 0.6700202814910265,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S025",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-68409232179ddaa81d89",
+      "length_bin": "medium",
+      "pixel_length": 32.314,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.3385635209409015,
+      "legacy_score": 0.15628809520498002,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S026",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-2bc46fe28452750b816d",
+      "length_bin": "medium",
+      "pixel_length": 31.971,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.4999613460019833,
+      "legacy_score": 0.7809151885366045,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S027",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-21dc6aed24a90b1dd21b",
+      "length_bin": "medium",
+      "pixel_length": 54.385,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.03881617125662327,
+      "legacy_score": 0.0001701264205598846,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S028",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-743278e08b30b7021253",
+      "length_bin": "medium",
+      "pixel_length": 31.971,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9138452067900228,
+      "legacy_score": 0.9785082436525617,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S029",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-1bb1bfe7026e0a786d62",
+      "length_bin": "medium",
+      "pixel_length": 35.627,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9479872916943107,
+      "legacy_score": 0.9884504017787861,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S030",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-1edc3b9faa73752239fc",
+      "length_bin": "medium",
+      "pixel_length": 55.698,
+      "ai_class": "mixed",
+      "reference_eligible": false,
+      "context_score": 0.47051129964257954,
+      "legacy_score": 0.6890971947559488,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S031",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-dc40519c71962523111e",
+      "length_bin": "long",
+      "pixel_length": 157.368,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.03057690378457935,
+      "legacy_score": 0.9604118882885,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S032",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-c2918b9fc9d4409ba5ef",
+      "length_bin": "long",
+      "pixel_length": 108.941,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.009519250213148187,
+      "legacy_score": 0.6400312326636881,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S033",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-129090001875ce6949a7",
+      "length_bin": "long",
+      "pixel_length": 156.267,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8374720931046515,
+      "legacy_score": 0.7185148470794186,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S034",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-cd0125bcbbd4cf6588f8",
+      "length_bin": "long",
+      "pixel_length": 119.184,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.026328063538806006,
+      "legacy_score": 0.939050578330015,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S035",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-5cfb32b4e96f1e020f2a",
+      "length_bin": "long",
+      "pixel_length": 62.426,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.19475547370206794,
+      "legacy_score": 0.9845254528601322,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S036",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-labels",
+      "segment_uid": "ink-run-149c35129e96d4b2a229:ink-segment-25ccb9488f9dd82a76cf",
+      "length_bin": "long",
+      "pixel_length": 68.912,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.06470618194122454,
+      "legacy_score": 0.0005833261996046394,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S037",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-ce84676b57ce651b1412",
+      "length_bin": "short",
+      "pixel_length": 19.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.94244877618296,
+      "legacy_score": 0.7806655728527299,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S038",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-7111a32d3c085e1dfc80",
+      "length_bin": "short",
+      "pixel_length": 19.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8426208337168247,
+      "legacy_score": 0.679126473555492,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S039",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-d2d53cb0d9ce3642a0ce",
+      "length_bin": "short",
+      "pixel_length": 21.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.950708362658925,
+      "legacy_score": 0.8899488113003525,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S040",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-ef26154dfbc427046f56",
+      "length_bin": "short",
+      "pixel_length": 18.485,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.632728775428008,
+      "legacy_score": 0.2287265686007972,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S041",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-946f8568b081785262c7",
+      "length_bin": "short",
+      "pixel_length": 19.899,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.010282605402179734,
+      "legacy_score": 0.16471710711913304,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S042",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-c4f3835421bdb918befb",
+      "length_bin": "short",
+      "pixel_length": 19.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8687541961832109,
+      "legacy_score": 0.9184122346582626,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S043",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-374228f71661e8873633",
+      "length_bin": "medium",
+      "pixel_length": 33.556,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.3474086867410093,
+      "legacy_score": 0.821065942983749,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S044",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-fe324bbf2b596510f366",
+      "length_bin": "medium",
+      "pixel_length": 35.728,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.04593601054124498,
+      "legacy_score": 0.37602214255337957,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S045",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-410b5c14cdc785ebfd94",
+      "length_bin": "medium",
+      "pixel_length": 33.071,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.21890307498236472,
+      "legacy_score": 0.0189731133135585,
+      "legacy": false,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S046",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-9235fce0981d59ef4183",
+      "length_bin": "medium",
+      "pixel_length": 39.213,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.5552973288852078,
+      "legacy_score": 0.8640210248641168,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S047",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-ad1b02e2c1a3e8c7dc0b",
+      "length_bin": "medium",
+      "pixel_length": 41.213,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.039744900135164296,
+      "legacy_score": 0.00007815195764602853,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S048",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-7bb446f781403b9140f9",
+      "length_bin": "medium",
+      "pixel_length": 31.485,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.711372914437141,
+      "legacy_score": 0.3301849465011567,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S049",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-66ac050757ba1206b8c7",
+      "length_bin": "long",
+      "pixel_length": 62.87,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.7640575613664324,
+      "legacy_score": 0.9703571767142136,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S050",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-6b19d7d5c28c4cd4ebbc",
+      "length_bin": "long",
+      "pixel_length": 72.811,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.6764244351970349,
+      "legacy_score": 0.9894629405531684,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S051",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-692d01f5510ff788327f",
+      "length_bin": "long",
+      "pixel_length": 99.569,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8858412857217458,
+      "legacy_score": 0.6321196104733106,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S052",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-64d4dc890a77f10df734",
+      "length_bin": "long",
+      "pixel_length": 172.439,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5063009265132957,
+      "legacy_score": 0.589344477193958,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S053",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-dd5cd72dc9e9913de07c",
+      "length_bin": "long",
+      "pixel_length": 106.024,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.37663695935382496,
+      "legacy_score": 0.9803123216118743,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S054",
+      "sheet_id": "173-buyeo",
+      "tile_id": "173-buyeo-hydro",
+      "segment_uid": "ink-run-da3004fa713e3c92d5de:ink-segment-1cdaa3b171d78af66a33",
+      "length_bin": "long",
+      "pixel_length": 62.456,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7941953328239882,
+      "legacy_score": 0.673713283704127,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S055",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-a3fea03a012bcf590b01",
+      "length_bin": "short",
+      "pixel_length": 22.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.3927006187840628,
+      "legacy_score": 0.5477836432464321,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S056",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-6580c0ededa4a17ebf28",
+      "length_bin": "short",
+      "pixel_length": 22.899,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.2272465726522596,
+      "legacy_score": 0.6283262638757624,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S057",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-6bcf99006c1ef9e96dd3",
+      "length_bin": "short",
+      "pixel_length": 18.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9422985609594419,
+      "legacy_score": 0.9583675104873015,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S058",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-444b1ada14255031e5a4",
+      "length_bin": "short",
+      "pixel_length": 24.728,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.21926399194353527,
+      "legacy_score": 0.125859574515352,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S059",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-b823b4edbc37d28cb406",
+      "length_bin": "short",
+      "pixel_length": 25.799,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8799157358769139,
+      "legacy_score": 0.7733250373402814,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S060",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-846bcd9fc6af60b9bccd",
+      "length_bin": "short",
+      "pixel_length": 24.385,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7859385491455159,
+      "legacy_score": 0.502697242808815,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S061",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-c1d125d8bdfa6fb98696",
+      "length_bin": "medium",
+      "pixel_length": 40.799,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7634179787551844,
+      "legacy_score": 0.76858203477847,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S062",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-a2b5a2d64fe832c6f831",
+      "length_bin": "medium",
+      "pixel_length": 29.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8194606278698215,
+      "legacy_score": 0.8598669891652283,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S063",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-cb58a1726bb93deb351e",
+      "length_bin": "medium",
+      "pixel_length": 31.971,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8893435139317154,
+      "legacy_score": 0.5113725922712914,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S064",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-c02e67a3ff309fe38939",
+      "length_bin": "medium",
+      "pixel_length": 32.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8152557703712585,
+      "legacy_score": 0.8672819117036492,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S065",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-66402a9d5e9b36f6a894",
+      "length_bin": "medium",
+      "pixel_length": 28.071,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.32397135136610916,
+      "legacy_score": 0.47826302320278574,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S066",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-c436c27267082af9c678",
+      "length_bin": "medium",
+      "pixel_length": 30.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7300576801828295,
+      "legacy_score": 0.9272115797237627,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S067",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-7388a900c9934883ee2c",
+      "length_bin": "long",
+      "pixel_length": 72.598,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.542493065596625,
+      "legacy_score": 0.7356863591485296,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S068",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-fddd3ca27fea3ab6a4e5",
+      "length_bin": "long",
+      "pixel_length": 85.184,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7633400127018171,
+      "legacy_score": 0.7792646039709233,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S069",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-94a18209ef6185dbc8a0",
+      "length_bin": "long",
+      "pixel_length": 70.598,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6163198309034348,
+      "legacy_score": 0.5381877942334354,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S070",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-0e7af1472270ed6598b3",
+      "length_bin": "long",
+      "pixel_length": 97.669,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6273936167353249,
+      "legacy_score": 0.4200292484245166,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S071",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-a808d8b0673d32d9835a",
+      "length_bin": "long",
+      "pixel_length": 136.238,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.480304072801295,
+      "legacy_score": 0.9809615573447737,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S072",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-mountain",
+      "segment_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-8cf6933b92ad7f0aaf81",
+      "length_bin": "long",
+      "pixel_length": 92.326,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8908974402585067,
+      "legacy_score": 0.9698246664484979,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S073",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-1ef40e258134710fbcc4",
+      "length_bin": "short",
+      "pixel_length": 22.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5757123365417348,
+      "legacy_score": 0.521198118267613,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S074",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-5d219ad9217a07efadb3",
+      "length_bin": "short",
+      "pixel_length": 21.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9099999204107301,
+      "legacy_score": 0.8286203689346221,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S075",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-ee5919ac3748f347e93c",
+      "length_bin": "short",
+      "pixel_length": 22.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.863074256870248,
+      "legacy_score": 0.8635773300408025,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S076",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-1c68aebc8f56f2a423db",
+      "length_bin": "short",
+      "pixel_length": 20.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6357167383261352,
+      "legacy_score": 0.6273836391466598,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S077",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-932415ea4dc229c6b9fe",
+      "length_bin": "short",
+      "pixel_length": 26.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.2885448782009367,
+      "legacy_score": 0.7599757738815076,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S078",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-445fc7eca846ab42cdf1",
+      "length_bin": "short",
+      "pixel_length": 20.728,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8655208500293011,
+      "legacy_score": 0.7376875806011731,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S079",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-8632534a15b25bf4f484",
+      "length_bin": "medium",
+      "pixel_length": 45.627,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8563518760513169,
+      "legacy_score": 0.952220864839661,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S080",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-18819325205d791107b6",
+      "length_bin": "medium",
+      "pixel_length": 37.042,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7562432805393944,
+      "legacy_score": 0.87032194464326,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S081",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-3b238df03d88250c9fa8",
+      "length_bin": "medium",
+      "pixel_length": 33.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.4153413063417381,
+      "legacy_score": 0.8660664641322721,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S082",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-1843132f66ddfc863bc5",
+      "length_bin": "medium",
+      "pixel_length": 52.971,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.04419533076653684,
+      "legacy_score": 0.00044585490175410805,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S083",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-9085331f3a41de30dd88",
+      "length_bin": "medium",
+      "pixel_length": 56.527,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6367489795046358,
+      "legacy_score": 0.20676545443499197,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S084",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-d45af4408bb1c41d90b3",
+      "length_bin": "medium",
+      "pixel_length": 29.627,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.050589810801861125,
+      "legacy_score": 0.8411355967769929,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S085",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-9a9743a257cfd617895d",
+      "length_bin": "long",
+      "pixel_length": 75.497,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7070085564866967,
+      "legacy_score": 0.9370544265869941,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S086",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-94423c6f5ba0f6e98462",
+      "length_bin": "long",
+      "pixel_length": 62.284,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.37157966139724097,
+      "legacy_score": 0.9400984230739285,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S087",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-0ab2af7f78bf4a2c1909",
+      "length_bin": "long",
+      "pixel_length": 140.953,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6540848571399942,
+      "legacy_score": 0.969126416958853,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S088",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-8739ce1af169a5b809e4",
+      "length_bin": "long",
+      "pixel_length": 173.338,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9252252749170413,
+      "legacy_score": 0.6283128650937804,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S089",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-6b3f4bef599ec79d39d1",
+      "length_bin": "long",
+      "pixel_length": 116.497,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6882208936603867,
+      "legacy_score": 0.27371647576659763,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S090",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-labels",
+      "segment_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-b25fb5daa4b57959705d",
+      "length_bin": "long",
+      "pixel_length": 130.368,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.1365404376647738,
+      "legacy_score": 0.02938288877056888,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S091",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-5c469b00a72338ebda4c",
+      "length_bin": "short",
+      "pixel_length": 23.142,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6263271477015555,
+      "legacy_score": 0.8600977172693249,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S092",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-db2897f5e6a08714ceab",
+      "length_bin": "short",
+      "pixel_length": 21.657,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.561586999714008,
+      "legacy_score": 0.5202442457164149,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S093",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-3c4c83eaa827ed8bfbc5",
+      "length_bin": "short",
+      "pixel_length": 18.414,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.15905111306066522,
+      "legacy_score": 0.036906060003663685,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S094",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-7b4beb75b6fc8dcc0846",
+      "length_bin": "short",
+      "pixel_length": 19.243,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9116668340227919,
+      "legacy_score": 0.8917149427764856,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S095",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-31dbdb7e07201429aade",
+      "length_bin": "short",
+      "pixel_length": 18.728,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.22252999615056937,
+      "legacy_score": 0.3878995568595905,
+      "legacy": true,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S096",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-f0703349b5d50611d3d9",
+      "length_bin": "short",
+      "pixel_length": 23.657,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.732722595386828,
+      "legacy_score": 0.5568406874916866,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S097",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-e56dbdcf10aa8b500db7",
+      "length_bin": "medium",
+      "pixel_length": 49.042,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9353558062391958,
+      "legacy_score": 0.9194296168915218,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S098",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-e7d2a1cae6d0bf91b773",
+      "length_bin": "medium",
+      "pixel_length": 32.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7396136657905119,
+      "legacy_score": 0.17619528079267482,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S099",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-292431b972f3d8787e2a",
+      "length_bin": "medium",
+      "pixel_length": 36.728,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.5125886940825208,
+      "legacy_score": 0.013692026506582432,
+      "legacy": false,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S100",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-868499a2ca7b4f36c0c2",
+      "length_bin": "medium",
+      "pixel_length": 37.971,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.1520777807331107,
+      "legacy_score": 0.05555211476003013,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S101",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-53bb54f5a427baa68b65",
+      "length_bin": "medium",
+      "pixel_length": 38.456,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.755066185896671,
+      "legacy_score": 0.9676086340191591,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S102",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-8cbfea69569f7318878b",
+      "length_bin": "medium",
+      "pixel_length": 34.971,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.4293455083793517,
+      "legacy_score": 0.791690576487326,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S103",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-27601559fb3ec153ad14",
+      "length_bin": "long",
+      "pixel_length": 134.681,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9831392058926797,
+      "legacy_score": 0.6490034917573577,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S104",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-0d6d63eb0d8845adcc75",
+      "length_bin": "long",
+      "pixel_length": 81.355,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.82384986064605,
+      "legacy_score": 0.10141518132744279,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S105",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-8290d1fe3b82cc1be972",
+      "length_bin": "long",
+      "pixel_length": 120.882,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5776056895227207,
+      "legacy_score": 0.5762625407345054,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S106",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-0c4e6c762d84c3182fd3",
+      "length_bin": "long",
+      "pixel_length": 107.669,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6713422038875607,
+      "legacy_score": 0.9666443651505333,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S107",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-1f5d50778100d6b4e38a",
+      "length_bin": "long",
+      "pixel_length": 66.527,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6045545873247415,
+      "legacy_score": 0.8844498791258922,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S108",
+      "sheet_id": "174-cheongyang",
+      "tile_id": "174-cheongyang-hydro",
+      "segment_uid": "ink-run-0e9c2a1e834c7c87871a:ink-segment-8accc1020fa04e215e58",
+      "length_bin": "long",
+      "pixel_length": 166.995,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9587536444135654,
+      "legacy_score": 0.9625290780083493,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S109",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-05aa057c019eaf3db91b",
+      "length_bin": "short",
+      "pixel_length": 23.657,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9219550025379908,
+      "legacy_score": 0.8800846431394056,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S110",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-2815aaa99e1a6a2e2dd0",
+      "length_bin": "short",
+      "pixel_length": 23.485,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9381005008733695,
+      "legacy_score": 0.9374188618564788,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S111",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-0da16ae9396f4571c512",
+      "length_bin": "short",
+      "pixel_length": 19.485,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8827504712630166,
+      "legacy_score": 0.27214177984104687,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S112",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-eb508466df4ad24b737a",
+      "length_bin": "short",
+      "pixel_length": 23.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9131870823192944,
+      "legacy_score": 0.8438211528883605,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S113",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-659a22294d18d07627f4",
+      "length_bin": "short",
+      "pixel_length": 23.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9040442748410233,
+      "legacy_score": 0.7911976980816213,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S114",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-cee318b84d760e0e937e",
+      "length_bin": "short",
+      "pixel_length": 18.971,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9215562337240008,
+      "legacy_score": 0.7973654761166211,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S115",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-653ec7ac5d06d0528e19",
+      "length_bin": "medium",
+      "pixel_length": 33.556,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.909526473155444,
+      "legacy_score": 0.679292467875003,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S116",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-8bed96f68658e13e48f7",
+      "length_bin": "medium",
+      "pixel_length": 32.799,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7184805273562014,
+      "legacy_score": 0.5267868742053571,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S117",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-b60066c445435e892199",
+      "length_bin": "medium",
+      "pixel_length": 34.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7023616574100086,
+      "legacy_score": 0.015425342776084735,
+      "legacy": false,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S118",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-12a69f4a4c68f5f2cd02",
+      "length_bin": "medium",
+      "pixel_length": 58.385,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9857929542352893,
+      "legacy_score": 0.8047249259522562,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S119",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-a6f7f696abce0e702832",
+      "length_bin": "medium",
+      "pixel_length": 51.698,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.962146048483076,
+      "legacy_score": 0.8841769528311612,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S120",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-7f927e4a14c7c710a369",
+      "length_bin": "medium",
+      "pixel_length": 41.385,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8180406962957062,
+      "legacy_score": 0.8016528825695826,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S121",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-206fb72c41b6af4fa0d9",
+      "length_bin": "long",
+      "pixel_length": 139.983,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9840185099155936,
+      "legacy_score": 0.9772212854348462,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S122",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-24f9f91b0baf702511cc",
+      "length_bin": "long",
+      "pixel_length": 118.64,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9412669323690669,
+      "legacy_score": 0.9936887627432063,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S123",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-ef15ed8110fe1345c88d",
+      "length_bin": "long",
+      "pixel_length": 87.426,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.9324128662973291,
+      "legacy_score": 0.9510134505534649,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S124",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-853fe6dc5ce454e8d9f3",
+      "length_bin": "long",
+      "pixel_length": 106.468,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.97205955480425,
+      "legacy_score": 0.8444697359271222,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S125",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-0245b4dbed8590a01cda",
+      "length_bin": "long",
+      "pixel_length": 135.681,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8434962041258551,
+      "legacy_score": 0.945001937549671,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S126",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-mountain",
+      "segment_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-86f3f17616eac4f4feb8",
+      "length_bin": "long",
+      "pixel_length": 386.463,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8280297764960088,
+      "legacy_score": 0.8451727212882253,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S127",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-d667948924f78c2f6f04",
+      "length_bin": "short",
+      "pixel_length": 20.071,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.07099956770086097,
+      "legacy_score": 0.7104377170788554,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S128",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-ec0e96dae327240ddc03",
+      "length_bin": "short",
+      "pixel_length": 22.728,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.941705728877929,
+      "legacy_score": 0.037772460571944784,
+      "legacy": false,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S129",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-19c3d33f1c752f960074",
+      "length_bin": "short",
+      "pixel_length": 23.142,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.08170841231813096,
+      "legacy_score": 0.5092392183300442,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S130",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-d52d21810e81dd5f7070",
+      "length_bin": "short",
+      "pixel_length": 18.657,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.43087107985444656,
+      "legacy_score": 0.2726967754334999,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S131",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-441ffa6860253b98f5f1",
+      "length_bin": "short",
+      "pixel_length": 22.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8768206728030372,
+      "legacy_score": 0.6749613779004117,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S132",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-06a54c2c590111c633b6",
+      "length_bin": "short",
+      "pixel_length": 25.385,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.4820007822304354,
+      "legacy_score": 0.8164006142093122,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S133",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-ec04860d8f7e88683a6b",
+      "length_bin": "medium",
+      "pixel_length": 31.314,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.1272249862650605,
+      "legacy_score": 0.00017877929650920063,
+      "legacy": false,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S134",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-d575cacc647d385c8e34",
+      "length_bin": "medium",
+      "pixel_length": 45.627,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.938773949572986,
+      "legacy_score": 0.9538633390351207,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S135",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-b2f8b86159e18919b1db",
+      "length_bin": "medium",
+      "pixel_length": 29.556,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.6515782795120421,
+      "legacy_score": 0.9373727060268636,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S136",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-6e5b5b36bfd9b7b9a9d8",
+      "length_bin": "medium",
+      "pixel_length": 32.456,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.6896059492056289,
+      "legacy_score": 0.9192508056393568,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S137",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-c0d8f1e6038848bd663c",
+      "length_bin": "medium",
+      "pixel_length": 28.971,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.708652892627854,
+      "legacy_score": 0.903692529783052,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S138",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-e9f2cf54e70cd97e71ef",
+      "length_bin": "medium",
+      "pixel_length": 29.071,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.06456952393589341,
+      "legacy_score": 0.011318330556157668,
+      "legacy": false,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S139",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-0a38c7972a9f68665c65",
+      "length_bin": "long",
+      "pixel_length": 95.326,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5478262517214942,
+      "legacy_score": 0.938254722509244,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S140",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-9a7c05ddcfcd1b6adf85",
+      "length_bin": "long",
+      "pixel_length": 69.184,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7080345194915899,
+      "legacy_score": 0.7698864732022598,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S141",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-867657cef91add9d60c2",
+      "length_bin": "long",
+      "pixel_length": 118.953,
+      "ai_class": "unsure",
+      "reference_eligible": false,
+      "context_score": 0.4570186871050093,
+      "legacy_score": 0.9584708481246771,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S142",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-76d2db15bdd75e3dd175",
+      "length_bin": "long",
+      "pixel_length": 84.255,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.07075602774215041,
+      "legacy_score": 0.9533022090725783,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S143",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-302338d9f7e0bf037890",
+      "length_bin": "long",
+      "pixel_length": 63.012,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.46105446475185485,
+      "legacy_score": 0.8813544069678596,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S144",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-labels",
+      "segment_uid": "ink-run-9d5db80eb2ee759b262e:ink-segment-94352ab1f17268229a36",
+      "length_bin": "long",
+      "pixel_length": 71.012,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7945205573382235,
+      "legacy_score": 0.14827433704454954,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S145",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-dbe3e62e9b089da44e26",
+      "length_bin": "short",
+      "pixel_length": 19.414,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.04783329969351188,
+      "legacy_score": 0.061565052446017295,
+      "legacy": false,
+      "balanced": false,
+      "conservative": false,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S146",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-938a03f237ea2429584c",
+      "length_bin": "short",
+      "pixel_length": 18.828,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.31055590580231857,
+      "legacy_score": 0.00016129912183468235,
+      "legacy": false,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S147",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-e3790573e1e1458cb490",
+      "length_bin": "short",
+      "pixel_length": 21.243,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.30982177124174043,
+      "legacy_score": 0.8688167634499641,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S148",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-aae060f79ef0bf8ac9aa",
+      "length_bin": "short",
+      "pixel_length": 25.899,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.895855675126708,
+      "legacy_score": 0.6845709961793085,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S149",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-a630063141bdd77773ba",
+      "length_bin": "short",
+      "pixel_length": 18.243,
+      "ai_class": "symbol",
+      "reference_eligible": true,
+      "context_score": 0.09414642253457613,
+      "legacy_score": 0.00031782415460468525,
+      "legacy": false,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S150",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-7a08c021e08a7cddf00b",
+      "length_bin": "short",
+      "pixel_length": 18.243,
+      "ai_class": "text",
+      "reference_eligible": true,
+      "context_score": 0.0627763078370715,
+      "legacy_score": 0.1943607028118107,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S151",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-5b27ad8046768ea94b59",
+      "length_bin": "medium",
+      "pixel_length": 30.657,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.10431591870496207,
+      "legacy_score": 0.7596962142367055,
+      "legacy": true,
+      "balanced": false,
+      "conservative": true,
+      "uncertain": true
+    },
+    {
+      "sample_id": "S152",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-8a572a9f3521d53a5715",
+      "length_bin": "medium",
+      "pixel_length": 39.799,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7186556810712899,
+      "legacy_score": 0.870477673528877,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S153",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-5eb1e3d49ee2559ce968",
+      "length_bin": "medium",
+      "pixel_length": 33.385,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5723975835380926,
+      "legacy_score": 0.47168052126724613,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S154",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-b5fbdcf1e4c09d91c26d",
+      "length_bin": "medium",
+      "pixel_length": 32.314,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.5386672353588173,
+      "legacy_score": 0.7960760266115708,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S155",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-ff0b7171214d6af67f84",
+      "length_bin": "medium",
+      "pixel_length": 42.284,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8745692188494125,
+      "legacy_score": 0.9195741768710258,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S156",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-92ae9f0a06c4ad130eb5",
+      "length_bin": "medium",
+      "pixel_length": 38.627,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.7088972672259312,
+      "legacy_score": 0.95051744849928,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S157",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-088b1b6a17775690eb09",
+      "length_bin": "long",
+      "pixel_length": 188.338,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.3863665108932265,
+      "legacy_score": 0.9926800679132483,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S158",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-a3302bbdb19a80c2247d",
+      "length_bin": "long",
+      "pixel_length": 124.983,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.34890612957502304,
+      "legacy_score": 0.9442133606854968,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S159",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-488ae90ef224e2f72f77",
+      "length_bin": "long",
+      "pixel_length": 115.225,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.8071883099707868,
+      "legacy_score": 0.37564990885187827,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S160",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-dd4d82e7590fb4d57cfd",
+      "length_bin": "long",
+      "pixel_length": 104.74,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.2839869243841282,
+      "legacy_score": 0.9489910153654887,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S161",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-54ca85a37b8a988393fc",
+      "length_bin": "long",
+      "pixel_length": 88.598,
+      "ai_class": "road_river",
+      "reference_eligible": true,
+      "context_score": 0.43999848354037907,
+      "legacy_score": 0.9704215693097078,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    },
+    {
+      "sample_id": "S162",
+      "sheet_id": "177-nonsan",
+      "tile_id": "177-nonsan-hydro",
+      "segment_uid": "ink-run-de12e3346c66d047290f:ink-segment-0e3cb50f8bd3cd6191e8",
+      "length_bin": "long",
+      "pixel_length": 71.497,
+      "ai_class": "contour",
+      "reference_eligible": true,
+      "context_score": 0.921225685330179,
+      "legacy_score": 0.8890853319074776,
+      "legacy": true,
+      "balanced": true,
+      "conservative": true,
+      "uncertain": false
+    }
+  ],
+  "candidate_counts": {
+    "raw": 8736,
+    "legacy": 7940,
+    "balanced": 6785,
+    "conservative": 7804,
+    "uncertain": 1687
+  },
+  "candidate_tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "source_vector_sha256": "c4f96c61e7b0ffe4353892893e5f15a31cf09d7e9d3a9a999b6f97711f60ad9b",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-mountain-all-scores.geojson",
+      "all_count": 993,
+      "balanced_threshold": 0.3571217457987424,
+      "conservative_threshold": 0.1330038113394654,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-mountain-legacy.geojson",
+          "count": 920
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-mountain-balanced.geojson",
+          "count": 879
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-mountain-conservative.geojson",
+          "count": 950
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-mountain-uncertain.geojson",
+          "count": 91
+        }
+      }
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "source_raster_sha256": "5e9c729a9cbe53c6a9a59b7c50bd9c346ccaf4096525e2875b4c8f6ea39584bb",
+      "source_vector_sha256": "06f2ed32c848f7a36b829086528355f8b41a08cd79a5034786aa178d52c8c6c0",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-labels-all-scores.geojson",
+      "all_count": 563,
+      "balanced_threshold": 0.3571217457987424,
+      "conservative_threshold": 0.1330038113394654,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-labels-legacy.geojson",
+          "count": 472
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-labels-balanced.geojson",
+          "count": 347
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-labels-conservative.geojson",
+          "count": 452
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-labels-uncertain.geojson",
+          "count": 170
+        }
+      }
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "source_raster_sha256": "2fd1240f0c70401d20260438652c04c0b8cca6dcc388a75102bfc9ce856a34f9",
+      "source_vector_sha256": "f2e0730741318b93dafa385ae43bce81487ee8d3573eddd5fcbf87a2c1e556d5",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-hydro-all-scores.geojson",
+      "all_count": 792,
+      "balanced_threshold": 0.3571217457987424,
+      "conservative_threshold": 0.1330038113394654,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-hydro-legacy.geojson",
+          "count": 691
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-hydro-balanced.geojson",
+          "count": 564
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-hydro-conservative.geojson",
+          "count": 701
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/173-buyeo-hydro-uncertain.geojson",
+          "count": 195
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "source_raster_sha256": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+      "source_vector_sha256": "426355fa9aaae351860110610a6ec1b12eefaacbcdc0ea94e50372c0963a2346",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-mountain-all-scores.geojson",
+      "all_count": 1162,
+      "balanced_threshold": 0.413933606156136,
+      "conservative_threshold": 0.26818584275713225,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-mountain-legacy.geojson",
+          "count": 1095
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-mountain-balanced.geojson",
+          "count": 963
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-mountain-conservative.geojson",
+          "count": 1077
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-mountain-uncertain.geojson",
+          "count": 174
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "source_raster_sha256": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+      "source_vector_sha256": "2b94b1c1436ef46c8f8bf48bd8a7e584cd0f74941a871c685aacc1eb035bf857",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-labels-all-scores.geojson",
+      "all_count": 1061,
+      "balanced_threshold": 0.413933606156136,
+      "conservative_threshold": 0.26818584275713225,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-labels-legacy.geojson",
+          "count": 933
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-labels-balanced.geojson",
+          "count": 629
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-labels-conservative.geojson",
+          "count": 753
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-labels-uncertain.geojson",
+          "count": 357
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "source_raster_sha256": "7ef0f498e09636d9ebbc34a42741a8710813fa218985e58689c6d8a6288145b5",
+      "source_vector_sha256": "9ece58345e75cf86b7b32c5770fdb1e949c9bf45420c1308d3a66f0e3bb6953f",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-hydro-all-scores.geojson",
+      "all_count": 1215,
+      "balanced_threshold": 0.413933606156136,
+      "conservative_threshold": 0.26818584275713225,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-hydro-legacy.geojson",
+          "count": 1116
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-hydro-balanced.geojson",
+          "count": 917
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-hydro-conservative.geojson",
+          "count": 1027
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/174-cheongyang-hydro-uncertain.geojson",
+          "count": 256
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "source_raster_sha256": "a36cea1322f718789099248369b5d9dd70904c0402b45ebdcedd808f8a505474",
+      "source_vector_sha256": "c5bbcd6756ca073863de8dc56e6c925fd531e92edcafad405d1768adf304c6c7",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-mountain-all-scores.geojson",
+      "all_count": 1351,
+      "balanced_threshold": 0.20443023410448077,
+      "conservative_threshold": 0.05349593185878066,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-mountain-legacy.geojson",
+          "count": 1290
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-mountain-balanced.geojson",
+          "count": 1266
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-mountain-conservative.geojson",
+          "count": 1333
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-mountain-uncertain.geojson",
+          "count": 79
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "source_raster_sha256": "e329b378512bb1dd057ba8e719900c88a82dd28017ae9caf2c48267ae176b0f8",
+      "source_vector_sha256": "a5cf2c62a0296baf1a4e40e2927cc324d04362a27ebd73ed6de2aae6a89d4e31",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-labels-all-scores.geojson",
+      "all_count": 739,
+      "balanced_threshold": 0.20443023410448077,
+      "conservative_threshold": 0.05349593185878066,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-labels-legacy.geojson",
+          "count": 649
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-labels-balanced.geojson",
+          "count": 538
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-labels-conservative.geojson",
+          "count": 679
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-labels-uncertain.geojson",
+          "count": 193
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "source_raster_sha256": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a",
+      "source_vector_sha256": "11b0a7061922366ba8f6bb01750ceabca288f2e06c6d357c3d78896de89a19c1",
+      "all_scores_path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-hydro-all-scores.geojson",
+      "all_count": 860,
+      "balanced_threshold": 0.20443023410448077,
+      "conservative_threshold": 0.05349593185878066,
+      "methods": {
+        "legacy": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-hydro-legacy.geojson",
+          "count": 774
+        },
+        "balanced": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-hydro-balanced.geojson",
+          "count": 682
+        },
+        "conservative": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-hydro-conservative.geojson",
+          "count": 832
+        },
+        "uncertain": {
+          "path": "data/derived/contour-context-2026-09-12/candidates-final/177-nonsan-hydro-uncertain.geojson",
+          "count": 172
+        }
+      }
+    }
+  ],
+  "region_spotchecks": {
+    "scope": "12 small AI-selected regions, dark ink <=176, 2-pixel output proximity, not contour precision/recall",
+    "aggregates": {
+      "contour": {
+        "regions": 6,
+        "dark_pixels": 1913,
+        "coverage": {
+          "legacy": 0.9111343439623628,
+          "balanced": 0.9116570831155254,
+          "conservative": 0.9116570831155254,
+          "uncertain": 0
+        }
+      },
+      "text": {
+        "regions": 3,
+        "dark_pixels": 874,
+        "coverage": {
+          "legacy": 0.18192219679633867,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 0.18192219679633867
+        }
+      },
+      "road_river": {
+        "regions": 3,
+        "dark_pixels": 607,
+        "coverage": {
+          "legacy": 0.3657331136738056,
+          "balanced": 0.004942339373970346,
+          "conservative": 0.004942339373970346,
+          "uncertain": 0.36079077429983525
+        }
+      }
+    },
+    "regions": [
+      {
+        "id": "buyeo-contour-west",
+        "tile_id": "173-buyeo-mountain",
+        "kind": "contour",
+        "pixel_box": [
+          20,
+          292,
+          95,
+          329
+        ],
+        "dark_pixels": 395,
+        "covered_dark_pixels": {
+          "legacy": 324,
+          "balanced": 324,
+          "conservative": 324,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "buyeo-contour-centre",
+        "tile_id": "173-buyeo-mountain",
+        "kind": "contour",
+        "pixel_box": [
+          352,
+          556,
+          381,
+          598
+        ],
+        "dark_pixels": 145,
+        "covered_dark_pixels": {
+          "legacy": 99,
+          "balanced": 99,
+          "conservative": 99,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "buyeo-letter",
+        "tile_id": "173-buyeo-mountain",
+        "kind": "text",
+        "pixel_box": [
+          507,
+          427,
+          542,
+          454
+        ],
+        "dark_pixels": 308,
+        "covered_dark_pixels": {
+          "legacy": 0,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "buyeo-road",
+        "tile_id": "173-buyeo-mountain",
+        "kind": "road_river",
+        "pixel_box": [
+          96,
+          579,
+          130,
+          610
+        ],
+        "dark_pixels": 194,
+        "covered_dark_pixels": {
+          "legacy": 88,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 88
+        }
+      },
+      {
+        "id": "cheongyang-contour-east",
+        "tile_id": "174-cheongyang-labels",
+        "kind": "contour",
+        "pixel_box": [
+          735,
+          737,
+          800,
+          788
+        ],
+        "dark_pixels": 750,
+        "covered_dark_pixels": {
+          "legacy": 735,
+          "balanced": 736,
+          "conservative": 736,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "cheongyang-contour-centre",
+        "tile_id": "174-cheongyang-labels",
+        "kind": "contour",
+        "pixel_box": [
+          542,
+          734,
+          590,
+          794
+        ],
+        "dark_pixels": 502,
+        "covered_dark_pixels": {
+          "legacy": 488,
+          "balanced": 488,
+          "conservative": 488,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "cheongyang-letter",
+        "tile_id": "174-cheongyang-labels",
+        "kind": "text",
+        "pixel_box": [
+          243,
+          386,
+          277,
+          421
+        ],
+        "dark_pixels": 381,
+        "covered_dark_pixels": {
+          "legacy": 159,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 159
+        }
+      },
+      {
+        "id": "cheongyang-road",
+        "tile_id": "174-cheongyang-labels",
+        "kind": "road_river",
+        "pixel_box": [
+          260,
+          566,
+          279,
+          620
+        ],
+        "dark_pixels": 183,
+        "covered_dark_pixels": {
+          "legacy": 131,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 131
+        }
+      },
+      {
+        "id": "nonsan-contour-west",
+        "tile_id": "177-nonsan-hydro",
+        "kind": "contour",
+        "pixel_box": [
+          17,
+          589,
+          33,
+          613
+        ],
+        "dark_pixels": 51,
+        "covered_dark_pixels": {
+          "legacy": 27,
+          "balanced": 27,
+          "conservative": 27,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "nonsan-contour-south",
+        "tile_id": "177-nonsan-hydro",
+        "kind": "contour",
+        "pixel_box": [
+          26,
+          896,
+          57,
+          910
+        ],
+        "dark_pixels": 70,
+        "covered_dark_pixels": {
+          "legacy": 70,
+          "balanced": 70,
+          "conservative": 70,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "nonsan-letter",
+        "tile_id": "177-nonsan-hydro",
+        "kind": "text",
+        "pixel_box": [
+          225,
+          98,
+          245,
+          123
+        ],
+        "dark_pixels": 185,
+        "covered_dark_pixels": {
+          "legacy": 0,
+          "balanced": 0,
+          "conservative": 0,
+          "uncertain": 0
+        }
+      },
+      {
+        "id": "nonsan-river",
+        "tile_id": "177-nonsan-hydro",
+        "kind": "road_river",
+        "pixel_box": [
+          458,
+          144,
+          484,
+          183
+        ],
+        "dark_pixels": 230,
+        "covered_dark_pixels": {
+          "legacy": 3,
+          "balanced": 3,
+          "conservative": 3,
+          "uncertain": 0
+        }
+      }
+    ]
+  },
+  "verification": {
+    "non_qgis_tests_passed": 146,
+    "qgis_tests_passed": 7,
+    "qgis_version": "3.44.8",
+    "saved_valid_qgis_layers": 54,
+    "read_only_vector_layers": 45,
+    "unchanged_original_geometries_verified": 8736,
+    "human_approvals_created": 0,
+    "python": "3.12.14",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "Pillow": "12.3.0",
+    "final_scoring_and_images_seconds": 9.09510949999094,
+    "all_162_sample_scores_present_in_full_tile_export": true,
+    "eligible_148_sample_scores_match_nested_outer_predictions": true
+  },
+  "artifacts": {
+    "report": "data/derived/contour-context-2026-09-12/candidates-final/report.html",
+    "qgis": "data/derived/contour-context-2026-09-12/contour-context-final.qgz",
+    "illustration": "data/derived/contour-context-2026-09-12/candidates-final/context-tradeoff-examples.png",
+    "illustration_sample_ids": [
+      "S084",
+      "S058"
+    ],
+    "illustration_scope": "posthoc explanation only, not evaluation selection"
+  },
+  "limitations": [
+    "Only three development sheets; excluded Gongju has not been viewed or tuned.",
+    "AI labels are imperfect, not human approvals or complete contour ground truth.",
+    "This compares classification of existing candidates, not missing contour detection or gap-joining correctness.",
+    "Outer-fold metrics use inner-only thresholds. All-data final model is not independently tested.",
+    "Equal length-bin sampling is not a population-weighted whole-map estimate.",
+    "The conservative policy was an exploratory follow-up; the same development outer folds were reused.",
+    "Missing contours before candidate generation and existing false joins are not completely evaluated.",
+    "No production default replacement or automatic plugin installation. The experiment originally remained local; code/evidence were subsequently prepared for commit and push at the user request."
+  ]
+}

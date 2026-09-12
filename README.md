@@ -13,6 +13,20 @@
 
 첫 검증을 위한 세 도엽 구성, 반복 실행 절차, ML 도입 기준은 [Initial Pilot Protocol](docs/pilot-protocol.md)에 정리했습니다.
 
+현재 우선 작업은 [실제 도엽의 등고선 추출 개선](docs/contour-extraction-progress.md)입니다.
+9개 개발 타일에서 벡터 변환의 가짜 분기와 미리보기 불일치를 수정하고,
+문맥 필터 후보·원본 겹침 비교·새 QGIS 비교 프로젝트를 만들었습니다.
+도로·하천 혼입은 아직 해결되지 않았으며 모든 출력은 검수 후보입니다.
+후속 [주변 방향·간격 분류 실험](docs/contour-neighborhood-experiment.md)은 162개 고정 표본과
+도엽 단위 검증으로 혼입 감소·추가 누락을 함께 확인했습니다. 선별·보수·불확실 후보와
+54레이어 QGIS 비교 프로젝트를 제공하며, 새 모델은 기본 추출기를 대체하지 않습니다.
+
+별도의 [PaddleOCR 여백 보조 파일럿](docs/margin-ocr-pilot.md)은 명시적으로 선택한
+crop의 원문 이미지·OCR 원문·신뢰도를 기록하는 독립 CLI입니다. 모든 결과는
+검수 전 후보이며 좌표·CRS·GCP를 자동 적용하지 않습니다. Stanford 공개 원본
+20도엽을 확보해 실제 로컬 모델을 실행했습니다. [실행 기록과 한계](docs/margin-ocr-stanford20.md)를
+참조하세요. 사람의 독립 전사에 따른 판독률은 아직 검증하지 않았습니다.
+
 실제 스캔에 여백·범례·외곽 프레임이 있는 경우 **Register Map**에서 이미지 모서리가 아니라 인쇄된 지도 내부 도곽의 `NW → NE → SE → SW`를 클릭합니다. Processing의 `PIXEL_CORNERS`에도 같은 순서의 픽셀 좌표를 입력할 수 있습니다.
 
 현재 로컬 파일럿은 청양–공주 / 부여–논산의 인접 흑백 도엽 4장입니다. 좌표 범위, `+10.4″` 보정 표기의 해석, 내부 도곽 픽셀 GCP와 검증 방법은 [Korea Connected Four-Sheet Pilot](docs/korea-four-sheet-pilot.md)에 기록했습니다. 원본은 Git에 포함되지 않습니다.

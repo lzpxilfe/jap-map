@@ -1,0 +1,607 @@
+{
+  "schema": "jap-map-contour-vector-comparison/1",
+  "reference_origin": "ai_visual_region_selection",
+  "human_approved": false,
+  "probes_sha256": "081710e7155d47a9af910344ced0843e950143861901a94a3bea78ed1604a5e7",
+  "before_index_sha256": "b9567e513020e380237334b3b54c3373eb93f5e7a8a6cc551c9d85b29e0220ea",
+  "after_index_sha256": "60530fb3ba4bd88d691cad141d30331182539bc2f95fb33955037b1bee375748",
+  "source_index_sha256": "6d2870ef7d1692407334df72ce3db8b729cca4684f09b7c7a56f5b696162dfa5",
+  "methods": {
+    "before_18": "수정 전: 18 px",
+    "corner_safe_18": "모서리 수정: 18 px",
+    "context_filter": "문맥 점수 ≥ 0.1"
+  },
+  "filtered_model": {
+    "index_sha256": "1564278b959dee72e25fda263d51a2ddcfb1b470fb74360a39f1e6c1cbd51e81",
+    "model_sha256": "59921362fbda3641456c740edeca8adfde5c192ce24a7aa58d83e580edc11e33",
+    "threshold": 0.1,
+    "scope": "synthetic-trained review candidate, not calibrated historical-map accuracy"
+  },
+  "after_vectorization": {
+    "graph_version": "corner-safe-skeleton/2",
+    "diagonal_policy": "corner_safe",
+    "junction_policy": "split",
+    "minimum_length_px": 18,
+    "simplify_tolerance_px": 0.75
+  },
+  "tiles": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "sheet_id": "173-buyeo",
+      "scene_type": "dense_mountain",
+      "source_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "methods": {
+        "before_18": {
+          "line_count": 976,
+          "median_line_length_px": 29.1065,
+          "total_line_length_px": 44475.997,
+          "vector_pixels": 38904,
+          "open_line_endpoints": 1906
+        },
+        "corner_safe_18": {
+          "line_count": 993,
+          "median_line_length_px": 29.243,
+          "total_line_length_px": 45247.903,
+          "vector_pixels": 39565,
+          "open_line_endpoints": 1910
+        },
+        "context_filter": {
+          "line_count": 920,
+          "median_line_length_px": 29.5205,
+          "total_line_length_px": 42877.988,
+          "vector_pixels": 37462,
+          "open_line_endpoints": 1840
+        }
+      }
+    },
+    {
+      "tile_id": "173-buyeo-labels",
+      "sheet_id": "173-buyeo",
+      "scene_type": "labels_and_roads",
+      "source_sha256": "5e9c729a9cbe53c6a9a59b7c50bd9c346ccaf4096525e2875b4c8f6ea39584bb",
+      "methods": {
+        "before_18": {
+          "line_count": 533,
+          "median_line_length_px": 26.071,
+          "total_line_length_px": 20761.43,
+          "vector_pixels": 18183,
+          "open_line_endpoints": 1038
+        },
+        "corner_safe_18": {
+          "line_count": 563,
+          "median_line_length_px": 25.657,
+          "total_line_length_px": 21666.188000000002,
+          "vector_pixels": 18999,
+          "open_line_endpoints": 1080
+        },
+        "context_filter": {
+          "line_count": 472,
+          "median_line_length_px": 25.899,
+          "total_line_length_px": 18776.417,
+          "vector_pixels": 16373,
+          "open_line_endpoints": 944
+        }
+      }
+    },
+    {
+      "tile_id": "173-buyeo-hydro",
+      "sheet_id": "173-buyeo",
+      "scene_type": "hydrography_and_plain",
+      "source_sha256": "2fd1240f0c70401d20260438652c04c0b8cca6dcc388a75102bfc9ce856a34f9",
+      "methods": {
+        "before_18": {
+          "line_count": 745,
+          "median_line_length_px": 24.728,
+          "total_line_length_px": 23765.008,
+          "vector_pixels": 20787,
+          "open_line_endpoints": 1466
+        },
+        "corner_safe_18": {
+          "line_count": 792,
+          "median_line_length_px": 24.863500000000002,
+          "total_line_length_px": 25231.948,
+          "vector_pixels": 22054,
+          "open_line_endpoints": 1526
+        },
+        "context_filter": {
+          "line_count": 691,
+          "median_line_length_px": 24.971,
+          "total_line_length_px": 22448.601,
+          "vector_pixels": 19595,
+          "open_line_endpoints": 1382
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-mountain",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "dense_mountain",
+      "source_sha256": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+      "methods": {
+        "before_18": {
+          "line_count": 1128,
+          "median_line_length_px": 27.971,
+          "total_line_length_px": 43680.973,
+          "vector_pixels": 38145,
+          "open_line_endpoints": 2246
+        },
+        "corner_safe_18": {
+          "line_count": 1162,
+          "median_line_length_px": 27.971,
+          "total_line_length_px": 44930.635,
+          "vector_pixels": 39210,
+          "open_line_endpoints": 2300
+        },
+        "context_filter": {
+          "line_count": 1095,
+          "median_line_length_px": 27.971,
+          "total_line_length_px": 42405.539,
+          "vector_pixels": 36989,
+          "open_line_endpoints": 2190
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-labels",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "labels_and_roads",
+      "source_sha256": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+      "methods": {
+        "before_18": {
+          "line_count": 1005,
+          "median_line_length_px": 32.142,
+          "total_line_length_px": 46979.693,
+          "vector_pixels": 40890,
+          "open_line_endpoints": 1984
+        },
+        "corner_safe_18": {
+          "line_count": 1061,
+          "median_line_length_px": 31.142,
+          "total_line_length_px": 48792.936,
+          "vector_pixels": 42444,
+          "open_line_endpoints": 2046
+        },
+        "context_filter": {
+          "line_count": 933,
+          "median_line_length_px": 32.385,
+          "total_line_length_px": 44351.402,
+          "vector_pixels": 38471,
+          "open_line_endpoints": 1866
+        }
+      }
+    },
+    {
+      "tile_id": "174-cheongyang-hydro",
+      "sheet_id": "174-cheongyang",
+      "scene_type": "hydrography_and_plain",
+      "source_sha256": "7ef0f498e09636d9ebbc34a42741a8710813fa218985e58689c6d8a6288145b5",
+      "methods": {
+        "before_18": {
+          "line_count": 1176,
+          "median_line_length_px": 30.142,
+          "total_line_length_px": 49674.589,
+          "vector_pixels": 43075,
+          "open_line_endpoints": 2326
+        },
+        "corner_safe_18": {
+          "line_count": 1215,
+          "median_line_length_px": 30.142,
+          "total_line_length_px": 51421.004,
+          "vector_pixels": 44565,
+          "open_line_endpoints": 2380
+        },
+        "context_filter": {
+          "line_count": 1116,
+          "median_line_length_px": 30.314,
+          "total_line_length_px": 47285.77,
+          "vector_pixels": 40955,
+          "open_line_endpoints": 2232
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "sheet_id": "177-nonsan",
+      "scene_type": "dense_mountain",
+      "source_sha256": "a36cea1322f718789099248369b5d9dd70904c0402b45ebdcedd808f8a505474",
+      "methods": {
+        "before_18": {
+          "line_count": 1299,
+          "median_line_length_px": 32.456,
+          "total_line_length_px": 58561.293,
+          "vector_pixels": 51297,
+          "open_line_endpoints": 2588
+        },
+        "corner_safe_18": {
+          "line_count": 1351,
+          "median_line_length_px": 32.385,
+          "total_line_length_px": 60450.814,
+          "vector_pixels": 52899,
+          "open_line_endpoints": 2664
+        },
+        "context_filter": {
+          "line_count": 1290,
+          "median_line_length_px": 32.4705,
+          "total_line_length_px": 58358.18,
+          "vector_pixels": 51039,
+          "open_line_endpoints": 2580
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-labels",
+      "sheet_id": "177-nonsan",
+      "scene_type": "labels_and_roads",
+      "source_sha256": "e329b378512bb1dd057ba8e719900c88a82dd28017ae9caf2c48267ae176b0f8",
+      "methods": {
+        "before_18": {
+          "line_count": 684,
+          "median_line_length_px": 25.971,
+          "total_line_length_px": 21639.905,
+          "vector_pixels": 19122,
+          "open_line_endpoints": 1344
+        },
+        "corner_safe_18": {
+          "line_count": 739,
+          "median_line_length_px": 26.071,
+          "total_line_length_px": 23329.362,
+          "vector_pixels": 20623,
+          "open_line_endpoints": 1416
+        },
+        "context_filter": {
+          "line_count": 649,
+          "median_line_length_px": 26.142,
+          "total_line_length_px": 20638.669,
+          "vector_pixels": 18240,
+          "open_line_endpoints": 1298
+        }
+      }
+    },
+    {
+      "tile_id": "177-nonsan-hydro",
+      "sheet_id": "177-nonsan",
+      "scene_type": "hydrography_and_plain",
+      "source_sha256": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a",
+      "methods": {
+        "before_18": {
+          "line_count": 801,
+          "median_line_length_px": 27.071,
+          "total_line_length_px": 27701.337,
+          "vector_pixels": 24460,
+          "open_line_endpoints": 1588
+        },
+        "corner_safe_18": {
+          "line_count": 860,
+          "median_line_length_px": 26.728,
+          "total_line_length_px": 29551.307,
+          "vector_pixels": 26065,
+          "open_line_endpoints": 1678
+        },
+        "context_filter": {
+          "line_count": 774,
+          "median_line_length_px": 27.071,
+          "total_line_length_px": 26640.107,
+          "vector_pixels": 23478,
+          "open_line_endpoints": 1548
+        }
+      }
+    }
+  ],
+  "regions": [
+    {
+      "id": "buyeo-contour-west",
+      "tile_id": "173-buyeo-mountain",
+      "kind": "contour",
+      "pixel_box": [
+        20,
+        292,
+        95,
+        329
+      ],
+      "reference_dark_pixels": 395,
+      "covered_dark_pixels": {
+        "before_18": 324,
+        "corner_safe_18": 324,
+        "context_filter": 324
+      },
+      "coverage": {
+        "before_18": 0.8202531645569621,
+        "corner_safe_18": 0.8202531645569621,
+        "context_filter": 0.8202531645569621
+      }
+    },
+    {
+      "id": "buyeo-contour-centre",
+      "tile_id": "173-buyeo-mountain",
+      "kind": "contour",
+      "pixel_box": [
+        352,
+        556,
+        381,
+        598
+      ],
+      "reference_dark_pixels": 145,
+      "covered_dark_pixels": {
+        "before_18": 99,
+        "corner_safe_18": 99,
+        "context_filter": 99
+      },
+      "coverage": {
+        "before_18": 0.6827586206896552,
+        "corner_safe_18": 0.6827586206896552,
+        "context_filter": 0.6827586206896552
+      }
+    },
+    {
+      "id": "buyeo-letter",
+      "tile_id": "173-buyeo-mountain",
+      "kind": "text",
+      "pixel_box": [
+        507,
+        427,
+        542,
+        454
+      ],
+      "reference_dark_pixels": 308,
+      "covered_dark_pixels": {
+        "before_18": 0,
+        "corner_safe_18": 0,
+        "context_filter": 0
+      },
+      "coverage": {
+        "before_18": 0,
+        "corner_safe_18": 0,
+        "context_filter": 0
+      }
+    },
+    {
+      "id": "buyeo-road",
+      "tile_id": "173-buyeo-mountain",
+      "kind": "road_river",
+      "pixel_box": [
+        96,
+        579,
+        130,
+        610
+      ],
+      "reference_dark_pixels": 194,
+      "covered_dark_pixels": {
+        "before_18": 88,
+        "corner_safe_18": 88,
+        "context_filter": 88
+      },
+      "coverage": {
+        "before_18": 0.4536082474226804,
+        "corner_safe_18": 0.4536082474226804,
+        "context_filter": 0.4536082474226804
+      }
+    },
+    {
+      "id": "cheongyang-contour-east",
+      "tile_id": "174-cheongyang-labels",
+      "kind": "contour",
+      "pixel_box": [
+        735,
+        737,
+        800,
+        788
+      ],
+      "reference_dark_pixels": 750,
+      "covered_dark_pixels": {
+        "before_18": 736,
+        "corner_safe_18": 736,
+        "context_filter": 735
+      },
+      "coverage": {
+        "before_18": 0.9813333333333333,
+        "corner_safe_18": 0.9813333333333333,
+        "context_filter": 0.98
+      }
+    },
+    {
+      "id": "cheongyang-contour-centre",
+      "tile_id": "174-cheongyang-labels",
+      "kind": "contour",
+      "pixel_box": [
+        542,
+        734,
+        590,
+        794
+      ],
+      "reference_dark_pixels": 502,
+      "covered_dark_pixels": {
+        "before_18": 488,
+        "corner_safe_18": 488,
+        "context_filter": 488
+      },
+      "coverage": {
+        "before_18": 0.9721115537848606,
+        "corner_safe_18": 0.9721115537848606,
+        "context_filter": 0.9721115537848606
+      }
+    },
+    {
+      "id": "cheongyang-letter",
+      "tile_id": "174-cheongyang-labels",
+      "kind": "text",
+      "pixel_box": [
+        243,
+        386,
+        277,
+        421
+      ],
+      "reference_dark_pixels": 381,
+      "covered_dark_pixels": {
+        "before_18": 251,
+        "corner_safe_18": 254,
+        "context_filter": 159
+      },
+      "coverage": {
+        "before_18": 0.6587926509186351,
+        "corner_safe_18": 0.6666666666666666,
+        "context_filter": 0.41732283464566927
+      }
+    },
+    {
+      "id": "cheongyang-road",
+      "tile_id": "174-cheongyang-labels",
+      "kind": "road_river",
+      "pixel_box": [
+        260,
+        566,
+        279,
+        620
+      ],
+      "reference_dark_pixels": 183,
+      "covered_dark_pixels": {
+        "before_18": 132,
+        "corner_safe_18": 131,
+        "context_filter": 131
+      },
+      "coverage": {
+        "before_18": 0.7213114754098361,
+        "corner_safe_18": 0.7158469945355191,
+        "context_filter": 0.7158469945355191
+      }
+    },
+    {
+      "id": "nonsan-contour-west",
+      "tile_id": "177-nonsan-hydro",
+      "kind": "contour",
+      "pixel_box": [
+        17,
+        589,
+        33,
+        613
+      ],
+      "reference_dark_pixels": 51,
+      "covered_dark_pixels": {
+        "before_18": 27,
+        "corner_safe_18": 27,
+        "context_filter": 27
+      },
+      "coverage": {
+        "before_18": 0.5294117647058824,
+        "corner_safe_18": 0.5294117647058824,
+        "context_filter": 0.5294117647058824
+      }
+    },
+    {
+      "id": "nonsan-contour-south",
+      "tile_id": "177-nonsan-hydro",
+      "kind": "contour",
+      "pixel_box": [
+        26,
+        896,
+        57,
+        910
+      ],
+      "reference_dark_pixels": 70,
+      "covered_dark_pixels": {
+        "before_18": 70,
+        "corner_safe_18": 70,
+        "context_filter": 70
+      },
+      "coverage": {
+        "before_18": 1,
+        "corner_safe_18": 1,
+        "context_filter": 1
+      }
+    },
+    {
+      "id": "nonsan-letter",
+      "tile_id": "177-nonsan-hydro",
+      "kind": "text",
+      "pixel_box": [
+        225,
+        98,
+        245,
+        123
+      ],
+      "reference_dark_pixels": 185,
+      "covered_dark_pixels": {
+        "before_18": 0,
+        "corner_safe_18": 0,
+        "context_filter": 0
+      },
+      "coverage": {
+        "before_18": 0,
+        "corner_safe_18": 0,
+        "context_filter": 0
+      }
+    },
+    {
+      "id": "nonsan-river",
+      "tile_id": "177-nonsan-hydro",
+      "kind": "road_river",
+      "pixel_box": [
+        458,
+        144,
+        484,
+        183
+      ],
+      "reference_dark_pixels": 230,
+      "covered_dark_pixels": {
+        "before_18": 1,
+        "corner_safe_18": 3,
+        "context_filter": 3
+      },
+      "coverage": {
+        "before_18": 0.004347826086956522,
+        "corner_safe_18": 0.013043478260869565,
+        "context_filter": 0.013043478260869565
+      }
+    }
+  ],
+  "probe_aggregates": {
+    "contour": {
+      "regions": 6,
+      "reference_dark_pixels": 1913,
+      "visible_ink_coverage": {
+        "before_18": 0.9116570831155254,
+        "corner_safe_18": 0.9116570831155254,
+        "context_filter": 0.9111343439623628
+      }
+    },
+    "text": {
+      "regions": 3,
+      "reference_dark_pixels": 874,
+      "visible_ink_coverage": {
+        "before_18": 0.28718535469107553,
+        "corner_safe_18": 0.2906178489702517,
+        "context_filter": 0.18192219679633867
+      }
+    },
+    "road_river": {
+      "regions": 3,
+      "reference_dark_pixels": 607,
+      "visible_ink_coverage": {
+        "before_18": 0.3640856672158155,
+        "corner_safe_18": 0.3657331136738056,
+        "context_filter": 0.3657331136738056
+      }
+    }
+  },
+  "holdout_used": false,
+  "ground_truth_modified": false,
+  "promotion_passed": false,
+  "interpretation": "AI-selected region spot checks only. Dark-pixel coverage within 2px is not contour precision/recall. Higher contour coverage is desirable; higher text/road coverage is undesirable. Full-map false joins and omissions need independent contour truth. No invented gap connections are made.",
+  "verification": {
+    "non_qgis_tests": 133,
+    "qgis_version": "3.44.8-Solothurn",
+    "qgis_integration_tests": 6,
+    "comparison_project_valid_layers": 36,
+    "existing_annotation_geopackage_written": false
+  },
+  "rejected_development_trials": {
+    "minimum_length_48": {
+      "contour_probe_coverage": 0.6994249869315212,
+      "text_probe_coverage": 0
+    },
+    "tangent_pairs_18": {
+      "contour_probe_coverage": 0.9116570831155254,
+      "text_probe_coverage": 0.43821510297482835
+    },
+    "interpretation": "These settings were not adopted as defaults; figures are small AI-selected region probes, not formal accuracy."
+  }
+}

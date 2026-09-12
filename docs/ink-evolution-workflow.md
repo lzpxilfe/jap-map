@@ -1,5 +1,10 @@
 # Ink 발전·검증 워크플로
 
+2026-09-12의 우선 결과는 [실제 등고선 추출 비교](contour-extraction-progress.md)입니다.
+아래 합성 수치는 이전 벡터 그래프에서 측정한 기록이며 새 모서리 수정의 정확도를
+뜻하지 않습니다. 새 batch 출력은 `ink_candidate_vectors_corner_safe_v3`에 따로
+저장되므로 후속 점수·검수 명령에도 원하는 `--ink-index`를 명시하세요.
+
 ## 기준과 출처
 
 `jap-map`은 ArchaeoTrace 플러그인을 설치하거나 호출하지 않는다. 필요한

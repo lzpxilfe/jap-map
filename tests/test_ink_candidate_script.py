@@ -32,6 +32,17 @@ class InkCandidateScriptTest(unittest.TestCase):
         coordinates = SCRIPT._map_coordinates(tile, 4, 2, ((0, 0), (3, 1)))
         self.assertEqual(coordinates, [[100.5, 201.5], [103.5, 200.5]])
 
+    def test_preview_mask_contains_only_exported_geometry(self):
+        try:
+            import numpy as np
+        except ImportError:
+            self.skipTest("optional NumPy dependency is not installed")
+        from histcontour_core.vectorization import PixelLineProposal
+        mask = SCRIPT.proposal_mask([PixelLineProposal("only-this-line", ((2., 5.), (12., 5.)), 10., 1.)], (20, 20))
+        self.assertEqual(int(mask.sum()), 11)
+        self.assertTrue(mask[5, 2:13].all())
+        self.assertFalse(mask[15].any())
+
     def test_process_tile_writes_separate_provenanced_outputs(self):
         try:
             import numpy as np

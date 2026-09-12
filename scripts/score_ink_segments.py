@@ -12,6 +12,7 @@ import argparse
 import json
 import math
 from pathlib import Path
+import shutil
 import sys
 
 REPOSITORY = Path(__file__).resolve().parents[1]
@@ -19,6 +20,7 @@ sys.path.insert(0, str(REPOSITORY))
 
 from histcontour_core.segment_review import LogisticModel, geometry_features
 from histcontour_core.onnx_scorer import OnnxScorer, OnnxScorerUnavailable
+from histcontour_core.provenance import sha256_file
 
 
 def parse_args():
@@ -36,6 +38,7 @@ def parse_args():
         default=Path("data/derived/annotation_package/ink_scored_vectors"),
     )
     parser.add_argument("--include-holdout", action="store_true")
+    parser.add_argument("--threshold", type=float, help="optional score threshold for a separate review-candidate subset; all scores are also retained")
     return parser.parse_args()
 
 
@@ -117,10 +120,12 @@ def score_tile(tile: dict, vector_path: Path, model) -> dict:
         points = _map_to_pixel(tile, feature["geometry"]["coordinates"])
         descriptor = {**geometry_features(points), **_context_features(grayscale, points)}
         kind, scorer = model
-        score = scorer.probability(source, points) if kind == "onnx" else scorer.probability(descriptor)
+        score = scorer.probability(grayscale, points) if kind == "onnx" else scorer.probability(descriptor)
+        if not math.isfinite(score) or not 0 <= score <= 1:
+            raise ValueError("contour scores must be finite values in [0, 1]")
         properties.update(
-            contour_score=round(score, 6),
-            contour_score_kind="synthetic_or_review-trained logistic baseline",
+            contour_score=score,
+            contour_score_kind=f"synthetic_or_review-trained {kind} model",
             ink_support=float(properties.get("ink_support", properties.get("confidence", 0.0))),
             contour_score_review_only=True,
         )
@@ -128,14 +133,34 @@ def score_tile(tile: dict, vector_path: Path, model) -> dict:
     return {"type": "FeatureCollection", "name": f"ink_contour_scores_{tile['tile_id']}", "crs": collection.get("crs"), "features": scored}
 
 
+def filter_collection(collection: dict, threshold: float) -> dict:
+    """Select an immutable geometry subset without creating human approvals."""
+    if isinstance(threshold, bool) or not isinstance(threshold, (int, float)) or not math.isfinite(threshold) or not 0 <= threshold <= 1:
+        raise ValueError("threshold must be a finite number in [0, 1]")
+    for feature in collection["features"]:
+        score = feature["properties"].get("contour_score")
+        if isinstance(score, bool) or not isinstance(score, (int, float)) or not math.isfinite(score) or not 0 <= score <= 1:
+            raise ValueError("candidate selection needs a finite contour_score for every feature")
+    return {**collection, "name": collection.get("name", "") + "_review_candidates",
+            "selection": {"threshold": threshold, "review_only": True, "human_approval": False},
+            "features": [feature for feature in collection["features"] if feature["properties"]["contour_score"] >= threshold]}
+
+
 def main():
     args = parse_args()
+    if args.threshold is not None and not 0 <= args.threshold <= 1:
+        raise SystemExit("--threshold must be in [0, 1]")
     index = json.loads(_resolve(args.index).read_text(encoding="utf-8"))
     ink_index = json.loads(_resolve(args.ink_index).read_text(encoding="utf-8"))
     model = load_model(_resolve(args.model))
     tiles = {tile["tile_id"]: tile for tile in index["tiles"]}
     output_dir = _resolve(args.output_dir)
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=False)
+    model_path = _resolve(args.model)
+    snapshot_name = "model" + model_path.suffix
+    shutil.copyfile(model_path, output_dir / snapshot_name)
+    if model[0] == "onnx":
+        shutil.copyfile(model_path.with_suffix(model_path.suffix + ".json"), output_dir / (snapshot_name + ".json"))
     outputs = []
     for candidate in ink_index["tiles"]:
         tile = tiles[candidate["tile_id"]]
@@ -145,13 +170,24 @@ def main():
         collection = score_tile(tile, vector_path, model)
         output_path = output_dir / f"{tile['tile_id']}-ink-contour-scores.geojson"
         output_path.write_text(json.dumps(collection, ensure_ascii=False, indent=2), encoding="utf-8")
-        outputs.append({"tile_id": tile["tile_id"], "split": tile["split"], "path": _portable(output_path), "feature_count": len(collection["features"])})
+        row = {"tile_id": tile["tile_id"], "split": tile["split"], "path": _portable(output_path), "feature_count": len(collection["features"])}
+        if args.threshold is not None:
+            selected = filter_collection(collection, args.threshold)
+            selected_path = output_dir / f"{tile['tile_id']}-ink-contour-candidates.geojson"
+            selected_path.write_text(json.dumps(selected, ensure_ascii=False, indent=2), encoding="utf-8")
+            row.update(retained_path=_portable(selected_path), retained_count=len(selected["features"]))
+        outputs.append(row)
     summary = {
         "version": "1",
         "review_only": True,
         "model_kind": model[0],
         "model_feature_schema": model[1].to_dict()["feature_schema"] if model[0] == "logistic" else model[1].metadata["schema"],
         "model_path": _portable(_resolve(args.model)),
+        "model_snapshot": snapshot_name,
+        "model_sha256": sha256_file(model_path),
+        "filter_threshold": args.threshold,
+        "source_index_sha256": sha256_file(_resolve(args.index)),
+        "source_ink_index_sha256": sha256_file(_resolve(args.ink_index)),
         "source_ink_index": _portable(_resolve(args.ink_index)),
         "holdout_included": bool(args.include_holdout),
         "tiles": outputs,

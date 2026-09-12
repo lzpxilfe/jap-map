@@ -3,6 +3,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 from histcontour_core.segment_review import FEATURE_NAMES, train_logistic_baseline
 
@@ -35,6 +36,24 @@ class ScoreInkSegmentsTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "not trained"):
                 SCRIPT.load_model(path)
 
+    def test_threshold_subset_preserves_original_geometry_and_review_state(self):
+        features = [{"properties": {"contour_score": score, "review_status": "unreviewed"},
+                     "geometry": {"type": "LineString", "coordinates": [[0, 0], [10, 0]]}}
+                    for score in (.05, .1, .9)]
+        collection = {"type": "FeatureCollection", "features": features}
+        selected = SCRIPT.filter_collection(collection, .1)
+        self.assertEqual(len(selected["features"]), 2)
+        self.assertEqual(len(collection["features"]), 3)
+        self.assertIs(selected["features"][0], features[1])
+        self.assertTrue(selected["selection"]["review_only"])
+        self.assertFalse(selected["selection"]["human_approval"])
+        for invalid in (True, -.1, 1.1, float("nan")):
+            with self.assertRaises(ValueError):
+                SCRIPT.filter_collection(collection, invalid)
+        features[0]["properties"]["contour_score"] = float("nan")
+        with self.assertRaises(ValueError):
+            SCRIPT.filter_collection(collection, .1)
+
     def test_scored_feature_separates_ink_support_and_contour_score(self):
         import numpy as np
         from PIL import Image
@@ -49,10 +68,18 @@ class ScoreInkSegmentsTest(unittest.TestCase):
             vector = root / "ink.geojson"
             vector.write_text(json.dumps({"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"ink_support": 0.9}, "geometry": {"type": "LineString", "coordinates": [[8.5, 32.5], [55.5, 32.5]]}}]}), encoding="utf-8")
             collection = SCRIPT.score_tile(tile, vector, ("logistic", model))
+            calls = []
+            def probability(image, points):
+                calls.append((image.shape, len(points)))
+                return .75
+            onnx_collection = SCRIPT.score_tile(tile, vector, ("onnx", SimpleNamespace(probability=probability)))
         properties = collection["features"][0]["properties"]
         self.assertEqual(properties["ink_support"], 0.9)
         self.assertIn("contour_score", properties)
         self.assertTrue(properties["contour_score_review_only"])
+        self.assertEqual(calls, [((64, 64), 2)])
+        self.assertEqual(onnx_collection["features"][0]["properties"]["contour_score"], .75)
+        self.assertIn("onnx", onnx_collection["features"][0]["properties"]["contour_score_kind"])
 
 
 if __name__ == "__main__":
