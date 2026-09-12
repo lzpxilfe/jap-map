@@ -1,0 +1,28 @@
+{
+  "schema": "jap-map-margin-visual-notes/1",
+  "reference_origin": "ai_visual_provisional",
+  "human_approved": false,
+  "interpretation": "AI inspection of source previews before the 20-sheet OCR run, with catalog labels visible. Not blind human ground truth. Titles are transcribed in visual left-to-right order; semantic historical reading is generally right-to-left. Missing or uncertain characters are not guessed.",
+  "sheets": [
+    {"record_id": "cj987zm6276", "title_visual_ltr": "戎訓", "legend_left": false, "quality_note": "gray paper; clear title"},
+    {"record_id": "bk177wq3097", "title_visual_ltr": "部東寧會", "legend_left": false, "quality_note": "clear light paper"},
+    {"record_id": "dd086rf1647", "title_visual_ltr": "洞芝四", "legend_left": true, "quality_note": "yellowing, folds and stamp"},
+    {"record_id": "br996kj2193", "title_visual_ltr": "場徳院", "legend_left": false, "quality_note": "clear cream paper; historical glyph needs expert check"},
+    {"record_id": "db935yc4212", "title_visual_ltr": "里興羅", "legend_left": true, "quality_note": "browning and low contrast"},
+    {"record_id": "bf834yf7024", "title_visual_ltr": "洞興南", "legend_left": false, "quality_note": "faint thin print"},
+    {"record_id": "fp192cq1681", "title_visual_ltr": "山甑", "legend_left": true, "quality_note": "yellowing, creases and torn paper edge"},
+    {"record_id": "dg017hn3043", "title_visual_ltr": "溪玉", "legend_left": false, "quality_note": "large historical type; blue coastal map"},
+    {"record_id": "gk886vb5506", "title_visual_ltr": "浦石", "legend_left": true, "quality_note": "yellowing, folds and stamp near margin"},
+    {"record_id": "bg467zc7844", "title_visual_ltr": "山梁", "legend_left": false, "quality_note": "clear gray print; top-right tear outside chosen crop"},
+    {"record_id": "bv010zs1865", "title_visual_ltr": "昌平", "legend_left": true, "quality_note": "yellowing, folding and stamp"},
+    {"record_id": "bv496gt9686", "title_visual_ltr": null, "legend_left": false, "quality_note": "first title character uncertain in preview; withheld from provisional comparison"},
+    {"record_id": "cx546js8403", "title_visual_ltr": "山靈", "legend_left": true, "quality_note": "gray thin print; top-right tear outside chosen crop"},
+    {"record_id": "bb826jm1914", "title_visual_ltr": "州廣", "legend_left": false, "quality_note": "clear black print"},
+    {"record_id": "ds857mg7684", "title_visual_ltr": "川利", "legend_left": true, "quality_note": "gray faint print"},
+    {"record_id": "bn462py5224", "title_visual_ltr": "州全", "legend_left": true, "quality_note": "gray faint thin print"},
+    {"record_id": "cq534zf2874", "title_visual_ltr": "橋辰", "legend_left": false, "quality_note": "gray fine print"},
+    {"record_id": "pr492sf6025", "title_visual_ltr": "里鶴舞", "legend_left": false, "quality_note": "development calibration sheet; earlier OCR already viewed; not blinded", "ocr_seen_before_reference": true},
+    {"record_id": "cv625mc5401", "title_visual_ltr": "州綾", "legend_left": true, "quality_note": "gray low-contrast print"},
+    {"record_id": "cc013td3269", "title_visual_ltr": "島揚飛", "legend_left": true, "quality_note": "gray fine print; mostly sea"}
+  ]
+}

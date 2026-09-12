@@ -1,0 +1,19 @@
+{
+  "instructions": "Describe researcher-verified local Paddle inference bundles before pin-models. Do not copy the code repository license onto unverified weights. This tool never downloads a model. See docs/margin-ocr-pilot.md.",
+  "models": {
+    "detection": {
+      "directory": "",
+      "model_name": "",
+      "source_url": "",
+      "source_revision": "",
+      "weight_license": ""
+    },
+    "recognition": {
+      "directory": "",
+      "model_name": "",
+      "source_url": "",
+      "source_revision": "",
+      "weight_license": ""
+    }
+  }
+}

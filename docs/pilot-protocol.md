@@ -46,3 +46,9 @@ if the three reports and manual review show that profile tuning and conservative
 link review cannot meet the agreed accuracy and review-time targets.  Any later
 training set should contain source-rights metadata and examples beyond the
 initial Korean pilot before claiming international support.
+
+The separate [margin OCR pilot](margin-ocr-pilot.md) evaluates a pretrained,
+crop-only reading assistant. It does not waive this segmentation-training gate,
+apply coordinates/CRS/GCPs, or turn existing synthetic Ink experiments into
+real-sheet accuracy evidence. It needs its own independent transcriptions and
+approximately 20 development sheets before any adoption decision.

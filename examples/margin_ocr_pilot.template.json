@@ -1,0 +1,17 @@
+{
+  "schema": "jap-map-margin-crops/1",
+  "pilot_id": "korea-margin-ocr-pilot",
+  "corpus_kind": "historical_scan",
+  "instructions": "Copy to data/raw/. Supply actual scan paths, rights, sheet IDs and manually measured pixel boxes. Empty fields and regions are deliberately not runnable. No fictional coordinates are provided.",
+  "sheets": [
+    {
+      "sheet_id": "sheet-id",
+      "split": "development",
+      "scenario": "clear",
+      "image_path": "",
+      "scan_source": "",
+      "rights": "",
+      "regions": []
+    }
+  ]
+}
