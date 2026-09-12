@@ -217,6 +217,92 @@ class QgisIntegrationTest(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 build_context(index_path, vector_path, context_path, output)
 
+    def test_human_packet_round_trip_is_explicit_and_role_separated(self):
+        import os
+        import shutil
+        import xml.etree.ElementTree as ET
+        import zipfile
+        from qgis.PyQt.QtGui import QColor, QImage
+        from histcontour_core.human_feedback import geometry_digest
+        from histcontour_core.provenance import sha256_file
+        from scripts.build_contour_human_review import build
+        from scripts.import_contour_human_feedback import import_feedback
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            raster = root/"synthetic.png"
+            image = QImage(64, 64, QImage.Format.Format_RGB32)
+            image.fill(QColor("white"))
+            self.assertTrue(image.save(str(raster)))
+            raster.with_suffix(".pgw").write_text("1\n0\n0\n-1\n0.5\n63.5\n", encoding="ascii")
+            digest = sha256_file(raster)
+            tiles, cases = [], []
+            for index in range(9):
+                tile_id = f"synthetic-{index}"
+                sample_id = "E001" if index == 8 else f"S{index+1:03}"
+                role = "evaluation_only" if index == 8 else "training"
+                tile = {"tile_id": tile_id, "sheet_id": f"source-{index//3}", "split": "development", "crs_authid": "EPSG:3857",
+                        "raster_path": "synthetic.png", "source_raster_sha256": digest, "bounds": [0., 0., 64., 64.], "pixel_bounds": [0, 0, 64, 64]}
+                tiles.append(tile)
+                geometry = {"type": "LineString", "coordinates": [[10.5, 43.5], [30.5, 43.5]]}
+                cases.append({"case_id": f"H{index+1:03}", "sample_id": sample_id, "dataset_role": role, "tile_id": tile_id, "sheet_id": tile["sheet_id"],
+                              "segment_uid": sample_id, "source_raster_sha256": digest, "original_geometry": geometry, "original_geometry_sha256": geometry_digest(geometry),
+                              "pixel_points": [[10., 20.], [30., 20.]], "pixel_box": [0, 0, 64, 64], "priority": 1, "prompt": "Synthetic contract fixture, not human evidence"})
+            packet_path = root/"packet.json"
+            packet_path.write_text(json.dumps({"schema": "jap-map-contour-human-packet/1", "holdout_used": False, "tiles": tiles, "cases": cases}), encoding="utf-8")
+            result = build(Path(os.path.relpath(packet_path)))
+            self.assertEqual(result["layers"], 13)
+            self.assertEqual(result["bookmarks"], 9)
+            with zipfile.ZipFile(root/"human-review.qgz") as archive:
+                xml = ET.fromstring(archive.read(next(name for name in archive.namelist() if name.endswith(".qgs"))))
+            sources = [node.text for node in xml.findall("./projectlayers/maplayer/datasource")]
+            self.assertEqual(len(sources), 13)
+            self.assertTrue(all(source.startswith("./") for source in sources))
+            with tempfile.TemporaryDirectory() as moved_directory:
+                moved = Path(moved_directory)/"relocated-packet"
+                shutil.copytree(root, moved)
+                relocated = QgsProject()
+                self.assertTrue(relocated.read(str(moved/"human-review.qgz")))
+                self.assertEqual(len(relocated.mapLayers()), 13)
+                for layer in relocated.mapLayers().values():
+                    self.assertTrue(layer.isValid())
+                    self.assertTrue(Path(layer.source().split("|")[0]).resolve().is_relative_to(moved.resolve()))
+                relocated.clear()
+            gpkg = root/"human-review.gpkg"
+            original_hash = sha256_file(gpkg)
+            empty = import_feedback(packet_path, gpkg, root/"empty-feedback")
+            self.assertEqual(empty["human_approval_count"], 0)
+            self.assertEqual(sha256_file(gpkg), original_hash)
+            # Deliberately edit ONLY a temporary synthetic fixture to exercise
+            # the human-save path; no real review approvals are generated.
+            decisions = QgsVectorLayer(f"{gpkg}|layername=review_cases", "fixture decisions", "ogr")
+            self.assertTrue(decisions.startEditing())
+            for feature in decisions.getFeatures():
+                if str(feature["case_id"]) not in ("H001", "H009"):
+                    continue
+                values = {"review_status": "contour", "geometry_decision": "replace_with_trace" if str(feature["case_id"]) == "H001" else "accept_original",
+                          "annotator": "Synthetic test reviewer", "human_approved": 1}
+                for name, value in values.items():
+                    self.assertTrue(decisions.changeAttributeValue(feature.id(), decisions.fields().indexOf(name), value))
+            self.assertTrue(decisions.commitChanges())
+            traces = QgsVectorLayer(f"{gpkg}|layername=human_traces", "fixture traces", "ogr")
+            self.assertTrue(traces.startEditing())
+            feature = QgsFeature(traces.fields())
+            feature.setGeometry(QgsGeometry.fromPolylineXY([QgsPointXY(11.5, 43.5), QgsPointXY(31.5, 43.5)]))
+            feature["case_id"], feature["trace_kind"], feature["note"] = "H001", "observed_contour", "Synthetic one-pixel correction"
+            self.assertTrue(traces.addFeature(feature))
+            self.assertTrue(traces.commitChanges())
+            del feature, traces, decisions
+            feedback = import_feedback(packet_path, gpkg, root/"approved-fixture", previous_path=root/"empty-feedback"/"feedback.json")
+            self.assertEqual(feedback["human_approval_count"], 2)
+            self.assertEqual(len(feedback["training_labels"]), 0)
+            self.assertEqual(len(feedback["evaluation_labels"]), 1)
+            drawn = next(row for row in feedback["geometry_references"] if row["geometry_origin"] == "human_drawn")
+            self.assertEqual(drawn["original_pixel_points"], [[10., 20.], [30., 20.]])
+            self.assertEqual(drawn["human_pixel_points"], [[11., 20.], [31., 20.]])
+            self.assertEqual(set(feedback["changed_decision_case_ids"]), {"H001", "H009"})
+            with self.assertRaises(FileExistsError):
+                build(packet_path)
+
 
 
 

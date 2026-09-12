@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,11 +36,12 @@ def write(path, value):
         handle.write("\n")
 
 
-def sample_indices(features, *, seed, per_bin):
+def sample_indices(features, *, seed, per_bin, excluded_ids=()):
     if type(per_bin) is not int or per_bin < 1:
         raise ValueError("per_bin must be a positive integer")
     buckets = {"short": [], "medium": [], "long": []}
     identities = set()
+    excluded_ids = set(excluded_ids)
     for index, feature in enumerate(features):
         length = feature["properties"]["pixel_length"]
         if isinstance(length, bool) or not isinstance(length, (int, float)) or not math.isfinite(length) or length < 18:
@@ -49,6 +51,8 @@ def sample_indices(features, *, seed, per_bin):
         if not isinstance(identity, str) or not identity or identity in identities:
             raise ValueError("candidate identities must be non-empty and unique")
         identities.add(identity)
+        if identity in excluded_ids:
+            continue
         key = hashlib.sha256(f"{seed}:{identity}".encode()).hexdigest()
         buckets[bucket].append((key, index))
     if any(len(rows) < per_bin for rows in buckets.values()):
@@ -68,7 +72,7 @@ def target_crop(source, points, box):
     return crop
 
 
-def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6):
+def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6, exclude_manifest=None, sample_prefix="S"):
     from PIL import Image, ImageDraw, ImageFont
     index, vectors = read(index_path), read(vector_path)
     tiles = {row["tile_id"]: row for row in index["tiles"] if row["split"] == "development" and row["sheet_id"] != "178-gongju"}
@@ -76,6 +80,17 @@ def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6):
         raise ValueError("semantic sampling is restricted to the nine development tiles")
     if per_bin < 1:
         raise ValueError("per_bin must be positive")
+    if not isinstance(sample_prefix, str) or not re.fullmatch(r"[A-Z]{1,4}", sample_prefix):
+        raise ValueError("sample prefix must contain one to four uppercase letters")
+    excluded_ids = set()
+    if exclude_manifest is not None:
+        excluded = read(exclude_manifest)
+        if (excluded.get("schema") != "jap-map-contour-semantic-samples/1" or excluded.get("holdout_used") is not False
+                or excluded.get("source_index_sha256") != sha256_file(index_path) or excluded.get("vector_index_sha256") != sha256_file(vector_path)):
+            raise ValueError("exclusion manifest must come from the identical development source/vector run")
+        excluded_ids = {row["segment_uid"] for row in excluded["samples"]}
+        if len(excluded_ids) != len(excluded["samples"]):
+            raise ValueError("exclusion manifest contains duplicate segment identities")
     output.mkdir(parents=True, exist_ok=False)
     (output / "samples").mkdir()
     font = ImageFont.load_default(size=16)
@@ -92,7 +107,7 @@ def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6):
         proposals = pixel_proposals(tile, collection)
         with Image.open(raster_path) as image:
             source = image.convert("RGB")
-        for bucket, index_in_collection in sample_indices(collection["features"], seed=seed, per_bin=per_bin):
+        for bucket, index_in_collection in sample_indices(collection["features"], seed=seed, per_bin=per_bin, excluded_ids=excluded_ids):
             feature = collection["features"][index_in_collection]
             proposal = proposals[index_in_collection]
             points = proposal.points
@@ -103,7 +118,7 @@ def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6):
             cx, cy = (box[0]+box[2])/2, (box[1]+box[3])/2
             box = [max(0, math.floor(min(box[0], cx-64))), max(0, math.floor(min(box[1], cy-64))),
                    min(source.width, math.ceil(max(box[2], cx+64))), min(source.height, math.ceil(max(box[3], cy+64)))]
-            sid = f"S{len(records)+1:03}"
+            sid = f"{sample_prefix}{len(records)+1:03}"
             crop = target_crop(source, points, box)
             source_crop = source.crop(box)
             crop.save(output / "samples" / f"{sid}-target.png")
@@ -133,6 +148,10 @@ def prepare(index_path, vector_path, output, *, seed=20260912, per_bin=6):
                 "selection": f"SHA256(seed:segment_uid), {'six' if per_bin == 6 else per_bin} per [18,28), [28,60), [60,infinity) native-pixel-length bin per development tile; no model scores used",
                 "source_index_sha256": sha256_file(index_path), "vector_index_sha256": sha256_file(vector_path),
                 "samples": records, "human_approvals": 0, "holdout_used": False}
+    if exclude_manifest is not None:
+        manifest.update(role="forward_development_evaluation", excluded_manifest_sha256=sha256_file(exclude_manifest),
+                        excluded_segment_count=len(excluded_ids), sample_prefix=sample_prefix,
+                        evaluation_rule="Do not fit models, choose thresholds, or revise labels using these evaluation identities or their class labels.")
     write(output / "manifest.json", manifest)
     write(output / "labels.template.json", {"schema": "jap-map-contour-semantic-labels/1", "sample_manifest_sha256": sha256_file(output / "manifest.json"),
                                             "reference_origin": "unset", "human_approved": False,
@@ -147,8 +166,10 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--seed", type=int, default=20260912)
     parser.add_argument("--per-bin", type=int, default=6)
+    parser.add_argument("--exclude-manifest", type=Path, help="exclude prior identities and mark the new set forward-evaluation-only")
+    parser.add_argument("--sample-prefix", default="S")
     args = parser.parse_args()
-    prepare(args.index, args.vectors, args.output, seed=args.seed, per_bin=args.per_bin)
+    prepare(args.index, args.vectors, args.output, seed=args.seed, per_bin=args.per_bin, exclude_manifest=args.exclude_manifest, sample_prefix=args.sample_prefix)
 
 
 if __name__ == "__main__":

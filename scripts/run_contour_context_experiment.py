@@ -46,6 +46,8 @@ def write(path, value):
 
 def validate_sample_labels(manifest_path, labels_path):
     manifest, labels = read(manifest_path), read(labels_path)
+    if manifest.get("role") == "forward_development_evaluation":
+        raise ValueError("forward-evaluation-only samples must not enter model fitting or threshold calibration")
     if manifest.get("holdout_used") is not False or labels.get("human_approved") is not False or labels.get("reference_origin") != "ai_visual_provisional":
         raise ValueError("this experiment accepts only explicit non-human development evidence")
     if labels.get("sample_manifest_sha256") != sha256_file(manifest_path):
@@ -110,7 +112,7 @@ def metrics(rows):
                                 "retained": sum(row["class"] == kind and row["retained"] for row in rows)} for kind in CLASSES}}
 
 
-def nested_validation(records, feature_names, *, l2=0.1, target_recall=0.95):
+def nested_validation(records, feature_names, *, l2=0.1, target_recall=0.95, fitter=fit_classifier):
     usable = [row for row in records if row["class"] in CLASSES]
     sheets = sorted({row["sheet_id"] for row in usable})
     if len(sheets) != 3:
@@ -123,12 +125,12 @@ def nested_validation(records, feature_names, *, l2=0.1, target_recall=0.95):
         for validation_sheet in sorted({row["sheet_id"] for row in train}):
             inner_train = [row for row in train if row["sheet_id"] != validation_sheet]
             inner_validation = [row for row in train if row["sheet_id"] == validation_sheet]
-            model = fit_classifier(inner_train, feature_names, l2=l2)
+            model = fitter(inner_train, feature_names, l2=l2)
             calibration.extend({"sample_id": row["sample_id"], "class": row["class"], "score": probability(model, row)} for row in inner_validation)
             inner_folds.append({"training_sample_ids": [row["sample_id"] for row in inner_train],
                                 "validation_sample_ids": [row["sample_id"] for row in inner_validation]})
         threshold = recall_first_threshold(calibration, target_recall=target_recall)
-        model = fit_classifier(train, feature_names, l2=l2)
+        model = fitter(train, feature_names, l2=l2)
         outer_rows = []
         for row in test:
             score = probability(model, row)
@@ -139,7 +141,7 @@ def nested_validation(records, feature_names, *, l2=0.1, target_recall=0.95):
                       "test_sample_ids": [row["sample_id"] for row in test], "threshold": threshold,
                       "inner_folds": inner_folds, "inner_predictions": calibration,
                       "model": model, "metrics": metrics(outer_rows)})
-    final_model = fit_classifier(usable, feature_names, l2=l2)
+    final_model = fitter(usable, feature_names, l2=l2)
     # A deployment threshold fitted to OOF scores is not a new independent metric.
     final_threshold = recall_first_threshold(predictions, target_recall=target_recall)
     return {"folds": folds, "outer_predictions": predictions, "metrics": metrics(predictions),

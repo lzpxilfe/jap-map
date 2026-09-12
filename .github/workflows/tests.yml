@@ -23,6 +23,8 @@ jobs:
           tests.test_margin_ocr tests.test_margin_ocr_sources
           tests.test_skeleton_graph tests.test_contour_vector_comparison
           tests.test_contour_context
+          tests.test_contour_chains
+          tests.test_human_feedback
       - run: python scripts/build_plugin_zip.py
 
   qgis:

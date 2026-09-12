@@ -144,12 +144,20 @@ class NeighborhoodFeatures:
 
 def fit_classifier(records, feature_names=CONTEXT_FEATURE_NAMES, *, l2=0.1):
     """Deterministic, class-balanced ridge logistic model; train-only scaling."""
+    names = tuple(feature_names)
+    if names not in (BASE_FEATURE_NAMES, CONTEXT_FEATURE_NAMES):
+        raise ValueError("unsupported feature set")
+    return _fit_descriptor_model(records, names, feature_schema=CONTEXT_SCHEMA, l2=l2)
+
+
+def _fit_descriptor_model(records, feature_names, *, feature_schema, l2):
+    """Shared numerical fitter; public callers enforce a declared schema/order."""
     import numpy as np
     from scipy.optimize import minimize
     from scipy.special import expit
     names = tuple(feature_names)
-    if names not in (BASE_FEATURE_NAMES, CONTEXT_FEATURE_NAMES) or not math.isfinite(l2) or l2 <= 0:
-        raise ValueError("unsupported feature set or regularization")
+    if not names or not math.isfinite(l2) or l2 <= 0:
+        raise ValueError("invalid descriptor count or regularization")
     matrix = np.asarray([[row[name] for name in names] for row in records], dtype=float)
     labels = np.asarray([row["class"] == "contour" for row in records], dtype=float)
     if matrix.ndim != 2 or not np.isfinite(matrix).all() or min(labels.sum(), len(labels)-labels.sum()) < 2:
@@ -172,7 +180,7 @@ def fit_classifier(records, feature_names=CONTEXT_FEATURE_NAMES, *, l2=0.1):
     fit = minimize(objective, np.zeros(len(names)+1), method="L-BFGS-B", jac=True, options={"maxiter": 500, "ftol": 1e-12, "gtol": 1e-8})
     if not fit.success or not np.isfinite(fit.x).all():
         raise ValueError(f"classifier optimization did not converge: {fit.message}")
-    return {"feature_schema": CONTEXT_SCHEMA, "feature_names": list(names), "means": means.tolist(), "scales": scales.tolist(),
+    return {"feature_schema": feature_schema, "feature_names": list(names), "means": means.tolist(), "scales": scales.tolist(),
             "coefficients": fit.x[1:].tolist(), "intercept": float(fit.x[0]), "l2": l2,
             "training_count": len(records), "training_contours": int(labels.sum()), "review_only": True}
 
