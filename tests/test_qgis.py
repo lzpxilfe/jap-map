@@ -297,6 +297,80 @@ class QgisIntegrationTest(unittest.TestCase):
             self.assertEqual(ids, {"A0000", "A0006-R1"})
             del feature, layer
 
+    def test_short_gap_cleanup_is_only_a_preview_and_keeps_clicked_nodes(self):
+        from unittest.mock import patch
+        from qgis.PyQt.QtGui import QColor, QImage
+        from qgis.core import QgsRasterLayer
+        from qgis.gui import QgsMapCanvas
+        from histcontour_core.gap_refinement import shape_audit
+        from jap_map.ink_trace_tool import InkTraceMapTool
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"fixture.png"
+            image = QImage(96,96,QImage.Format.Format_RGB32); image.fill(QColor("white"))
+            self.assertTrue(image.save(str(path)))
+            path.with_suffix(".pgw").write_text("1\n0\n0\n-1\n0.5\n95.5\n",encoding="ascii")
+            raster = QgsRasterLayer(str(path),"fixture")
+            target = QgsVectorLayer("LineString?crs=EPSG:3857","preview destination","memory")
+            canvas = QgsMapCanvas(); tool = InkTraceMapTool(canvas,_Iface(),raster,target)
+            tool.anchor_full,tool.end_full = (20.,40.),(30.,40.)
+            tool._evidence = object()
+            with patch("jap_map.ink_trace_tool.sample_evidence_tangent",return_value=(1.,.2)):
+                tool._build_gap_preview()
+            self.assertEqual(tool._preview_points[0],tool.anchor_full)
+            self.assertEqual(tool._preview_points[-1],tool.end_full)
+            self.assertEqual(shape_audit(tool._preview_points)["inflection_count"],0)
+            self.assertEqual(target.featureCount(),0)
+            self.assertFalse(target.isModified())
+            tool._clear_preview(); self.assertIsNone(tool._preview_points)
+            del tool,canvas,target,raster
+
+    def test_feedback_vectorization_packet_is_portable_and_not_whole_line_approval(self):
+        import shutil
+        from qgis.PyQt.QtGui import QColor,QImage
+        from histcontour_core.provenance import sha256_file
+        from scripts.build_feedback_vectorization_project import build
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            output = root/"vectorized"; (output/"sources").mkdir(parents=True)
+            raster = output/"sources/synthetic.png"
+            image = QImage(32,32,QImage.Format.Format_RGB32);image.fill(QColor("white"))
+            self.assertTrue(image.save(str(raster)))
+            raster.with_suffix(".pgw").write_text("1\n0\n0\n-1\n0.5\n31.5\n",encoding="ascii")
+            tile = {"tile_id":"synthetic","sheet_id":"synthetic","split":"development","crs_authid":"EPSG:3857",
+                    "pixel_bounds":[0,0,32,32],"bounds":[0,0,32,32],"raster_path":"sources/synthetic.png","source_raster_sha256":sha256_file(raster)}
+            feature = {"type":"Feature","geometry":{"type":"LineString","coordinates":[[2.5,20.5],[20.5,20.5]]},
+                       "properties":{"tile_id":"synthetic","line_id":"C000001","proposal_id":"fixture","segment_uid":"base-fixture","human_approved":False,
+                                     "whole_line_semantics_approved":False,"training_eligible":False}}
+            collection = {"type":"FeatureCollection","crs":{"type":"name","properties":{"name":"EPSG:3857"}},"features":[feature]}
+            hashes = {}
+            for name in ("contour-candidates","reviewed-connection-network","source-before","approved-connections","automatic-connections","needs-review"):
+                content = json.loads(json.dumps(collection))
+                if name == "approved-connections":content["features"][0]["properties"].update(human_approved=True,semantic_decision="contour")
+                path = output/(name+".geojson");path.write_text(json.dumps(content),encoding="utf-8");hashes[path.name] = sha256_file(path)
+            report = {"schema":"jap-map-feedback-vectorization/1","holdout_used":False,"new_human_approvals":0,
+                      "whole_network_human_approved":False,"native_crs":"EPSG:3857","tiles":[tile],"output_sha256":hashes,
+                      "counts":{"source_fragments":1,"enhanced_candidate_lines":1,"approved_connections":1,"automatic_connections":1}}
+            (output/"vectorization-report.json").write_text(json.dumps(report),encoding="utf-8")
+            result = build(output,previews=False)
+            self.assertEqual(result["layers"],8)
+            self.assertTrue(result["all_sources_inside_packet"])
+            self.assertTrue(result["vector_layers_read_only"])
+            layer = QgsVectorLayer(f"{output/'contour-vectorization.gpkg'}|layername=contour_candidates","network","ogr")
+            self.assertEqual(layer.featureCount(),1)
+            self.assertEqual(layer.crs().authid(),"EPSG:3857")
+            for feature in layer.getFeatures():
+                self.assertFalse(feature["human_approved"])
+                self.assertFalse(feature["whole_line_semantics_approved"])
+                self.assertTrue(feature.geometry().isGeosValid())
+            del feature,layer
+            moved = root/"relocated"; shutil.copytree(output,moved)
+            project = QgsProject(); self.assertTrue(project.read(str(moved/"contour-vectorization.qgz")))
+            for layer in project.mapLayers().values():
+                self.assertTrue(layer.isValid())
+                self.assertTrue(Path(layer.source().split('|')[0]).resolve().is_relative_to(moved.resolve()))
+            project.clear(); del layer,project
+            with self.assertRaises(FileExistsError):build(output,previews=False)
+
     def test_human_packet_round_trip_is_explicit_and_role_separated(self):
         import os
         import shutil

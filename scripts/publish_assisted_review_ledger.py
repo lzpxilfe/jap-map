@@ -79,6 +79,8 @@ def publish(packet, feedback_path, session_path, output):
     if len(set(ids)) != len(ids) or set(ids) != set(session["reviewed_ids"]):
         raise ValueError("chat review session and case decisions differ")
     decisions, specs, revised = [], [], []
+    base_lines = None
+    source_base_hash = None
     needed_events = set()
     for decision in feedback["decisions"]:
         sid = decision["proposal_id"]
@@ -112,10 +114,39 @@ def publish(packet, feedback_path, session_path, output):
             if (feature["properties"].get("human_approved") is not True
                     or feature["properties"].get("geometry_revision_human_approved") is not True):
                 raise ValueError("revision snapshot is still unapproved")
+            local_tail = correction.get("revision_kind") == "local_tail_replacement"
+            if feature["properties"].get("requires_explicit_local_tail_replacement_contract") is True and not local_tail:
+                raise ValueError("reanchored revision needs its explicit local-tail contract")
+            tail_contract = None
+            if local_tail:
+                metadata_path = (feedback_path.parent/correction["revision_metadata"]).resolve()
+                if (not metadata_path.is_relative_to(feedback_path.parent.parent.resolve())
+                        or sha256_file(metadata_path) != correction["revision_metadata_sha256"]):
+                    raise ValueError("local-tail metadata path or digest differs")
+                metadata = read(metadata_path)
+                if (metadata.get("schema") != "jap-map-assisted-anchor-refinement/1"
+                        or metadata.get("proposal_id") != correction["revision_id"]
+                        or metadata.get("geometry_sha256") != geometry_digest(feature["geometry"])):
+                    raise ValueError("local-tail metadata describes different geometry")
+                for name, key in (("drawing-report.json", "source_report_sha256"),
+                                  ("ai-proposals.geojson", "source_proposals_sha256"),
+                                  ("base-lines.geojson", "source_base_lines_sha256")):
+                    if metadata.get(key) != sha256_file(packet/name):
+                        raise ValueError("local-tail source fingerprint changed")
+                contract = metadata["application_contract"]
+                tail_contract = {"schema": "jap-map-local-tail-replacement/1", **{
+                    key: copy.deepcopy(contract[key]) for key in (
+                        "source_uid", "target_uid", "source_geometry_sha256", "target_geometry_sha256",
+                        "source_tail_trim_pixels", "target_tail_trim_pixels", "join_points_pixels")}}
+                base_lines = read(packet/"base-lines.geojson")
+                source_base_hash = sha256_file(packet/"base-lines.geojson")
             feature["properties"] = {key: feature["properties"][key] for key in (
                 "proposal_id", "parent_proposal_id", "revision", "review_status", "human_approved",
                 "endpoint_pairing_human_approved", "geometry_revision_human_approved", "dataset_role",
                 "review_qualification", "review_event_id")}
+            if local_tail:
+                feature["properties"].update(revision_kind="local_tail_replacement",
+                                             requires_source_tail_replacement=True, append_only_safe=False)
             revised.append(feature)
             spec = {"revision_id": correction["revision_id"], "parent_proposal_id": sid,
                     "geometry_sha256": geometry_digest(feature["geometry"]), "approved": True,
@@ -123,6 +154,8 @@ def publish(packet, feedback_path, session_path, output):
                     "source_approved_file_sha256": correction["approved_geometry_file_sha256"],
                     "qualification": correction.get("review_qualification", "")}
             specs.append(spec)
+            if local_tail:
+                spec.update(revision_kind="local_tail_replacement", tail_replacement_contract=tail_contract)
             clean["revision_id"] = spec["revision_id"]
             needed_events.add(spec["accepted_event_id"])
         decisions.append(clean)
@@ -164,9 +197,11 @@ def publish(packet, feedback_path, session_path, output):
                               "unmarked_strokes_not_automatically_approved": True} for m in feedback.get("uncertainty_markers", [])],
         "publication_scope": "Decision ledger and explicitly accepted vector revisions only; no screenshots, rasters, model weights, private paths, or verified personal identity.",
     }
+    if base_lines is not None:
+        ledger["source_base_lines_sha256"] = source_base_hash
     assert_no_private_paths(ledger)
     assert_no_private_paths(revision_collection)
-    build_review_outputs(report, proposals, ledger, revision_collection)
+    build_review_outputs(report, proposals, ledger, revision_collection, base_lines=base_lines)
     output.mkdir(parents=True, exist_ok=False)
     with (output/"review-ledger.json").open("x", encoding="utf-8") as handle:
         handle.write(serialized(ledger))

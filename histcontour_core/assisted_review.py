@@ -68,7 +68,87 @@ def _case_events(decision, events):
         raise ValueError("human event does not attest this definite semantic label")
 
 
-def build_review_outputs(report, proposals, ledger, revisions=None):
+def _trim_at_endpoint(points, endpoint, distance, tile):
+    """Return a local cut and the retained line, in its original orientation."""
+    if (type(distance) not in (int, float) or not math.isfinite(distance)
+            or not 0 < distance <= 16):
+        raise ValueError("tail replacement needs a finite local trim of at most 16 pixels")
+    matches = [i for i in (0, -1) if math.dist(points[i], endpoint) <= 1e-9]
+    if len(matches) != 1:
+        raise ValueError("original proposal endpoint is not a unique source-line endpoint")
+    reverse = matches[0] == -1
+    ordered = list(reversed(points)) if reverse else list(points)
+    pixels = map_to_pixel(tile, ordered)
+    total = sum(math.dist(a, b) for a, b in zip(pixels, pixels[1:]))
+    if distance >= total-1e-6:
+        raise ValueError("tail replacement must retain the rest of the original source line")
+    remaining = distance
+    for i, (a, b) in enumerate(zip(pixels, pixels[1:])):
+        length = math.dist(a, b)
+        if length <= 1e-12:
+            continue
+        if remaining <= length:
+            fraction = remaining/length
+            cut = [ordered[i][j]+fraction*(ordered[i+1][j]-ordered[i][j]) for j in (0, 1)]
+            kept = [cut]+copy.deepcopy(ordered[i+1:])
+            if len(kept) > 1 and math.dist(kept[0], kept[1]) <= 1e-12:
+                kept.pop(1)
+            return cut, list(reversed(kept)) if reverse else kept, -1 if reverse else 0
+        remaining -= length
+    raise ValueError("tail cut could not be located")
+
+
+def _tail_replacements(spec, candidate, original, row, tile, base_lines, crs):
+    contract = spec.get("tail_replacement_contract", {})
+    if contract.get("schema") != "jap-map-local-tail-replacement/1":
+        raise ValueError("local tail revision needs an explicit replacement contract")
+    if base_lines is None or base_lines.get("crs") != crs:
+        raise ValueError("local tail revision needs the actual original base lines in the source CRS")
+    bases = _index([dict(f, uid=f["properties"]["segment_uid"]) for f in base_lines["features"]],
+                   "uid", "original base line")
+    points = _line(candidate["geometry"])
+    pixels = map_to_pixel(tile, points)
+    chord = [pixels[-1][i]-pixels[0][i] for i in (0, 1)]
+    length = math.hypot(*chord)
+    if length <= 0:
+        raise ValueError("local tail patch has zero-length chord")
+    progress = [sum((p[i]-pixels[0][i])*chord[i] for i in (0, 1))/length for p in pixels]
+    deviations = [abs((p[0]-pixels[0][0])*chord[1]-(p[1]-pixels[0][1])*chord[0])/length for p in pixels]
+    if any(b-a <= 1e-9 for a, b in zip(progress, progress[1:])) or max(deviations) > 4:
+        raise ValueError("local tail patch doubles back or leaves its local corridor")
+    joins = contract.get("join_points_pixels", [])
+    if (len(joins) != 2 or any(len(p) != 2 or any(type(v) not in (int, float)
+            or not math.isfinite(v) for v in p) for p in joins)):
+        raise ValueError("local tail contract needs two finite source-pixel join points")
+    result = []
+    for side, endpoint_index, join_index in (("source", 0, 0), ("target", -1, 1)):
+        uid = contract.get(side+"_uid")
+        feature = bases.get(uid)
+        if uid != row[side+"_uid"] or feature is None or feature["properties"].get("tile_id") != row["tile_id"]:
+            raise ValueError("tail replacement refers to another source identity")
+        if contract.get(side+"_geometry_sha256") != geometry_digest(feature["geometry"]):
+            raise ValueError("tail replacement source geometry changed")
+        cut, retained, retained_end = _trim_at_endpoint(
+            _line(feature["geometry"]), original[endpoint_index], contract.get(side+"_tail_trim_pixels"), tile)
+        if (math.dist(cut, points[endpoint_index]) > 1e-9
+                or math.dist(map_to_pixel(tile, [cut])[0], joins[join_index]) > 1e-5):
+            raise ValueError("tail patch endpoint does not match its verified source cut")
+        # Eliminate numerical round-off at the shared node without moving it.
+        retained[retained_end] = copy.deepcopy(points[endpoint_index])
+        changed = {"type": "Feature", "properties": copy.deepcopy(feature["properties"]),
+                   "geometry": {"type": "LineString", "coordinates": retained}}
+        changed["properties"].update(
+            replaced_source_geometry_sha256=contract[side+"_geometry_sha256"],
+            local_patch_revision_id=spec["revision_id"], local_tail_trim_pixels=contract[side+"_tail_trim_pixels"],
+            geometry_scope="trimmed_base_line_original_semantics_preserved",
+            whole_source_line_semantics_approved=False, training_eligible=False)
+        result.append(changed)
+    if result[0]["properties"]["segment_uid"] == result[1]["properties"]["segment_uid"]:
+        raise ValueError("a local patch needs two distinct source lines")
+    return result
+
+
+def build_review_outputs(report, proposals, ledger, revisions=None, *, base_lines=None):
     """Pure replay: return separated GeoJSON collections and a remaining queue."""
     if (ledger.get("schema") != "jap-map-assisted-human-review/1"
             or ledger.get("review_origin") != "explicit_user_chat"
@@ -118,6 +198,7 @@ def build_review_outputs(report, proposals, ledger, revisions=None):
         raise ValueError("approved revision manifest and provided revision geometry differ")
     grouped = {name: [] for name in BUCKETS}
     reviewed, used_revisions = [], set()
+    tail_replacements, tail_revision_ids, replaced_uids = [], [], set()
     for sid, decision in decisions.items():
         source = features[sid]
         action, semantic = decision["geometry_decision"], decision["semantic_decision"]
@@ -152,8 +233,20 @@ def build_review_outputs(report, proposals, ledger, revisions=None):
                     or spec.get("geometry_sha256") != geometry_digest(candidate["geometry"])):
                 raise ValueError("approved revised geometry identity or digest changed")
             a, b = _line(candidate["geometry"]), _line(source["geometry"])
-            if math.dist(a[0], b[0]) > 1e-9 or math.dist(a[-1], b[-1]) > 1e-9:
-                raise ValueError("curvature revision changed the confirmed endpoints")
+            kind = spec.get("revision_kind", "fixed_endpoints")
+            if kind == "local_tail_replacement":
+                changed = _tail_replacements(spec, candidate, b, rows[sid], tiles[rows[sid]["tile_id"]], base_lines, crs)
+                uids = {f["properties"]["segment_uid"] for f in changed}
+                if replaced_uids.intersection(uids):
+                    raise ValueError("multiple patches need an explicit combined source-tail contract")
+                tail_replacements.extend(changed)
+                replaced_uids.update(uids)
+                tail_revision_ids.append(rid)
+            elif kind == "fixed_endpoints":
+                if math.dist(a[0], b[0]) > 1e-9 or math.dist(a[-1], b[-1]) > 1e-9:
+                    raise ValueError("curvature revision changed the confirmed endpoints")
+            else:
+                raise ValueError("unknown revised-geometry contract")
             geometry, effective_id = candidate["geometry"], rid
             used_revisions.add(rid)
         if action == "reject_original":
@@ -184,6 +277,9 @@ def build_review_outputs(report, proposals, ledger, revisions=None):
             "reference_kind": "inferred_gap_not_observed_ink" if rows[sid]["mode"] == "contextual_gap" else "traced_linework_semantics_reviewed_separately",
         }
         feature = {"type": "Feature", "properties": properties, "geometry": copy.deepcopy(geometry)}
+        if effective_id in tail_revision_ids:
+            properties.update(reference_kind="inferred_bridge_with_local_source_tail_refinement",
+                              requires_source_tail_replacement=True, append_only_safe=False)
         grouped[bucket].append(feature)
         reviewed.append(feature)
     if used_revisions != set(specs):
@@ -199,10 +295,16 @@ def build_review_outputs(report, proposals, ledger, revisions=None):
                   original_proposal_count=len(rows))
     collection = lambda values: {"type": "FeatureCollection", "crs": copy.deepcopy(crs), "features": values}
     return {"collections": {name: collection(values) for name, values in grouped.items()},
+            "source_tail_replacements": collection(tail_replacements),
             "reviewed": collection(reviewed), "summary": {
                 "schema": "jap-map-assisted-review-export/1", "counts": counts,
                 "model_fitted": False, "automatic_training_promotion": False, "formal_accuracy": None,
                 "original_source_modified": False, "revision_endpoints_verified": sorted(used_revisions),
-                "note": "Accepted contour additions only; do not relabel whole source lines or inferred gaps as observed ink."},
+                "local_tail_replacement_revision_ids": sorted(tail_revision_ids),
+                "source_tail_replacement_feature_count": len(tail_replacements),
+                "note": ("Approved local patches require the accompanying source-tail replacements; "
+                         "do not append them without trimming the matching original lines."
+                         if tail_revision_ids else
+                         "Accepted contour additions only; do not relabel whole source lines or inferred gaps as observed ink.")},
             "queue": {"unreviewed_ids": unreviewed, "eligible_ids": queued, "deferred_ids": deferred,
                       "responded_ids_not_reasked": list(decisions)}}

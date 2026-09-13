@@ -28,6 +28,7 @@ class ManualGapBridgeConfig:
     max_detour_ratio: float = 1.25
     min_tangent_alignment: float = math.sqrt(0.5)
     sample_spacing_pixels: float = 0.75
+    regularize_short_gaps: bool = True
 
     def __post_init__(self) -> None:
         values = (
@@ -46,6 +47,8 @@ class ManualGapBridgeConfig:
             raise ManualGapBridgeError("gap bridge shape limits are invalid")
         if not 0.5 <= self.min_tangent_alignment <= 1 or self.sample_spacing_pixels <= 0:
             raise ManualGapBridgeError("gap bridge direction settings are invalid")
+        if type(self.regularize_short_gaps) is not bool:
+            raise ManualGapBridgeError("regularize_short_gaps must be a boolean")
 
 
 @dataclass(frozen=True)
@@ -55,6 +58,7 @@ class ManualGapBridge:
     path_length_pixels: float
     source_tangent_slope: float
     target_tangent_slope: float
+    geometry_refinement: dict | None = None
 
     @property
     def detour_ratio(self) -> float:
@@ -101,7 +105,11 @@ def build_manual_gap_bridge(
     *,
     config: ManualGapBridgeConfig = ManualGapBridgeConfig(),
 ) -> ManualGapBridge:
-    """Build a bounded cubic-Hermite preview between explicit endpoints."""
+    """Build a bounded preview, optionally removing tiny short-gap S-bends.
+
+    Explicit clicked endpoints never move. Large curves and gaps over 16 px
+    retain the original Hermite shape; no source tails are edited here.
+    """
 
     source, target = _point(source_xy, "source_xy"), _point(target_xy, "target_xy")
     direction = _unit((target[0] - source[0], target[1] - source[1]), "gap direction")
@@ -123,10 +131,15 @@ def build_manual_gap_bridge(
             inverse ** 3 * source[0] + 3 * inverse ** 2 * t * source_control[0] + 3 * inverse * t ** 2 * target_control[0] + t ** 3 * target[0],
             inverse ** 3 * source[1] + 3 * inverse ** 2 * t * source_control[1] + 3 * inverse * t ** 2 * target_control[1] + t ** 3 * target[1],
         ))
+    refinement = None
+    if config.regularize_short_gaps and gap <= 16:
+        from .gap_refinement import regularize_gap_path
+        points, refinement = regularize_gap_path(points)
+        points = [tuple(point) for point in points]
     path_length = _length(points)
     if path_length / gap > config.max_detour_ratio:
         raise ManualGapBridgeError("gap preview makes an excessive detour")
-    return ManualGapBridge(tuple(points), gap, path_length, source_slope, target_slope)
+    return ManualGapBridge(tuple(points), gap, path_length, source_slope, target_slope, refinement)
 
 
 def sample_evidence_tangent(evidence, pixel_xy: Sequence[float], *, radius_pixels: float = 3.0) -> Point | None:

@@ -173,7 +173,8 @@ class InkTraceMapTool(QgsMapToolEmitPoint):
             raise ManualGapBridgeError("Ink direction is ambiguous near one endpoint")
         bridge = build_manual_gap_bridge(first, second, first_tangent, second_tangent)
         self._set_preview([(x + self._origin[0], y + self._origin[1]) for x, y in bridge.points])
-        self._message("Info", "Label-gap preview ready. Press Enter to add it or Esc to cancel.")
+        cleanup = " Subpixel wiggle removed; clicked endpoints unchanged." if bridge.geometry_refinement and bridge.geometry_refinement["changed"] else ""
+        self._message("Info", "Label-gap preview ready." + cleanup + " Press Enter to add it or Esc to cancel.")
 
     def _clear_preview(self, *, keep_guidance=True):
         self.anchor_full = self.end_full = None

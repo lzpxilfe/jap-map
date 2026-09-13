@@ -168,5 +168,103 @@ class AssistedReviewTests(unittest.TestCase):
         self.assertEqual(event["case_actions"], {"A0000": "accept_original"})
 
 
+def local_tail_fixture():
+    report, collection, ledger, revisions = review_fixture()
+    original = collection["features"][6]
+    a, b = original["geometry"]["coordinates"]
+    props = original["properties"]
+    source = {"type": "Feature", "properties": {"segment_uid": props["source_uid"],
+              "tile_id": "synthetic", "human_approved": False},
+              "geometry": {"type": "LineString", "coordinates": [[a[0]-20, a[1]], a]}}
+    target = {"type": "Feature", "properties": {"segment_uid": props["target_uid"],
+              "tile_id": "synthetic", "human_approved": False},
+              "geometry": {"type": "LineString", "coordinates": [b, [b[0]+20, b[1]]]}}
+    base = {"type": "FeatureCollection", "crs": collection["crs"], "features": [source, target]}
+    revised = revisions["features"][0]
+    revised["geometry"]["coordinates"] = [[a[0]-4, a[1]], [(a[0]+b[0])/2, a[1]+1], [b[0]+3, b[1]]]
+    spec = ledger["revisions"][0]
+    spec.update(revision_kind="local_tail_replacement", geometry_sha256=geometry_digest(revised["geometry"]),
+                tail_replacement_contract={
+                    "schema": "jap-map-local-tail-replacement/1", "source_uid": props["source_uid"],
+                    "target_uid": props["target_uid"], "source_geometry_sha256": geometry_digest(source["geometry"]),
+                    "target_geometry_sha256": geometry_digest(target["geometry"]), "source_tail_trim_pixels": 4,
+                    "target_tail_trim_pixels": 3, "join_points_pixels": [[a[0]-4.5, 100], [b[0]+2.5, 100]]})
+    return report, collection, ledger, revisions, base
+
+
+class LocalTailReviewTests(unittest.TestCase):
+    def test_approved_patch_cuts_exact_sources_and_keeps_semantics(self):
+        args = local_tail_fixture()
+        before = copy.deepcopy(args)
+        result = build_review_outputs(*args[:4], base_lines=args[4])
+        self.assertEqual(args, before)
+        patch = result["collections"]["approved_contour"]["features"][-1]
+        lines = result["source_tail_replacements"]["features"]
+        self.assertEqual(len(lines), 2)
+        self.assertEqual(lines[0]["geometry"]["coordinates"][-1], patch["geometry"]["coordinates"][0])
+        self.assertEqual(lines[1]["geometry"]["coordinates"][0], patch["geometry"]["coordinates"][-1])
+        self.assertFalse(patch["properties"]["append_only_safe"])
+        self.assertTrue(patch["properties"]["requires_source_tail_replacement"])
+        for feature in lines:
+            self.assertFalse(feature["properties"]["human_approved"])
+            self.assertFalse(feature["properties"]["whole_source_line_semantics_approved"])
+            self.assertFalse(feature["properties"]["training_eligible"])
+
+    def test_endpoint_rule_is_not_waived_without_source_contract(self):
+        args = local_tail_fixture()
+        with self.assertRaisesRegex(ValueError, "actual original base"):
+            build_review_outputs(*args[:4])
+        args[2]["revisions"][0].pop("revision_kind")
+        with self.assertRaisesRegex(ValueError, "endpoints"):
+            build_review_outputs(*args[:4], base_lines=args[4])
+
+    def test_tail_source_and_join_mutations_fail_closed(self):
+        mutations = [
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"].__setitem__("source_uid", "wrong"),
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"].__setitem__("source_geometry_sha256", "0"*64),
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"].__setitem__("source_tail_trim_pixels", True),
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"].__setitem__("source_tail_trim_pixels", 17),
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"].__setitem__("source_tail_trim_pixels", 5),
+            lambda a: a[2]["revisions"][0]["tail_replacement_contract"]["join_points_pixels"][0].__setitem__(0, 0),
+            lambda a: a[4]["features"][0]["geometry"]["coordinates"][0].__setitem__(0, 0),
+            lambda a: a[2]["revisions"][0].__setitem__("revision_kind", "unchecked_endpoint_move"),
+            lambda a: a[2]["events"][6].__setitem__("accepted_revision_ids", []),
+        ]
+        for mutate in mutations:
+            args = local_tail_fixture(); mutate(args)
+            with self.assertRaises(ValueError):
+                build_review_outputs(*args[:4], base_lines=args[4])
+
+    def test_patch_excursion_is_not_allowed_even_with_updated_digest(self):
+        args = local_tail_fixture()
+        args[3]["features"][0]["geometry"]["coordinates"][1][1] += 10
+        args[2]["revisions"][0]["geometry_sha256"] = geometry_digest(args[3]["features"][0]["geometry"])
+        with self.assertRaisesRegex(ValueError, "local corridor"):
+            build_review_outputs(*args[:4], base_lines=args[4])
+
+    def test_tail_export_binds_base_file_and_emits_replacement_instructions(self):
+        report, collection, ledger, revisions, base = local_tail_fixture()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory); packet = root/"packet"; packet.mkdir()
+            files = {packet/"drawing-report.json": report, packet/"ai-proposals.geojson": collection,
+                     packet/"base-lines.geojson": base, root/"revisions.geojson": revisions}
+            for path, value in files.items():
+                path.write_text(json.dumps(value), encoding="utf-8")
+            ledger.update(source_report_sha256=sha256_file(packet/"drawing-report.json"),
+                          source_proposals_sha256=sha256_file(packet/"ai-proposals.geojson"),
+                          source_base_lines_sha256=sha256_file(packet/"base-lines.geojson"),
+                          revision_collection_sha256=sha256_file(root/"revisions.geojson"))
+            ledger_path = root/"ledger.json"; ledger_path.write_text(json.dumps(ledger))
+            result = export(packet, ledger_path, root/"out", revisions_path=root/"revisions.geojson", next_id="A0007")
+            self.assertEqual(result["summary"]["source_tail_replacement_feature_count"], 2)
+            self.assertTrue((root/"out/source-tail-replacements.geojson").is_file())
+            self.assertTrue((root/"out/source-tail-application.json").is_file())
+            base["features"][0]["geometry"]["coordinates"][0][0] += .1
+            (packet/"base-lines.geojson").write_text(json.dumps(base))
+            with self.assertRaisesRegex(ValueError, "base-line fingerprint"):
+                export(packet, ledger_path, root/"changed", revisions_path=root/"revisions.geojson")
+            self.assertFalse((root/"changed").exists())
+
+
 if __name__ == "__main__":
     unittest.main()

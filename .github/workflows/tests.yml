@@ -31,6 +31,9 @@ jobs:
           tests.test_assisted_curve_refinement
           tests.test_assisted_review
           tests.test_assisted_screening_io
+          tests.test_gap_refinement
+          tests.test_feedback_refinement_script
+          tests.test_contour_network
       - run: python scripts/build_plugin_zip.py
 
   qgis:

@@ -1,0 +1,353 @@
+{
+  "schema": "jap-map-feedback-refinement-evidence/1",
+  "record_scope": "Historical refinement checkpoint before the subsequent vector-network assembly. Digests and test counts describe that checkpoint; the plugin ZIP and integration tests were updated again by the later vectorization work. This record is published without rewriting its historical results.",
+  "followup_evidence": "docs/evidence/contour-vectorization-feedback-2026-09-14.json",
+  "date": "2026-09-14",
+  "status": "implemented_and_locally_verified_unapproved_drafts",
+  "scope": "Human-feedback-informed short-gap geometry development, not classifier training or independent accuracy.",
+  "source_review_snapshot": "chat-034",
+  "local_output": "data/derived/contour-feedback-refinement-2026-09-14/v1-verified",
+  "local_development_evaluation": "data/derived/contour-feedback-refinement-2026-09-14/v1-verified-evaluation",
+  "version": "connected-ink-gap-refinement/1",
+  "configuration": {
+    "version": "connected-ink-gap-refinement/1",
+    "settings": {
+      "maximum_gap_pixels": 16,
+      "maximum_fixed_displacement": 0.35,
+      "fixed_displacement_fraction": 0.05,
+      "context_reach": 12,
+      "profile_radius": 4,
+      "minimum_contrast": 8,
+      "maximum_centre_shift": 2.5,
+      "minimum_samples_per_side": 5,
+      "maximum_fit_rms": 0.65,
+      "reanchor_threshold": 0.55,
+      "maximum_tip_shift": 2.5,
+      "maximum_tail_trim": 8,
+      "maximum_model_slope": 1.25,
+      "sample_spacing": 0.25
+    }
+  },
+  "configuration_sha256": "ada7857313cebdd5d4efcc6fe865aa35cf2a06911b648ba51861ef12752bfbd5",
+  "source_inputs_sha256": {
+    "source_report_sha256": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+    "source_proposals_sha256": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+    "source_base_lines_sha256": "53dc8ceee14fb2014f6df0a80ddb6e505eb02b388d68db3483cdd94590ad63c5",
+    "ledger_sha256": "40a8b46be403a5eb13651631371636d298b6110acbb72f6bac5bac23daa625fb",
+    "revision_collection_sha256": "ec8375122bed9116e6e2cd33f9d1e7c1ffc976287eb15815e855c3b506a53c41",
+    "raster_173-buyeo-mountain": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+    "raster_173-buyeo-labels": "5e9c729a9cbe53c6a9a59b7c50bd9c346ccaf4096525e2875b4c8f6ea39584bb",
+    "raster_173-buyeo-hydro": "2fd1240f0c70401d20260438652c04c0b8cca6dcc388a75102bfc9ce856a34f9",
+    "raster_174-cheongyang-mountain": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+    "raster_174-cheongyang-labels": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+    "raster_174-cheongyang-hydro": "7ef0f498e09636d9ebbc34a42741a8710813fa218985e58689c6d8a6288145b5",
+    "raster_177-nonsan-mountain": "a36cea1322f718789099248369b5d9dd70904c0402b45ebdcedd808f8a505474",
+    "raster_177-nonsan-labels": "e329b378512bb1dd057ba8e719900c88a82dd28017ae9caf2c48267ae176b0f8",
+    "raster_177-nonsan-hydro": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a"
+  },
+  "implementation_sha256": {
+    "histcontour_core/gap_refinement.py": "0a895d1998dc157223401259f82d5e4323b243c48b1d508737ae30113c43503b",
+    "histcontour_core/assisted_review.py": "6933c715911a5946a0a32ad7894112c673493603073c8300fd1da49f45b79949",
+    "histcontour_core/human_feedback.py": "1fa9f73c7f9009a44c4e94d4557b36bf41a75bd952d0c1ff249df6b84da71ac9",
+    "histcontour_core/completion.py": "c191779b0a1442f6f09e740dc68dc0640273997642977621b9bcee82c462639e",
+    "scripts/generate_assisted_contour_drawing.py": "41f101b6bf64fb3c4ea94cbb53bc3e5ccc20c0541c25af100aee302f0dd718a2",
+    "scripts/refine_assisted_drawing_from_feedback.py": "fa64272d74f12609aa22c26b7eebf5bbcbce8539236d9f9e8a629b4c5a519459",
+    "scripts/render_assisted_refinement.py": "438985d494c61d46b5576a4869f1f9c357b94e6e161994f7597a5ab0ae6eaba6"
+  },
+  "other_implementation_sha256": {
+    "histcontour_core/manual_gap_bridge.py": "ab15ec871e1e19622cf08ea2c69bf208b3e8fa79f761bf9ad4ab5f4d841250aa",
+    "jap_map/ink_trace_tool.py": "c766468093976e2bc9c80cdc9dd08d16e2b322d744a0dcc5d63c4d4d03a5608c",
+    "scripts/evaluate_feedback_refinement.py": "4fa23fc45d472e11892e654daf42cb1cfc66ab99d9a8c381cc136bae4553c0bf",
+    "tests/test_gap_refinement.py": "e79e8e6e80bb6a3c9e81c41bf7e443069ecf39fda7810bf43b1634de4ab61365",
+    "tests/test_feedback_refinement_script.py": "d72ef22e661347c43e42236a524b7157907e97bb6f62168993d8749bd2d110fa",
+    "tests/test_qgis.py": "24b436010acdefd62bb2ce7cee30f6fcc8f3599368dd9d454c6565ce465dce01"
+  },
+  "output_sha256": {
+    "data/derived/contour-feedback-refinement-2026-09-14/v1-verified/refinement-report.json": "3cc4fe497278da3ef0f289350213e58a5f4f8d2826532ee1efc9e17f6410e32b",
+    "data/derived/contour-feedback-refinement-2026-09-14/v1-verified/proposed-revisions.geojson": "4f94269dcd1e9d34247ba32402955866a65837ffc6902d095106eb637b7f1e24",
+    "data/derived/contour-feedback-refinement-2026-09-14/v1-verified/review-queue.json": "1260de92a334dff41d3dc1a03aebe81d27c3e483b922cebb4b6695a85a6a3c82",
+    "data/derived/contour-feedback-refinement-2026-09-14/v1-verified-evaluation/development-evaluation.json": "2e17ed91f2db0b8c5c338cd65ad4d1c32f84d542b8c6780af19b1a83433ae5d0",
+    "dist/historical-map-tools-0.2.0.zip": "18d17c80ae5cd98024466183fba6a8bc48f8fac3a77a2c7672dd5b6815d73ce5"
+  },
+  "counts": {
+    "locked_human_review": 35,
+    "deferred_context": 11,
+    "context_review_required": 241,
+    "unchanged": 42,
+    "proposed": 115
+  },
+  "proposed_kind_counts": {
+    "local_tail_replacement": 58,
+    "fixed_endpoints": 57
+  },
+  "reason_counts": {
+    "existing_human_state_preserved": 46,
+    "competing_endpoint_pair_needs_context": 193,
+    "current_tips_and_shape_are_supported": 42,
+    "remove_subpixel_inflection": 29,
+    "bounded_smoothing_only_anchor_estimator_abstained": 28,
+    "source_flow_fit_unstable": 33,
+    "stable_connected_ink_supports_relocated_local_joins": 58,
+    "local_fit_reverses_existing_bend": 23,
+    "ink_direction_changes_with_context_reach": 6,
+    "long_gap_requires_regional_anchor_review": 13,
+    "large_tip_relocation_requires_human_context": 1
+  },
+  "eligible_unreviewed": 398,
+  "original_proposal_count": 444,
+  "elapsed_seconds": 1.460414124885574,
+  "elapsed_scope": "Local postprocessing only; not full upstream tracing time.",
+  "development_evaluation": {
+    "schema": "jap-map-feedback-refinement-development-evaluation/1",
+    "scope": "same-feedback development regression, not independent accuracy",
+    "formal_accuracy": null,
+    "holdout_used": false,
+    "classifier_fitted": false,
+    "unqualified_reference_count": 4,
+    "qualified_reference_count": 1,
+    "mean_of_case_mean_normal_errors_pixels": {
+      "before": 0.39813199627219026,
+      "after": 0.11893398155536337
+    },
+    "human_reviewed_lock_count": 35,
+    "human_reviewed_cases_reproposed": 0,
+    "production_approved_revision_bytes_changed": false,
+    "refinement_report_sha256": "3cc4fe497278da3ef0f289350213e58a5f4f8d2826532ee1efc9e17f6410e32b",
+    "candidate_collection_sha256": "4f94269dcd1e9d34247ba32402955866a65837ffc6902d095106eb637b7f1e24",
+    "evaluation_implementation_sha256": "4fa23fc45d472e11892e654daf42cb1cfc66ab99d9a8c381cc136bae4553c0bf",
+    "reference_collection_sha256": "ec8375122bed9116e6e2cd33f9d1e7c1ffc976287eb15815e855c3b506a53c41",
+    "records": [
+      {
+        "proposal_id": "A0013",
+        "approved_reference_id": "A0013-R1",
+        "qualification": "more curvature than preferred, but acceptable",
+        "new_geometry_human_approved": false,
+        "production_geometry_stays_locked": true,
+        "diagnostic_status": "context_review_required",
+        "diagnostic_kind": "fixed_endpoints",
+        "before_shape": {
+          "length_pixels": 10.144033003036771,
+          "gap_pixels": 10.04987562112089,
+          "detour_ratio": 1.0093690096739107,
+          "inflection_count": 1,
+          "total_turn_degrees": 25.12681150434091,
+          "maximum_chord_deviation_pixels": 0.5890638776172272,
+          "forward_progress_monotone": true
+        },
+        "after_shape": {
+          "length_pixels": 10.144033003036771,
+          "gap_pixels": 10.04987562112089,
+          "detour_ratio": 1.0093690096739107,
+          "inflection_count": 1,
+          "total_turn_degrees": 25.12681150434091,
+          "maximum_chord_deviation_pixels": 0.5890638776172272,
+          "forward_progress_monotone": true
+        },
+        "before": {
+          "mean_normal_error_pixels": 0.6662849513222654,
+          "max_normal_error_pixels": 1.2545065089159093
+        },
+        "after": {
+          "mean_normal_error_pixels": 0.6662849513222654,
+          "max_normal_error_pixels": 1.2545065089159093
+        }
+      },
+      {
+        "proposal_id": "A0011",
+        "approved_reference_id": "A0011-R2",
+        "qualification": "",
+        "new_geometry_human_approved": false,
+        "production_geometry_stays_locked": true,
+        "diagnostic_status": "proposed",
+        "diagnostic_kind": "local_tail_replacement",
+        "before_shape": {
+          "length_pixels": 4.5076092834643715,
+          "gap_pixels": 4.47213595499958,
+          "detour_ratio": 1.0079320773835454,
+          "inflection_count": 1,
+          "total_turn_degrees": 34.18965040026703,
+          "maximum_chord_deviation_pixels": 0.14888263213232467,
+          "forward_progress_monotone": true
+        },
+        "after_shape": {
+          "length_pixels": 20.301728682357698,
+          "gap_pixels": 20.291981224049646,
+          "detour_ratio": 1.0004803601087753,
+          "inflection_count": 3,
+          "total_turn_degrees": 19.655474581348443,
+          "maximum_chord_deviation_pixels": 0.14521723246266705,
+          "forward_progress_monotone": true
+        },
+        "before": {
+          "mean_normal_error_pixels": 0.42276164438385916,
+          "max_normal_error_pixels": 0.8864893339246899
+        },
+        "after": {
+          "mean_normal_error_pixels": 0.16867877598305242,
+          "max_normal_error_pixels": 0.17078822339890642
+        }
+      },
+      {
+        "proposal_id": "A0038",
+        "approved_reference_id": "A0038-R2",
+        "qualification": "",
+        "new_geometry_human_approved": false,
+        "production_geometry_stays_locked": true,
+        "diagnostic_status": "proposed",
+        "diagnostic_kind": "local_tail_replacement",
+        "before_shape": {
+          "length_pixels": 5.033506730461941,
+          "gap_pixels": 5,
+          "detour_ratio": 1.0067013460923881,
+          "inflection_count": 1,
+          "total_turn_degrees": 28.378696527450998,
+          "maximum_chord_deviation_pixels": 0.1968137469454181,
+          "forward_progress_monotone": true
+        },
+        "after_shape": {
+          "length_pixels": 10.618471038443577,
+          "gap_pixels": 10.609923374358036,
+          "detour_ratio": 1.0008056292005085,
+          "inflection_count": 2,
+          "total_turn_degrees": 15.623594010463519,
+          "maximum_chord_deviation_pixels": 0.17363448712284146,
+          "forward_progress_monotone": true
+        },
+        "before": {
+          "mean_normal_error_pixels": 0.5840534957815,
+          "max_normal_error_pixels": 1.156050376909803
+        },
+        "after": {
+          "mean_normal_error_pixels": 0.07551984655766462,
+          "max_normal_error_pixels": 0.14352399180239517
+        }
+      },
+      {
+        "proposal_id": "A0006",
+        "approved_reference_id": "A0006-R1",
+        "qualification": "",
+        "new_geometry_human_approved": false,
+        "production_geometry_stays_locked": true,
+        "diagnostic_status": "proposed",
+        "diagnostic_kind": "fixed_endpoints",
+        "before_shape": {
+          "length_pixels": 5.134761367007724,
+          "gap_pixels": 5.0990195135927845,
+          "detour_ratio": 1.0070095541544135,
+          "inflection_count": 1,
+          "total_turn_degrees": 25.65839386388813,
+          "maximum_chord_deviation_pixels": 0.24413365325432235,
+          "forward_progress_monotone": true
+        },
+        "after_shape": {
+          "length_pixels": 5.116760955650818,
+          "gap_pixels": 5.0990195135927845,
+          "detour_ratio": 1.0034793830481996,
+          "inflection_count": 0,
+          "total_turn_degrees": 15.968224253420376,
+          "maximum_chord_deviation_pixels": 0.18456223248796028,
+          "forward_progress_monotone": true
+        },
+        "before": {
+          "mean_normal_error_pixels": 0.05688115958874654,
+          "max_normal_error_pixels": 0.09532955375448557
+        },
+        "after": {
+          "mean_normal_error_pixels": 0.002973605000262057,
+          "max_normal_error_pixels": 0.0044883645193991295
+        }
+      },
+      {
+        "proposal_id": "A0034",
+        "approved_reference_id": "A0034-R1",
+        "qualification": "",
+        "new_geometry_human_approved": false,
+        "production_geometry_stays_locked": true,
+        "diagnostic_status": "proposed",
+        "diagnostic_kind": "local_tail_replacement",
+        "before_shape": {
+          "length_pixels": 5.140368556136662,
+          "gap_pixels": 5.0990195135927845,
+          "detour_ratio": 1.0081092144153696,
+          "inflection_count": 1,
+          "total_turn_degrees": 34.97552720980226,
+          "maximum_chord_deviation_pixels": 0.1771600991228084,
+          "forward_progress_monotone": true
+        },
+        "after_shape": {
+          "length_pixels": 16.464391511698206,
+          "gap_pixels": 16.45595921146429,
+          "detour_ratio": 1.0005124162089587,
+          "inflection_count": 2,
+          "total_turn_degrees": 9.63741230797879,
+          "maximum_chord_deviation_pixels": 0.2264344467912407,
+          "forward_progress_monotone": true
+        },
+        "before": {
+          "mean_normal_error_pixels": 0.5288316853346553,
+          "max_normal_error_pixels": 1.1994253298009532
+        },
+        "after": {
+          "mean_normal_error_pixels": 0.22856369868047438,
+          "max_normal_error_pixels": 0.3299669097367909
+        }
+      }
+    ]
+  },
+  "preservation_sha256_verified": {
+    "data/derived/annotation_package/contour_annotations.gpkg": "036316af3aaf0e6249e209756932532bf4ee7a2eed60b805fb247eb5d260d422",
+    "data/derived/contour-chain-2026-09-12/human-review-ready/human-review.gpkg": "3e39dc51851cc9c7175ed2a34ab2aa6408181ddc215165076225a39fbc85a746",
+    "histcontour_core/contour_context.py": "56e3fbea80474db2a3d5a471ab9604b4ac81928427422b79ef334b482cbef7f4",
+    "histcontour_core/contour_chains.py": "af373d1aee0cd1a1a184ccc8a17425b066a895b5a8a2a70decf44c302cdf092c",
+    "scripts/run_contour_chain_development.py": "8f38ef1b61270b7fffaed4347e7c04f19d483f21e8c1d5fd9a7976152acb2d8e",
+    "scripts/run_contour_context_experiment.py": "4396c24418def89caa90bf7cd1b1bb3ab732bb574996b35cbebd7e1f0ada94e0",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/drawing-report.json": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.gpkg": "2e2d58d5ea5a56464df4062a9c2c82ac0200d80c8795d12b2bce2ad5bf8a782e",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.qgz": "a0e877924f97720c92d4d80dd28636eb0e94c22281177d0ad30f87c3a8237686",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/base-lines.geojson": "53dc8ceee14fb2014f6df0a80ddb6e505eb02b388d68db3483cdd94590ad63c5",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-proposals.geojson": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/PROVENANCE-NOTES.json": "12781fcb8987c2e05a75430fe6905d1806311ffc583b4d4805059113ff867b3d",
+    "examples/contour_forward_labels.ai-v1.json": "40927fc32c8afb67181c8f8f6b1274902faa8ac31cab18fd008b59c4bac1ca51",
+    "data/derived/contour-chain-2026-09-12/development-frozen/development.json": "7d553a927f522d028eaee146a1a3b05f8853260d456488de5d19879d2a2196ad"
+  },
+  "validation": {
+    "non_qgis_tests_passed": 232,
+    "qgis_tests_passed": 11,
+    "qgis_version": "3.44.8-Solothurn",
+    "actual_candidate_layer_valid_features": 115,
+    "actual_candidate_layer_native_crs": "EPSG:5132",
+    "actual_local_tail_contracts_verified": 58,
+    "actual_fixed_endpoint_candidates_exact": 57,
+    "automatic_human_approvals": 0,
+    "approved_geometries_modified": 0,
+    "new_review_preview_images_visually_inspected": [
+      "A0207-F1-2d713d9b",
+      "A0155-F1-c1a6189f",
+      "A0019-F1-1b4d80fb",
+      "A0657-F1-76a04a2e",
+      "A0469-F1-53341aec",
+      "A0272-F1-c9299236",
+      "A1272-F1-7dcf6d89",
+      "A1219-F1-98aeaeca",
+      "A0859-F1-a6083e24"
+    ],
+    "preview_inspection_is_human_approval": false,
+    "plugin_zip_integrity_and_updated_sources_verified": true,
+    "git_diff_check_passed": true
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0",
+    "pillow": "12.3.0"
+  },
+  "limitations": [
+    "Only same-feedback development regression, including four unqualified corrections and one separately reported qualified correction.",
+    "The first development draft regressed on A0013. General bend-reversal and competing-endpoint guards were added; the final algorithm abstains. The exact approved R1 remains untouched.",
+    "115 new geometries are NOT approved. Geometry acceptance and contour/river/text semantics remain separate.",
+    "28 fixed-endpoint smoothing drafts retain explicit weak/unstable-anchor warnings and are queued later.",
+    "Numeric label blanks longer than 16 pixels, competing pairs, faint regional continuations and non-contour discrimination still need human context.",
+    "No classifier retraining or S/E threshold optimization, no Gongju holdout processing, no new model download or external map upload.",
+    "QGIS installation was not replaced. Source code and installable ZIP were updated locally; no commit or push was performed in this implementation turn."
+  ]
+}

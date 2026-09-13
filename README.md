@@ -27,9 +27,15 @@ AI 임시 등고선 유지가 99/103에서 103/103으로 늘었지만 도로·�
 평가 전용 34개는 학습·임계값 선정에서 계속 제외합니다.
 최신 [AI 선 그리기 초안](docs/contour-assisted-drawing.md)은 갱신된 ArchaeoTrace로
 추적·공백 연결을 실제 실행하고 위험한 연결을 걸러 444개 추가 후보를 남겼습니다.
-이후 15개 사례의 대화 검수와 수정선을 누적했습니다. [검수 결과 내보내기](docs/contour-assisted-review-export.md)는
-승인된 등고선 추가선 4개를 의미 미정·비등고선·거절·보류와 분리해 저장합니다.
-철회된 판단과 물음표를 정답으로 바꾸지 않으며, 다음 검수는 한 연결씩 진행합니다.
+이후 35개 사례의 대화 검수와 수정선을 누적했습니다. 로컬 최신 기록은 `human-feedback/chat-034/`이며,
+[검수 결과 내보내기](docs/contour-assisted-review-export.md)로 등고선 추가선 23개를 의미 미정·거절·보류와 분리했습니다.
+공개 15건 예시는 당시 스냅샷으로 유지합니다. 철회된 판단과 물음표를 정답으로 바꾸지 않습니다.
+후속 [피드백 기반 연결 강화](docs/contour-feedback-refinement.md)는 짧은 공백의 잔굴곡 정리,
+연결된 잉크에 따른 접속점 재검토, 곡부·경쟁 연결 보류를 공통 코드로 반영했습니다.
+검수·보류 건을 잠근 뒤 115개 **미승인 수정안**을 별도로 생성했으며, 분류기 재학습이나 전체 지도 정확도 주장은 아닙니다.
+이를 실제 선망으로 구성한 [강화 후 벡터화 결과](docs/contour-vectorization-feedback.md)는
+9개 개발 타일의 7,212개 벡터 후보를 GeoPackage·GeoJSON·QGIS 프로젝트로 제공합니다.
+승인 연결 23개와 자동 연결 129개를 분리하며, 약한 근거와 문맥 검수 대상은 합치지 않았습니다.
 
 별도의 [PaddleOCR 여백 보조 파일럿](docs/margin-ocr-pilot.md)은 명시적으로 선택한
 crop의 원문 이미지·OCR 원문·신뢰도를 기록하는 독립 CLI입니다. 모든 결과는
@@ -163,6 +169,9 @@ cd jap-map
 
 # 단위 테스트 실행 (QGIS 없이 실행 가능)
 python -m unittest tests.test_coordinates tests.test_frame tests.test_histcontour_core tests.test_ink tests.test_ink_candidate_script tests.test_contour_completion tests.test_contour_completion_script tests.test_segment_review tests.test_ink_segment_review_script
+
+# 피드백 기반 연결 형상·검수 잠금·표시 회귀
+python -m unittest tests.test_gap_refinement tests.test_feedback_refinement_script tests.test_ink_guidance
 
 # Ink v2 개발 타일 A/B 후보 생성 (NumPy와 Pillow 필요)
 python scripts/generate_ink_centerline_candidates.py data/derived/annotation_package/index.json

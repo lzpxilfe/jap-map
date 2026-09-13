@@ -2,7 +2,9 @@
 """Draw new review-only routes using a byte-pinned ArchaeoTrace snapshot.
 
 Machine-selected endpoint pairs are NOT user-confirmed contour endpoints.
-No model/threshold fitting, network, source edits, or human approvals occur.
+No classifier fitting, network, source edits, or human approvals occur.
+Local short-gap postprocessing incorporates development human feedback;
+its geometry heuristics are not independent accuracy evidence.
 """
 
 from __future__ import annotations
@@ -23,6 +25,7 @@ sys.path.insert(0, str(ROOT))
 from histcontour_core.assisted_drawing import DrawingConfig, assess_path, endpoint_pairs, native_feature_collection
 from histcontour_core.human_feedback import map_to_pixel
 from histcontour_core.provenance import sha256_file
+from histcontour_core.gap_refinement import GapRefinementConfig, REFINEMENT_VERSION, regularize_gap_path
 
 
 def read(path):
@@ -108,6 +111,8 @@ def run(args):
     pipeline, worker, bridge, pin, tracing_config = load_upstream(args.upstream.resolve(), args.pin, args.output, args.model_cache)
     planning_config = DrawingConfig().validate()
     write(args.output/"configuration.json", {"drawing": asdict(planning_config), "tracing": tracing_config,
+          "local_gap_postprocess": {"version": REFINEMENT_VERSION, "config": asdict(GapRefinementConfig()),
+                                    "kind": "fixed_endpoints_only", "human_approval_inferred": False},
           "max_per_tile": args.max_per_tile, "endpoint_origin": "machine_selected_not_human_confirmed",
           "baseline_sha256": sha256_file(args.baseline), "upstream_pin_sha256": sha256_file(args.pin),
           "no_fitting_or_E_label_use": True})
@@ -175,6 +180,8 @@ def run(args):
                 else:
                     gap = bridge.build_manual_gap_bridge(start, end, *tangents)
                     path = [list(point) for point in gap.points_xy]
+                    path, refinement = regularize_gap_path(path)
+                    attempt["gap_geometry_refinement"] = refinement
                     quality = assess_path(path, start, end, evidence.center_score, base_mask)
                     attempt["routes"]["contextual_gap"] = quality
                     if quality["new_fraction_outside_original_1_5px"] >= .1:
@@ -201,6 +208,8 @@ def run(args):
                       "reference_origin": "machine_generated_not_human", "human_approved": False,
                       "review_status": "unreviewed", "annotator": "", "review_note": "",
                       "question": "두 끝점을 이 경로로 이어도 될까요? 등고선이 아닌 획이거나 이웃 선으로 넘어가면 거절해 주세요."}
+            if chosen == "contextual_gap":
+                record["geometry_refinement"] = attempt["gap_geometry_refinement"]
             records.append(record)
             tile_records.append(record)
             extra_features.append({"type": "Feature", "geometry": {"type": "LineString", "coordinates": world(tile, path)},

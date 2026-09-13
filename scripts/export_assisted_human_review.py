@@ -21,8 +21,13 @@ def export(packet, ledger_path, output, *, revisions_path=None, next_id=None):
             raise ValueError("review ledger does not belong to these exact source files")
     if revisions_path is not None and sha256_file(revisions_path) != ledger.get("revision_collection_sha256"):
         raise ValueError("revision collection byte digest differs from the reviewed snapshot")
+    base_lines = None
+    if any(r.get("revision_kind") == "local_tail_replacement" for r in ledger.get("revisions", [])):
+        if sha256_file(packet/"base-lines.geojson") != ledger.get("source_base_lines_sha256"):
+            raise ValueError("local-tail source base-line fingerprint differs")
+        base_lines = read(packet/"base-lines.geojson")
     result = build_review_outputs(read(packet/"drawing-report.json"), read(packet/"ai-proposals.geojson"),
-                                  ledger, read(revisions_path) if revisions_path else None)
+                                  ledger, read(revisions_path) if revisions_path else None, base_lines=base_lines)
     if next_id is not None and next_id not in result["queue"]["eligible_ids"]:
         raise ValueError("next question must be an unreviewed, non-deferred original case")
     chosen = next_id or next(iter(result["queue"]["eligible_ids"]), None)
@@ -41,6 +46,18 @@ def export(packet, ledger_path, output, *, revisions_path=None, next_id=None):
     for bucket, collection in result["collections"].items():
         write(bucket.replace("_", "-")+".geojson", collection)
     write("reviewed-proposals.geojson", result["reviewed"])
+    if result["source_tail_replacements"]["features"]:
+        write("source-tail-replacements.geojson", result["source_tail_replacements"])
+        write("source-tail-application.json", {
+            "schema": "jap-map-source-tail-application/1",
+            "source_base_lines_sha256": ledger["source_base_lines_sha256"],
+            "revision_ids": result["summary"]["local_tail_replacement_revision_ids"],
+            "replacement_file": "source-tail-replacements.geojson",
+            "replace_by_field": "segment_uid", "original_source_modified": False,
+            "instruction": "In a separate working copy, replace each matching source geometry by segment_uid, "
+                           "after checking replaced_source_geometry_sha256. Then add the approved local patch. "
+                           "Do not merely append the trimmed source lines or relabel their full semantics.",
+        })
     write("review-summary.json", result["summary"])
     write("remaining-review-queue.json", result["queue"])
     print(json.dumps(result["summary"], ensure_ascii=False))
