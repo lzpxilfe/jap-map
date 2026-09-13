@@ -1,0 +1,99 @@
+{
+  "schema": "jap-map-assisted-visual-screen/1",
+  "source_report_sha256": "d33f35f0d4ede055e0977ba5a6693596f8416fc1b6da5e495fa58c1fb59ba1bf",
+  "reference_origin": "ai_visual_provisional",
+  "human_approved": false,
+  "scope": "18 preselected source/proposal comparisons; remaining proposals were not individually visually classified. Not training or independent accuracy.",
+  "items": [
+    {
+      "proposal_id": "A0137",
+      "decision": "ask_human",
+      "note": "가느다란 평행선이 촘촘해 같은 등고선을 따른 것인지 이웃 선으로 옮겨간 것인지 확인이 필요합니다."
+    },
+    {
+      "proposal_id": "A0075",
+      "decision": "ask_human",
+      "note": "도로 옆 가는 획의 짧은 공백을 이었습니다. 이 획이 등고선인지 도로·하천 경계인지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A0174",
+      "decision": "exclude_from_draft",
+      "note": "제안이 나란한 도로 경계 획을 따르는 것으로 보여 등고선 초안에서 제외합니다."
+    },
+    {
+      "proposal_id": "A0179",
+      "decision": "ask_human",
+      "note": "140 표기 옆의 공백입니다. 두 끝점이 같은 등고선이고 이 짧은 곡선으로 이어도 되는지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A0268",
+      "decision": "exclude_from_draft",
+      "note": "한쪽에 연속된 짧은 빗금이 붙은 선을 추적했습니다. 둑·절벽 기호로 보여 제외합니다."
+    },
+    {
+      "proposal_id": "A0241",
+      "decision": "exclude_from_draft",
+      "note": "서로 만나는 이중선 도로 부근의 연결이므로 등고선 초안에서 제외합니다."
+    },
+    {
+      "proposal_id": "A0374",
+      "decision": "ask_human",
+      "note": "굴곡진 가는 획을 따라 연결했습니다. 중간에서 다른 등고선으로 넘어가지 않았는지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A0302",
+      "decision": "ask_human",
+      "note": "주변 평행한 산지 곡선 사이의 짧은 공백입니다. 같은 등고선의 연속인지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A0551",
+      "decision": "exclude_from_draft",
+      "note": "제안이 산지 아래 이중선 통로의 가장자리를 따라가므로 제외합니다."
+    },
+    {
+      "proposal_id": "A0512",
+      "decision": "ask_human",
+      "note": "200 숫자 아래 두 끝점을 이었습니다. 숫자에 가린 같은 등고선의 연결로 보아도 될까요?"
+    },
+    {
+      "proposal_id": "A0730",
+      "decision": "exclude_from_draft",
+      "note": "이중선 도로가 만나는 교차부를 따라간 제안으로 보여 제외합니다."
+    },
+    {
+      "proposal_id": "A0724",
+      "decision": "exclude_from_draft",
+      "note": "지명 왼쪽 남북 방향 도로의 경계 획을 연결한 것으로 보여 제외합니다."
+    },
+    {
+      "proposal_id": "A1160",
+      "decision": "ask_human",
+      "note": "Recovery가 희미하고 잘게 끊긴 구간을 따라갔습니다. 등고선 중심을 맞게 따른 것인지, 더 부드럽게 고쳐야 하는지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A0883",
+      "decision": "ask_human",
+      "note": "급하게 휘는 산지 곡선의 짧은 단절을 이었습니다. 같은 선의 굴곡으로 이어도 되는지 확인해 주세요."
+    },
+    {
+      "proposal_id": "A1260",
+      "decision": "exclude_from_draft",
+      "note": "굵은 이중선 도로를 추적한 것으로 보여 등고선 초안에서 제외합니다."
+    },
+    {
+      "proposal_id": "A1230",
+      "decision": "exclude_from_draft",
+      "note": "지명 옆 남북 방향 통로·경계 획으로 보여 보수적으로 제외합니다. AI 임시 판독이며 사람이 뒤집을 수 있습니다."
+    },
+    {
+      "proposal_id": "A1329",
+      "decision": "exclude_from_draft",
+      "note": "문자·기호 획과 주변 선이 섞인 경로로 보여 제외합니다."
+    },
+    {
+      "proposal_id": "A1289",
+      "decision": "ask_human",
+      "note": "논 기호 사이의 가는 곡선 공백입니다. 등고선인지 물길·경계선인지 의미 판정이 필요합니다."
+    }
+  ]
+}

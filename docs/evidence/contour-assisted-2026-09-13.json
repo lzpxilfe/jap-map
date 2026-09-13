@@ -1,0 +1,509 @@
+{
+  "schema": "jap-map-assisted-contour-drawing-evidence/1",
+  "record_scope": "Original generation and first handoff snapshot, before subsequent human feedback. Script fingerprints below describe that historical execution; current scripts include later reviewed improvements.",
+  "followup_evidence": "docs/evidence/contour-assisted-human-review-2026-09-13.json",
+  "date": "2026-09-13",
+  "status": "candidate_drawing_complete_human_decisions_requested",
+  "source_base_commit": "346a4c5ab781541045733c8abc1f1c09dd49c72f",
+  "upstream_url": "https://github.com/lzpxilfe/AI-Vectorizer-for-Archaeology/commit/5423044080b6ad995c9dfdfdced34f3eca648838",
+  "handoff_directory": "data/derived/contour-assisted-2026-09-13/human-review-final",
+  "provenance": {
+    "examples/contour_assisted_upstream.v1.json": "87e7bede7153fb3a7ac993dbe2ee1c8a18eff062083a41df22b2979ca3db13ff",
+    "examples/contour_assisted_visual_review.ai-v1.json": "e5f263e4efef61d7c4a97a81984153a9a5b846181c4ea2e968792ed58432f439",
+    "histcontour_core/assisted_drawing.py": "87dd1ce0f8e5ee2ee8d40a9b86a3b0dee0edbdab8cc9b358b81b36faf984625c",
+    "scripts/generate_assisted_contour_drawing.py": "ba958a0c103c8d1ef7eb48e2b00f6f0bffc717ef5260723f6b953156460fb59c",
+    "scripts/screen_assisted_contour_drawing.py": "e40b8f84056b648a862d282d12464bfc694b9036e6e7b6733d0581621e08178f",
+    "scripts/apply_assisted_visual_review.py": "2c367ec96244aac9daa4d1f50ff255290a391d8e1d28c4de0a1097bfce2e2e75",
+    "scripts/build_assisted_contour_review.py": "1e53618be238f2d383860016f99d81a56bd8e9b4507e00861d7c03ba1f6078f7",
+    "data/derived/contour-assisted-2026-09-13/drawing-v1/drawing-report.json": "b3b42cbb55af6d142764ebb0b4394464eb10d0a6d62cb531ec33297fafe44845",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/drawing-report.json": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.gpkg": "2e2d58d5ea5a56464df4062a9c2c82ac0200d80c8795d12b2bce2ad5bf8a782e",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.qgz": "a0e877924f97720c92d4d80dd28636eb0e94c22281177d0ad30f87c3a8237686",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/base-lines.geojson": "53dc8ceee14fb2014f6df0a80ddb6e505eb02b388d68db3483cdd94590ad63c5",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-proposals.geojson": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/PROVENANCE-NOTES.json": "12781fcb8987c2e05a75430fe6905d1806311ffc583b4d4805059113ff867b3d"
+  },
+  "run_summary": {
+    "schema": "jap-map-assisted-contour-drawing/1",
+    "status": "review_only_candidates_ready",
+    "upstream_commit": "5423044080b6ad995c9dfdfdced34f3eca648838",
+    "upstream_pin_sha256": "87e7bede7153fb3a7ac993dbe2ee1c8a18eff062083a41df22b2979ca3db13ff",
+    "configuration_sha256": "22ca794360e804f365113ec2ba58a9b722552014db9c220595361c681509298c",
+    "baseline_sha256": "f8885acc91e7d199cf3edc341f876faf11cf1c386fdec4f96792eb5dabd479d9",
+    "protected_review_sha256": {
+      "data/derived/annotation_package/contour_annotations.gpkg": "036316af3aaf0e6249e209756932532bf4ee7a2eed60b805fb247eb5d260d422",
+      "data/derived/contour-chain-2026-09-12/human-review-ready/human-review.gpkg": "3e39dc51851cc9c7175ed2a34ab2aa6408181ddc215165076225a39fbc85a746"
+    },
+    "model_cache_used": true,
+    "backend": {
+      "actual_backend": "ink-v2-effsam-recovery-v1",
+      "provider_kind": "onnxruntime",
+      "actual_provider": "CPUExecutionProvider",
+      "provider_device_type": "cpu",
+      "adapter_version": "ink-v2-effsam-recovery-worker/2",
+      "package_versions": {
+        "numpy": "2.5.1",
+        "opencv": "5.0.0",
+        "scipy": "1.18.0",
+        "onnxruntime": "1.28.0"
+      },
+      "thread_settings": {
+        "threads": 1,
+        "onnx_intra_op_num_threads": 1,
+        "onnx_inter_op_num_threads": 1,
+        "onnx_execution_mode": "ORT_SEQUENTIAL",
+        "onnx_graph_optimization_level": "ORT_ENABLE_ALL",
+        "opencv_set_num_threads": 0,
+        "opencv_effective_num_threads": 1,
+        "opencl": false,
+        "OMP_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "MKL_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null
+      },
+      "provider_verified": true,
+      "source_files_sha256": {
+        "benchmarks/worker.py": "173a6110c24b1afd9d88b3434c22f48e77f81b261a80a9e01f48aec568387625",
+        "benchmarks/__init__.py": "9fc2ccb94d560c9f2e81b976cfd4f31cc3c49fd7cb0676c4989e2e2971a3acae",
+        "benchmarks/evidence.py": "3ab259c36db42d01ab549c4a3ded6600d8d7b063a30930b012c92a5a47010a40",
+        "benchmarks/geometry.py": "08c3167532dcd1cfeb623f7af90647f61f4d135cc155aed48e279d6e358da87a",
+        "benchmarks/manifest.py": "698e7c6a4aed776eacf6f181d9ffb7b34b3a65d2ed4ccafa81cb9b313dfc1099",
+        "ai_vectorizer/__init__.py": "176146198dca6b0aa453c29d8e74eb5ca301e78fdb962207cfc51ef7b55179a1",
+        "ai_vectorizer/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "ai_vectorizer/core/edge_detector.py": "3abf095ecb5b2c1cc96ff9c8b74c1b30b0bf01200e449e1eab684f25cb3be015",
+        "ai_vectorizer/core/line_evidence.py": "2ae15ea7c63764eaf1505d91f29adb2cd2f2380f0ccf402cf6d792d0509c7b74",
+        "ai_vectorizer/core/livewire.py": "830df5c14e4ebc93c198bb3680b8606a1555443d5f877cfdd0c61538c703543f",
+        "ai_vectorizer/core/trace_kernel.py": "95ab9e77ade3bdde68f0799ed1bfc021807e4177633a2eaa3d190826c666f9c7",
+        "ai_vectorizer/core/efficientsam_onnx.py": "f8baa08819e13c19738e113725f8e20e69d5e3f320eadb376a429451d00841b6",
+        "ai_vectorizer/core/efficientsam_spec.py": "2b6010ee7b7bcee68c95a1d15ee68d73f54837915abbd519f2e382d87603706e",
+        "ai_vectorizer/core/model_store.py": "6d98907dd1c165243cf8fd3701131a5ef93bf3bc2f3790aa39b4930863145be1",
+        "ai_vectorizer/core/recovery_prompts.py": "8c0d33e9765e21bf91fcc3f945448f9ef95959830207c49c3ccd8dca9b6ccd6b",
+        "ai_vectorizer/core/sam_trace_kernel.py": "96fad7b081874952f237c40207debf4a245619e01166fd74a954116ee7c3b843",
+        "ai_vectorizer/core/smart_recovery.py": "acc24ee1624bf779ac6ba1a0de1019001e5ed64e388fae5d23da51f49a1b0eed"
+      },
+      "model_artifacts_sha256": {
+        "encoder": "84ed466ffcc5c1f8d08409bc34a23bb364ab2c15e402cb12d4335a42be0e0951",
+        "decoder": "a62f8fa5ea080447c0689418d69e58f1e83e0b7adf9c142e2bd9bcc8045c0b11"
+      },
+      "model_bundle_id": "efficientsam-ti-split-onnx",
+      "model_bundle_sha256": "f9d4b88041640ca39ca9b484629eb9476fabcd1a15f0cc0b71ab435e12602b8c",
+      "runtime_details": {
+        "livewire_window_px": 320,
+        "target_snap_radius_px": 6,
+        "smoothing_window_px": 5,
+        "ink_evidence_api": "detect_ink_evidence",
+        "onnx_providers": {
+          "encoder": [
+            "CPUExecutionProvider"
+          ],
+          "decoder": [
+            "CPUExecutionProvider"
+          ]
+        },
+        "onnx_session_options": {
+          "encoder": {
+            "intra_op_num_threads": 1,
+            "inter_op_num_threads": 1,
+            "execution_mode": "ORT_SEQUENTIAL",
+            "graph_optimization_level": "ORT_ENABLE_ALL"
+          },
+          "decoder": {
+            "intra_op_num_threads": 1,
+            "inter_op_num_threads": 1,
+            "execution_mode": "ORT_SEQUENTIAL",
+            "graph_optimization_level": "ORT_ENABLE_ALL"
+          }
+        },
+        "encoder_reused_across_predictions": true,
+        "encoder_execution": "conditional_after_recovery_gate",
+        "model_source_commit": "d525f622e6f640acf5a0fc37c7ca1f243da5bde0",
+        "recovery_policy_id": "smart-recovery-gate-v1-provisional",
+        "recovery_configuration_sha256": "b9ccaa20863af66016193fddfa62cb091e5fde7424dac4c3d77476aa4334f685",
+        "recovery_provisional": true,
+        "session_initialization_ns": 116000958,
+        "image_file_decode_ns": 4061542,
+        "ink_cache_fill_wall_ns": 275431667,
+        "conditional_image_encode_wall_ns": 769625792
+      }
+    },
+    "endpoint_selection": "machine heuristic; not equivalent to upstream human-confirmed endpoints",
+    "holdout_used": false,
+    "human_approvals": 0,
+    "automatic_promotion": false,
+    "model_fitted": false,
+    "formal_accuracy": null,
+    "tiles": [
+      {
+        "tile_id": "173-buyeo-mountain",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "scene_type": "dense_mountain",
+        "pixel_bounds": [
+          950,
+          650,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/173-buyeo-mountain.tif",
+        "bounds": [
+          126.75763345582078,
+          36.28536326881838,
+          126.80604058901234,
+          36.32483629730661
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+        "baseline_vector_sha256": "b329b186ec544d5bc8ae6735051e2ad5301d9a647f26bc991f46ddb756f62f27"
+      },
+      {
+        "tile_id": "173-buyeo-labels",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "scene_type": "labels_and_roads",
+        "pixel_bounds": [
+          2600,
+          1300,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/173-buyeo-labels.tif",
+        "bounds": [
+          126.83530169436008,
+          36.26029147796338,
+          126.88371351223594,
+          36.2997023682176
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "5e9c729a9cbe53c6a9a59b7c50bd9c346ccaf4096525e2875b4c8f6ea39584bb",
+        "baseline_vector_sha256": "2b4d8823beca7d5d66634aff1a3126912ca3d1c6f62023ab83e9af63d58b9e8a"
+      },
+      {
+        "tile_id": "173-buyeo-hydro",
+        "sheet_id": "173-buyeo",
+        "split": "development",
+        "scene_type": "hydrography_and_plain",
+        "pixel_bounds": [
+          4700,
+          700,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/173-buyeo-hydro.tif",
+        "bounds": [
+          126.93433802488778,
+          36.28328834343494,
+          126.98281284113342,
+          36.32272514494416
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "2fd1240f0c70401d20260438652c04c0b8cca6dcc388a75102bfc9ce856a34f9",
+        "baseline_vector_sha256": "2b028151ebb54ec710babcbb2c9244817b194f9fc1c0b4e71a47649e97b3feee"
+      },
+      {
+        "tile_id": "174-cheongyang-mountain",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "scene_type": "dense_mountain",
+        "pixel_bounds": [
+          3900,
+          700,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/174-cheongyang-mountain.tif",
+        "bounds": [
+          126.8997538132502,
+          36.45096698521329,
+          126.94787378448845,
+          36.49018697997028
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+        "baseline_vector_sha256": "ca97555509e68e40350c940e3f6490d692d26c46209605d55a66e3d6118000df"
+      },
+      {
+        "tile_id": "174-cheongyang-labels",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "scene_type": "labels_and_roads",
+        "pixel_bounds": [
+          1400,
+          1500,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/174-cheongyang-labels.tif",
+        "bounds": [
+          126.78200608416292,
+          36.42062514750539,
+          126.8303604598137,
+          36.4599230501353
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+        "baseline_vector_sha256": "b57ecebfc69e75baf9669a7ef6c2ea91ae029a21af00fe3b6994aa7f77114d22"
+      },
+      {
+        "tile_id": "174-cheongyang-hydro",
+        "sheet_id": "174-cheongyang",
+        "split": "development",
+        "scene_type": "hydrography_and_plain",
+        "pixel_bounds": [
+          4600,
+          3200,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/174-cheongyang-hydro.tif",
+        "bounds": [
+          126.93237105589182,
+          36.3551850509948,
+          126.9805168691899,
+          36.39447662023755
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "7ef0f498e09636d9ebbc34a42741a8710813fa218985e58689c6d8a6288145b5",
+        "baseline_vector_sha256": "6bf1149707c31a12f5f28aec086e9bb4c5877034448b4452a3d33950fb04d328"
+      },
+      {
+        "tile_id": "177-nonsan-mountain",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "scene_type": "dense_mountain",
+        "pixel_bounds": [
+          4400,
+          650,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/177-nonsan-mountain.tif",
+        "bounds": [
+          127.17107078798917,
+          36.28604319536152,
+          127.21938239769796,
+          36.32534633503981
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "a36cea1322f718789099248369b5d9dd70904c0402b45ebdcedd808f8a505474",
+        "baseline_vector_sha256": "446af8573dd73e4c9f2988863b520bbc7648c7d52494556f402d055cc6552765"
+      },
+      {
+        "tile_id": "177-nonsan-labels",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "scene_type": "labels_and_roads",
+        "pixel_bounds": [
+          2900,
+          1700,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/177-nonsan-labels.tif",
+        "bounds": [
+          127.10038654198408,
+          36.24578111406316,
+          127.14860412252818,
+          36.285014710786946
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "e329b378512bb1dd057ba8e719900c88a82dd28017ae9caf2c48267ae176b0f8",
+        "baseline_vector_sha256": "58808efa40c20e418ff0eac43986e60b8d2da5827fc85022fcacee63786d97eb"
+      },
+      {
+        "tile_id": "177-nonsan-hydro",
+        "sheet_id": "177-nonsan",
+        "split": "development",
+        "scene_type": "hydrography_and_plain",
+        "pixel_bounds": [
+          900,
+          3000,
+          1024,
+          1024
+        ],
+        "raster_path": "sources/177-nonsan-hydro.tif",
+        "bounds": [
+          127.00625734058016,
+          36.196014992910875,
+          127.05441105774206,
+          36.23516846754618
+        ],
+        "crs_authid": "EPSG:5132",
+        "source_raster_sha256": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a",
+        "baseline_vector_sha256": "127ac8cc38b0032d9781386b47568855460c1d2abc84a41f9f2a74d7b098e145"
+      }
+    ],
+    "planning_audits": [
+      {
+        "eligible_endpoints": 1102,
+        "plausible_pairs": 192,
+        "bounded_pair_count": 182,
+        "tile_id": "173-buyeo-mountain",
+        "attempted_pairs": 182
+      },
+      {
+        "eligible_endpoints": 409,
+        "plausible_pairs": 59,
+        "bounded_pair_count": 57,
+        "tile_id": "173-buyeo-labels",
+        "attempted_pairs": 57
+      },
+      {
+        "eligible_endpoints": 610,
+        "plausible_pairs": 97,
+        "bounded_pair_count": 93,
+        "tile_id": "173-buyeo-hydro",
+        "attempted_pairs": 93
+      },
+      {
+        "eligible_endpoints": 1265,
+        "plausible_pairs": 232,
+        "bounded_pair_count": 221,
+        "tile_id": "174-cheongyang-mountain",
+        "attempted_pairs": 221
+      },
+      {
+        "eligible_endpoints": 1031,
+        "plausible_pairs": 246,
+        "bounded_pair_count": 223,
+        "tile_id": "174-cheongyang-labels",
+        "attempted_pairs": 223
+      },
+      {
+        "eligible_endpoints": 1284,
+        "plausible_pairs": 262,
+        "bounded_pair_count": 241,
+        "tile_id": "174-cheongyang-hydro",
+        "attempted_pairs": 241
+      },
+      {
+        "eligible_endpoints": 1574,
+        "plausible_pairs": 528,
+        "bounded_pair_count": 442,
+        "tile_id": "177-nonsan-mountain",
+        "attempted_pairs": 442
+      },
+      {
+        "eligible_endpoints": 593,
+        "plausible_pairs": 58,
+        "bounded_pair_count": 58,
+        "tile_id": "177-nonsan-labels",
+        "attempted_pairs": 58
+      },
+      {
+        "eligible_endpoints": 728,
+        "plausible_pairs": 100,
+        "bounded_pair_count": 93,
+        "tile_id": "177-nonsan-hydro",
+        "attempted_pairs": 93
+      }
+    ],
+    "baseline_line_count": 8105,
+    "attempt_count": 1610,
+    "proposal_count": 444,
+    "mode_counts": {
+      "ink_livewire": 63,
+      "smart_recovery": 5,
+      "contextual_gap": 376
+    },
+    "priority_ids": [
+      "A0137",
+      "A0075",
+      "A0179",
+      "A0374",
+      "A0302",
+      "A0512",
+      "A1160",
+      "A0883",
+      "A1289"
+    ],
+    "recovery_trigger_count": 1578,
+    "recovery_accepted_count": 96,
+    "elapsed_seconds": 246.12926620896906,
+    "screening": {
+      "schema": "jap-map-assisted-drawing-screen/1",
+      "source_report_sha256": "b3b42cbb55af6d142764ebb0b4394464eb10d0a6d62cb531ec33297fafe44845",
+      "scope": "post-hoc development topology screen; not new accuracy evidence",
+      "automatic_inferred_gap_limit_pixels": 16,
+      "source_pool": 1350,
+      "kept": 453,
+      "removed": 897,
+      "reason_counts": {
+        "automatic_inferred_gap_over_16px_requires_explicit_anchor_review": 798,
+        "crosses_or_touches_third_retained_source_line": 561,
+        "competing_endpoint_already_has_shorter_draft_route": 13
+      },
+      "human_approvals": 0
+    },
+    "screening_sha256": "08978943f38caadc0dcca91ebdc7d352b48685e36a4f52dbeed8137a30df363e",
+    "ai_visual_review": {
+      "source_report_sha256": "d33f35f0d4ede055e0977ba5a6693596f8416fc1b6da5e495fa58c1fb59ba1bf",
+      "review_sha256": "e5f263e4efef61d7c4a97a81984153a9a5b846181c4ea2e968792ed58432f439",
+      "inspected_count": 18,
+      "excluded_count": 9,
+      "human_questions": 9,
+      "human_approved": false,
+      "remaining_uninspected_count": 435
+    }
+  },
+  "qa": {
+    "base_lines_preserved": 8105,
+    "new_geometry_verified": 444,
+    "images_verified": 888,
+    "qgis_relative_sources": 13,
+    "bookmarks": 444,
+    "human_approvals": 0,
+    "protected_reviews_unchanged": true,
+    "frozen_classifier_code_unchanged": true,
+    "pillow_and_opencv_source_pixels_equal": true,
+    "review_gpkg_sha256": "2e2d58d5ea5a56464df4062a9c2c82ac0200d80c8795d12b2bce2ad5bf8a782e",
+    "review_qgz_sha256": "a0e877924f97720c92d4d80dd28636eb0e94c22281177d0ad30f87c3a8237686",
+    "actual_packet_relocated": true,
+    "all_qgis_layers_use_native_crs": "EPSG:5132",
+    "geojson_native_crs_declared": true,
+    "python_regressions_passed": 177,
+    "qgis_integration_tests_passed": 9,
+    "upstream_selected_tests_passed": 55,
+    "upstream_test_modules": [
+      "tests/test_manual_gap_bridge.py",
+      "tests/test_smart_recovery_policy.py",
+      "tests/test_benchmark_ink_adapters.py"
+    ],
+    "qgis_version": "3.44.8-Solothurn",
+    "test_approvals_are_synthetic_only": true
+  },
+  "archive": {
+    "path": "data/derived/contour-assisted-2026-09-13/assisted-contour-review.zip",
+    "bytes": 75529996,
+    "sha256": "58968a96b0e7d381684adf2976629d9950776789265647a43789994f99f70cde",
+    "files": 950,
+    "crc_ok": true,
+    "all_member_bytes_match": true,
+    "actual_human_approvals": 0
+  },
+  "first_questions": [
+    {
+      "proposal_id": "A0179",
+      "question": "Does the proposed gap beside 140 join the same contour?"
+    },
+    {
+      "proposal_id": "A0512",
+      "question": "May the contour be joined beneath the 200 label?"
+    },
+    {
+      "proposal_id": "A0137",
+      "question": "Does the green path continue the same contour or switch to a nearby parallel line?"
+    }
+  ],
+  "limitations": [
+    "Every new line remains unapproved and review_only_not_training. There is no new formal accuracy measurement.",
+    "The updated upstream assumes human-confirmed gap endpoints; this experiment instead selects endpoints with a separate machine heuristic.",
+    "Topology screening was added after inspecting failed long connections on the same development tiles. It is post-hoc development, not an independent validation.",
+    "18 priority proposals were individually inspected by AI; 9 excluded and 9 remain questions. The other 435 final proposals have not been individually visually classified.",
+    "376/444 final proposals are inferred gaps, not observed contour ground truth.",
+    "An old configuration key no_fitting_or_E_labels_read was misnamed. The baseline report includes E fields in memory, but they are not used in decision computations, fitting, or threshold selection. Corrected code uses no_fitting_or_E_label_use; historical artifacts are preserved.",
+    "OpenCV 5.0.0 is outside upstream's documented 4.8–4.11 range; this is an observed local run, not official compatibility validation.",
+    "GeoJSON CRS ambiguity in prototype review projects was corrected in the final delivery by declaring native EPSG:5132, without changing any geometry vertex.",
+    "Existing review files, prior frozen classifier code, S/E label files and the Gongju holdout were preserved. No external map inference upload or new model download occurred."
+  ]
+}

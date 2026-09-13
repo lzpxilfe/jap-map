@@ -1,0 +1,514 @@
+{
+  "schema": "jap-map-assisted-human-review/1",
+  "review_origin": "explicit_user_chat",
+  "reviewer_role": "conversation_user",
+  "dataset_role": "review_only_not_training",
+  "holdout_used": false,
+  "model_fitted": false,
+  "native_crs": "EPSG:5132",
+  "source_report_sha256": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+  "source_proposals_sha256": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+  "source_feedback_sha256": "d673bb9cddc27c5a02f06dcb0759523db605f8d81d2d9242957016be2b17a896",
+  "revision_collection_sha256": "ec884c58356d760772b61149f86124b893677953f56dbcabb8136d8240400421",
+  "events": [
+    {
+      "event_id": "chat-001-e01",
+      "type": "case_judgment",
+      "proposal_id": "A0179",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "A0179 : 정확한 판단. 잘했어",
+      "case_actions": {
+        "A0179": "accept_original"
+      },
+      "case_semantics": {
+        "A0179": "contour"
+      }
+    },
+    {
+      "event_id": "chat-001-e02",
+      "type": "case_judgment",
+      "proposal_id": "A0512",
+      "status": "superseded",
+      "superseded_by": "chat-001-e05",
+      "origin": "explicit_user_chat",
+      "user_text": "A0512 : 저건 옛날 사람의 실수가 아닌가 싶을정도로 헷갈림. 근데 일단 맞다고 판단됨",
+      "case_actions": {
+        "A0512": "provisional_accept_original"
+      },
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-001-e03",
+      "type": "case_judgment",
+      "proposal_id": "A0137",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "A0137 : 잘 이어냈음. 다만 저건 등고선이 아닌것으로 판단",
+      "case_actions": {
+        "A0137": "accept_original"
+      },
+      "case_semantics": {
+        "A0137": "non_contour"
+      }
+    },
+    {
+      "event_id": "chat-001-e05",
+      "type": "case_judgment",
+      "proposal_id": "A0512",
+      "status": "current",
+      "supersedes": "chat-001-e02",
+      "supplemented_by": "chat-001-e06",
+      "origin": "explicit_user_chat",
+      "user_text": "A0512 : 아니야 이렇게 이으면 안돼",
+      "case_actions": {
+        "A0512": "reject_original"
+      },
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-001-e06",
+      "type": "user_drawn_topology_correction",
+      "proposal_id": "A0512",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "이렇게 이어야해",
+      "case_actions": {},
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-001-e07",
+      "type": "source_map_convention",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "숫자가 항상 저런식으로 빈칸을 만들어내고 기입되기 때문에, 등고선의 생략이 크게 이루어지는 편이야",
+      "case_actions": {},
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-002-e01",
+      "type": "case_judgment",
+      "proposal_id": "A0075",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "A0075 : 잘 이었음. 다만 등고선인지 아니면 하천 선인지 모르겠음.",
+      "case_actions": {
+        "A0075": "accept_original"
+      },
+      "case_semantics": {
+        "A0075": "unsure"
+      }
+    },
+    {
+      "event_id": "chat-002-e02",
+      "type": "case_judgment_with_supplementary_sketch",
+      "proposal_id": "A1289",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "A1289 : 잘 이었음. 아마 등고선이라 추정되며 스크린샷에 추가로 내가 선을 더 그어둠",
+      "case_actions": {
+        "A1289": "accept_original"
+      },
+      "case_semantics": {
+        "A1289": "probable_contour"
+      }
+    },
+    {
+      "event_id": "chat-002-e03",
+      "type": "case_rejection_with_tentative_sketch",
+      "proposal_id": "A1160",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "A1160 : 잘 못했음. 그래서 내가 좌에서 우로 선을 하나씩 이어봤는데, 나도 헷갈림. 일단 저렇게 보임",
+      "case_actions": {
+        "A1160": "reject_original"
+      },
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-003-e01",
+      "type": "batch_judgment_with_proposed_redrawing",
+      "proposal_ids": [
+        "A0374",
+        "A0302",
+        "A0036"
+      ],
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "나는 이렇게 그을듯. A0302랑 A0036 만 잘 그은거같아.",
+      "case_actions": {
+        "A0302": "accept_original",
+        "A0036": "accept_original",
+        "A0374": "reject_original"
+      },
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-004-e01",
+      "type": "batch_uncertainty_with_sketched_reference",
+      "proposal_ids": [
+        "A0056",
+        "A0079",
+        "A0149"
+      ],
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "어우.. 이번건 좀 모르겠는것들도 많다. ? 를 그린 부분도 있어",
+      "case_actions": {},
+      "case_semantics": {}
+    },
+    {
+      "event_id": "chat-005-e01",
+      "type": "single_case_confirmation",
+      "proposal_id": "A0048",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "맞아",
+      "case_actions": {
+        "A0048": "accept_original"
+      },
+      "case_semantics": {
+        "A0048": "contour"
+      }
+    },
+    {
+      "event_id": "chat-006-e01",
+      "type": "single_case_confirmation",
+      "proposal_id": "A0041",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "맞아",
+      "case_actions": {
+        "A0041": "accept_original"
+      },
+      "case_semantics": {
+        "A0041": "contour"
+      }
+    },
+    {
+      "event_id": "chat-007-e01",
+      "type": "accepted_connection_with_shape_refinement_request",
+      "proposal_id": "A0013",
+      "status": "current",
+      "origin": "explicit_user_chat",
+      "user_text": "잘 이었는데, 곡부니깐 살짝 곡선으로 이었으면 더 좋을듯.",
+      "case_actions": {
+        "A0013": "accept_connection_refine_curvature"
+      },
+      "case_semantics": {
+        "A0013": "contour"
+      }
+    },
+    {
+      "event_id": "chat-008-e01",
+      "type": "revision_acceptance_with_reservation",
+      "proposal_id": "A0013",
+      "status": "current",
+      "accepted_revision_ids": [
+        "A0013-R1"
+      ],
+      "origin": "explicit_user_chat",
+      "user_text": "너무 굽힌거같은데 뭐 그정도도 나쁘지 않아. 이제부터 목표잡고 작업을 계속 이어나간 다음에 깃허브에 커밋 푸시해",
+      "case_actions": {
+        "A0013": "accept_revised_geometry_with_reservation"
+      },
+      "case_semantics": {
+        "A0013": "contour"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "proposal_id": "A0179",
+      "tile_id": "173-buyeo-labels",
+      "source_uid": "ink-run-149c35129e96d4b2a229:ink-segment-4dffd80f179794f8ef01",
+      "target_uid": "ink-run-149c35129e96d4b2a229:ink-segment-fa2e581d7ef0ac082ff5",
+      "source_raster_sha256": "5e9c729a9cbe53c6a9a59b7c50bd9c346ccaf4096525e2875b4c8f6ea39584bb",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-001-e01"
+      ],
+      "original_geometry_sha256": "332d046dc499b701672b79bc8f0448449e2287cd095f9ebf194a00e3c4aba051",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0512",
+      "tile_id": "174-cheongyang-labels",
+      "source_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-c753d4f778ed4978bddb",
+      "target_uid": "ink-run-8bcc0ca70bd4f58510c4:ink-segment-1af070b57514c110eeaf",
+      "source_raster_sha256": "f6c30b8bcd96227d19a231e3ca5c6f52c6f47039f40262e6b156fa98edcc4da9",
+      "geometry_decision": "reject_original",
+      "semantic_decision": "separate_contours_user_indicated",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-001-e05",
+        "chat-001-e06",
+        "chat-001-e07"
+      ],
+      "original_geometry_sha256": "c977e9c2a69e96bb30fc53751d757e482968c942c8b205cc4c9dcc110b72abcb",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0137",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-fef7674fb59f72eb63b6",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-34e5a598f3dca380fcd0",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "non_contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-001-e03"
+      ],
+      "original_geometry_sha256": "26577411ee68ad457675604d1ce07a38b7a9dd2312117bd293f9456684789369",
+      "review_note": "도로·하천·문자·기호 중 구체적인 종류를 임의로 정하지 않는다. 올바른 선 추적을 오연결 사례로 사용하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0075",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-e3939e913b6714d73542",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-22cd7b279a0deee8df6a",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "unsure",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-002-e01"
+      ],
+      "original_geometry_sha256": "19e1bbad8a00ebd6adcfff48345252d24c96072f3b4b5a1bcd567b5341f23ca3",
+      "review_note": "연결은 맞다는 판단을 등고선 확정으로 바꾸지 않는다. 하천으로도 임의 확정하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A1289",
+      "tile_id": "177-nonsan-hydro",
+      "source_uid": "ink-run-de12e3346c66d047290f:ink-segment-0dca0908b67190063f43",
+      "target_uid": "ink-run-de12e3346c66d047290f:ink-segment-835242e13c438ae84dce",
+      "source_raster_sha256": "64d3557ce5c2bdc6a55eac33478bffefb679d552e0638ffef3660721a28b1b1a",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "probable_contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-002-e02"
+      ],
+      "original_geometry_sha256": "ea72f72c622e7cd2f5790ffed6eb5b36a37925317bf8d9c12532442f3a4f6236",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A1160",
+      "tile_id": "177-nonsan-mountain",
+      "source_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-4a2176a9151a3244f20a",
+      "target_uid": "ink-run-32bc5c0c5e25c41e333a:ink-segment-e45515a383ab9e622a5d",
+      "source_raster_sha256": "a36cea1322f718789099248369b5d9dd70904c0402b45ebdcedd808f8a505474",
+      "geometry_decision": "reject_original",
+      "semantic_decision": "contour_context_route_unresolved",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-002-e03"
+      ],
+      "original_geometry_sha256": "287d67f541c8f584d1392389e1cb7fbefc33ce048228b34a81fcef2cdbdcd1d3",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0374",
+      "tile_id": "174-cheongyang-mountain",
+      "source_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-8dd4a228f0534c45d25f",
+      "target_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-ab453e125ecd33904263",
+      "source_raster_sha256": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+      "geometry_decision": "reject_original",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-003-e01"
+      ],
+      "original_geometry_sha256": "777af703786e1bdb28003880e5eab1b18b631b43e7d2a915835b0e7600510e58",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0302",
+      "tile_id": "174-cheongyang-mountain",
+      "source_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-4ceb6fca5d4e742ce02d",
+      "target_uid": "ink-run-40b8aaa0cdbd5c2958cb:ink-segment-577ca7ab35c184d64abe",
+      "source_raster_sha256": "561d5f44b6fefe7f03af084fb9863944e3b8163a480b271310ce235dbea2d112",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-003-e01"
+      ],
+      "original_geometry_sha256": "45dc53bea354ac96934f139b942060d2c0dcf20f186b524d71bd21cccf84bdc9",
+      "review_note": "이번 발언은 연결 경로 승인으로 기록하며, 등고선 여부의 별도 확정 발언은 없었다. 주변 전체 선의 승인이나 학습 라벨로 확대하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0036",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-7f9f6b5bf29bbd586945",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-c38619705a2c4c0fdaf0",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-003-e01"
+      ],
+      "original_geometry_sha256": "4568eb05087edc8fc3a67332b51487c95da9e8566a54c527029ce6fa6c0bdac8",
+      "review_note": "이번 발언은 연결 경로 승인으로 기록하며, 등고선 여부의 별도 확정 발언은 없었다. 주변 전체 선의 승인이나 학습 라벨로 확대하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0056",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-14158c21966cfdd55c16",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-9bf396510ffb774418a6",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "unresolved_no_explicit_decision",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": false,
+      "evidence_event_ids": [
+        "chat-004-e01"
+      ],
+      "original_geometry_sha256": "d540d4958d714679d84cdc0d7b5c47bdedd0c4598eff555d2535112d8c6b8ade",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0079",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-f58ee81b276038094d47",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-d34063f52cc51f8f6743",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "unresolved_no_explicit_decision",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": false,
+      "evidence_event_ids": [
+        "chat-004-e01"
+      ],
+      "original_geometry_sha256": "f49724b1641f6781b3d067d52c133bd93d24ba78b69ab4ea18bbcbf4ea874f9b",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0149",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-0b02bc03b946efc4002a",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-eff700d5f908e4299020",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "unresolved_no_explicit_decision",
+      "semantic_decision": "not_separately_stated",
+      "human_judgment_received": false,
+      "evidence_event_ids": [
+        "chat-004-e01"
+      ],
+      "original_geometry_sha256": "00152f3babdf230444a76911a7cef9f99ae3a9cba62854c498c6b07b391545d2",
+      "review_note": "",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0048",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-37d0157fb067150fe28b",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-0850278c6f7d931db2cb",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-005-e01"
+      ],
+      "original_geometry_sha256": "d3ea52ae7e436ab58cb17477e78bff92e033f1f8255bd62f963228a34b6b62ca",
+      "review_note": "유일하게 질문 중이던 A0048의 같은 등고선 연결 질문에 대한 명시적 긍정 답변. 다른 보류 사례나 주변 원본 선 전체로 승인을 전파하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0041",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-55393871258fa115b839",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-f3a404c07101dbb8016e",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_original",
+      "semantic_decision": "contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-006-e01"
+      ],
+      "original_geometry_sha256": "36b1822e6f3cc07d7117b344416dcf8946c76ee534e6c382d0aecc15f11778c1",
+      "review_note": "유일하게 질문 중이던 A0041의 같은 등고선 연결 질문에 대한 명시적 긍정 답변. 다른 보류 사례나 주변 원본 선 전체로 승인을 전파하지 않는다.",
+      "review_qualification": ""
+    },
+    {
+      "proposal_id": "A0013",
+      "tile_id": "173-buyeo-mountain",
+      "source_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-61c3430609aa1aec5f41",
+      "target_uid": "ink-run-48e335071a7ca224dd5b:ink-segment-2758664765a1c7b36d87",
+      "source_raster_sha256": "b0a5df3ec1dd3a51ceb687a772ff78f29065b96140caf2276c41dd25f949d165",
+      "geometry_decision": "accept_revised_geometry_with_reservation",
+      "semantic_decision": "contour",
+      "human_judgment_received": true,
+      "evidence_event_ids": [
+        "chat-007-e01",
+        "chat-008-e01"
+      ],
+      "original_geometry_sha256": "1c57ec7f0c5369d884702c6142a7c7880ac48505071707c393fcd1dac8a9e2f0",
+      "review_note": "",
+      "review_qualification": "more curvature than preferred, but acceptable",
+      "revision_id": "A0013-R1"
+    }
+  ],
+  "revisions": [
+    {
+      "revision_id": "A0013-R1",
+      "parent_proposal_id": "A0013",
+      "geometry_sha256": "8a351bd681f42444ae825529cf77680a67ed3cbe68d0a400cbf93b495850fcd2",
+      "approved": true,
+      "accepted_event_id": "chat-008-e01",
+      "source_approved_file_sha256": "3fff9146c07369ac12d5a54c8d3e8fc124ed5076b35e9c14453a6a2284eaa05b",
+      "qualification": "more curvature than preferred, but acceptable"
+    }
+  ],
+  "deferred_original_ids": [
+    "A0870",
+    "A0883",
+    "A0003",
+    "A0005",
+    "A0004",
+    "A0024",
+    "A0035",
+    "A0037",
+    "A0280",
+    "A0318",
+    "A0049"
+  ],
+  "review_protocol": {
+    "batch_size": 1,
+    "uncertainty_is_not_rejection": true,
+    "inferred_gap_is_not_observed_ink": true,
+    "automatic_training_promotion": false
+  },
+  "drawing_guidance": {
+    "numeral_label_blanks_may_hide_several_contours": true,
+    "compare_neighbouring_curve_order_before_pairing": true,
+    "subtle_curvature_start_max_pixels": 0.5,
+    "subtle_curvature_start_max_fraction_of_gap": 0.05,
+    "curvature_direction_must_be_chosen_from_context": true,
+    "numeric_curvature_policy_origin": "assistant cautious proposal after qualified user acceptance; not a trained model"
+  },
+  "annotation_roles": [
+    {
+      "proposal_id": "A0056",
+      "glyph": "?",
+      "role": "uncertainty_annotation_not_contour",
+      "uncertain_geographic_extent_supplied": false,
+      "unmarked_strokes_not_automatically_approved": true
+    }
+  ],
+  "publication_scope": "Decision ledger and explicitly accepted vector revisions only; no screenshots, rasters, model weights, private paths, or verified personal identity."
+}

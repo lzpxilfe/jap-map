@@ -25,6 +25,12 @@ jobs:
           tests.test_contour_context
           tests.test_contour_chains
           tests.test_human_feedback
+          tests.test_assisted_drawing
+          tests.test_assisted_review_sheets
+          tests.test_assisted_review_sketch
+          tests.test_assisted_curve_refinement
+          tests.test_assisted_review
+          tests.test_assisted_screening_io
       - run: python scripts/build_plugin_zip.py
 
   qgis:

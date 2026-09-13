@@ -1,0 +1,115 @@
+{
+  "schema": "jap-map-assisted-human-review-evidence/1",
+  "date": "2026-09-13",
+  "status": "local_review_export_verified",
+  "base_commit": "346a4c5ab781541045733c8abc1f1c09dd49c72f",
+  "historical_generation_evidence": "docs/evidence/contour-assisted-2026-09-13.json",
+  "public_inputs_sha256": {
+    "examples/assisted-human-review-2026-09-13/review-ledger.json": "f3fea0d720753ffcd3a828cdbde6ab7a7a0ff2370bda492337c3576a94e18530",
+    "examples/assisted-human-review-2026-09-13/approved-revisions.geojson": "ec884c58356d760772b61149f86124b893677953f56dbcabb8136d8240400421"
+  },
+  "current_implementation_sha256": {
+    "histcontour_core/assisted_drawing.py": "3a4898f79396933b7a230738a68eed7eaf00717e54179a15e53dff0f5f12aab7",
+    "histcontour_core/assisted_review.py": "0eb0345639717b6024924869d44e481aa6ea0a13b36dead7f4434947e6f48325",
+    "scripts/generate_assisted_contour_drawing.py": "ed28e9092307b9d1133d2167d43eb9013bfa6183f4a34c55dd90cdefd8830c29",
+    "scripts/screen_assisted_contour_drawing.py": "4b6594d99bb598ab55dfec84fde3494d26172cc6fa17b633f7ad595892d6602f",
+    "scripts/apply_assisted_visual_review.py": "51cd96a2186526f98983d44c2ccf707e20ec42414e610d6fea6bf4c86138891b",
+    "scripts/build_assisted_contour_review.py": "b097e36274b978765e9c536893d6b751427038f836393ca97a3d1e91ffa7f015",
+    "scripts/register_assisted_review_sketch.py": "98f3cac87d5e1ba39971b85059f5ea812bf703d217502d733c3fc1bcc980dea0",
+    "scripts/refine_assisted_contour_curve.py": "3e218faae2d452e672df7cf9496a5d5ae3eb59d3b3fbbf859b6d70f30e675ce0",
+    "scripts/render_assisted_drawing_sheets.py": "c74f1349c232d9d7341ed872842c579837b8a4f606c80784d7a2eaa340b4e927",
+    "scripts/publish_assisted_review_ledger.py": "297e8c9ac7fce8b8978f40914de7a6c5ff6caf652fc3c2072d0a3e9f665875a3",
+    "scripts/export_assisted_human_review.py": "043c5f4ee157180e53620ab92c48716262ac746f940e11d707dca58349b92df9",
+    "tests/test_assisted_drawing.py": "b2486ddab3346b9cb4e4f0c7ac1dbc90c5cbea2662f07e3e14dc0912af8a0b75",
+    "tests/test_assisted_review.py": "4d562764ed6d5d7dfa33cbd4e6e7003c89e99d87d352a2cf4b1baef8009726d3",
+    "tests/test_assisted_screening_io.py": "6db84bec5926c36c18334b30e294d0316841cff6c96fa231ee9b0a3063f6157e",
+    "tests/test_assisted_curve_refinement.py": "9a04f8c24be5d39d0093a74fb557e2571c2c44048420d72779094623b2fc035f",
+    "tests/test_assisted_review_sketch.py": "37da5cff45e2e48e433aa491eb8880381b247fd3fe2d79036c649871333f3de1",
+    "tests/test_assisted_review_sheets.py": "14666ea12418c6f632f68339eba0d6e192d4e4ad8344be19250879afa3ea3035",
+    "tests/test_qgis.py": "41bac25aa1de0f680890f20e155b7c5002382cd9cdb59e7933bcf0ad5c2d590f"
+  },
+  "original_source_files_unchanged": {
+    "data/derived/annotation_package/contour_annotations.gpkg": "036316af3aaf0e6249e209756932532bf4ee7a2eed60b805fb247eb5d260d422",
+    "data/derived/contour-chain-2026-09-12/human-review-ready/human-review.gpkg": "3e39dc51851cc9c7175ed2a34ab2aa6408181ddc215165076225a39fbc85a746",
+    "histcontour_core/contour_context.py": "56e3fbea80474db2a3d5a471ab9604b4ac81928427422b79ef334b482cbef7f4",
+    "histcontour_core/contour_chains.py": "af373d1aee0cd1a1a184ccc8a17425b066a895b5a8a2a70decf44c302cdf092c",
+    "scripts/run_contour_chain_development.py": "8f38ef1b61270b7fffaed4347e7c04f19d483f21e8c1d5fd9a7976152acb2d8e",
+    "scripts/run_contour_context_experiment.py": "4396c24418def89caa90bf7cd1b1bb3ab732bb574996b35cbebd7e1f0ada94e0"
+  },
+  "original_review_packet_sha256": "2e2d58d5ea5a56464df4062a9c2c82ac0200d80c8795d12b2bce2ad5bf8a782e",
+  "original_drawing_report_sha256": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+  "original_proposals_sha256": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+  "original_delivery_zip_sha256": "58968a96b0e7d381684adf2976629d9950776789265647a43789994f99f70cde",
+  "all_nine_raster_hashes_verified": true,
+  "approved_revision_geometry_sha256": "8a351bd681f42444ae825529cf77680a67ed3cbe68d0a400cbf93b495850fcd2",
+  "approved_revision_original_draft_geometry_unchanged": true,
+  "review_export_summary": {
+    "schema": "jap-map-assisted-review-export/1",
+    "counts": {
+      "approved_contour": 4,
+      "semantics_pending": 4,
+      "non_contour": 1,
+      "rejected_route": 3,
+      "unresolved_route": 3,
+      "pending_refinement": 0,
+      "reviewed": 15,
+      "unreviewed": 429,
+      "deferred": 11,
+      "accepted_geometry": 9,
+      "original_proposal_count": 444
+    },
+    "model_fitted": false,
+    "automatic_training_promotion": false,
+    "formal_accuracy": null,
+    "original_source_modified": false,
+    "revision_endpoints_verified": [
+      "A0013-R1"
+    ],
+    "note": "Accepted contour additions only; do not relabel whole source lines or inferred gaps as observed ink.",
+    "ledger_sha256": "f3fea0d720753ffcd3a828cdbde6ab7a7a0ff2370bda492337c3576a94e18530",
+    "source_report_sha256": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+    "source_proposals_sha256": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913"
+  },
+  "local_export_directory": "data/derived/contour-assisted-2026-09-13/reviewed-export-v1",
+  "local_export_sha256": {
+    "approved-contour.geojson": "06320f2035b65326f4366d8cf9792d6132621e718d30d1130bf5b5a1139ccea7",
+    "approved-overview.png": "a92b45191ddf56bf8ae54e670bef31824f7c3f419b30a0473234549138d247ca",
+    "non-contour.geojson": "a6548c070bcc83fedad19e0867507a2d840a58de6cceb6c5a6880e3b2e37011c",
+    "pending-refinement.geojson": "3a5f5afc517183c2902ff2e74cfed7ae941f611c8bfd886adbb1ee9cc8b3e062",
+    "rejected-route.geojson": "5765ea2efd7532c7ec8b4db85eb62298a13dadc5f84cf9e61671cb2381ffa1de",
+    "remaining-review-queue.json": "62ab58a485fa7848b9322576eb3aae14022db2577350c9809f3cdb63d04f9ecf",
+    "review-summary.json": "46e95cc1e79e6aa488649c4908b56cb373bd9899b0aaf29f3488132a2151738f",
+    "reviewed-proposals.geojson": "6808955a24b5bb4f15c41f4ac16ae44c6a5099cf7eb76be016b47d960cb60e8a",
+    "semantics-pending.geojson": "255d685c2c3b11d49f2240a9a8b36d35fdc9f4bb3a3659bd3c43f86335579c65",
+    "unresolved-route.geojson": "f3b9e896d7a6b1f0a32537a24e146078039d227f73ca43f874a5f12d0d3eb6bd"
+  },
+  "verification": {
+    "python_regressions_passed": 203,
+    "qgis_integration_tests_passed": 10,
+    "qgis_version": "3.44.8-Solothurn",
+    "actual_export_geojson_layers_loaded": 6,
+    "actual_export_crs": "EPSG:5132",
+    "publisher_replay_byte_identical": true,
+    "plugin_zip_crc_ok": true,
+    "plugin_zip_includes_current_review_core": true
+  },
+  "plugin_zip": {
+    "path": "dist/historical-map-tools-0.2.0.zip",
+    "sha256": "d83eb1bb5c59efad2955a1ab54b7e14939b630030f1242805942130179ea3c71",
+    "bytes": 110585
+  },
+  "next_review": {
+    "proposal_id": "A0059",
+    "status": "prepared_not_presented"
+  },
+  "limitations": [
+    "Four approved contour additions are inferred gap lines, not observed ink or complete reconstructed contours.",
+    "Geometry-only acceptance, probable contour semantics, non-contours, rejected routes and unresolved responses remain separate.",
+    "No new classifier was trained, no E labels were used for fitting, and the Gongju holdout was not used.",
+    "A0013-R1 remains unchanged with the user reservation that it is more curved than preferred but acceptable.",
+    "The 0.5px/5-percent subtle option is an assistant-chosen initial draft policy; bend direction still requires local context.",
+    "Screenshots, source rasters, model weights, private file paths and raw chat snapshots are not included in the commit.",
+    "Historical generation script fingerprints can differ from current implementations because CRS and review safeguards were improved afterward.",
+    "Counts and successful software checks are not a new formal map accuracy measurement."
+  ]
+}

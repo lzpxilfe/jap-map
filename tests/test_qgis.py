@@ -217,6 +217,86 @@ class QgisIntegrationTest(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 build_context(index_path, vector_path, context_path, output)
 
+    def test_assisted_drawing_review_is_new_portable_and_unapproved(self):
+        import shutil
+        from qgis.PyQt.QtGui import QColor, QImage
+        from histcontour_core.provenance import sha256_file
+        from scripts.build_assisted_contour_review import build
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory)
+            source=root/"source"
+            source.mkdir()
+            for name in ("sources","images","tile-previews"):
+                (source/name).mkdir()
+            image=QImage(64,64,QImage.Format.Format_RGB32)
+            image.fill(QColor("white"))
+            raster=source/"sources"/"fixture.png"
+            self.assertTrue(image.save(str(raster)))
+            raster.with_suffix(".pgw").write_text("1\n0\n0\n-1\n0.5\n63.5\n",encoding="ascii")
+            digest=sha256_file(raster)
+            tiles=[{"tile_id":f"synthetic-{index}","sheet_id":f"source-{index//3}","split":"development",
+                    "crs_authid":"EPSG:3857","raster_path":"sources/fixture.png","source_raster_sha256":digest,
+                    "bounds":[0,0,64,64],"pixel_bounds":[0,0,64,64]} for index in range(9)]
+            row={"proposal_id":"A0001","tile_id":"synthetic-0","mode":"ink_livewire","question":"Synthetic only",
+                 "dataset_role":"review_only_not_training","source_uid":"a","target_uid":"b","priority":1,
+                 "gap_pixels":10.,"competing_endpoint_pair":False,"pixel_box":[0,0,64,64],"human_approved":False}
+            report={"schema":"jap-map-assisted-contour-drawing/1","holdout_used":False,"human_approvals":0,
+                    "tiles":tiles,"proposals":[row]}
+            report_path=source/"drawing-report.json"
+            report_path.write_text(json.dumps(report),encoding="utf-8")
+            collection={"type":"FeatureCollection","features":[{"type":"Feature","properties":{"proposal_id":"A0001","mode":"ink_livewire"},
+                        "geometry":{"type":"LineString","coordinates":[[10.5,43.5],[20.5,43.5]]}}]}
+            for name in ("base-lines.geojson","ai-proposals.geojson"):
+                (source/name).write_text(json.dumps(collection),encoding="utf-8")
+            for name in ("configuration.json","upstream-pin.json","attempts.json"):
+                (source/name).write_text("{}",encoding="utf-8")
+            (source/"report.html").write_text("<html>fixture</html>",encoding="utf-8")
+            output=root/"review"
+            build(report_path,output)
+            decisions=QgsVectorLayer(f"{output/'ai-drawing-review.gpkg'}|layername=review_cases","fixture","ogr")
+            self.assertEqual(decisions.featureCount(),1)
+            feature=next(decisions.getFeatures())
+            self.assertEqual(feature["review_status"],"unreviewed")
+            self.assertEqual(feature["human_approved"],0)
+            del feature,decisions
+            moved=root/"moved"
+            shutil.copytree(output,moved)
+            project=QgsProject()
+            self.assertTrue(project.read(str(moved/"ai-drawing-review.qgz")))
+            self.assertEqual(len(project.mapLayers()),13)
+            self.assertEqual(len(project.bookmarkManager().bookmarks()),1)
+            for layer in project.mapLayers().values():
+                self.assertTrue(layer.isValid())
+                self.assertTrue(Path(layer.source().split("|")[0]).resolve().is_relative_to(moved.resolve()))
+                self.assertEqual(layer.crs().authid(), "EPSG:3857")
+                if layer.source().endswith(".geojson"):
+                    self.assertTrue(layer.readOnly())
+                    self.assertEqual(layer.crs().authid(), "EPSG:3857")
+            project.clear()
+            self.assertEqual(sha256_file(raster),digest)
+            with self.assertRaises(FileExistsError):
+                build(report_path,output)
+
+    def test_assisted_human_export_loads_only_explicitly_accepted_contours(self):
+        from histcontour_core.assisted_review import build_review_outputs
+        from tests.test_assisted_review import review_fixture
+        output = build_review_outputs(*review_fixture())
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"approved-contour.geojson"
+            path.write_text(json.dumps(output["collections"]["approved_contour"]), encoding="utf-8")
+            layer = QgsVectorLayer(str(path), "Synthetic reviewed additions", "ogr")
+            self.assertTrue(layer.isValid())
+            self.assertEqual(layer.crs().authid(), "EPSG:3857")
+            self.assertEqual(layer.featureCount(), 2)
+            ids = set()
+            for feature in layer.getFeatures():
+                ids.add(feature["proposal_id"])
+                self.assertTrue(feature["human_approved"])
+                self.assertEqual(feature["semantic_decision"], "contour")
+                self.assertTrue(feature.geometry().isGeosValid())
+            self.assertEqual(ids, {"A0000", "A0006-R1"})
+            del feature, layer
+
     def test_human_packet_round_trip_is_explicit_and_role_separated(self):
         import os
         import shutil
