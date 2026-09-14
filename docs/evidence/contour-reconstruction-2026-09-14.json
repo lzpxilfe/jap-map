@@ -1,0 +1,233 @@
+{
+  "schema": "jap-map-contour-reconstruction-checkpoint/1",
+  "date": "2026-09-14",
+  "status": "goal_in_progress_not_default_pipeline",
+  "base_git_commit": "9f1b9e9ff5478f8ae73b719ddea9ecbe76b7e8bb",
+  "record_scope": "Historical development checkpoint, not a completeness certificate or independent map accuracy evaluation.",
+  "non_qgis_tests_passed": 400,
+  "qgis_3_44_8_integration_tests_passed": 15,
+  "qgis_4_2_ci_verified": false,
+  "source_crops_pixel_exact_verified": 24,
+  "protected_inputs_sha256_verified": {
+    "data/derived/annotation_package/contour_annotations.gpkg": "036316af3aaf0e6249e209756932532bf4ee7a2eed60b805fb247eb5d260d422",
+    "data/derived/contour-chain-2026-09-12/human-review-ready/human-review.gpkg": "3e39dc51851cc9c7175ed2a34ab2aa6408181ddc215165076225a39fbc85a746",
+    "histcontour_core/contour_context.py": "56e3fbea80474db2a3d5a471ab9604b4ac81928427422b79ef334b482cbef7f4",
+    "histcontour_core/contour_chains.py": "af373d1aee0cd1a1a184ccc8a17425b066a895b5a8a2a70decf44c302cdf092c",
+    "scripts/run_contour_chain_development.py": "8f38ef1b61270b7fffaed4347e7c04f19d483f21e8c1d5fd9a7976152acb2d8e",
+    "scripts/run_contour_context_experiment.py": "4396c24418def89caa90bf7cd1b1bb3ab732bb574996b35cbebd7e1f0ada94e0",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/drawing-report.json": "c5ad90de5e8c1e0c7596a73fc55e0c00b36feb9232ed2391a5fe7569de53bca8",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.gpkg": "2e2d58d5ea5a56464df4062a9c2c82ac0200d80c8795d12b2bce2ad5bf8a782e",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-drawing-review.qgz": "a0e877924f97720c92d4d80dd28636eb0e94c22281177d0ad30f87c3a8237686",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/base-lines.geojson": "53dc8ceee14fb2014f6df0a80ddb6e505eb02b388d68db3483cdd94590ad63c5",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/ai-proposals.geojson": "64f5c3a97c2679628f626c4ec1ae9dce18ab5dde7498dd26a3fb962e4d87a913",
+    "data/derived/contour-assisted-2026-09-13/human-review-final/PROVENANCE-NOTES.json": "12781fcb8987c2e05a75430fe6905d1806311ffc583b4d4805059113ff867b3d",
+    "examples/contour_forward_labels.ai-v1.json": "40927fc32c8afb67181c8f8f6b1274902faa8ac31cab18fd008b59c4bac1ca51",
+    "data/derived/contour-chain-2026-09-12/development-frozen/development.json": "7d553a927f522d028eaee146a1a3b05f8853260d456488de5d19879d2a2196ad"
+  },
+  "artifact_sha256": {
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/reconstruction-report.json": "0600f1b90c8ff6c995ad43101324511c879bb0864de3722bbcc055573ab8d649",
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/raw-observed.geojson": "d19ca8d4e9334ff052e023a63dd7cfd1cbf3fda184fcbe0df6e455a69a757d62",
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/candidate-observed.geojson": "89d03aed05d291ddf0afc7cf4afdaf213ab7d0634346354792c48aee39039087",
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/suspected-text.geojson": "d563c4758ebc61d0e3d8072b52c864c821fceaa3ede7d398068f0462c05184bf",
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/short-context.geojson": "e5e7580201c1dd2cac8170a465b1ea0408d7bff15906f2fa099d00be70d6b697",
+    "data/derived/contour-reconstruction-2026-09-14/observed-v3/approved-connections-unchanged.geojson": "cd4d087e04f3cfe904cce69cc6a0d47eae1628393f5019c51a1a4000791cc6a4",
+    "data/derived/contour-reconstruction-2026-09-14/text-multiscale-v2/multiscale-text-detection.json": "7f6f08884e6aa89979285c31c3781aa05666208ee801c72af957304a098e6c81",
+    "data/derived/contour-reconstruction-2026-09-14/component-text-recognition-v2/component-text-recognition.json": "f9293c033582646c70741683152d23db0587c5b89b1483835526daaccfd8c5df",
+    "data/derived/contour-reconstruction-2026-09-14/human-review-001/questions.json": "394438f50c6ed12af0496befbabf9341a55931e3c0dedfa11b0b5853aa4ff019",
+    "data/derived/contour-reconstruction-2026-09-14/human-review-001/question-geometries.geojson": "7f31c68ea742bcad2a3dd497464a8ddc294bad03941fb0729bc6a788aa37868c",
+    "data/derived/contour-reconstruction-2026-09-14/human-review-001/N001.png": "c74e400c4b17f713302a56f6fcd1f154562f449539674f52c4806701fe3901a5",
+    "data/derived/contour-reconstruction-2026-09-14/human-review-001/N002.png": "db2cc88cfcb6e5ec53258094c144dae965f0366487db10e270226578c13b7d86",
+    "examples/contour_reconstruction_regions.v1.json": "7d15506dd321b81f7bbf095c536649106130551371e6f2837df373b05cda3922",
+    "dist/historical-map-tools-0.2.0.zip": "1c8be75f7f8b7d21832eb83e0dba3a08acbf653b911113138caa199ebb1b553b"
+  },
+  "observed_tile_results": [
+    {
+      "tile_id": "173-buyeo-mountain",
+      "stage_counts": {
+        "legacy_centerline": 70516,
+        "weak_observed": 176910,
+        "strong_seeds": 139425,
+        "directionally_grown": 175213,
+        "retained_observed": 175213,
+        "skeleton": 63302,
+        "suspected_text_skeleton": 20
+      },
+      "extraction_config": {
+        "strong_support": 0.18,
+        "weak_support": 0.025,
+        "minimum_coherence": 0.3,
+        "maximum_direction_difference_deg": 50,
+        "minimum_seeded_length": 3,
+        "minimum_unseeded_length": 16,
+        "minimum_normal_contrast": 0.008,
+        "text_avoidance_threshold": 0.4,
+        "text_fraction_threshold": 0.65,
+        "max_pixels": 2000000
+      },
+      "path_counts": {
+        "observed_linework_review": 4121,
+        "short_context": 1756,
+        "suspected_text_review": 3,
+        "curve_drafts_adopted": 52,
+        "curve_fits_attempted": 59
+      },
+      "wall_seconds": 2.166656792163849
+    },
+    {
+      "tile_id": "177-nonsan-mountain",
+      "stage_counts": {
+        "legacy_centerline": 83910,
+        "weak_observed": 224977,
+        "strong_seeds": 187001,
+        "directionally_grown": 223689,
+        "retained_observed": 223689,
+        "skeleton": 79437,
+        "suspected_text_skeleton": 63
+      },
+      "extraction_config": {
+        "strong_support": 0.18,
+        "weak_support": 0.025,
+        "minimum_coherence": 0.3,
+        "maximum_direction_difference_deg": 50,
+        "minimum_seeded_length": 3,
+        "minimum_unseeded_length": 16,
+        "minimum_normal_contrast": 0.008,
+        "text_avoidance_threshold": 0.4,
+        "text_fraction_threshold": 0.65,
+        "max_pixels": 2000000
+      },
+      "path_counts": {
+        "short_context": 2119,
+        "observed_linework_review": 5015,
+        "suspected_text_review": 5,
+        "curve_drafts_adopted": 125,
+        "curve_fits_attempted": 176
+      },
+      "wall_seconds": 2.9275573750492185
+    }
+  ],
+  "recognition_counts": {
+    "regions": 3,
+    "retained_groups": 276,
+    "recognition_attempts": 476,
+    "recognition_skips": 76
+  },
+  "recognition_examples": [
+    {
+      "region_id": "R004",
+      "rank": 21,
+      "component_ids": [
+        82,
+        79
+      ],
+      "readings": [
+        {
+          "scale": 2,
+          "text": "505",
+          "raw_score": 0.9841778874397278
+        },
+        {
+          "scale": 4,
+          "text": "505",
+          "raw_score": 0.9875211119651794
+        }
+      ]
+    },
+    {
+      "region_id": "R015",
+      "rank": 12,
+      "component_ids": [
+        124,
+        114,
+        106
+      ],
+      "readings": [
+        {
+          "scale": 2,
+          "text": "100",
+          "raw_score": 0.8737680315971375
+        },
+        {
+          "scale": 4,
+          "text": "100",
+          "raw_score": 0.8331260085105896
+        }
+      ]
+    },
+    {
+      "region_id": "R015",
+      "rank": 70,
+      "component_ids": [
+        198,
+        214
+      ],
+      "readings": [
+        {
+          "scale": 2,
+          "text": "0",
+          "raw_score": 0.3086538016796112
+        },
+        {
+          "scale": 4,
+          "text": "20",
+          "raw_score": 0.3545120656490326
+        }
+      ]
+    }
+  ],
+  "recognition_success_is_not_component_ownership": true,
+  "recognition_models_or_sources_modified": false,
+  "model_fitted": false,
+  "holdout_used": false,
+  "approved_geometry_modified": false,
+  "zip_members_byte_verified": 56,
+  "actual_qgis_geojson_validation": [
+    {
+      "layer": "raw-observed",
+      "features": 9136,
+      "native_crs": "EPSG:5132",
+      "vertices_exact": 137032
+    },
+    {
+      "layer": "candidate-observed",
+      "features": 9136,
+      "native_crs": "EPSG:5132",
+      "vertices_exact": 146039
+    },
+    {
+      "layer": "suspected-text",
+      "features": 8,
+      "native_crs": "EPSG:5132",
+      "vertices_exact": 74
+    },
+    {
+      "layer": "short-context",
+      "features": 3875,
+      "native_crs": "EPSG:5132",
+      "vertices_exact": 9930
+    },
+    {
+      "layer": "approved-connections-unchanged",
+      "features": 23,
+      "native_crs": "EPSG:5132",
+      "vertices_exact": 522
+    }
+  ],
+  "human_review": {
+    "question_ids": [
+      "N001",
+      "N002"
+    ],
+    "human_approvals": 0,
+    "training_eligible": false,
+    "status": "two_questions_submitted_no_answers_yet",
+    "scope": "Only exact highlighted observed fragments and shape; not gaps or entire regions."
+  },
+  "remaining_requirements": [
+    "Associate numeric readings with actual glyph pixels without erasing nearby contour ink.",
+    "Fix unresolved 200/other tilted numeric groups and validate on remaining fixed regions.",
+    "Integrate continuous tracing and regional order-preserving inferred-gap reconnection.",
+    "Collect human judgments and verify contour retention, incorrect connections, large bends and approved geometry on separate regions.",
+    "Integrate validated improvements into full-map/QGIS workflow and verify actual QGIS4.2 CI."
+  ]
+}

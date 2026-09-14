@@ -16,6 +16,17 @@ from histcontour_core.manual_gap_bridge import ManualGapBridgeError, build_manua
 from histcontour_core.trace_guidance import guidance_from_boxes
 
 
+# PyQt6 exposes these enums only through their scoped types.
+DASH_LINE = Qt.DashLine if hasattr(Qt, "DashLine") else Qt.PenStyle.DashLine
+ALT_MODIFIER = Qt.AltModifier if hasattr(Qt, "AltModifier") else Qt.KeyboardModifier.AltModifier
+KEY_ESCAPE = Qt.Key_Escape if hasattr(Qt, "Key_Escape") else Qt.Key.Key_Escape
+KEY_G = Qt.Key_G if hasattr(Qt, "Key_G") else Qt.Key.Key_G
+KEY_RETURN = Qt.Key_Return if hasattr(Qt, "Key_Return") else Qt.Key.Key_Return
+KEY_ENTER = Qt.Key_Enter if hasattr(Qt, "Key_Enter") else Qt.Key.Key_Enter
+DIALOG_CANCEL = QDialogButtonBox.Cancel if hasattr(QDialogButtonBox, "Cancel") else QDialogButtonBox.StandardButton.Cancel
+DIALOG_OK = QDialogButtonBox.Ok if hasattr(QDialogButtonBox, "Ok") else QDialogButtonBox.StandardButton.Ok
+
+
 class InkTraceDialog(QDialog):
     """Choose same-CRS raster and editable line layers before tracing."""
 
@@ -40,7 +51,7 @@ class InkTraceDialog(QDialog):
         self.error.setStyleSheet("color: #b42318;")
         self.error.setWordWrap(True)
         root.addWidget(self.error)
-        buttons = QDialogButtonBox(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+        buttons = QDialogButtonBox(DIALOG_CANCEL | DIALOG_OK)
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
         root.addWidget(buttons)
@@ -82,7 +93,7 @@ class InkTraceMapTool(QgsMapToolEmitPoint):
         self.rubber = QgsRubberBand(canvas, QgsWkbTypes.LineGeometry)
         self.rubber.setColor(QColor("#16a34a"))
         self.rubber.setWidth(2)
-        self.rubber.setLineStyle(Qt.DashLine)
+        self.rubber.setLineStyle(DASH_LINE)
 
     def _message(self, level, text):
         method = getattr(self.iface.messageBar(), f"push{level}", None)
@@ -186,7 +197,7 @@ class InkTraceMapTool(QgsMapToolEmitPoint):
 
     def canvasReleaseEvent(self, event):
         full = self._pixel(self.toMapCoordinates(event.pos()))
-        if event.modifiers() & Qt.AltModifier:
+        if event.modifiers() & ALT_MODIFIER:
             if self.guide_corner is None:
                 self.guide_corner = full
                 self._message("Info", "Select the opposite corner of the Ink avoidance area.")
@@ -217,18 +228,18 @@ class InkTraceMapTool(QgsMapToolEmitPoint):
         self._message("Info", "New trace start selected. Select its endpoint.")
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Escape:
+        if event.key() == KEY_ESCAPE:
             self._generation += 1
             self._clear_preview()
             self._message("Info", "Ink preview cancelled.")
             return
-        if event.key() == Qt.Key_G and self.anchor_full is not None and self.end_full is not None:
+        if event.key() == KEY_G and self.anchor_full is not None and self.end_full is not None:
             try:
                 self._build_gap_preview()
             except (LiveWireError, ManualGapBridgeError) as error:
                 self._message("Warning", str(error))
             return
-        if event.key() in (Qt.Key_Return, Qt.Key_Enter) and self._preview_points:
+        if event.key() in (KEY_RETURN, KEY_ENTER) and self._preview_points:
             self._commit_preview()
             return
         super().keyPressEvent(event)

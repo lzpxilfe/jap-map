@@ -17,6 +17,52 @@ from jap_map.dialog import MapFrameDialog
 from jap_map.registration_dialog import RegisterMapDialog
 
 
+class NetworkTopologyGateTests(unittest.TestCase):
+    def layer(self,paths):
+        layer=QgsVectorLayer('LineString?crs=EPSG:5132','test','memory')
+        layer.dataProvider().addAttributes([QgsField('line_id',QMetaType.Type.QString),QgsField('tile_id',QMetaType.Type.QString)])
+        layer.updateFields()
+        for lid,points in paths.items():
+            f=QgsFeature(layer.fields());f.setAttributes([lid,'tile']);f.setGeometry(QgsGeometry.fromPolylineXY([QgsPointXY(*p) for p in points]));layer.dataProvider().addFeatures([f])
+        return layer
+
+    def test_new_intersection_is_rejected(self):
+        from scripts.validate_network_topology import compare_networks
+        before=self.layer({'a':[[0,0],[2,0]],'b':[[1,1],[1,2]]})
+        after=self.layer({'a':[[0,0],[1,1.5],[2,0]],'b':[[1,1],[1,2]]})
+        result=compare_networks(before,after)
+        self.assertFalse(result['passed']);self.assertEqual(result['new_line_intersection_pairs'],[['a','b']])
+
+    def test_unchanged_existing_intersection_is_not_new(self):
+        from scripts.validate_network_topology import compare_networks
+        paths={'a':[[0,1],[2,1]],'b':[[1,0],[1,2]]}
+        self.assertTrue(compare_networks(self.layer(paths),self.layer(paths))['passed'])
+
+    def test_moving_endpoint_is_rejected_even_without_crossing(self):
+        from scripts.validate_network_topology import compare_networks
+        r=compare_networks(self.layer({'a':[[0,0],[2,0]]}),self.layer({'a':[[0,0],[3,0]]}))
+        self.assertFalse(r['passed']);self.assertEqual(r['moved_endpoint_line_ids'],['a'])
+
+    def test_new_self_intersection_is_rejected(self):
+        from scripts.validate_network_topology import compare_networks
+        r=compare_networks(self.layer({'a':[[0,0],[3,0]]}),
+                           self.layer({'a':[[0,0],[2,2],[0,2],[2,0],[3,0]]}))
+        self.assertFalse(r['passed']);self.assertEqual(r['new_self_intersection_line_ids'],['a'])
+
+    def test_existing_pair_gaining_extra_contacts_is_rejected(self):
+        from scripts.validate_network_topology import compare_networks
+        before=self.layer({'a':[[0,0],[4,0]],'b':[[2,-1],[2,1]]})
+        after=self.layer({'a':[[0,0],[3,.5],[1,-.5],[4,0]],'b':[[2,-1],[2,1]]})
+        r=compare_networks(before,after)
+        self.assertFalse(r['passed']);self.assertEqual(r['new_line_intersection_pairs'],[['a','b']])
+
+    def test_existing_contact_moving_is_rejected(self):
+        from scripts.validate_network_topology import compare_networks
+        before=self.layer({'a':[[0,0],[4,0]],'b':[[2,-1],[2,1]]})
+        after=self.layer({'a':[[0,0],[2,.5],[4,0]],'b':[[2,-1],[2,1]]})
+        self.assertFalse(compare_networks(before,after)['passed'])
+
+
 class _MessageBar:
     def pushSuccess(self, _title, _message):
         return None
@@ -458,7 +504,159 @@ class QgisIntegrationTest(unittest.TestCase):
                 build(packet_path)
 
 
+class InkTraceQtCompatibilityTest(unittest.TestCase):
+    def setUp(self):
+        from qgis.PyQt.QtGui import QColor, QImage
+        from qgis.core import QgsRasterLayer
+        from qgis.gui import QgsMapCanvas
 
+        QgsProject.instance().removeAllMapLayers()
+        self.directory = tempfile.TemporaryDirectory()
+        path = Path(self.directory.name)/"ink-enum-fixture.png"
+        image = QImage(96, 96, QImage.Format.Format_RGB32)
+        image.fill(QColor("white"))
+        self.assertTrue(image.save(str(path)))
+        path.with_suffix(".pgw").write_text("1\n0\n0\n-1\n0.5\n95.5\n", encoding="ascii")
+        self.raster = QgsRasterLayer(str(path), "enum fixture")
+        self.raster.setCrs(QgsCoordinateReferenceSystem("EPSG:3857"))
+        self.target = QgsVectorLayer("LineString?crs=EPSG:3857", "preview destination", "memory")
+        self.assertTrue(self.raster.isValid())
+        self.assertTrue(self.target.isValid())
+        QgsProject.instance().addMapLayer(self.raster)
+        QgsProject.instance().addMapLayer(self.target)
+        self.canvas = QgsMapCanvas()
+
+    def tearDown(self):
+        self.canvas.close()
+        del self.canvas
+        QgsProject.instance().removeAllMapLayers()
+        del self.target, self.raster
+        self.directory.cleanup()
+
+    def _tool_module(self, scoped):
+        """Use real Qt values, hiding the alternate enum API at import time."""
+        import importlib.util
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        from qgis.PyQt import QtCore, QtWidgets
+        from jap_map import ink_trace_tool
+
+        qt = QtCore.Qt
+        button_box_class = QtWidgets.QDialogButtonBox
+        members = {
+            "PenStyle": {"DashLine": qt.PenStyle.DashLine},
+            "KeyboardModifier": {"AltModifier": qt.KeyboardModifier.AltModifier},
+            "Key": {name: getattr(qt.Key, name) for name in ("Key_Escape", "Key_G", "Key_Return", "Key_Enter")},
+        }
+        if scoped:
+            qt_api = SimpleNamespace(**{scope: SimpleNamespace(**values) for scope, values in members.items()})
+        else:
+            qt_api = SimpleNamespace(**{name: value for values in members.values() for name, value in values.items()})
+
+        class ButtonBoxFactory:
+            def __call__(self, *args, **kwargs):
+                return button_box_class(*args, **kwargs)
+
+        button_box_api = ButtonBoxFactory()
+        buttons = {name: getattr(button_box_class.StandardButton, name) for name in ("Cancel", "Ok")}
+        button_box_api.__dict__.update({"StandardButton": SimpleNamespace(**buttons)} if scoped else buttons)
+        spec = importlib.util.spec_from_file_location("jap_map._ink_trace_enum_test", ink_trace_tool.__file__)
+        module = importlib.util.module_from_spec(spec)
+        with patch.object(QtCore, "Qt", qt_api), patch.object(QtWidgets, "QDialogButtonBox", button_box_api):
+            spec.loader.exec_module(module)
+        return module
+
+    def _press_key(self, tool, key):
+        from qgis.PyQt.QtCore import QEvent, Qt
+        from qgis.PyQt.QtGui import QKeyEvent
+
+        tool.keyPressEvent(QKeyEvent(QEvent.Type.KeyPress, key, Qt.KeyboardModifier.NoModifier))
+
+    def test_dialog_cancel_and_ok_with_each_enum_api(self):
+        from qgis.PyQt.QtWidgets import QDialogButtonBox
+
+        for scoped in (False, True):
+            with self.subTest(scoped=scoped):
+                module = self._tool_module(scoped)
+                dialog = module.InkTraceDialog()
+                self.assertEqual(dialog.selected_layers(), (self.raster, self.target))
+                buttons = dialog.findChild(QDialogButtonBox)
+                self.assertEqual(buttons.standardButtons(), module.DIALOG_CANCEL | module.DIALOG_OK)
+                rejected = []
+                dialog.rejected.connect(lambda: rejected.append(True))
+                buttons.button(module.DIALOG_CANCEL).click()
+                self.assertEqual(rejected, [True])
+                self.assertFalse(self.target.isEditable())
+                dialog.close()
+
+                dialog = module.InkTraceDialog()
+                accepted = []
+                dialog.accepted.connect(lambda: accepted.append(True))
+                dialog.findChild(QDialogButtonBox).button(module.DIALOG_OK).click()
+                self.assertEqual(accepted, [True])
+                self.assertTrue(self.target.isEditable())
+                self.assertEqual(self.target.featureCount(), 0)
+                self.assertTrue(self.target.rollBack())
+                dialog.close()
+
+    def test_alt_guidance_and_escape_cancel_with_each_enum_api(self):
+        from types import SimpleNamespace
+        from qgis.PyQt.QtCore import QPoint, Qt
+
+        for scoped in (False, True):
+            with self.subTest(scoped=scoped):
+                module = self._tool_module(scoped)
+                tool = module.InkTraceMapTool(self.canvas, _Iface(), self.raster, self.target)
+                for point in (QPoint(10, 10), QPoint(30, 30)):
+                    tool.canvasReleaseEvent(SimpleNamespace(pos=lambda: point, modifiers=lambda: Qt.KeyboardModifier.AltModifier))
+                self.assertEqual(len(tool.guide_boxes), 1)
+                self.assertIsNone(tool.guide_corner)
+                self.assertIsNone(tool.anchor_full)
+                tool.anchor_full, tool.end_full = (20., 40.), (30., 40.)
+                tool._evidence = object()
+                tool._set_preview((tool.anchor_full, tool.end_full))
+                generation = tool._generation
+                self._press_key(tool, Qt.Key.Key_Escape)
+                self.assertIsNone(tool.anchor_full)
+                self.assertIsNone(tool.end_full)
+                self.assertIsNone(tool._preview_points)
+                self.assertIsNone(tool._evidence)
+                self.assertEqual(tool._generation, generation + 1)
+                self.assertEqual(tool.rubber.numberOfVertices(), 0)
+                self.assertEqual(len(tool.guide_boxes), 1)
+                self.assertEqual(self.target.featureCount(), 0)
+                self.assertFalse(self.target.isModified())
+                del tool
+
+    def test_g_previews_and_enter_commits_an_undoable_edit_with_each_enum_api(self):
+        from unittest.mock import patch
+        from qgis.PyQt.QtCore import Qt
+
+        self.assertTrue(self.target.startEditing())
+        for scoped in (False, True):
+            for key in (Qt.Key.Key_Return, Qt.Key.Key_Enter):
+                with self.subTest(scoped=scoped, key=key):
+                    module = self._tool_module(scoped)
+                    tool = module.InkTraceMapTool(self.canvas, _Iface(), self.raster, self.target)
+                    self._press_key(tool, key)
+                    self._press_key(tool, Qt.Key.Key_G)
+                    self.assertIsNone(tool._preview_points)
+                    tool.anchor_full, tool.end_full = (20., 40.), (30., 40.)
+                    tool._evidence = object()
+                    with patch.object(module, "sample_evidence_tangent", return_value=(1., .2)):
+                        self._press_key(tool, Qt.Key.Key_G)
+                    self.assertEqual(tool._preview_points[0], tool.anchor_full)
+                    self.assertEqual(tool._preview_points[-1], tool.end_full)
+                    self.assertEqual(self.target.featureCount(), 0)
+                    points = [tool._map(point) for point in tool._preview_points]
+                    self._press_key(tool, key)
+                    self.assertEqual(self.target.featureCount(), 1)
+                    self.assertEqual(next(self.target.getFeatures()).geometry().asPolyline(), points)
+                    self.assertEqual(self.target.dataProvider().featureCount(), 0)
+                    self.assertIsNone(tool._preview_points)
+                    self.target.undoStack().undo()
+                    self.assertEqual(self.target.featureCount(), 0)
+                    del tool
 
 
 def run_all():

@@ -1,0 +1,19 @@
+{
+  "schema": "jap-map-context-gap-feedback/1",
+  "source_report_sha256": "60c1fcce52fbad49131058735075d3a3c4c9cc79d43d1b8a84369ae54026e49e",
+  "decisions": [
+    {
+      "case_id": "R004-numeric-hypothesis-2c065993a8211a55",
+      "candidate_id": "context-gap-002",
+      "tile_id": "177-nonsan-mountain",
+      "source_path_ids": ["observed-004810", "observed-004856"],
+      "expected_endpoints": [[676.0, 289.0], [674.0, 312.0]],
+      "user_quote": "잇는건 매우 잘했는데 그냥 직선으로 이어도 무방할듯.",
+      "connection_decision": "approved",
+      "geometry_decision": "straight_acceptable",
+      "semantic_decision": "not_separately_confirmed",
+      "scope": "this_connection_only",
+      "training_eligible": false
+    }
+  ]
+}

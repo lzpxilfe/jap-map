@@ -34,6 +34,33 @@ jobs:
           tests.test_gap_refinement
           tests.test_feedback_refinement_script
           tests.test_contour_network
+          tests.test_map_text_detection
+          tests.test_map_text_multiscale
+          tests.test_text_ownership
+          tests.test_observed_linework
+          tests.test_observed_curve
+          tests.test_directional_trace
+          tests.test_reconstruction_review
+          tests.test_observed_reconstruction_script
+          tests.test_observed_line_review
+          tests.test_component_text_candidates
+          tests.test_component_text_recognition
+          tests.test_numeric_ink_ownership
+          tests.test_numeric_line_partition
+          tests.test_numeric_separation_script
+          tests.test_regional_gap_matching
+          tests.test_gap_endpoint_context
+          tests.test_short_ink_recovery
+          tests.test_recovery_edge_partition
+          tests.test_recovery_export
+          tests.test_feedback_lineage
+          tests.test_postassembly_locks
+          tests.test_semantic_reference_overlap
+          tests.test_reconstruction_pipeline
+          tests.test_fragment_chain_recovery
+          tests.test_contextual_gap_ranking
+          tests.test_context_gap_preview
+          tests.test_numeric_gap_context_script
       - run: python scripts/build_plugin_zip.py
 
   qgis:
